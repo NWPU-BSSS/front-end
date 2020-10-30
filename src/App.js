@@ -6,6 +6,9 @@ function App() {
       <header className="App-header">
         bsss，blog for students of software school
       </header>
+      <main>
+        一个学生软件博客
+      </main>
     </div>
   );
 }
