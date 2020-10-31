@@ -5,9 +5,9 @@
 ## 分支类型
 
     1. master分支，作为开发的主分支，只有在发布版才会合并，不接受任何提交，只接受从dev分支和fix分支合并的代码。
-    2. dev分支，作为开发分支，值接受其他如feat分支，fix分支合并的代码，不接受任何提交。
+    2. dev分支，作为开发分支，只接受其他如feat分支，fix分支合并的代码，不接受任何提交。
     3. 每天，每位开发者从项目源pull下dev分支代码，并在dev分支上创建新的分支，命名规则为：
-        feat/homepage [feat-功能模块名-开发者名-日期]
+        feat/homepage [feat-功能模块名-日期]
 
 ## commit message 
 
@@ -25,7 +25,7 @@
 
     格式：
     <type>: <subject>
-    如： feat：添加主页HomePage
+    如： 【feat】添加主页HomePage
 
 ## 创建pull request
 
