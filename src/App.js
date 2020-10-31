@@ -1,5 +1,4 @@
 import './App.css'
-import { Row, Col } from 'antd'
 import { Route } from 'react-router'
 import React from 'react'
 import 'antd/dist/antd.css'
