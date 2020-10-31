@@ -1,16 +1,19 @@
-import './App.css';
+import './App.css'
+import { Row, Col } from 'antd'
+import { Route } from 'react-router'
+import React from 'react'
+import 'antd/dist/antd.css'
+import './app-layout.css'
+import { Home } from './pages/Home'
+import { Layout } from './components/Layout'
 
-function App() {
+
+function App () {
   return (
-    <div className="App">
-      <header className="App-header">
-        bsss，blog for students of software school
-      </header>
-      <main>
-        一个学生软件博客
-      </main>
-    </div>
-  );
+    <Layout>
+      <Route exact path="/" component={Home}/>
+    </Layout>
+  )
 }
 
-export default App;
+export default App
