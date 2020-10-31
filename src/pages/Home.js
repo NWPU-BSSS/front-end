@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import Layout from 'antd/lib/layout'
-import Sider from 'antd/lib/layout/Sider'
+import { Input } from 'antd'
 
 export class Home extends Component {
 
@@ -8,6 +7,10 @@ export class Home extends Component {
     return (
       <div>
         <h1>Hello BSSS</h1>
+        <Input.Search style={{
+          width: 200,
+          margin: '0 20px',
+        }} placeholder="搜索" size="large"/>
       </div>
     )
   }

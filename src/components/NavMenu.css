@@ -4,6 +4,17 @@
   word-break: break-all;
 }
 
+div.container-fluid{
+  width: 1600px;
+}
+
+a.nav-link{
+  color: #ffffff;
+  font-weight: bolder;
+  font-size: 16px;
+  margin: 0 5px;
+}
+
 html {
   font-size: 14px;
 }
@@ -15,4 +26,9 @@ html {
 
 .box-shadow {
   box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+.bsss-navmenu{
+  background-color: #001529;
+  color: #fff;
 }
