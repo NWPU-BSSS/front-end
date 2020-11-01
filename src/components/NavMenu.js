@@ -1,12 +1,40 @@
 import React, { Component } from 'react'
-import { Collapse, Container, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink } from 'reactstrap'
-import { Link } from 'react-router-dom'
+import { NavItem, NavLink } from 'reactstrap'
 import './NavMenu.css'
-import { Button, Input } from 'antd'
+import { UserHasLoggedIn } from './NavMenuComponents/UserHasLoggedIn'
+import { UserNotLoggedIn } from './NavMenuComponents/UserNotLoggedIn'
+import { NavMenuSearch } from './NavMenuComponents/NavMenuSearch'
+import { NavMenuToggleButton } from './NavMenuComponents/NavMenuToggleButton'
+import { NavMenuDropdown } from './NavMenuComponents/NavMenuDropdown'
 
-let { Search } = Input
+const languageMenu = [
+  { text: '中文', url: '#' },
+  { text: 'English', url: '#' },
+]
 
-const onSearch = value => console.log(value)
+const socialMenu = [
+  { text: '找朋友', url: '#' },
+  { text: '留言', url: '#' },
+  { text: '悄悄话', url: '#' },
+]
+
+const downloadMenu = [
+  { text: '我的资源', url: '#' }
+]
+
+const codeMenu = [
+  { text: '新建项目', url: '#' }
+]
+
+const blogMenu = [
+  { text: '创作中心', url: '#' }
+]
+
+const queAnsMenu = [
+  { text: '我要提问', url: '#' },
+  { text: '向我提问', url: '#' },
+  { text: '回答', url: '#' },
+]
 
 export class NavMenu extends Component {
   constructor (props) {
@@ -14,7 +42,8 @@ export class NavMenu extends Component {
 
     this.toggleNavbar = this.toggleNavbar.bind(this)
     this.state = {
-      collapsed: true
+      collapsed: true,
+      isLoggedIn: true
     }
   }
 
@@ -25,66 +54,28 @@ export class NavMenu extends Component {
   }
 
   render () {
+    let right = this.state.isLoggedIn ? <UserHasLoggedIn/> : <UserNotLoggedIn/>
+
     return (
       <header>
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
           <div className="container-fluid">
             <a className="navbar-brand" href="#">BSSS</a>
-            <button className="navbar-toggler" type="button" data-toggle="collapse"
-                    data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span className="navbar-toggler-icon"/>
-            </button>
-
+            <NavMenuToggleButton/>
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
               <ul className="navbar-nav mr-auto">
-                <li className="nav-item active">
-                  <a className="nav-link" href="#">博客<span className="sr-only">(current)</span></a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="#">代码</a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="#">下载</a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="#">问答</a>
-                </li>
-                <li className="nav-item dropdown">
-                  <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    下拉菜单
-                  </a>
-                  <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a className="dropdown-item" href="#">活动</a>
-                    <a className="dropdown-item" href="#">其他活动</a>
-                    <div className="dropdown-divider"/>
-                    <a className="dropdown-item" href="#">其他</a>
-                  </div>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link disabled" href="#" tabIndex="-1" aria-disabled="true">社交</a>
-                </li>
+                <NavMenuDropdown name="博客" items={blogMenu}/>
+                <NavMenuDropdown name="代码" items={codeMenu}/>
+                <NavMenuDropdown name="下载" items={downloadMenu}/>
+                <NavMenuDropdown name="问答" items={queAnsMenu}/>
+                <NavMenuDropdown name="社交" items={socialMenu}/>
               </ul>
-              <form className="form-inline my-2 my-lg-0">
-                <input className="form-control mr-sm-2" type="search" placeholder="搜索" aria-label="Search"/>
-                <button className="btn btn-danger my-2 my-sm-0" type="submit">搜索</button>
-              </form>
-              <ul className="navbar-nav ml-auto">
-                <li className="nav-item">
-                  <a className="nav-link" href="#">收藏</a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="#">历史</a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="/">
-                    <img style={{
-                      width: 25,
-                      height: 25
-                    }} src={'logo192.png'} alt="avatar"/>
-                  </a>
-                </li>
+              <ul className="navbar-nav mr-auto">
+                <NavMenuSearch/>
+              </ul>
+              {right}
+              <ul className="navbar-nav mr-auto">
+                <NavMenuDropdown name="语言" items={languageMenu}/>
               </ul>
             </div>
           </div>
