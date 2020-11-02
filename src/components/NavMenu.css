@@ -4,8 +4,9 @@
   word-break: break-all;
 }
 
-div.container-fluid{
+.bsss-nav.container-fluid{
   width: 1600px;
+  /*height: 48px;*/
 }
 
 a.nav-link{

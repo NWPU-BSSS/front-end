@@ -1,0 +1,52 @@
+
+.personal-option{
+    width: 200px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.dropdown-item{
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.bsss-fl{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.dropdown-item.no-hover:hover{
+    background: none;
+}
+
+.bsss-option{
+    margin: 3px 10px;
+}
+
+.dropdown-item.bsss-name{
+    text-align: center;
+    justify-content: center;
+}
+
+.dropdown-item .bsss-lv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.25s ease-in;
+}
+
+.bsss-fl:hover{
+    color: red;
+}
+
+.dropdown-item .bsss-lv:hover{
+    color: red;
+    transform: scale(1.5);
+}
+
