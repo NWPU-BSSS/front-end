@@ -28,7 +28,7 @@ export class NavMenu extends Component {
     return (
       <header>
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-          <div className="container-fluid">
+          <div className="bsss-nav container-fluid">
             <a className="navbar-brand" href="#">BSSS</a>
             <button className="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent"
