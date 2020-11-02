@@ -59,17 +59,19 @@ export class NavMenu extends Component {
     return (
       <header>
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-          <div className="container-fluid">
+          <div className="bsss-nav container-fluid">
             <a className="navbar-brand" href="#">BSSS</a>
+            <ul className="navbar-nav mr-auto" style={{flexDirection: 'row'}}>
+              <NavMenuDropdown name="博客" items={blogMenu}/>
+              <NavMenuDropdown name="代码" items={codeMenu}/>
+              <NavMenuDropdown name="下载" items={downloadMenu}/>
+              <NavMenuDropdown name="问答" items={queAnsMenu}/>
+              <NavMenuDropdown name="社交" items={socialMenu}/>
+            </ul>
             <NavMenuToggleButton/>
+
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul className="navbar-nav mr-auto">
-                <NavMenuDropdown name="博客" items={blogMenu}/>
-                <NavMenuDropdown name="代码" items={codeMenu}/>
-                <NavMenuDropdown name="下载" items={downloadMenu}/>
-                <NavMenuDropdown name="问答" items={queAnsMenu}/>
-                <NavMenuDropdown name="社交" items={socialMenu}/>
-              </ul>
+
               <ul className="navbar-nav mr-auto">
                 <NavMenuSearch/>
               </ul>

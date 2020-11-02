@@ -8,6 +8,9 @@ export class UserHasLoggedIn extends Component {
     return (
       <ul className="navbar-nav ml-auto">
         <li className="nav-item">
+          <a className="btn btn-danger">创作中心</a>
+          </li>
+        <li className="nav-item">
           <a className="nav-link" href="#">收藏</a>
         </li>
         <li className="nav-item">
