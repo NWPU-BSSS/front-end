@@ -1,0 +1,19 @@
+.quick-entry-header{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+}
+
+.quick-entry a{
+    width: 100%;
+}
+
+.quick-entry a:hover{
+    color: blue!important;
+    font-weight: bolder;
+}
+
+.quick-entry{
+    padding: 0;
+}
