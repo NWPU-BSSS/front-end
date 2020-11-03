@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { NavItem, NavLink } from 'reactstrap'
 import './NavMenu.css'
 import { UserHasLoggedIn } from './NavMenuComponents/UserHasLoggedIn'
 import { UserNotLoggedIn } from './NavMenuComponents/UserNotLoggedIn'
@@ -69,7 +68,6 @@ export class NavMenu extends Component {
               <NavMenuDropdown name="社交" items={socialMenu}/>
             </ul>
             <NavMenuToggleButton/>
-
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
 
               <ul className="navbar-nav mr-auto">

@@ -1,18 +1,17 @@
 import React, { Component } from 'react'
-import { Row, Container, Col } from 'reactstrap'
 import { HomePageLeft } from '../components/homepage-components/HomePageLeft'
 import { HomePageCenter } from '../components/homepage-components/HomePageCenter'
 import { HomePageRight } from '../components/homepage-components/HomePageRight'
 
 import './HomePage.css'
+import { Col, Row } from 'antd'
 
 export class HomePage extends Component {
 
   render () {
     return (
-      <Container fluid className="home-page-container">
-        <Row>
-          <Col lg={3} className="d-md-flex">
+      <Row fluid className="home-page-container">
+          <Col lg={3}>
             <HomePageLeft/>
           </Col>
           <Col lg={6} md={9}>
@@ -21,8 +20,7 @@ export class HomePage extends Component {
           <Col lg={3} md={3}>
             <HomePageRight/>
           </Col>
-        </Row>
-      </Container>
+      </Row>
     )
   }
 }

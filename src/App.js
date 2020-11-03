@@ -1,7 +1,6 @@
 import './App.css'
 import { Route } from 'react-router'
 import React from 'react'
-import 'antd/dist/antd.css'
 import './app-layout.css'
 import { HomePage } from './pages/HomePage'
 import { Layout } from './components/Layout'

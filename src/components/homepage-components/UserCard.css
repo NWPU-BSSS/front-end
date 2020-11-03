@@ -5,6 +5,10 @@
     flex-direction: row;
 }
 
+.user-card{
+    min-width: 270px;
+}
+
 .user-card .card-top .top-left{
     flex-direction: row;
     justify-content: center;

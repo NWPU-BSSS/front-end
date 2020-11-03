@@ -1,3 +1,11 @@
-.home-page-right{
+@media screen and (min-width: 1368px){
+    .home-page-right{
+        display: flex;
+    }
+}
 
+@media screen and (min-width: 1368px){
+    .home-page-right{
+        display: flex;
+    }
 }

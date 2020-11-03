@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 
 import './HomePageRight.css'
-import { Container } from 'reactstrap'
 import { QuickEntry } from './QuickEntry'
 import { UserCard } from './UserCard'
 import { MessageOption } from './MessageOption'
