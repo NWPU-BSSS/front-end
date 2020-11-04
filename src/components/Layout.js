@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { Container } from 'reactstrap'
-import { NavMenu } from './NavMenu'
+import { NavMenu } from './nav-menu-components/NavMenu'
 import './Layout.css'
+import { Row } from 'antd'
 
 export class Layout extends Component {
 
@@ -9,9 +9,9 @@ export class Layout extends Component {
     return (
       <div>
         <NavMenu/>
-        <Container className="base-layout-container" fluid>
+        <Row className="base-layout-container">
           {this.props.children}
-        </Container>
+        </Row>
       </div>
     )
   }

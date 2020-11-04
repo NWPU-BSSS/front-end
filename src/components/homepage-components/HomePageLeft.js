@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 
 import './HomePageLeft.css'
 import { QuickEntry } from './QuickEntry'
-import { Container } from 'reactstrap'
 import { TodayRecommend } from './TodayRecommend'
 import { RecentBrowse } from './RecentBrowse'
 
