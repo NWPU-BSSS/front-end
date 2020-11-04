@@ -19,13 +19,14 @@ div.bs-nav-dropdown div.bs-nav-dropdown-menu{
     min-width: 125px;
     padding: 10px 0;
     top: 48px;
+    z-index: 999;
     transition: all .4s ease-in-out;
 }
 
 div.bs-nav-dropdown:hover div.bs-nav-dropdown-menu{
     background-color: #1d1d1d;
     max-height: 10000px;
-    opacity: 1;
+    opacity: .9;
     border-top: 1px solid #e9e9e9;
 }
 
