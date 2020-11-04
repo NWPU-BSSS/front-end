@@ -1,0 +1,29 @@
+form.bs-nav-search{
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+form.bs-nav-search input, form.bs-nav-search button{
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+}
+
+form.bs-nav-search input{
+    height: 36px;
+    border: 1px solid #e9e9e9;
+    width: 200px;
+    padding: 0 10px;
+}
+
+form.bs-nav-search button{
+
+}
+
+form.bs-nav-search button:hover{
+    cursor: pointer;
+}
+

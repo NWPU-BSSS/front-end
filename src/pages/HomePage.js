@@ -10,16 +10,16 @@ export class HomePage extends Component {
 
   render () {
     return (
-      <Row fluid className="home-page-container">
-          <Col lg={3}>
-            <HomePageLeft/>
-          </Col>
-          <Col lg={6} md={9}>
-            <HomePageCenter/>
-          </Col>
-          <Col lg={3} md={3}>
-            <HomePageRight/>
-          </Col>
+      <Row>
+          {/*<Col lg={6}>*/}
+          {/*  <HomePageLeft/>*/}
+          {/*</Col>*/}
+          {/*<Col lg={12} md={16}>*/}
+          {/*  <HomePageCenter/>*/}
+          {/*</Col>*/}
+          {/*<Col lg={6} md={8}>*/}
+          {/*  <HomePageRight/>*/}
+          {/*</Col>*/}
       </Row>
     )
   }

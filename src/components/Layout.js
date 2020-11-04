@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { NavMenu } from './NavMenu'
+import { NavMenu } from './nav-menu-components/NavMenu'
 import './Layout.css'
 import { Row } from 'antd'
 
