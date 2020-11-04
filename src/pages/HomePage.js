@@ -10,16 +10,16 @@ export class HomePage extends Component {
 
   render () {
     return (
-      <Row>
-          {/*<Col lg={6}>*/}
-          {/*  <HomePageLeft/>*/}
-          {/*</Col>*/}
-          {/*<Col lg={12} md={16}>*/}
-          {/*  <HomePageCenter/>*/}
-          {/*</Col>*/}
-          {/*<Col lg={6} md={8}>*/}
-          {/*  <HomePageRight/>*/}
-          {/*</Col>*/}
+      <Row gutter={48}>
+        <Col lg={5} md={0} xs={0} sm={0}>
+          <HomePageLeft/>
+        </Col>
+        <Col lg={14} md={16} xs={24} sm={24}>
+          <HomePageCenter/>
+        </Col>
+        <Col lg={5} md={8} xs={0} sm={0}>
+          <HomePageRight/>
+        </Col>
       </Row>
     )
   }
