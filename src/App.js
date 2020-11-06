@@ -10,6 +10,7 @@ import { ProfilePage } from './pages/ProfilePage'
 import { ReleaseBlogPage } from './pages/ReleaseBlogPage'
 import { CodeEditPage } from './pages/CodeEditPage'
 import { GuestHomePage } from './pages/GuestHomePage'
+import { TestPage } from './pages/TestPage'
 
 function App () {
   return (
@@ -21,6 +22,7 @@ function App () {
       <Route path="/release-blog" component={ReleaseBlogPage}/>
       <Route path="/code-edit" component={CodeEditPage}/>
       <Route path="/guest" component={GuestHomePage}/>
+      <Route path="/test" component={TestPage}/>
     </Layout>
   )
 }
