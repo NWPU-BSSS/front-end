@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import { btnDanger } from './bs-button'
+import { btnDanger } from './@button-style'
 
 import './NavMenuSearch.css'
 

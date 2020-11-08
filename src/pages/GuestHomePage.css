@@ -1,0 +1,51 @@
+div.guest-home-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+div.guest-home-page div {
+    margin: 20px;
+}
+
+div.guest-home-page div, div.guest-home-page div img {
+    transition: all .4s ease-in-out;
+}
+
+div.guest-home-page div.title {
+    font-size: 36px;
+    color: #696A6C;
+    text-align: center;
+}
+
+div.guest-home-page div.title:hover {
+    transform: scale(1.1);
+}
+
+div.guest-home-page div.introduction {
+    font-size: 24px;
+    color: #696AA6;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 15px;
+    width: 100%;
+}
+
+div.guest-home-page div.photo {
+    width: 80%;
+}
+
+div.guest-home-page div.photo img {
+    width: 100%;
+}
+
+div.guest-home-page div.photo img:hover {
+    transform: scale(1.1);
+}
+
+div.guest-home-page div.introduction:hover {
+    outline: blue 2px solid;
+    transform: scale(1.1);
+}

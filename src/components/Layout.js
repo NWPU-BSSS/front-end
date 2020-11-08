@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { NavMenu } from './nav-menu-components/NavMenu'
 import './Layout.css'
-import { Row } from 'antd'
+import { Footer } from './Footer'
 
 export class Layout extends Component {
 
@@ -9,9 +9,10 @@ export class Layout extends Component {
     return (
       <div>
         <NavMenu/>
-        <Row className="base-layout-container">
+        <div className="base-layout-container">
           {this.props.children}
-        </Row>
+        </div>
+        <Footer/>
       </div>
     )
   }
