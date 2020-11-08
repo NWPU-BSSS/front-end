@@ -12,6 +12,7 @@ import { CodeEditPage } from './pages/CodeEditPage'
 import { GuestHomePage } from './pages/GuestHomePage'
 import { TestPage } from './pages/TestPage'
 import { RegisterSuccessPage } from './pages/RegisterSuccessPage'
+import { RegisterPage } from './pages/RegisterPage'
 
 function App () {
   return (
@@ -25,6 +26,7 @@ function App () {
       <Route path="/guest" component={GuestHomePage}/>
       <Route path="/reg-success" component={RegisterSuccessPage}/>
       <Route path="/test" component={TestPage}/>
+      <Route path="/register" component={RegisterPage}/>
     </Layout>
   )
 }
