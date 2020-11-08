@@ -1,7 +1,18 @@
 .home-page-container{
-    /*max-width: 1400px;*/
+    max-width: 1400px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: row;
 }
 
-.home-page-container {
-    height: 600px;
+div.home-page-container div.home-page-left{
+    width: 250px;
+}
+
+div.home-page-container div.home-page-right{
+    width: 250px;
+}
+
+div.home-page-container div.home-page-center{
 }

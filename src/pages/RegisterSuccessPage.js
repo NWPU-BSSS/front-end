@@ -1,56 +1,38 @@
 import React, { Component } from 'react'
-import logo from '../assets/img/logo_u9.png'
-import { SuccessResult } from '../components/register-successful-components/SuccessResult'
+import { LoginFormTop } from '../components/@common/LoginFormTop'
+import { Button, Result } from 'antd'
 
 export class RegisterSuccessPage extends Component {
 
   render () {
     return (
-      <>
-
-        <div style={{
-          width: '100%',
-          margin: '0 auto'
-        }}>
-          <div style={{
-            width: 215,
-            margin: '0 auto'
-          }}>
-            <img src={logo} alt={'logo'} style={{
-              width: 215,
-              height: 75,
-              margin: '0 auto'
-            }}/>
-          </div>
-        </div>
-
-        <div style={{
-          width: '100%',
-          margin: '0 auto'
-        }}>
-          <div style={{
-            width: 215,
-            margin: '0 auto',
-            'text-align': 'center'
-          }}>
-            <p style={{
-              'font-size': '14px',
-              'font-weight': 400,
-              'color': '#0000006D'
-            }}>
-              为软件学院学生定制的博客网站
-            </p>
-          </div>
-        </div>
-
+      <div>
+        <LoginFormTop/>
         <div style={{
           width: '100%',
           margin: '0 auto'
         }}>
           <SuccessResult/>
         </div>
-      </>
+      </div>
     )
   }
+}
 
+class SuccessResult extends Component {
+  render () {
+    return (
+      <Result
+        status="success"
+        title="你的帐户：AntDesign@example.com 注册成功"
+        subTitle="激活邮件已发送到你的邮箱中，邮件有效期为24小时。请及时登录邮箱，点击邮件中的链接激活帐户。"
+        extra={[
+          <Button type="primary" key="checkout">
+            查看邮箱
+          </Button>,
+          <Button key="back">返回首页</Button>,
+        ]}
+      />
+    )
+  }
 }
