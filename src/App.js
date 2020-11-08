@@ -11,6 +11,7 @@ import { ReleaseBlogPage } from './pages/ReleaseBlogPage'
 import { CodeEditPage } from './pages/CodeEditPage'
 import { GuestHomePage } from './pages/GuestHomePage'
 import { TestPage } from './pages/TestPage'
+import { RegisterPage } from './pages/RegisterPage'
 
 function App () {
   return (
@@ -23,6 +24,7 @@ function App () {
       <Route path="/code-edit" component={CodeEditPage}/>
       <Route path="/guest" component={GuestHomePage}/>
       <Route path="/test" component={TestPage}/>
+      <Route path="/register" component={RegisterPage}/>
     </Layout>
   )
 }
