@@ -49,7 +49,8 @@ export class NavUserPanel extends Component {
       <a className="panel-item">
         <div><QuestionCircleFilled/>&nbsp;帮助</div>
       </a>,
-      <a className="panel-item">
+      // eslint-disable-next-line jsx-a11y/anchor-is-valid
+      <a className="panel-item" onClick={this.props.onExit}>
         <div><ExportOutlined />&nbsp;退出登录</div>
       </a>
     ]
