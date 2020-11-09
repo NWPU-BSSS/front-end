@@ -24,6 +24,14 @@ export class RegisterPage extends Component {
 }
 
 class RegistrationForm extends Component {
+  constructor (props) {
+    super(props)
+    this.handleRegister = this.handleRegister.bind(this)
+  }
+
+  handleRegister(){
+    window.location.pathname = '/reg-success'
+  }
 
   render () {
     return (
@@ -87,7 +95,7 @@ class RegistrationForm extends Component {
               justifyContent: 'space-between',
               alignItems: 'center',
             }}>
-              <Button style={{ width: '40%' }} type="primary">注册</Button>
+              <Button style={{ width: '40%' }} type="primary" onClick={this.handleRegister}>注册</Button>
               <Button style={{ width: '40%' }} type="link">使用已有帐户登录</Button>
             </div>
           </form>

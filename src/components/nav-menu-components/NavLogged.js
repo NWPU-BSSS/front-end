@@ -37,7 +37,7 @@ export class NavLogged extends Component {
             <img src={logo} alt="头像"/>
           </div>
         }>
-          <NavUserPanel/>
+          <NavUserPanel onExit={this.props.onLogOut}/>
         </NavMenuDropdown>
       </div>
     )

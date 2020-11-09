@@ -14,7 +14,12 @@ const { TabPane } = Tabs
 
 const onFinish = data => {
 }
-
+/**
+ * 记住密码栏
+ * @param props
+ * @returns {JSX.Element}
+ * @constructor
+ */
 const RememberLogin = function (props) {
   return (
     <div style={{
@@ -29,7 +34,12 @@ const RememberLogin = function (props) {
     </div>
   )
 }
-
+/**
+ * 登陆或注册
+ * @param props
+ * @returns {JSX.Element}
+ * @constructor
+ */
 const LoginOrRegister = function (props) {
   const fontIcon = { fontSize: '24px', margin: '5px', color: '#1890ff' }
 
@@ -37,7 +47,7 @@ const LoginOrRegister = function (props) {
     <div style={{
       ...formItem, ...btnBox
     }}>
-      <Button type="primary" style={{ width: '100%' }}>登陆</Button>
+      <Button type="primary" style={{ width: '100%' }} onClick={props.login}>登陆</Button>
       <div style={{
         display: 'flex',
         flexDirection: 'row',
@@ -108,6 +118,15 @@ class PhoneLoginForm extends Component {
  * 账号密码登陆组件
  */
 class AccountLoginForm extends Component {
+  constructor (props) {
+    super(props)
+    this.handleLogin = this.handleLogin.bind(this)
+  }
+
+  handleLogin () {
+    window.location.pathname = '/'
+  }
+
   render () {
     return (
       <Form
@@ -123,7 +142,7 @@ class AccountLoginForm extends Component {
           <Input prefix={<LockOutlined/>} type="password" placeholder="请输入密码"/>
         </div>
         <RememberLogin/>
-        <LoginOrRegister/>
+        <LoginOrRegister login={this.handleLogin}/>
       </Form>
     )
   }

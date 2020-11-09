@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { LoginFormTop } from '../components/@common/LoginFormTop'
 import { Button, Result } from 'antd'
+import { Link } from 'react-router-dom'
 
 export class RegisterSuccessPage extends Component {
 
@@ -30,7 +31,9 @@ class SuccessResult extends Component {
           <Button type="primary" key="checkout">
             查看邮箱
           </Button>,
-          <Button key="back">返回首页</Button>,
+          <Button key="back">
+            <Link to="/">返回首页</Link>
+          </Button>,
         ]}
       />
     )

@@ -38,16 +38,26 @@ const queAnsMenu = [
   <a>回答</a>
 ]
 
+function RightComponent (props) {
+  if (props.login) {
+    return <NavLogged onLogOut={props.onLogOut}/>
+  } else {
+    return <NavUnloggin onLogIn={props.onLogIn}/>
+  }
+}
+
 export class NavMenu extends Component {
   constructor (props) {
     super(props)
 
-    this.toggleNavbar = this.toggleNavbar.bind(this)
     this.state = {
       collapsed: true,
       isLoggedIn: true,
       languageIndex: 0
     }
+    this.toggleNavbar = this.toggleNavbar.bind(this)
+    this.handleLogIn = this.handleLogIn.bind(this)
+    this.handleLogOut = this.handleLogOut.bind(this)
   }
 
   toggleNavbar () {
@@ -56,9 +66,15 @@ export class NavMenu extends Component {
     })
   }
 
-  render () {
-    let right = this.state.isLoggedIn ? <NavLogged/> : <NavUnloggin/>
+  handleLogOut () {
+    this.setState({ isLoggedIn: false })
+  }
 
+  handleLogIn () {
+    this.setState({ isLoggedIn: true })
+  }
+
+  render () {
     return (
       <header className="bs-nav-header">
         <nav className="bs-nav">
@@ -71,8 +87,9 @@ export class NavMenu extends Component {
             <NavMenuDropdown title="社交">{socialMenu}</NavMenuDropdown>
           </div>
           <NavMenuSearch/>
-          {right}
-          <NavMenuDropdown title={<div style={{width: 100}}>{languageMenu[this.state.languageIndex]}  <CaretDownOutlined/></div>}>
+          <RightComponent login={this.state.isLoggedIn} onLogIn={this.handleLogIn} onLogOut={this.handleLogOut}/>
+          <NavMenuDropdown
+            title={<div style={{ width: 100 }}>{languageMenu[this.state.languageIndex]} <CaretDownOutlined/></div>}>
             {languageMenu.map((item, index) => <a onClick={() => this.handleChangeLanguage(index)}>{item}</a>)}
           </NavMenuDropdown>
         </nav>
