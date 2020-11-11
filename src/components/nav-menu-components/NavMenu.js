@@ -15,27 +15,27 @@ const languageMenu = [
 ]
 
 const socialMenu = [
-  <a>找朋友</a>,
-  <a>留言</a>,
-  <a>悄悄话</a>
+  <a key={'1'}>找朋友</a>,
+  <a key={'2'}>留言</a>,
+  <a key={'3'}>悄悄话</a>
 ]
 
 const downloadMenu = [
-  <a>新建项目</a>
+  <a key={'1'}>新建项目</a>
 ]
 
 const codeMenu = [
-  <a>新建项目</a>
+  <a key={'1'}>新建项目</a>
 ]
 
 const blogMenu = (
-  <a>创作中心</a>
+  <a key={'1'}>创作中心</a>
 )
 
 const queAnsMenu = [
-  <a>我要提问</a>,
-  <a>向我提问</a>,
-  <a>回答</a>
+  <a key={'1'}>我要提问</a>,
+  <a key={'2'}>向我提问</a>,
+  <a key={'3'}>回答</a>
 ]
 
 function RightComponent (props) {
@@ -90,7 +90,8 @@ export class NavMenu extends Component {
           <RightComponent login={this.state.isLoggedIn} onLogIn={this.handleLogIn} onLogOut={this.handleLogOut}/>
           <NavMenuDropdown
             title={<div style={{ width: 100 }}>{languageMenu[this.state.languageIndex]} <CaretDownOutlined/></div>}>
-            {languageMenu.map((item, index) => <a onClick={() => this.handleChangeLanguage(index)}>{item}</a>)}
+            {languageMenu.map((item, index) => <a key={item.toString()}
+                                                  onClick={() => this.handleChangeLanguage(index)}>{item}</a>)}
           </NavMenuDropdown>
         </nav>
       </header>
