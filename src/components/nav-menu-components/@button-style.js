@@ -1,12 +1,12 @@
 const button = {
-  'height': '36px',
-  'text-align': 'center',
-  'padding': '0 15px',
-  'line-height': '36px',
-  'color': '#e9e9e9',
-  'font-weight': 500,
-  'font-size': '16px',
-  'margin': '0 15px'
+  height: '36px',
+  textAlign: 'center',
+  padding: '0 15px',
+  lineHeight: '36px',
+  color: '#e9e9e9',
+  fontWeight: 500,
+  fontSize: '16px',
+  margin: '0 15px'
 }
 
 const danger = {
