@@ -5,12 +5,15 @@ import {
   GET_USER_INFO,
   GET_ARTICLE_INFO,
   GET_ARTICLE_LIST,
-  RELEASE_ARTICLE
+  RELEASE_ARTICLE, SHOW_NAV_MENU, HIDE_NAV_MENU
 } from './action-types'
+
+export const showNav = () => ({ type: SHOW_NAV_MENU })
+export const hideNav = () => ({ type: HIDE_NAV_MENU })
 
 export const login = (username, email, userId) => ({
   type: LOGIN,
-  data:{ username, email, userId}
+  data: { username, email, userId }
 })
 
 export const loadUserInfo = (username, email, userId) => ({
@@ -34,6 +37,7 @@ export const loginAsync = (username, password, email) =>
     console.log(password)
     setTimeout(() => {
       dispatch(login(username, email, 1))
+      dispatch(showNav())
     }, 1000)
   }
 
@@ -62,9 +66,9 @@ export const getArticleListAsync = () =>
   dispatch => {
     setTimeout(() => {
       dispatch(loadArticleList([
-        {articleId: 1, title: '文章1'},
-        {articleId: 2, title: '文章2'},
-        {articleId: 3, title: '文章3'}
+        { articleId: 1, title: '文章1' },
+        { articleId: 2, title: '文章2' },
+        { articleId: 3, title: '文章3' }
       ]))
     }, 1000)
   }

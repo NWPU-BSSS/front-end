@@ -48,7 +48,9 @@ class AccountLoginForm extends Component {
   }
 }
 
-export default connect(
+AccountLoginForm = connect(
   state => {},
   { loginAsync }
 )(AccountLoginForm)
+
+export { AccountLoginForm }

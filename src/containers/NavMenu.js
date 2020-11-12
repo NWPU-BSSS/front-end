@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
-import NavLogged from './NavLogged'
+import { NavLogged } from './NavLogged'
 import { NavUnloggin } from '../components/nav-menu-components/NavUnloggin'
 import { NavMenuSearch } from '../components/nav-menu-components/NavMenuSearch'
 import { NavMenuDropdown } from '../components/nav-menu-components/NavMenuDropdown'
 import { NavMenuAvatar } from '../components/nav-menu-components/NavMenuAvatar'
 import { CaretDownOutlined } from '@ant-design/icons'
+import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
 import '../components/nav-menu-components/NavMenu.css'
-import { connect } from 'react-redux'
 
 const languageMenu = [
   '简体中文',
@@ -101,10 +101,11 @@ class NavMenu extends Component {
   }
 }
 
-export default connect(
-  state => ({ userState: state.userState }),
-  {}
+NavMenu = connect(
+  state => ({ userState: state.userState })
 )(NavMenu)
+
+export { NavMenu }
 
 
 

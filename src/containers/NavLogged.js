@@ -3,7 +3,7 @@ import { NavMenuDropdown } from '../components/nav-menu-components/NavMenuDropdo
 import { btnDanger } from '../components/nav-menu-components/@button-style'
 import { NavUserPanel } from '../components/nav-menu-components/NavUserPanel'
 import logo from '../assets/img/logo192.png'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 
 import '../components/nav-menu-components/NavLogged.css'
 import { connect } from 'react-redux'
@@ -11,10 +11,10 @@ import { logout } from '../@redux/actions'
 
 class NavLogged extends Component {
 
-  static propTypes = {
-    username: PropTypes.string.isRequired,
-    logout: PropTypes.func.isRequired
-  }
+  // static propTypes = {
+  //   username: PropTypes.string.isRequired,
+  //   logout: PropTypes.func.isRequired
+  // }
 
   render () {
     return (
@@ -49,7 +49,9 @@ class NavLogged extends Component {
   }
 }
 
-export default connect(
+NavLogged = connect(
   state => ({ username: state.userState.username }),
   { logout }
 )(NavLogged)
+
+export { NavLogged }

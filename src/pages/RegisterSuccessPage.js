@@ -7,7 +7,9 @@ export class RegisterSuccessPage extends Component {
 
   render () {
     return (
-      <div>
+      <div style={{
+        margin: '200px auto'
+      }}>
         <LoginFormTop/>
         <div style={{
           width: '100%',
