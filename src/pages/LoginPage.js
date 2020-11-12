@@ -9,18 +9,21 @@ import {
 } from '@ant-design/icons'
 import { LoginFormTop } from '../components/@common/LoginFormTop'
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
+import AccountLoginForm from '../containers/AccountLoginForm'
+import { PhoneLoginForm } from '../containers/PhoneLoginForm'
 
 const { TabPane } = Tabs
 
-const onFinish = data => {
-}
+const fontIcon = { fontSize: '24px', margin: '5px', color: '#1890ff' }
+
 /**
  * 记住密码栏
  * @param props
  * @returns {JSX.Element}
  * @constructor
  */
-const RememberLogin = function (props) {
+export function RememberLogin (props) {
   return (
     <div style={{
       padding: '0 20px',
@@ -34,20 +37,25 @@ const RememberLogin = function (props) {
     </div>
   )
 }
+
 /**
  * 登陆或注册
  * @param props
  * @returns {JSX.Element}
  * @constructor
  */
-const LoginOrRegister = function (props) {
-  const fontIcon = { fontSize: '24px', margin: '5px', color: '#1890ff' }
 
-  return (
-    <div style={{
+export class LoginOrRegister extends Component {
+
+  static propTypes = {
+    onLogin: PropTypes.func.isRequired,
+  }
+
+  render () {
+    return <div style={{
       ...formItem, ...btnBox
     }}>
-      <Button type="primary" style={{ width: '100%' }} onClick={props.login}>登陆</Button>
+      <Button type="primary" style={{ width: '100%' }} onClick={this.props.onLogin}>登陆</Button>
       <div style={{
         display: 'flex',
         flexDirection: 'row',
@@ -63,9 +71,7 @@ const LoginOrRegister = function (props) {
           alignItems: 'center',
           display: 'flex'
         }}>
-          <div>
-            其他登录方式
-          </div>
+          <div>其他登录方式</div>
           <div>
             <AlipayCircleFilled style={fontIcon}/>
             <TaobaoCircleFilled style={fontIcon}/>
@@ -77,89 +83,79 @@ const LoginOrRegister = function (props) {
         }}>注册</Link>
       </div>
     </div>
-  )
+  }
 }
 
 /**
  * 手机号登陆组件
  */
-class PhoneLoginForm extends Component {
-  render () {
-    return (
-      <Form
-        name="normal_login"
-        className="login-form"
-        initialValues={{ remember: true }}
-        onFinish={onFinish()}
-      >
-        <div style={formItem}>
-          <Input prefix={<PhoneFilled/>} placeholder="手机号"/>
-        </div>
-        <div style={formItem}>
-          <Input.Group style={{
-            width: '100%',
-            display: 'flex',
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-          }}>
-            <Input style={{ width: '60%' }} prefix={<LockOutlined/>} type="password" placeholder="验证码"/>
-            <Button style={{ width: '35%' }} type="default">获取验证码</Button>
-          </Input.Group>
-        </div>
-        <RememberLogin/>
-        <LoginOrRegister/>
-      </Form>
-    )
-  }
-}
+// class PhoneLoginForm extends Component {
+//
+//   render () {
+//     return (
+//       <Form
+//         name="normal_login"
+//         className="login-form"
+//         initialValues={{ remember: true }}
+//         onFinish={onFinish()}
+//       >
+//         <div style={formItem}>
+//           <Input prefix={<PhoneFilled/>} placeholder="手机号"/>
+//         </div>
+//         <div style={formItem}>
+//           <Input.Group style={{
+//             width: '100%',
+//             display: 'flex',
+//             flexDirection: 'row',
+//             justifyContent: 'space-between',
+//             alignItems: 'center',
+//           }}>
+//             <Input style={{ width: '60%' }} prefix={<LockOutlined/>} type="password" placeholder="验证码"/>
+//             <Button style={{ width: '35%' }} type="default">获取验证码</Button>
+//           </Input.Group>
+//         </div>
+//         <RememberLogin/>
+//         <LoginOrRegister login={this.props.login}/>
+//       </Form>
+//     )
+//   }
+// }
 
 /**
  * 账号密码登陆组件
  */
-class AccountLoginForm extends Component {
-  constructor (props) {
-    super(props)
-    this.handleLogin = this.handleLogin.bind(this)
-  }
-
-  handleLogin () {
-    window.location.pathname = '/'
-  }
-
-  render () {
-    return (
-      <Form
-        name="normal_login"
-        className="login-form"
-        initialValues={{ remember: true }}
-        onFinish={onFinish()}
-      >
-        <div style={formItem}>
-          <Input prefix={<UserOutlined/>} placeholder="请输入用户名"/>
-        </div>
-        <div style={formItem}>
-          <Input prefix={<LockOutlined/>} type="password" placeholder="请输入密码"/>
-        </div>
-        <RememberLogin/>
-        <LoginOrRegister login={this.handleLogin}/>
-      </Form>
-    )
-  }
-}
+// class AccountLoginForm extends Component {
+//   constructor (props) {
+//     super(props)
+//     this.handleLogin = this.handleLogin.bind(this)
+//   }
+//
+//   handleLogin () {
+//     window.location.pathname = '/'
+//   }
+//
+//   render () {
+//     return (
+//       <Form
+//         name="normal_login"
+//         className="login-form"
+//         initialValues={{ remember: true }}
+//         onFinish={onFinish()}
+//       >
+//         <div style={formItem}>
+//           <Input prefix={<UserOutlined/>} placeholder="请输入用户名"/>
+//         </div>
+//         <div style={formItem}>
+//           <Input prefix={<LockOutlined/>} type="password" placeholder="请输入密码"/>
+//         </div>
+//         <RememberLogin/>
+//         <LoginOrRegister login={this.handleLogin}/>
+//       </Form>
+//     )
+//   }
+// }
 
 export class LoginPage extends Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      menu: 'account',
-    }
-  }
-
-  handleMenuClick = e => {
-    this.setState({ menu: e.key })
-  }
-
   render () {
 
     return (

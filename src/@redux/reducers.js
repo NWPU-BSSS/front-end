@@ -1,11 +1,13 @@
 import { LOGIN, LOGOUT, REGISTER } from './action-types'
 
-export function userState (state = {}, action) {
+const initUserState = {userId : -1 ,username: ''}
+
+export function userState (state = initUserState, action) {
   switch (action.type){
     case LOGIN:
       return {...state, ...action.data}
     case LOGOUT:
-      return {}
+      return initUserState
     case REGISTER:
       return {...state, ...action.data}
     default:

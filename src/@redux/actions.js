@@ -30,8 +30,10 @@ export const loadArticleList = list => ({ type: GET_ARTICLE_LIST, data: list })
 
 export const loginAsync = (username, password, email) =>
   dispatch => {
+    console.log(username)
+    console.log(password)
     setTimeout(() => {
-      dispatch(loadUserInfo(username, email, 1))
+      dispatch(login(username, email, 1))
     }, 1000)
   }
 

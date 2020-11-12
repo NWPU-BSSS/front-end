@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 import {
   BankFilled,
@@ -15,10 +16,15 @@ import './NavUserPanel.css'
 
 export class NavUserPanel extends Component {
 
+  static propTypes = {
+    username: PropTypes.string.isRequired,
+    onLogout: PropTypes.func.isRequired
+  }
+
   render () {
     return [
       <a key={'a'} className="panel-item user-name">
-        <div>Tom</div>
+        <div>{this.props.username}</div>
       </a>,
       <a key={'b'} className="panel-item level">
         <div><CrownOutlined />&nbsp;成长体系</div>
@@ -50,7 +56,7 @@ export class NavUserPanel extends Component {
         <div><QuestionCircleFilled/>&nbsp;帮助</div>
       </a>,
       // eslint-disable-next-line jsx-a11y/anchor-is-valid
-      <a key={'h'} className="panel-item" onClick={this.props.onExit}>
+      <a key={'h'} className="panel-item" onClick={this.props.onLogout}>
         <div><ExportOutlined />&nbsp;退出登录</div>
       </a>
     ]
