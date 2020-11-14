@@ -1,12 +1,17 @@
 import React, { Component } from 'react'
 import { LoginFormTop } from '../components/@common/LoginFormTop'
 import { RegisterForm } from '../containers/RegisterForm'
+import { connect } from 'react-redux'
+import { Redirect } from 'react-router'
 
-
-
-export class RegisterPage extends Component {
+class RegisterPage extends Component {
 
   render () {
+
+    if (this.props.isRegisterSuccess) {
+      return <Redirect to="/reg-success"/>
+    }
+
     return (
       <div style={{
         margin: '170px auto',
@@ -23,4 +28,12 @@ export class RegisterPage extends Component {
     )
   }
 }
+
+RegisterPage = connect(
+  state => ({ isRegisterSuccess: state.registerSuccess })
+)(RegisterPage)
+
+export { RegisterPage }
+
+
 

@@ -3,32 +3,41 @@ import PropTypes from 'prop-types'
 import { Button, Input, Select } from 'antd'
 import { connect } from 'react-redux'
 import { registerAsync } from '../@redux/actions'
+import { Link } from 'react-router-dom'
 
 const { Option } = Select
 
 class RegisterForm extends Component {
   static propTypes = {
-    register: PropTypes.func.isRequired
+    register: PropTypes.func
   }
+
 
   constructor (props) {
     super(props)
     this.state = {
-      username: '',
-      password: ''
+      disableRegisterButton: false
     }
   }
 
+  handleConfirmPassword = e =>{
+
+  }
+
   handleRegister = () => {
-    this.props.register(this.state.username, this.state.password, '1789446861@qq.com')
+    this.props.register(this.username, this.password, this.email)
   }
 
   handleInputUsername = e => {
-    this.setState({ username: e.target.value })
+    this.username = e.target.value
   }
 
   handleInputPassword = e => {
-    this.setState({ password: e.target.value })
+    this.password = e.target.value
+  }
+
+  handleInputEmail = e => {
+    this.email = e.target.value
   }
 
   render () {
@@ -57,19 +66,22 @@ class RegisterForm extends Component {
             </div>
             <div style={{ margin: '20px 0' }}>
               <label>
-                <Input type="password" placeholder="确认密码"/>
+                <Input type="password" placeholder="确认密码" onChange={this.handleConfirmPassword}/>
               </label>
             </div>
             <div style={{
               margin: '20px 0',
             }}>
-              <Input.Group compact>
-                <Select style={{ width: '20%' }} defaultValue="+86">
-                  <Option value="+86">+86</Option>
-                  <Option value="+87">+87</Option>
-                </Select>
-                <Input style={{ width: '80%' }} placeholder="请输入手机号"/>
-              </Input.Group>
+              {/*<Input.Group compact>*/}
+              {/*  <Select style={{ width: '20%' }} defaultValue="+86">*/}
+              {/*    <Option value="+86">+86</Option>*/}
+              {/*    <Option value="+87">+87</Option>*/}
+              {/*  </Select>*/}
+              {/*  <Input style={{ width: '80%' }} placeholder="请输入手机号"/>*/}
+              {/*</Input.Group>*/}
+              <label>
+                <Input type="text" placeholder="请输入邮箱" onChange={this.handleInputEmail}/>
+              </label>
             </div>
             <div style={{
               margin: '10px 0',
@@ -92,7 +104,9 @@ class RegisterForm extends Component {
               alignItems: 'center',
             }}>
               <Button style={{ width: '40%' }} type="primary" onClick={this.handleRegister}>注册</Button>
-              <Button style={{ width: '40%' }} type="link">使用已有帐户登录</Button>
+              <Button style={{ width: '40%' }} type="link">
+                <Link to="/login">使用已有帐户登录</Link>
+              </Button>
             </div>
           </form>
         </div>

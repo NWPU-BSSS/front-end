@@ -12,12 +12,8 @@ class AccountLoginForm extends Component {
     loginAsync: PropTypes.func.isRequired
   }
 
-  // handleLogin = () => {
-  //   console.log(this.username, this.password)
-  // }
-
-  handleInputUserName = e => {
-    this.username = e.target.value
+  handleInputEmail = e => {
+    this.email = e.target.value
   }
 
   handleInputPassword = e => {
@@ -34,7 +30,7 @@ class AccountLoginForm extends Component {
         <div style={{
           margin: '20px'
         }}>
-          <Input prefix={<UserOutlined/>} placeholder="请输入用户名" onChange={this.handleInputUserName}/>
+          <Input prefix={<UserOutlined/>} placeholder="请输入账户邮箱" onChange={this.handleInputEmail}/>
         </div>
         <div style={{
           margin: '20px'
@@ -42,14 +38,14 @@ class AccountLoginForm extends Component {
           <Input prefix={<LockOutlined/>} type="password" placeholder="请输入密码" onChange={this.handleInputPassword}/>
         </div>
         <RememberLogin/>
-        <LoginOrRegister onLogin={() => this.props.loginAsync(this.username, this.password)}/>
+        <LoginOrRegister onLogin={() => this.props.loginAsync(this.email, this.password)}/>
       </Form>
     )
   }
 }
 
 AccountLoginForm = connect(
-  state => {},
+  state => ({}),
   { loginAsync }
 )(AccountLoginForm)
 

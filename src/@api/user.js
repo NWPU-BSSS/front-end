@@ -1,41 +1,36 @@
-import { request } from './request'
+import { postInit, query } from './@config'
+import axios from 'axios'
 
-export function login ({ email, password }) {
-  return new Promise((resolve, reject) => {
-    resolve({
-      code: 1,
-      msg: 'ok',
-      data: {
-        userId: 1,
-        userName: 'Chyoic'
-      }
-    })
-  })
-  // return request('http://localhost:3000/user/login', { email, password })
+/**
+ * POST 用户登录
+ * @param email 邮箱，string
+ * @param password 密码，string
+ * @returns {Promise<JSON>}
+ */
+export async function login ({ email, password }) {
+  let response = await fetch('/api/user/login', postInit({ email, password }))
+  return await response.json()
 }
 
-export function register ({ email, password, userName, role }) {
-  return new Promise((resolve, reject) => {
-    resolve({
-      code: 1,
-      msg: 'ok',
-      data: {
-        userId: 1,
-        userName: 'Chyoic'
-      }
-    })
-  })
+/**
+ * POST 注册用户
+ * @param email 邮箱，string
+ * @param password 密码，string
+ * @param username 用户名，string
+ * @param role 0
+ * @returns {Promise<JSON>}
+ */
+export async function register ({ email, password, username, role = 0 }) {
+  let response = await fetch('/api/user/register', postInit({ email, password, userName: username, role }))
+  return await response.json()
 }
 
-export function getUserInfo ({ userId }) {
-  return new Promise((resolve, reject) => {
-    resolve({
-      code: 1,
-      msg: 'ok',
-      data: {
-        email: '1789446861@qq.com',
-        userName: 'Chyoic'
-      }
-    })
-  })
+/**
+ * GET 通过userId获取用户详细信息
+ * @param userId 用户id，number
+ * @returns {Promise<JSON>}
+ */
+export async function getUserInfo ({ userId }) {
+  let response = await fetch(`/api/user/info?${query({ userId })}`)
+  return await response.json()
 }

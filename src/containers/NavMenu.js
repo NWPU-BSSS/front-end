@@ -62,9 +62,9 @@ class NavMenu extends Component {
     }
   }
 
-  static propTypes = {
-    userState: PropTypes.object.isRequired
-  }
+  // static propTypes = {
+  //   userState: PropTypes.object.isRequired
+  // }
 
   toggleNavbar = () => {
     this.setState({

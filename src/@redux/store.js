@@ -1,12 +1,14 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux'
-import { showNav, userState } from './reducers'
+import { article, registerSuccess, showNav, userState } from './reducers'
 import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
 
 const store = createStore(
   combineReducers({
     userState,
-    showNav
+    showNav,
+    article,
+    registerSuccess
   }),
   composeWithDevTools(applyMiddleware(thunk))
 )

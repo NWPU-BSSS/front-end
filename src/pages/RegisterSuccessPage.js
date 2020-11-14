@@ -2,25 +2,8 @@ import React, { Component } from 'react'
 import { LoginFormTop } from '../components/@common/LoginFormTop'
 import { Button, Result } from 'antd'
 import { Link } from 'react-router-dom'
-
-export class RegisterSuccessPage extends Component {
-
-  render () {
-    return (
-      <div style={{
-        margin: '200px auto'
-      }}>
-        <LoginFormTop/>
-        <div style={{
-          width: '100%',
-          margin: '0 auto'
-        }}>
-          <SuccessResult/>
-        </div>
-      </div>
-    )
-  }
-}
+import { connect } from 'react-redux'
+import { setRegisterSuccess } from '../@redux/actions'
 
 class SuccessResult extends Component {
   render () {
@@ -41,3 +24,34 @@ class SuccessResult extends Component {
     )
   }
 }
+
+class RegisterSuccessPage extends Component {
+
+  componentWillMount () {
+    this.props.setRegisterSuccess(false)
+  }
+
+  render () {
+    return (
+      <div style={{
+        margin: '200px auto'
+      }}>
+        <LoginFormTop/>
+        <div style={{
+          width: '100%',
+          margin: '0 auto'
+        }}>
+          <SuccessResult/>
+        </div>
+      </div>
+    )
+  }
+}
+
+RegisterSuccessPage = connect(
+  state => ({}),
+  { setRegisterSuccess }
+)(RegisterSuccessPage)
+
+export { RegisterSuccessPage }
+
