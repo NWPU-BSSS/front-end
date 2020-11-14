@@ -1,0 +1,13 @@
+.message-option{
+    margin: 50px auto;
+    min-width: 120px;
+    max-width: 200px;
+}
+
+.message-option a{
+    width: 100%;
+}
+
+.message-option a:hover{
+    color: blue!important;
+}

@@ -1,0 +1,41 @@
+div.bs-nav-user-panel {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 100%;
+}
+
+a.panel-item {
+    box-sizing: content-box;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+}
+
+a.panel-item div {
+    margin: 0 20px;
+}
+
+a.panel-item.user-name div{
+    width: 100%;
+    text-align: center;
+}
+
+div.panel-item.fl-wrapper {
+    width: 100%;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+div.panel-item.fl-wrapper a.fl div{
+    margin: 5px;
+}
+
+div.panel-item.fl-wrapper a.fl{
+    text-align: center;
+}
+
