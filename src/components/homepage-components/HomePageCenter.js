@@ -4,6 +4,7 @@ import './HomePageCenter.css'
 
 import { List, Avatar, Space, Radio } from 'antd'
 import { MessageOutlined, LikeOutlined, StarOutlined } from '@ant-design/icons'
+import { Link } from 'react-router-dom'
 
 const listData = []
 for (let i = 0; i < 23; i++) {
@@ -78,7 +79,7 @@ export class HomePageCenter extends Component {
                 }>
                 <List.Item.Meta
                   avatar={<Avatar src={item.avatar}/>}
-                  title={<a href={item.href}>{item.title}</a>}
+                  title={<Link  to="/blog?articleId=1">{item.title}</Link>}
                   description={item.description}
                 />
                 {item.content}

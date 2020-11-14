@@ -17,7 +17,6 @@ const success = {
   backgroundColor: '#497349'
 }
 
-module.exports = {
-  btnDanger: { ...button, ...danger },
-  btnSuccess: { ...button, ...success }
-}
+export const btnDanger = { ...button, ...danger }
+
+export const btnSuccess = { ...button, ...success }
