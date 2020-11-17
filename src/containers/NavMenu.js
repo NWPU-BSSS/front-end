@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import { NavLogged } from './NavLogged'
-import { NavUnloggin } from './NavUnloggin'
-import { NavMenuSearch } from './NavMenuSearch'
-import { NavMenuToggleButton } from './NavMenuToggleButton'
-import { NavMenuDropdown } from './NavMenuDropdown'
-import { NavMenuAvatar } from './NavMenuAvatar'
+import { NavUnloggin } from '../components/nav-menu-components/NavUnloggin'
+import { NavMenuSearch } from '../components/nav-menu-components/NavMenuSearch'
+import { NavMenuDropdown } from '../components/nav-menu-components/NavMenuDropdown'
+import { NavMenuAvatar } from '../components/nav-menu-components/NavMenuAvatar'
 import { CaretDownOutlined } from '@ant-design/icons'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 
-import './NavMenu.css'
+import '../components/nav-menu-components/NavMenu.css'
 
 const languageMenu = [
   '简体中文',
@@ -38,40 +39,41 @@ const queAnsMenu = [
   <a key={'3'}>回答</a>
 ]
 
-function RightComponent (props) {
-  if (props.login) {
-    return <NavLogged onLogOut={props.onLogOut}/>
-  } else {
-    return <NavUnloggin onLogIn={props.onLogIn}/>
+class RightComponent extends Component {
+  static propTypes = {
+    user: PropTypes.object.isRequired
+  }
+
+  render () {
+    if (this.props.user.userId !== -1) {
+      return <NavLogged/>
+    } else {
+      return <NavUnloggin/>
+    }
   }
 }
 
-export class NavMenu extends Component {
+class NavMenu extends Component {
+
   constructor (props) {
     super(props)
-
     this.state = {
-      collapsed: true,
-      isLoggedIn: true,
       languageIndex: 0
     }
-    this.toggleNavbar = this.toggleNavbar.bind(this)
-    this.handleLogIn = this.handleLogIn.bind(this)
-    this.handleLogOut = this.handleLogOut.bind(this)
   }
 
-  toggleNavbar () {
+  // static propTypes = {
+  //   userState: PropTypes.object.isRequired
+  // }
+
+  toggleNavbar = () => {
     this.setState({
       collapsed: !this.state.collapsed
     })
   }
 
-  handleLogOut () {
-    this.setState({ isLoggedIn: false })
-  }
-
-  handleLogIn () {
-    this.setState({ isLoggedIn: true })
+  handleChangeLanguage = newIndex => {
+    this.setState({ languageIndex: newIndex })
   }
 
   render () {
@@ -87,7 +89,7 @@ export class NavMenu extends Component {
             <NavMenuDropdown title="社交">{socialMenu}</NavMenuDropdown>
           </div>
           <NavMenuSearch/>
-          <RightComponent login={this.state.isLoggedIn} onLogIn={this.handleLogIn} onLogOut={this.handleLogOut}/>
+          <RightComponent user={this.props.userState}/>
           <NavMenuDropdown
             title={<div style={{ width: 100 }}>{languageMenu[this.state.languageIndex]} <CaretDownOutlined/></div>}>
             {languageMenu.map((item, index) => <a key={item.toString()}
@@ -97,11 +99,13 @@ export class NavMenu extends Component {
       </header>
     )
   }
-
-  handleChangeLanguage (newIndex) {
-    this.setState({ languageIndex: newIndex })
-  }
 }
+
+NavMenu = connect(
+  state => ({ userState: state.userState })
+)(NavMenu)
+
+export { NavMenu }
 
 
 

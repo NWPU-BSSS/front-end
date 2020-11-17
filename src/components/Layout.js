@@ -1,11 +1,18 @@
 import React, { Component } from 'react'
-import { NavMenu } from './nav-menu-components/NavMenu'
+import { NavMenu } from '../containers/NavMenu'
 import './Layout.css'
 import { Footer } from './Footer'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import { getUserInfo } from '../@api'
 
-export class Layout extends Component {
+class Layout extends Component {
+  handleClick = async () => {
+    await getUserInfo({ userId: 1 })
+  }
 
   render () {
+
     return (
       <div>
         <NavMenu/>
@@ -13,7 +20,14 @@ export class Layout extends Component {
           {this.props.children}
         </div>
         <Footer/>
+        {/*<button onClick={this.handleClick}>ajax</button>*/}
       </div>
     )
   }
 }
+
+Layout = connect(
+  state => ({ showNav: state.showNav })
+)(Layout)
+
+export { Layout }
