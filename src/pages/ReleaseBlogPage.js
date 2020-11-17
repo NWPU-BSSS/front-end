@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Button, Input } from 'antd'
 import { connect } from 'react-redux'
-import { releaseArticleAsync } from '../@redux/actions'
+import { releaseBlogAsync } from '../@redux/actions'
 
 class ReleaseBlogPage extends Component {
 
@@ -29,7 +29,7 @@ class ReleaseBlogPage extends Component {
 
 ReleaseBlogPage = connect(
   state => ({}),
-  { releaseArticleAsync }
+  { releaseArticleAsync: releaseBlogAsync }
 )(ReleaseBlogPage)
 
 export { ReleaseBlogPage}

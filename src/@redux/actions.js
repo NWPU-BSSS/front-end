@@ -10,42 +10,80 @@ import {
 
 import * as req from '../@api'
 
-export const showNav = () => ({ type: SHOW_NAV_MENU })
-export const hideNav = () => ({ type: HIDE_NAV_MENU })
+/**
+ * 同步登陆Action
+ * @param username
+ * @param email
+ * @param userId
+ * @returns {{data: {userId: *, email: *, username: *}, type: string}}
+ */
+export const login = ({ username, email, userId }) =>
+  ({
+    type: LOGIN,
+    data: { username, email, userId }
+  })
 
-export const login = ({ username, email, userId }) => ({
-  type: LOGIN,
-  data: { username, email, userId }
-})
+/**
+ * 同步获取用户信息
+ * @param username
+ * @param email
+ * @param userId
+ * @returns {{data: {userId: *, email: *, username: *}, type: string}}
+ */
+export const getUserInfo = ({ username, email, userId }) =>
+  ({
+    type: GET_USER_INFO,
+    data: { username, email, userId }
+  })
 
-export const getUserInfo = ({ username, email, userId }) => ({
-  type: GET_USER_INFO,
-  data: { username, email, userId }
-})
+export const logout = () =>
+  ({
+    type: LOGOUT
+  })
 
-export const logout = () => ({ type: LOGOUT })
+export const getBlog = ({ articleId, title, content, author, time }) =>
+  ({
+    type: GET_ARTICLE_INFO,
+    data: { articleId, title, content, time, author }
+  })
+export const loadArticleList = list =>
+  ({
+    type: GET_ARTICLE_LIST,
+    data: list
+  })
 
-export const getArticleInfo = ({ articleId, title, content, author, time }) => ({
-  type: GET_ARTICLE_INFO,
-  data: { articleId, title, content, time, author }
-})
-export const loadArticleList = list => ({ type: GET_ARTICLE_LIST, data: list })
-
-export const setRegisterSuccess = flag => flag ? ({ type: REGISTER_SUCCESS_TRUE }) : ({ type: REGISTER_SUCCESS_FALSE })
-
-export const loginAsync = (email, password) =>
+export const setRegisterSuccess = flag =>
+  flag ?
+    ({ type: REGISTER_SUCCESS_TRUE })
+    :
+    ({ type: REGISTER_SUCCESS_FALSE })
+/**
+ *
+ * @param email
+ * @param username
+ * @param password
+ * @returns {function(*): Promise<void>}
+ */
+export const loginAsync = ({ email, username, password }) =>
   async dispatch => {
-    const { code, msg } = await req.login({ email, password })
+    const { code, msg } = await req.login({ email, username, password })
     if (code === 1) {
-      dispatch(login({ email, userId: 1, username: email }))
+      dispatch(login({ email, username, userId: 1 }))
     } else {
       alert(msg)
     }
   }
-
-export const registerAsync = (username, password, email) =>
+/**
+ *
+ * @param username
+ * @param password
+ * @param email
+ * @param verifyCode
+ * @returns {function(*): Promise<void>}
+ */
+export const registerAsync = ({ username, password, email, verifyCode }) =>
   async dispatch => {
-    const { code, msg, data } = await req.register({ email, password, username })
+    const { code, msg, data } = await req.register({ email, password, username, verifyCode })
     if (code === 1) {
       dispatch(login({ username, ...data }))
       dispatch(setRegisterSuccess(true))
@@ -55,41 +93,58 @@ export const registerAsync = (username, password, email) =>
     }
   }
 
-export const getUserInfoAsync = userId =>
+/**
+ *
+ * @returns {function(*): Promise<void>}
+ */
+export const getBaseInfoAsync = () =>
   async dispatch => {
-    const { code, msg, data } = await req.getUserInfo({ userId })
+    const { code, msg, data } = await req.getBaseInfo( )
     if (code === 1) {
-      dispatch(getUserInfo({ ...data, userId, username: data.email }))
+      dispatch(getUserInfo({ ...data }))
     } else {
       alert(msg)
     }
   }
 
-export const getArticleInfoAsync = articleId =>
+/**
+ *
+ * @param blogId
+ * @returns {function(*): Promise<void>}
+ */
+export const getBlogAsync = blogId =>
   async dispatch => {
-    const { code, msg, data } = await req.getArticleInfo({ articleId })
+    const { code, msg, data } = await req.getBlog({ blogId })
     if (code === 1) {
-      dispatch(getArticleInfo({ ...data, articleId }))
+      dispatch(getBlog({ ...data,  blogId }))
     } else {
       alert(msg)
     }
   }
-
-export const getArticleListAsync = () =>
+/**
+ *
+ * @returns {function(*): Promise<void>}
+ */
+export const getRecommendBLogListAsync = () =>
   async dispatch => {
-    const { code, msg, data } = await req.getArticleList()
+    const { code, msg, data } = await req.getRecommendBlogList()
     if (code === 1) {
       dispatch(loadArticleList(data))
     } else {
       alert(msg)
     }
   }
-
-export const releaseArticleAsync = ({ title, content, userId }) =>
+/**
+ *
+ * @param title
+ * @param content
+ * @returns {function(*): Promise<void>}
+ */
+export const releaseBlogAsync = ({ title, content }) =>
   async dispatch => {
 
     // eslint-disable-next-line no-unused-vars
-    const { code, msg, data } = await req.releaseArticle({ title, content, userId })
+    const { code, msg, data } = await req.releaseBlog({ title, content })
     if (code === 1) {
       // dispatch(loadArticleList(data))
       alert('发布成功')

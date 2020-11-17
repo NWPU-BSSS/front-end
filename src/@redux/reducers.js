@@ -67,3 +67,5 @@ export function registerSuccess (state = false, action) {
       return state
   }
 }
+
+

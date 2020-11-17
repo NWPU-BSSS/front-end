@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { getArticleInfoAsync } from '../@redux/actions'
+import { getBlogAsync } from '../@redux/actions'
 import { urlParamParser } from '../@common/tool'
 
 class BlogPage extends Component {
@@ -30,7 +30,7 @@ class BlogPage extends Component {
 
 BlogPage = connect(
   state => ({ ...state.article.articleInfo }),
-  { getArticleInfoAsync}
+  { getArticleInfoAsync: getBlogAsync}
 )(BlogPage)
 
 export { BlogPage }

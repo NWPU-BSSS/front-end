@@ -1,6 +1,5 @@
 import store from '../@redux/store'
 
-let state = store.getState()
 let AccessToken = ''
 store.subscribe(() => {
   AccessToken = store.getState()['AccessToken']
@@ -15,9 +14,9 @@ headers.append('Content-Type', 'application/json')
 if (AccessToken !== '') headers.append('AccessToken', AccessToken)
 
 /**
- * POST 提交的init 对象
+ * post请求构造
  * @param body
- * @returns {{mode: string, headers: Headers, method: string, body: string}}
+ * @returns {Object}
  */
 export const postInit = body => ({
   method: 'POST',
@@ -27,7 +26,7 @@ export const postInit = body => ({
 })
 
 /**
- * get 提交的init 对象
+ * get请求构造
  * @returns {{mode: string, headers: Headers}}
  */
 export const getInit = () => ({
@@ -37,7 +36,7 @@ export const getInit = () => ({
 
 /**
  * 生成url query字符串, 不带问号，需自行添加问号
- * @param args query参数列表，args为一个object
+ * @param {Object} args query参数列表，args为一个object
  * @returns {string}
  */
 export const query = args => {
@@ -49,3 +48,12 @@ export const query = args => {
   }
   return result
 }
+
+/**
+ *
+ * @param {string} url
+ * @param {Object} init 初始化对象
+ * @returns {Promise<JSON>}
+ */
+export const request = async (url, init) => (await fetch(url, init)).json()
+
