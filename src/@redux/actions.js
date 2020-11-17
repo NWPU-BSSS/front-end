@@ -5,7 +5,7 @@ import {
   GET_ARTICLE_INFO,
   GET_ARTICLE_LIST,
   SHOW_NAV_MENU,
-  HIDE_NAV_MENU, REGISTER_SUCCESS_TRUE, REGISTER_SUCCESS_FALSE
+  HIDE_NAV_MENU, REGISTER_SUCCESS_TRUE, REGISTER_SUCCESS_FALSE, GET_TODAY_RECOMMEND
 } from './action-types'
 
 import * as req from '../@api'
@@ -57,6 +57,12 @@ export const setRegisterSuccess = flag =>
     ({ type: REGISTER_SUCCESS_TRUE })
     :
     ({ type: REGISTER_SUCCESS_FALSE })
+
+export const getTodayRecommend = ({ announcementId, title, publisher, startTime, endTime, publishTime, content }) =>
+  ({
+    type: GET_TODAY_RECOMMEND,
+    data: { announcementId, title, publisher, startTime, endTime, publishTime, content }
+  })
 /**
  *
  * @param email
@@ -99,7 +105,7 @@ export const registerAsync = ({ username, password, email, verifyCode }) =>
  */
 export const getBaseInfoAsync = () =>
   async dispatch => {
-    const { code, msg, data } = await req.getBaseInfo( )
+    const { code, msg, data } = await req.getBaseInfo()
     if (code === 1) {
       dispatch(getUserInfo({ ...data }))
     } else {
@@ -116,7 +122,7 @@ export const getBlogAsync = blogId =>
   async dispatch => {
     const { code, msg, data } = await req.getBlog({ blogId })
     if (code === 1) {
-      dispatch(getBlog({ ...data,  blogId }))
+      dispatch(getBlog({ ...data, blogId }))
     } else {
       alert(msg)
     }
@@ -148,6 +154,16 @@ export const releaseBlogAsync = ({ title, content }) =>
     if (code === 1) {
       // dispatch(loadArticleList(data))
       alert('发布成功')
+    } else {
+      alert(msg)
+    }
+  }
+
+export const getTodayRecommendAsync = () =>
+  async dispatch => {
+    const { code, msg, data } = await req.getTodayRecommend()
+    if (code === 1) {
+      dispatch(getTodayRecommend({ ...data }))
     } else {
       alert(msg)
     }

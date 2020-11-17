@@ -7,7 +7,6 @@ import { Link, Redirect } from 'react-router-dom'
 import { AccountLoginForm } from '../containers/AccountLoginForm'
 import { PhoneLoginForm } from '../containers/PhoneLoginForm'
 import { connect } from 'react-redux'
-import { hideNav } from '../@redux/actions'
 
 const { TabPane } = Tabs
 
@@ -133,8 +132,7 @@ class LoginPage extends Component {
 LoginPage = connect(
   state => ({
     isLogin: state.userState.userId !== -1
-  }),
-  { hideNav }
+  })
 )(LoginPage)
 
 export { LoginPage, LoginOrRegister }

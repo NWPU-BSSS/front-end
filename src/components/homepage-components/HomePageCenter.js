@@ -9,7 +9,7 @@ import { TagList } from './@common/TagList'
 import { IconText } from './@common/IconText'
 
 const listData = []
-for (let i = 0; i < 8; i++) {
+for (let i = 0; i < 15; i++) {
   listData.push({
     href: '/',
     title: `博客${i}`,

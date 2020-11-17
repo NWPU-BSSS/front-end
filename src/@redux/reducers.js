@@ -1,6 +1,6 @@
 import {
   GET_ARTICLE_INFO,
-  GET_ARTICLE_LIST,
+  GET_ARTICLE_LIST, GET_TODAY_RECOMMEND,
   HIDE_NAV_MENU,
   LOGIN,
   LOGOUT,
@@ -10,8 +10,8 @@ import {
 
 const initUserState = { userId: -1, username: '' }
 
-export function AccessToken (state = '', action ){
-  switch (action.type){
+export function AccessToken (state = '', action) {
+  switch (action.type) {
     case SET_ACCESS_TOKEN:
       return action.data
     default:
@@ -63,6 +63,15 @@ export function registerSuccess (state = false, action) {
       return false
     case REGISTER_SUCCESS_TRUE:
       return true
+    default:
+      return state
+  }
+}
+
+export function todayRecommend (state = {}, action) {
+  switch (action.type) {
+    case GET_TODAY_RECOMMEND:
+      return { ...action.data }
     default:
       return state
   }

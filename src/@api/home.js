@@ -11,5 +11,5 @@ export const getRecommendBlogList = async () =>
  * 获取今日推荐
  * @returns {Promise<JSON>}
  */
-export const getRecommend = async () =>
+export const getTodayRecommend = async () =>
   request('/api/home/recommend', getInit())

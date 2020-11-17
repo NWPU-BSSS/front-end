@@ -1,6 +1,6 @@
 import { register, login, getBadgeNum, getBaseInfo, sendVerifyCode2Email } from './root'
 import { getBlog, addComment, getBlogger, getComments, getTags, releaseBlog} from './blog'
-import { getRecommend, getRecommendBlogList} from './home'
+import { getTodayRecommend, getRecommendBlogList} from './home'
 
 export {
   register,
@@ -16,6 +16,6 @@ export {
   releaseBlog,
   addComment,
 
-  getRecommend,
+  getTodayRecommend,
   getRecommendBlogList
 }
