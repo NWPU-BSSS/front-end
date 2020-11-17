@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
-
-import './HomePageCenter.css'
-
-import { List, Avatar, Space, Radio } from 'antd'
+import { List, Avatar, Space, Radio, Tag } from 'antd'
 import { MessageOutlined, LikeOutlined, StarOutlined } from '@ant-design/icons'
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
+import './HomePageCenter.css'
+import { ItemContent } from './@common/ItemContent'
+import { TagList } from './@common/TagList'
+import { IconText } from './@common/IconText'
 
 const listData = []
-for (let i = 0; i < 23; i++) {
+for (let i = 0; i < 8; i++) {
   listData.push({
     href: '/',
     title: `博客${i}`,
@@ -15,16 +17,14 @@ for (let i = 0; i < 23; i++) {
     description:
       'Bsss 软件学院的专属博客',
     content:
-      '我们致力于打造属于软件学院的最棒的博客',
+      '我们致力于打造属于软件学院的最棒的博客我们致力于打造属于软件学院的最棒的博客我们致力于打造属于软件学院的最棒的博客我们致力于打造属于软件学院的最棒的博客我们致力于打造属于软件学院的最棒的博客我们致力于打造属于软件学院的最棒的博客我们致力于打造属于软件学院的最棒的博客我们致力于打造属于软件学院的最棒的博客我们致力于打造属于软件学院的最棒的博客我们致力于打造属于软件学院的最棒的博客我们致力于打造属于软件学院的最棒的博客我们致力于打造属于软件学院的最棒的博客我们致力于打造属于软件学院的最棒的博客我们致力于打造属于软件学院的最棒的博客我们致力于打造属于软件学院的最棒的博客我们致力于打造属于软件学院的最棒的博客我们致力于打造属于软件学院的最棒的博客我们致力于打造属于软件学院的最棒的博客我们致力于打造属于软件学院的最棒的博客我们致力于打造属于软件学院的最棒的博客我们致力于打造属于软件学院的最棒的博客我们致力于打造属于软件学院的最棒的博客我们致力于打造属于软件学院的最棒的博客我们致力于打造属于软件学院的最棒的博客我们致力于打造属于软件学院的最棒的博客我们致力于打造属于软件学院的最棒的博客我们致力于打造属于软件学院的最棒的博客我们致力于打造属于软件学院的最棒的博客我们致力于打造属于软件学院的最棒的博客我们致力于打造属于软件学院的最棒的博客我们致力于打造属于软件学院的最棒的博客',
+    nickname: '风神少女',
+    tagA: 'C#',
+    tagB: 'python',
+    tagC: 'JavaScript',
+    createTime: '2020-11-21'
   })
 }
-
-const IconText = ({ icon, text }) => (
-  <Space>
-    {React.createElement(icon)}
-    {text}
-  </Space>
-)
 
 export class HomePageCenter extends Component {
 
@@ -71,18 +71,12 @@ export class HomePageCenter extends Component {
                   <IconText icon={StarOutlined} text="156" key="list-vertical-star-o"/>,
                   <IconText icon={LikeOutlined} text="156" key="list-vertical-like-o"/>,
                   <IconText icon={MessageOutlined} text="2" key="list-vertical-message"/>,
-                ]}
-                extra={
-                  <img width={272}
-                       alt="logo"
-                       src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"/>
-                }>
+                ]}>
                 <List.Item.Meta
-                  avatar={<Avatar src={item.avatar}/>}
-                  title={<Link  to="/blog?articleId=1">{item.title}</Link>}
-                  description={item.description}
+                  title={<Link to="/blog?articleId=1">{item.title}</Link>}
+                  description={<TagList tagA={item.tagA} tagB={item.tagB} tagC={item.tagC}/>}
                 />
-                {item.content}
+                <ItemContent content={item.content} avatar={item.avatar} createTime={item.createTime} title={item.title}/>
               </List.Item>
             )}
           />,

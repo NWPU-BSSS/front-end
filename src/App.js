@@ -14,7 +14,7 @@ import { RegisterSuccessPage } from './pages/RegisterSuccessPage'
 import { RegisterPage } from './pages/RegisterPage'
 import { LoginPage } from './pages/LoginPage'
 import { TestPage } from './pages/TestPage'
-import { TemporaryHomePage } from './pages/_HomePage'
+import { HomePage } from './pages/HomePage'
 
 // function RedirectToHome () {
 //   return <Redirect to="/home"/>
@@ -23,10 +23,10 @@ import { TemporaryHomePage } from './pages/_HomePage'
 function App () {
   return (
     <Layout>
+      <Route exact path="/" component={HomePage}/>
       <Route path="/register" component={RegisterPage}/>
       <Route path="/login" component={LoginPage}/>
       <Route path="/reg-success" component={RegisterSuccessPage}/>
-      <Route exact path="/" component={TemporaryHomePage}/>
       <Route path="/blog" component={BlogPage}/>
       <Route path="/space" component={BloggerSpacePage}/>
       <Route path="/profile" component={ProfilePage}/>

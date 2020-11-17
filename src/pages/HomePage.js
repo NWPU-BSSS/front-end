@@ -15,9 +15,9 @@ class HomePage extends Component {
   }
 
   render () {
-    if (!this.props.isLogin) {
-      return <Redirect to="/login"/>
-    }
+    // if (!this.props.isLogin) {
+    //   return <Redirect to="/login"/>
+    // }
 
     return (
       <div className="home-page-container">
