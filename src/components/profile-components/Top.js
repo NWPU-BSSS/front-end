@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-export class ProfilePage extends Component {
+export class Top extends Component {
 
   render () {
     return (
@@ -10,3 +10,4 @@ export class ProfilePage extends Component {
     )
   }
 }
+

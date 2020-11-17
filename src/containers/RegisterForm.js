@@ -25,7 +25,7 @@ class RegisterForm extends Component {
   }
 
   handleRegister = () => {
-    this.props.register(this.username, this.password, this.email)
+    // this.props.register(this.username, this.password, this.email)
   }
 
   handleInputUsername = e => {
