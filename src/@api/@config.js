@@ -1,19 +1,36 @@
-/**
- * 默认post header
- * @type {{'content-type': string}}
- */
-const headers = {
-  'Content-Type': 'application/json'
-}
+import store from '../@redux/store'
+
+let state = store.getState()
+let AccessToken = ''
+store.subscribe(() => {
+  AccessToken = store.getState()['AccessToken']
+})
 
 /**
- * post 提交的init对象
- * @param body 提交的body，接受一个object
- * @returns {{method: string, header: {'content-type': string}, body: string}}
+ * 默认post header
+ * @type {Headers}
+ */
+let headers = new Headers()
+headers.append('Content-Type', 'application/json')
+if (AccessToken !== '') headers.append('AccessToken', AccessToken)
+
+/**
+ * POST 提交的init 对象
+ * @param body
+ * @returns {{mode: string, headers: Headers, method: string, body: string}}
  */
 export const postInit = body => ({
   method: 'POST',
   body: JSON.stringify(body),
+  headers,
+  mode: 'cors'
+})
+
+/**
+ * get 提交的init 对象
+ * @returns {{mode: string, headers: Headers}}
+ */
+export const getInit = () => ({
   headers,
   mode: 'cors'
 })

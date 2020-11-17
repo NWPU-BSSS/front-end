@@ -9,7 +9,7 @@ import { connect } from 'react-redux'
 class AccountLoginForm extends Component {
 
   static propTypes = {
-    loginAsync: PropTypes.func.isRequired
+    loginAsync: PropTypes.func
   }
 
   handleInputEmail = e => {

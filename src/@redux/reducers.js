@@ -4,11 +4,20 @@ import {
   HIDE_NAV_MENU,
   LOGIN,
   LOGOUT,
-  REGISTER, REGISTER_SUCCESS_FALSE, REGISTER_SUCCESS_TRUE,
+  REGISTER, REGISTER_SUCCESS_FALSE, REGISTER_SUCCESS_TRUE, SET_ACCESS_TOKEN,
   SHOW_NAV_MENU
 } from './action-types'
 
 const initUserState = { userId: -1, username: '' }
+
+export function AccessToken (state = '', action ){
+  switch (action.type){
+    case SET_ACCESS_TOKEN:
+      return action.data
+    default:
+      return state
+  }
+}
 
 export function userState (state = initUserState, action) {
   switch (action.type) {

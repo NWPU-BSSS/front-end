@@ -23,7 +23,6 @@ function App () {
       <Route path="/register" component={RegisterPage}/>
       <Route path="/login" component={LoginPage}/>
       <Route path="/reg-success" component={RegisterSuccessPage}/>
-      <Route exact path="/" component={TemporaryHomePage}/>
       <Route path="/blog" component={BlogPage}/>
       <Route path="/space" component={BloggerSpacePage}/>
       <Route path="/profile" component={ProfilePage}/>
