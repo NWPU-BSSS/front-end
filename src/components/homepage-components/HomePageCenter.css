@@ -1,4 +1,7 @@
 .home-page-center{
+    width: 100%;
+    padding: 20px;
+    min-width: 525px;
 }
 
 .top-select-option{
@@ -6,5 +9,5 @@
 }
 
 .select-container{
-    
+    padding: 20px;
 }

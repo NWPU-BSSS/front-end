@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { NavMenuDropdown } from './NavMenuDropdown'
 import { NavMenuAvatar } from './NavMenuAvatar'
-import { btnDanger } from './bs-button'
+import { btnDanger } from './@button-style'
 
 import './NavLogged.css'
 import { Avatar } from 'antd'
@@ -37,7 +37,7 @@ export class NavLogged extends Component {
             <img src={logo} alt="头像"/>
           </div>
         }>
-          <NavUserPanel/>
+          <NavUserPanel onExit={this.props.onLogOut}/>
         </NavMenuDropdown>
       </div>
     )
