@@ -3,7 +3,7 @@ import { Route } from 'react-router'
 import React from 'react'
 import './app-layout.css'
 import { Layout } from './components/Layout'
-// import { HomePage } from './pages/HomePage'
+import { HomePage } from './pages/HomePage'
 import { BloggerSpacePage } from './pages/BloggerSpacePage'
 import { BlogPage } from './pages/BlogPage'
 import { ProfilePage } from './pages/ProfilePage'
@@ -14,11 +14,7 @@ import { RegisterSuccessPage } from './pages/RegisterSuccessPage'
 import { RegisterPage } from './pages/RegisterPage'
 import { LoginPage } from './pages/LoginPage'
 import { TestPage } from './pages/TestPage'
-import { HomePage } from './pages/HomePage'
 
-// function RedirectToHome () {
-//   return <Redirect to="/home"/>
-// }
 
 function App () {
   return (
@@ -27,6 +23,7 @@ function App () {
       <Route path="/register" component={RegisterPage}/>
       <Route path="/login" component={LoginPage}/>
       <Route path="/reg-success" component={RegisterSuccessPage}/>
+      <Route exact path="/" component={TemporaryHomePage}/>
       <Route path="/blog" component={BlogPage}/>
       <Route path="/space" component={BloggerSpacePage}/>
       <Route path="/profile" component={ProfilePage}/>

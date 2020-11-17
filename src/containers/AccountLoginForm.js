@@ -38,7 +38,7 @@ class AccountLoginForm extends Component {
           <Input prefix={<LockOutlined/>} type="password" placeholder="请输入密码" onChange={this.handleInputPassword}/>
         </div>
         <RememberLogin/>
-        <LoginOrRegister onLogin={() => this.props.loginAsync(this.email, this.password)}/>
+        <LoginOrRegister onLogin={{/*() => this.props.loginAsync(this.email, this.password)*/}}/>
       </Form>
     )
   }
