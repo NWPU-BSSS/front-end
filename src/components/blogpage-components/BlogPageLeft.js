@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { BlogCategory } from './BlogCategory'
 
 export class BlogPageLeft extends Component {
 
@@ -8,7 +9,9 @@ export class BlogPageLeft extends Component {
         minWidth: '250px',
         outline: '1px red solid',
         height: '1200px'
-      }}/>
+      }}>
+        <BlogCategory/>
+      </div>
     )
   }
 }
