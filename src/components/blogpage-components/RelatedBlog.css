@@ -24,10 +24,10 @@
 }
 
 .related-head-title a {
-     font-weight: 700;
-     font-size: 18px;
-     color: #555555;
- }
+    font-weight: 700;
+    font-size: 18px;
+    color: #555555;
+}
 
 .related-head-title a:hover {
     color: rgb(160 0 20);
@@ -44,8 +44,8 @@
 }
 
 .related-head-author a:hover {
-     color: rgb(160 0 20);
- }
+    color: rgb(160 0 20);
+}
 
 .related-head-view {
     display: flex;
