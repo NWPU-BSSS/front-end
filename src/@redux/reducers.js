@@ -1,11 +1,9 @@
 import {
   GET_ARTICLE_INFO,
   GET_ARTICLE_LIST, GET_TODAY_RECOMMEND,
-  HIDE_NAV_MENU,
   LOGIN,
   LOGOUT,
   REGISTER, REGISTER_SUCCESS_FALSE, REGISTER_SUCCESS_TRUE, SET_ACCESS_TOKEN,
-  SHOW_NAV_MENU
 } from './action-types'
 
 const initUserState = { userId: -1, username: '' }
@@ -34,16 +32,16 @@ export function userState (state = initUserState, action) {
   }
 }
 
-export function showNav (state = true, action) {
-  switch (action.type) {
-    case SHOW_NAV_MENU:
-      return true
-    case HIDE_NAV_MENU:
-      return false
-    default:
-      return state
-  }
-}
+// export function showNav (state = true, action) {
+//   switch (action.type) {
+//     case SHOW_NAV_MENU:
+//       return true
+//     case HIDE_NAV_MENU:
+//       return false
+//     default:
+//       return state
+//   }
+// }
 
 export function article (state = {}, action) {
   switch (action.type) {

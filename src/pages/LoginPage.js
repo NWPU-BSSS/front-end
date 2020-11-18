@@ -95,12 +95,10 @@ class LoginOrRegister extends Component {
 class LoginPage extends Component {
 
   static propTypes = {
-    hideNav: PropTypes.func.isRequired,
     isLogin: PropTypes.bool.isRequired
   }
 
   componentDidMount () {
-    this.props.hideNav()
   }
 
   render () {
