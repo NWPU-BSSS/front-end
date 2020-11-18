@@ -3,13 +3,15 @@ import './ReleaseBlogComponents.css'
 import ReactMarkdown from 'react-markdown'
 import './github-markdown.min.css'
 
+const DEFAULT_SIZE = 500
+
 export class MdEditor extends React.Component {
 
   constructor (props) {
     super(props)
     this.state = {
       markdown: '',
-      textareaHeight: 500
+      textareaHeight: DEFAULT_SIZE
     }
   }
 
@@ -24,7 +26,7 @@ export class MdEditor extends React.Component {
   handleInputMarkdown = e => {
     let previewHeight = this.preview.scrollHeight
     let textareaHeight = e.target.scrollHeight
-    let height = Math.max(previewHeight, textareaHeight, 500)
+    let height = Math.max(previewHeight, textareaHeight, DEFAULT_SIZE)
     this.setState({
       markdown: e.target.value,
       textareaHeight: height
@@ -38,12 +40,19 @@ export class MdEditor extends React.Component {
         markdown: this.state.markdown + '\t'
       })
     } else if (e.keyCode === 13) return false
-    else if(e.keyCode === 17) {
+    else if (e.keyCode === 17) {
       let previewHeight = this.preview.scrollHeight
       let textareaHeight = e.target.scrollHeight
-      let height = Math.max(previewHeight, textareaHeight, 500)
+      let height = Math.max(previewHeight, textareaHeight, DEFAULT_SIZE)
       this.setState({
         markdown: e.target.value,
+        textareaHeight: height
+      })
+    } else if (e.keyCode === 8) {
+      let previewHeight = this.preview.scrollHeight
+      let textareaHeight = e.target.scrollHeight
+      let height = Math.max(Math.min(previewHeight, textareaHeight), DEFAULT_SIZE)
+      this.setState({
         textareaHeight: height
       })
     }

@@ -17,7 +17,9 @@ export class BlogEditor extends Component {
   render () {
     return (
       <div className="BlogEditor">
-        <ToolBox/>
+        <div className="top">
+          <ToolBox/>
+        </div>
         <div className="editor">
           <TreeCategory/>
           <MdEditor/>
