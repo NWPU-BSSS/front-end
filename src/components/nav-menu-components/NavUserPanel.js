@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 import {
   BankFilled,
@@ -15,16 +16,21 @@ import './NavUserPanel.css'
 
 export class NavUserPanel extends Component {
 
+  static propTypes = {
+    username: PropTypes.string.isRequired,
+    onLogout: PropTypes.func.isRequired
+  }
+
   render () {
     return [
-      <a className="panel-item user-name">
-        <div>Tom</div>
+      <a key={'a'} className="panel-item user-name">
+        <div>{this.props.username}</div>
       </a>,
-      <a className="panel-item level">
+      <a key={'b'} className="panel-item level">
         <div><CrownOutlined />&nbsp;成长体系</div>
         <div style={{textAlign: 'center'}}>Lv2</div>
       </a>,
-      <div className="panel-item fl-wrapper">
+      <div key={'x'} className="panel-item fl-wrapper">
         <a className="fl">
           <div>关注&nbsp;<HeartOutlined /></div>
           <div>12</div>
@@ -34,22 +40,23 @@ export class NavUserPanel extends Component {
           <div>9</div>
         </a>
       </div>,
-      <a className="panel-item">
+      <a key={'c'} className="panel-item">
         <div><IdcardFilled/>&nbsp;个人中心</div>
       </a>,
-      <a className="panel-item">
+      <a key={'d'} className="panel-item">
         <div><EditFilled/>&nbsp;我的博客</div>
       </a>,
-      <a className="panel-item">
+      <a key={'e'} className="panel-item">
         <div><BankFilled />&nbsp;我的学院</div>
       </a>,
-      <a className="panel-item">
+      <a key={'f'} className="panel-item">
         <div><DownloadOutlined/>&nbsp;我的下载</div>
       </a>,
-      <a className="panel-item">
+      <a key={'g'} className="panel-item">
         <div><QuestionCircleFilled/>&nbsp;帮助</div>
       </a>,
-      <a className="panel-item">
+      // eslint-disable-next-line jsx-a11y/anchor-is-valid
+      <a key={'h'} className="panel-item" onClick={this.props.onLogout}>
         <div><ExportOutlined />&nbsp;退出登录</div>
       </a>
     ]
