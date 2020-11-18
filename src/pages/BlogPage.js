@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
+import { BlogPageLeft } from '../components/blogpage-components/BlogPageLeft'
 
 export class BlogPage extends Component {
 
   render () {
     return (
-      <h1>博客页面</h1>
+        <BlogPageLeft/>
     )
   }
 }

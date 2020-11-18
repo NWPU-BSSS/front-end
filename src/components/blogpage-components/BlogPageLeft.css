@@ -1,0 +1,18 @@
+.info-list {
+    height: 100%;
+    display: flex;
+    padding: 8px;
+    margin-top: 10px;
+}
+
+.info-list li {
+    flex-grow: 1;
+}
+
+.info-content {
+    text-align: center;
+    width: 100%;
+    height: 50%;
+    line-height: 30px;
+    font-size: 20px;
+}
