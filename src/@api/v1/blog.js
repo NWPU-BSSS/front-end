@@ -1,4 +1,4 @@
-import { postInit, query } from './@config'
+import { postInit, query } from '../@config'
 
 export async function getArticleList () {
   let response = await fetch(`/api/articleList`)

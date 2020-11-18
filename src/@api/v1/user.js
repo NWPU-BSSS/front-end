@@ -1,4 +1,4 @@
-import { postInit, query } from './@config'
+import { postInit, query } from '../@config'
 import axios from 'axios'
 
 /**

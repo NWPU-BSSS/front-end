@@ -1,12 +1,21 @@
-import { login, register, getUserInfo } from './user'
-import {getArticleInfo,getArticleList, releaseArticle} from './article'
-
+import { register, login, getBadgeNum, getBaseInfo, sendVerifyCode2Email } from './root'
+import { getBlog, addComment, getBlogger, getComments, getTags, releaseBlog} from './blog'
+import { getTodayRecommend, getRecommendBlogList} from './home'
 
 export {
-  login,
   register,
-  getUserInfo,
-  getArticleInfo,
-  getArticleList,
-  releaseArticle
+  login,
+  getBadgeNum,
+  getBaseInfo,
+  sendVerifyCode2Email,
+
+  getTags,
+  getComments,
+  getBlogger,
+  getBlog,
+  releaseBlog,
+  addComment,
+
+  getTodayRecommend,
+  getRecommendBlogList
 }

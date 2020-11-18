@@ -1,0 +1,14 @@
+div.tool-bar-item, div.tool-bar-item div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: background-color .4s ease-in-out;
+}
+
+div.tool-bar-item:hover {
+    background-color: rgba(125, 125, 125, .5);
+    cursor: pointer;
+}
+
+
