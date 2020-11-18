@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavMenu } from '../containers/NavMenu'
+import { NavMenu } from './nav-menu-components/NavMenu'
 import './Layout.css'
 import { Footer } from './Footer'
 

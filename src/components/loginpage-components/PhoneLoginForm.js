@@ -1,7 +1,7 @@
 import React , {Component} from 'react'
 import { Button, Form, Input } from 'antd'
 import { LockOutlined, PhoneFilled } from '@ant-design/icons'
-import { LoginOrRegister, RememberLogin } from '../pages/LoginPage'
+import { LoginOrRegister, RememberLogin } from '../../pages/LoginPage'
 
 export class PhoneLoginForm extends Component {
 

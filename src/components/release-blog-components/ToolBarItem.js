@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
-
-import './ToolBarItem.css'
+import './ReleaseBlogComponents.css'
 
 export class ToolBarItem extends Component {
 
   render () {
     return (
-      <div className="tool-bar-item" style={{
+      <div className="ToolBarItem" style={{
         height: 75,
         width: 60
       }}>
