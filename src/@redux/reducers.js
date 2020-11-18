@@ -1,14 +1,21 @@
 import {
   GET_ARTICLE_INFO,
-  GET_ARTICLE_LIST,
-  HIDE_NAV_MENU,
+  GET_ARTICLE_LIST, GET_TODAY_RECOMMEND,
   LOGIN,
   LOGOUT,
-  REGISTER, REGISTER_SUCCESS_FALSE, REGISTER_SUCCESS_TRUE,
-  SHOW_NAV_MENU
+  REGISTER, REGISTER_SUCCESS_FALSE, REGISTER_SUCCESS_TRUE, SET_ACCESS_TOKEN,
 } from './action-types'
 
 const initUserState = { userId: -1, username: '' }
+
+export function AccessToken (state = '', action) {
+  switch (action.type) {
+    case SET_ACCESS_TOKEN:
+      return action.data
+    default:
+      return state
+  }
+}
 
 export function userState (state = initUserState, action) {
   switch (action.type) {
@@ -25,16 +32,16 @@ export function userState (state = initUserState, action) {
   }
 }
 
-export function showNav (state = true, action) {
-  switch (action.type) {
-    case SHOW_NAV_MENU:
-      return true
-    case HIDE_NAV_MENU:
-      return false
-    default:
-      return state
-  }
-}
+// export function showNav (state = true, action) {
+//   switch (action.type) {
+//     case SHOW_NAV_MENU:
+//       return true
+//     case HIDE_NAV_MENU:
+//       return false
+//     default:
+//       return state
+//   }
+// }
 
 export function article (state = {}, action) {
   switch (action.type) {
@@ -58,3 +65,14 @@ export function registerSuccess (state = false, action) {
       return state
   }
 }
+
+export function todayRecommend (state = {}, action) {
+  switch (action.type) {
+    case GET_TODAY_RECOMMEND:
+      return { ...action.data }
+    default:
+      return state
+  }
+}
+
+
