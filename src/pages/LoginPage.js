@@ -4,8 +4,8 @@ import { Button, Checkbox, Tabs } from 'antd'
 import { AlipayCircleFilled, TaobaoCircleFilled, WeiboCircleFilled } from '@ant-design/icons'
 import { LoginFormTop } from '../components/@common/LoginFormTop'
 import { Link, Redirect } from 'react-router-dom'
-import { AccountLoginForm } from '../containers/AccountLoginForm'
-import { PhoneLoginForm } from '../containers/PhoneLoginForm'
+import { AccountLoginForm } from '../components/loginpage-components/AccountLoginForm'
+import { PhoneLoginForm } from '../components/loginpage-components/PhoneLoginForm'
 import { connect } from 'react-redux'
 
 const { TabPane } = Tabs

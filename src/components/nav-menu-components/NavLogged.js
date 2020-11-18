@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
-import { NavMenuDropdown } from '../components/nav-menu-components/NavMenuDropdown'
-import { btnDanger } from '../components/nav-menu-components/@button-style'
-import { NavUserPanel } from '../components/nav-menu-components/NavUserPanel'
-import logo from '../assets/img/logo192.png'
+import { NavMenuDropdown } from './NavMenuDropdown'
+import { btnDanger } from './@button-style'
+import { NavUserPanel } from './NavUserPanel'
+import logo from '../../assets/img/logo192.png'
 // import PropTypes from 'prop-types'
 
-import '../components/nav-menu-components/NavLogged.css'
+import './NavLogged.css'
 import { connect } from 'react-redux'
-import { logout } from '../@redux/actions'
+import { logout } from '../../@redux/actions'
 import { Link } from 'react-router-dom'
 
 class NavLogged extends Component {

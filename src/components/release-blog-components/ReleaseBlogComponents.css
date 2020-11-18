@@ -1,0 +1,48 @@
+div.BlogEditor{
+    width: 100%;
+}
+
+div.BlogEditor div.tool-box{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    box-sizing: border-box;
+    border: 1px solid #e9e9e9;
+}
+
+div.BlogEditor div.editor {
+    flex-direction: row;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 25px;
+}
+
+div.ToolBarItem, div.ToolBarItem div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: background-color .4s ease-in-out;
+}
+
+div.ToolBarItem:hover {
+    background-color: rgba(125, 125, 125, .5);
+    cursor: pointer;
+}
+
+div.TreeCategory {
+    width: 300px;
+    height: 600px;
+    outline: 1px red solid;
+}
+
+div.MdEditor {
+    width: 100%;
+    margin-left: 50px;
+    outline: 1px solid red;
+    height: 600px;
+}
+
