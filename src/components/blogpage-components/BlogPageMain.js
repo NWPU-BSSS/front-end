@@ -1,10 +1,14 @@
 import React, { Component } from 'react'
+import { BlogContent } from './BlogContent'
+import './BlogPageMain.css'
 
 export class BlogPageMain extends Component {
 
   render () {
     return (
-      <div>博客页面主内容</div>
+      <div className="BlogPageMain">
+        <BlogContent/>
+      </div>
     )
   }
 }

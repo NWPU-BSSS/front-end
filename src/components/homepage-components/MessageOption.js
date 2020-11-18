@@ -4,6 +4,22 @@ import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import './MessageOption.css'
 
+const Option = props => {
+  let Child = props.badge > 0 ? <Badge count={props.badge}/> : ''
+  return (
+    <List.Item>
+      <Link to={props.url}>{props.title}</Link>
+      {Child}
+    </List.Item>
+  )
+}
+
+Option.propTypes = {
+  url: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  badge: PropTypes.number.isRequired
+}
+
 const data = [
   { title: '我的消息', url: '/', badge: 0 },
   { title: '公告', url: '/', badge: 0 },
@@ -16,45 +32,23 @@ const data = [
   { title: '消息设置', url: '/', badge: 0 }
 ]
 
-function MessageItem (props) {
-  let Child = ''
-  if (props.badge > 0) {
-    Child = <Badge count={props.badge} />
-  }
-
-  return (
-    <List.Item>
-      <Link to={props.url}>{props.title}</Link>
-      {Child}
-    </List.Item>
-  )
-}
-
-// MessageItem.propTypes = {
-//   badge: PropTypes.number,
-//   url: PropTypes.string,
-//   title: PropTypes.string
-// }
-
 export class MessageOption extends Component {
+
   componentWillMount () {
-    let { announcement, comment, follow, like, message, notice, reply } = {
-      'announcement': 1,
-      'comment': 2,
-      'follow': 3,
-      'message': 4,
-      'reply': 5,
-      'notice': 7,
-      'like': 8
+    let { announcement, notice, reply, message, like, follow, comment } = {
+      'announcement': 6419320728860216,
+      'comment': 372706618290464,
+      'follow': 1258856655655276,
+      'message': 1890426755384432,
+      'reply': 1912032601999116,
+      'notice': 6078024778023332,
+      'like': 1758107999388376
     }
 
-    let badges = [0, announcement, comment, follow, like, message, reply, notice, 0]
-
+    let badge = [0, announcement, comment, follow, like, message, reply, notice, 0]
     for (let i = 0; i < data.length; i++) {
-      data[i].badge = badges[i]
+      data[i].badge = badge[i]
     }
-
-    console.log(data)
   }
 
   render () {
@@ -65,7 +59,7 @@ export class MessageOption extends Component {
           bordered
           dataSource={data}
           renderItem={({ title, badge, url }) => (
-              <MessageItem title={title} badge={badge} url={url}/>
+              <Option title={title} badge={badge} url={url}/>
           )}
         />
       </div>

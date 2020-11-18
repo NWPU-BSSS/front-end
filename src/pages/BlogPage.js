@@ -1,37 +1,24 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import { BlogPageLeft } from '../components/blogpage-components/BlogPageLeft'
+import { BlogPageMain } from '../components/blogpage-components/BlogPageMain'
+import './BlogPage.css'
 import { connect } from 'react-redux'
-import { getBlogAsync } from '../@redux/actions'
-import { urlParamParser } from '../@common/tool'
 
 class BlogPage extends Component {
 
-  static propTypes = {
-    title: PropTypes.string,
-    content: PropTypes.string,
-    author: PropTypes.string,
-    time: PropTypes.string
-  }
-
-  componentDidMount () {
-    let params = urlParamParser(this.props.location.search)
-    let articleId = params.get('articleId')
-    // this.props.getArticleInfoAsync(articleId)
-  }
-
   render () {
     return (
-      <div>
-        博客界面
+      <div className="BlogPage">
+        <BlogPageLeft/>
+        <BlogPageMain/>
       </div>
     )
   }
 }
 
-BlogPage = connect(
-  state => ({ ...state.article.articleInfo }),
-  { getArticleInfoAsync: getBlogAsync}
-)(BlogPage)
+// BlogPage = connect(
+//   state => ({ ...state.article.articleInfo })
+// )(BlogPage)
 
 export { BlogPage }
 

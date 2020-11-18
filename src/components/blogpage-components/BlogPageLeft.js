@@ -4,7 +4,11 @@ export class BlogPageLeft extends Component {
 
   render () {
     return (
-      <div>博客页面左侧</div>
+      <div style={{
+        minWidth: '250px',
+        outline: '1px red solid',
+        height: '1200px'
+      }}/>
     )
   }
 }
