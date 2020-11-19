@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { Form, Input } from 'antd'
 import { LockOutlined, UserOutlined } from '@ant-design/icons'
-import { LoginOrRegister, RememberLogin } from '../pages/LoginPage'
+import { LoginOrRegister, RememberLogin } from '../../pages/LoginPage'
 import PropTypes from 'prop-types'
-import { loginAsync } from '../@redux/actions'
+import { loginAsync } from '../../@redux/actions'
 import { connect } from 'react-redux'
 
 class AccountLoginForm extends Component {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { LoginFormTop } from '../components/@common/LoginFormTop'
-import { RegisterForm } from '../containers/RegisterForm'
+import { RegisterForm } from '../components/register-components/RegisterForm'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router'
 

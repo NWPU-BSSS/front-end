@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { BlogEditor } from '../components/editblog-components/BlogEditor'
+import { BlogEditor } from '../components/release-blog-components/BlogEditor'
 
 export class BlogEditPage extends Component {
 

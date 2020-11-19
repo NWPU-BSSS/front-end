@@ -55,5 +55,5 @@ export const query = args => {
  * @param {Object} init 初始化对象
  * @returns {Promise<JSON>}
  */
-export const request = async (url, init) => (await fetch(url, init)).json()
+export const request = async (url, init = {}) => (await fetch(url, init)).json()
 
