@@ -11,11 +11,8 @@ export class TestPage extends Component {
   render () {
     return (
       <div>
-        <a href="/t#123">点击锚点</a>
         <button onClick={this.handleClick}>点击</button>
-        <h1 id="123" style={{
-          marginTop: '1500px'
-        }}>这是锚点</h1>
+        <BlogPage/>
       </div>
     )
   }
