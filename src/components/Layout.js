@@ -1,18 +1,17 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { NavMenu } from './nav-menu-components/NavMenu'
 import './Layout.css'
-import { Row } from 'antd'
+import { Footer } from './Footer'
 
-export class Layout extends Component {
+const Layout = props => (
+  <div>
+    <NavMenu/>
+    <div className="base-layout-container">
+      {props.children}
+    </div>
+    <Footer/>
+    {/*<button onClick={this.handleClick}>ajax</button>*/}
+  </div>
+)
 
-  render () {
-    return (
-      <div>
-        <NavMenu/>
-        <Row className="base-layout-container">
-          {this.props.children}
-        </Row>
-      </div>
-    )
-  }
-}
+export { Layout }

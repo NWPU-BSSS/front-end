@@ -1,10 +1,22 @@
 import React, { Component } from 'react'
+import { Button, Input } from 'antd'
+import { connect } from 'react-redux'
+import { releaseBlogAsync } from '../@redux/actions'
+import { BlogEditor } from '../components/release-blog-components/BlogEditor'
 
-export class ReleaseBlogPage extends Component {
-
+class ReleaseBlogPage extends Component {
   render () {
     return (
-      <h1>发布博客</h1>
+      <div>
+        <BlogEditor/>
+      </div>
     )
   }
 }
+
+// ReleaseBlogPage = connect(
+//   state => ({}),
+// )(ReleaseBlogPage)
+
+export { ReleaseBlogPage }
+

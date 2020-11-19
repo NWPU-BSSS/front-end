@@ -2,25 +2,35 @@ import React, { Component } from 'react'
 import { HomePageLeft } from '../components/homepage-components/HomePageLeft'
 import { HomePageCenter } from '../components/homepage-components/HomePageCenter'
 import { HomePageRight } from '../components/homepage-components/HomePageRight'
+import PropTypes from 'prop-types'
 
 import './HomePage.css'
-import { Col, Row } from 'antd'
+import { connect } from 'react-redux'
+import { Redirect } from 'react-router'
 
-export class HomePage extends Component {
+class HomePage extends Component {
+
+  static propTypes = {
+    isLogin: PropTypes.bool.isRequired
+  }
 
   render () {
+    // if (!this.props.isLogin) {
+    //   return <Redirect to="/login"/>
+    // }
+
     return (
-      <Row gutter={48}>
-        <Col lg={5} md={0} xs={0} sm={0}>
-          <HomePageLeft/>
-        </Col>
-        <Col lg={14} md={16} xs={24} sm={24}>
-          <HomePageCenter/>
-        </Col>
-        <Col lg={5} md={8} xs={0} sm={0}>
-          <HomePageRight/>
-        </Col>
-      </Row>
+      <div className="home-page-container">
+        <HomePageLeft/>
+        <HomePageCenter/>
+        <HomePageRight/>
+      </div>
     )
   }
 }
+
+HomePage = connect(
+  state => ({ isLogin: state.userState.userId !== -1 })
+)(HomePage)
+
+export { HomePage }

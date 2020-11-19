@@ -1,15 +1,21 @@
 import React, { Component } from 'react'
 import { NavMenuDropdown } from './NavMenuDropdown'
-import { NavMenuAvatar } from './NavMenuAvatar'
-import { btnDanger } from './bs-button'
+import { btnDanger } from './@button-style'
+import { NavUserPanel } from './NavUserPanel'
+import logo from '../../assets/img/logo192.png'
+// import PropTypes from 'prop-types'
 
 import './NavLogged.css'
-import { Avatar } from 'antd'
+import { connect } from 'react-redux'
+import { logout } from '../../@redux/actions'
+import { Link } from 'react-router-dom'
 
-import logo from '../../assets/img/logo192.png'
-import { NavUserPanel } from './NavUserPanel'
+class NavLogged extends Component {
 
-export class NavLogged extends Component {
+  // static propTypes = {
+  //   username: PropTypes.string.isRequired,
+  //   logout: PropTypes.func.isRequired
+  // }
 
   render () {
     return (
@@ -26,7 +32,7 @@ export class NavLogged extends Component {
             }}>创作中心</div>
           }>
 
-          <a>写博客</a>
+          <Link to="/release-blog">写博客</Link>
           <a>写代码</a>
           <a>上传资源</a>
         </NavMenuDropdown>
@@ -37,9 +43,16 @@ export class NavLogged extends Component {
             <img src={logo} alt="头像"/>
           </div>
         }>
-          <NavUserPanel/>
+          <NavUserPanel onLogout={() => this.props.logout()} username={this.props.username || ''}/>
         </NavMenuDropdown>
       </div>
     )
   }
 }
+
+NavLogged = connect(
+  state => ({ username: state.userState.username }),
+  { logout }
+)(NavLogged)
+
+export { NavLogged }

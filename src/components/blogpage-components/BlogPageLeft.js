@@ -3,11 +3,18 @@ import { Avatar, Button, Tag } from 'antd'
 import { PayCircleOutlined } from '@ant-design/icons'
 import avatar from '../../assets/temporary/u508.png'
 import './BlogPageLeft.css'
+import { BlogCategory } from './BlogCategory'
 
 export class BlogPageLeft extends Component {
 
   render () {
     return (
+      <div style={{
+        minWidth: '250px',
+        outline: '1px red solid',
+        height: '1200px'
+      }}>
+        <BlogCategory/>
       <div style={{
         width: '320px',
         padding: '20px 0px',
@@ -138,6 +145,7 @@ export class BlogPageLeft extends Component {
           <Button size={'large'}>私信</Button>
           <Button size={'large'}>关注</Button>
         </div>
+      </div>
       </div>
     )
   }

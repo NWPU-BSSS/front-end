@@ -2,10 +2,11 @@ import React, { Component } from 'react'
 import { NavLogged } from './NavLogged'
 import { NavUnloggin } from './NavUnloggin'
 import { NavMenuSearch } from './NavMenuSearch'
-import { NavMenuToggleButton } from './NavMenuToggleButton'
 import { NavMenuDropdown } from './NavMenuDropdown'
 import { NavMenuAvatar } from './NavMenuAvatar'
 import { CaretDownOutlined } from '@ant-design/icons'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 
 import './NavMenu.css'
 
@@ -15,50 +16,67 @@ const languageMenu = [
 ]
 
 const socialMenu = [
-  <a>找朋友</a>,
-  <a>留言</a>,
-  <a>悄悄话</a>
+  <a key={'1'}>找朋友</a>,
+  <a key={'2'}>留言</a>,
+  <a key={'3'}>悄悄话</a>
 ]
 
 const downloadMenu = [
-  <a>新建项目</a>
+  <a key={'1'}>新建项目</a>
 ]
 
 const codeMenu = [
-  <a>新建项目</a>
+  <a key={'1'}>新建项目</a>
 ]
 
 const blogMenu = (
-  <a>创作中心</a>
+  <a key={'1'}>创作中心</a>
 )
 
 const queAnsMenu = [
-  <a>我要提问</a>,
-  <a>向我提问</a>,
-  <a>回答</a>
+  <a key={'1'}>我要提问</a>,
+  <a key={'2'}>向我提问</a>,
+  <a key={'3'}>回答</a>
 ]
 
-export class NavMenu extends Component {
+class RightComponent extends Component {
+  static propTypes = {
+    user: PropTypes.object.isRequired
+  }
+
+  render () {
+    if (this.props.user.userId !== -1) {
+      return <NavLogged/>
+    } else {
+      return <NavUnloggin/>
+    }
+  }
+}
+
+class NavMenu extends Component {
+
   constructor (props) {
     super(props)
-
-    this.toggleNavbar = this.toggleNavbar.bind(this)
     this.state = {
-      collapsed: true,
-      isLoggedIn: true,
       languageIndex: 0
     }
   }
 
-  toggleNavbar () {
+  // static propTypes = {
+  //   userState: PropTypes.object.isRequired
+  // }
+
+  toggleNavbar = () => {
     this.setState({
       collapsed: !this.state.collapsed
     })
   }
 
-  render () {
-    let right = this.state.isLoggedIn ? <NavLogged/> : <NavUnloggin/>
+  handleChangeLanguage = newIndex => {
+    this.setState({ languageIndex: newIndex })
+  }
 
+  render () {
     return (
       <header className="bs-nav-header">
         <nav className="bs-nav">
@@ -71,19 +89,23 @@ export class NavMenu extends Component {
             <NavMenuDropdown title="社交">{socialMenu}</NavMenuDropdown>
           </div>
           <NavMenuSearch/>
-          {right}
-          <NavMenuDropdown title={<div style={{width: 100}}>{languageMenu[this.state.languageIndex]}  <CaretDownOutlined/></div>}>
-            {languageMenu.map((item, index) => <a onClick={() => this.handleChangeLanguage(index)}>{item}</a>)}
+          <RightComponent user={this.props.userState}/>
+          <NavMenuDropdown
+            title={<div style={{ width: 100 }}>{languageMenu[this.state.languageIndex]} <CaretDownOutlined/></div>}>
+            {languageMenu.map((item, index) => <a key={item.toString()}
+                                                  onClick={() => this.handleChangeLanguage(index)}>{item}</a>)}
           </NavMenuDropdown>
         </nav>
       </header>
     )
   }
-
-  handleChangeLanguage (newIndex) {
-    this.setState({ languageIndex: newIndex })
-  }
 }
+
+NavMenu = connect(
+  state => ({ userState: state.userState })
+)(NavMenu)
+
+export { NavMenu }
 
 
 
