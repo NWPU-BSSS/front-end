@@ -1,7 +1,8 @@
 import React from 'react'
 import './ReleaseBlogComponents.css'
 import ReactMarkdown from 'react-markdown'
-import './github-markdown.min.css'
+import '../../assets/github-markdown.min.css'
+import { CodeBlock } from '../@common/CodeBlock'
 
 const DEFAULT_SIZE = 500
 
@@ -13,6 +14,8 @@ export class MdEditor extends React.Component {
       markdown: '',
       textareaHeight: DEFAULT_SIZE
     }
+
+    this.key192flag = 0
   }
 
   componentDidMount () {
@@ -55,7 +58,11 @@ export class MdEditor extends React.Component {
       this.setState({
         textareaHeight: height
       })
+    } else if (e.keyCode === 192) {
+
     }
+
+    console.log(e.keyCode)
   }
 
   render () {
@@ -69,7 +76,8 @@ export class MdEditor extends React.Component {
                     value={this.state.markdown}/>
         </div>
         <div ref={div => this.preview = div} className="markdown-preview">
-          <ReactMarkdown source={this.state.markdown} className="markdown-body"/>
+          <ReactMarkdown source={this.state.markdown} escapeHtml={false} renderers={{ code: CodeBlock }}
+                         className="markdown-body"/>
         </div>
       </div>
     )
