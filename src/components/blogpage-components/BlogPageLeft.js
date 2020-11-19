@@ -1,15 +1,16 @@
 import React, { Component } from 'react'
+import './BlogPageLeft.css'
 import { BlogCategory } from './BlogCategory'
+import { BloggerPanel } from './BloggerPanel'
+import { ClassificationColumn } from './ClassificationColumn'
 
 export class BlogPageLeft extends Component {
 
   render () {
     return (
-      <div style={{
-        minWidth: '250px',
-        outline: '1px #e9e9e9 solid',
-        height: '1200px'
-      }}>
+      <div className="BlogPageLeft">
+        <BloggerPanel/>
+        <ClassificationColumn/>
         {/*<BlogCategory/>*/}
       </div>
     )
