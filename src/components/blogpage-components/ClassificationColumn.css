@@ -1,0 +1,20 @@
+.classification-column-header{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+}
+
+.classification-column p{
+    width: 100%;
+}
+
+.classification-column p:hover{
+    color: blue!important;
+    font-weight: bolder;
+}
+
+.classification-column{
+    padding: 0;
+    width: 300px;
+}
