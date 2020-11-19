@@ -1,12 +1,9 @@
 import React, { Component } from 'react'
-import { Resolver } from './common/Resolver'
 import './BlogContent.css'
 import '../../assets/github-markdown.min.css'
 import ReactMarkdown from 'react-markdown'
 import { CodeBlock } from '../@common/CodeBlock'
 import { HeadingBlock } from '../@common/HeadingBlock'
-
-const { Type } = Resolver
 
 const init = `
 # BSSS 前端 Git 分支开发规则

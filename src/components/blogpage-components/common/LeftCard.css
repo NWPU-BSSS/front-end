@@ -1,0 +1,14 @@
+div.BlogPage div.LeftCard {
+    width: 100%;
+    background-color: #fff;
+}
+
+div.LeftCard  .header{
+    background-color: #C3E3F4;
+    height: 48px;
+    padding-left: 15px;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 48px;
+    vertical-align: center;
+}
