@@ -7,10 +7,10 @@ export class BlogPageLeft extends Component {
     return (
       <div style={{
         minWidth: '250px',
-        outline: '1px red solid',
+        outline: '1px #e9e9e9 solid',
         height: '1200px'
       }}>
-        <BlogCategory/>
+        {/*<BlogCategory/>*/}
       </div>
     )
   }
