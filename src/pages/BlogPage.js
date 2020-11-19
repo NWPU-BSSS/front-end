@@ -8,10 +8,8 @@ class BlogPage extends Component {
   render () {
     return (
       <div className="BlogPage">
-        <ClassificationColumn/>
-        <ThumbBox/>
-        {/*<BlogPageLeft/>*/}
-        {/*<BlogPageMain/>*/}
+        <BlogPageLeft/>
+        <BlogPageMain/>
       </div>
     )
   }
