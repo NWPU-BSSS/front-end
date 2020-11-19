@@ -4,4 +4,166 @@
     align-items: flex-start;
     flex-direction: row;
     width: 100%;
+    /*background-color: #F0F2F5;*/
+}
+
+#u671_div {
+    font-family: 'Arial Normal', 'Arial';
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: normal;
+    color: #333333;
+    line-height: normal;
+    text-transform: none;
+    border-width: 0px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 319px;
+    height: 56px;
+    background: inherit;
+    background-color: rgba(242, 242, 242, 0);
+    border: none;
+    border-radius: 0px;
+    box-shadow: none;
+    font-size: 16px;
+    text-align: left;
+}
+
+#u667_div {
+    font-family: 'Arial Normal', 'Arial';
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: normal;
+    color: #333333;
+    line-height: normal;
+    text-transform: none;
+    border-width: 0px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 319px;
+    height: 56px;
+    background: inherit;
+    background-color: rgba(242, 242, 242, 0);
+    border: none;
+    border-radius: 0px;
+    box-shadow: none;
+    font-size: 18px;
+    text-align: left;
+}
+
+#u667_text {
+    font-family: 'Arial Normal', 'Arial';
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: normal;
+    color: #333333;
+    line-height: normal;
+    font-size: 18px;
+    text-align: left;
+    border-width: 0px;
+    text-transform: none;
+    position: absolute;
+    align-self: center;
+    padding: 2px 2px 2px 2px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.Hover > div {
+    height: 56px;
+}
+
+.hover-class:hover {
+    color: rgb(0, 128, 128);
+}
+
+.Hover > div:hover {
+    background-color: rgba(242, 242, 242, 1);
+
+}
+
+.Hover .quantity-class-name {
+    font-family: '微软雅黑';
+    font-weight: 400;
+    font-style: normal;
+    font-size: 13px;
+    letter-spacing: normal;
+    color: #7F7F7F;
+    vertical-align: none;
+    text-align: left;
+    text-transform: none;
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.Hover .class-name {
+    font-family: 'Arial Normal', 'Arial';
+    font-style: normal;
+    font-size: 18px;
+    letter-spacing: normal;
+    color: #333333;
+    vertical-align: none;
+    text-align: center;
+    line-height: normal;
+    text-transform: none;
+}
+
+.thumb-box {
+    font-family: 'Arial Normal', 'Arial';
+    font-weight: 400;
+    font-style: normal;
+    font-size: 20px;
+    letter-spacing: normal;
+    line-height: normal;
+    text-transform: none;
+    border-width: 0px;
+    width: 1063px;
+    height: 60px;
+    background: inherit;
+    background-color: rgba(156, 183, 235, 0.172549019607843);
+    border: none;
+    border-radius: 2px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    box-shadow: none;
+    color: #333333;
+}
+.thumb-box > .attention >  span {
+    display: inline-block;
+    font-family: '微软雅黑 Bold', '微软雅黑 Regular', '微软雅黑';
+    font-weight: 700;
+    font-style: normal;
+    font-size: 18px;
+    color: #FFFFFF;
+    padding: 10px;
+}
+.thumb-box > div {
+    float: left;
+    margin-top: 2%;
+    margin-left: 2.5%;
+    margin-right: 3%;
+    justify-content: space-between;
+
+}
+.thumb-box .attention>span:hover {
+    background-color: #FFFFFF;
+    color: #D9001B;
+}
+.thumb-box .attention {
+    border: 1px solid red;
+    margin-top: 1%;
+    margin-left: 2.5%;
+    margin-right: 3%;
+    border-radius: 10px;
+    background-color: #D9001B
+}
+
+#share:hover {
+    content: url("../assets/img/分享_u714_mouseOver.svg");
+}
+
+#collect:hover {
+    content: url("../assets/img/收藏_u813_mouseOver.svg");
 }
