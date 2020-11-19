@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import './BlogEditPage.css'
-import { BlogEditor } from '../components/editblog-components/BlogEditor'
 import photo from '../assets/img/头像_u507.svg'
 import photo_tag from '../assets/img/标签组_u514.svg'
 
@@ -9,7 +8,6 @@ export class BlogEditPage extends Component {
   render () {
     return (
       <div style={{ width: '100%' }} /*className="page-blog-edit"*/>
-        <BlogEditor/>
         <div className="photo">
           <img src={photo} alt="头像"/>
         </div>

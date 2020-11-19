@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Button, Input, Select } from 'antd'
 import { connect } from 'react-redux'
-import { registerAsync } from '../@redux/actions'
+import { registerAsync } from '../../@redux/actions'
 import { Link } from 'react-router-dom'
 
 const { Option } = Select
