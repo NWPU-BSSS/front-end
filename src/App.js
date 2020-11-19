@@ -14,6 +14,7 @@ import { RegisterSuccessPage } from './pages/RegisterSuccessPage'
 import { RegisterPage } from './pages/RegisterPage'
 import { LoginPage } from './pages/LoginPage'
 import { TestPage } from './pages/TestPage'
+import { BlogEditPage } from './pages/BlogEditPage'
 
 
 function App () {
@@ -30,6 +31,7 @@ function App () {
       <Route path="/code-edit" component={CodeEditPage}/>
       <Route path="/guest" component={GuestHomePage}/>
       <Route path="/t" component={TestPage}/>
+      <Route path="/edit" component={BlogEditPage}/>
     </Layout>
   )
 }

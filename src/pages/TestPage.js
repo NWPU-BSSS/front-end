@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { login } from '../@api'
+import { BlogPage } from './BlogPage'
 
 export class TestPage extends Component {
 
