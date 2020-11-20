@@ -4,8 +4,10 @@ import {
   GET_ARTICLE_LIST, GET_TODAY_RECOMMEND, INPUT_MARKDOWN,
   LOGIN,
   LOGOUT,
-  REGISTER, REGISTER_SUCCESS_FALSE, REGISTER_SUCCESS_TRUE, SET_ACCESS_TOKEN,
+  REGISTER, REGISTER_SUCCESS_FALSE, REGISTER_SUCCESS_TRUE, SET_ACCESS_TOKEN, USE_EN, USE_ZH,
 } from './action-types'
+
+import {en, zh} from '../@i18n'
 
 const initUserState = { userId: 1, username: '' }
 
@@ -13,6 +15,17 @@ export function AccessToken (state = '', action) {
   switch (action.type) {
     case SET_ACCESS_TOKEN:
       return action.data
+    default:
+      return state
+  }
+}
+
+export function Language (state = en, action){
+  switch (action.type) {
+    case USE_EN:
+      return en
+    case USE_ZH:
+      return zh
     default:
       return state
   }
@@ -32,17 +45,6 @@ export function userState (state = initUserState, action) {
       return state
   }
 }
-
-// export function showNav (state = true, action) {
-//   switch (action.type) {
-//     case SHOW_NAV_MENU:
-//       return true
-//     case HIDE_NAV_MENU:
-//       return false
-//     default:
-//       return state
-//   }
-// }
 
 export function article (state = {}, action) {
   switch (action.type) {
@@ -97,7 +99,7 @@ const markdownEditorInit = {
   tags: { tagA: 'TagA', tagB: 'TagB', tagC: 'TagC' }
 }
 
-export function markdownEditor (state = markdownEditorInit, action) {
+export function MarkdownEditor (state = markdownEditorInit, action) {
   switch (action.type) {
     case INPUT_MARKDOWN:
       return { ...state, content: action.data }

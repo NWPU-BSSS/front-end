@@ -4,8 +4,13 @@ import {
   GET_USER_INFO,
   GET_ARTICLE_INFO,
   GET_ARTICLE_LIST,
-  SHOW_NAV_MENU,
-  HIDE_NAV_MENU, REGISTER_SUCCESS_TRUE, REGISTER_SUCCESS_FALSE, GET_TODAY_RECOMMEND, INPUT_MARKDOWN, EDIT_TAG
+  REGISTER_SUCCESS_TRUE,
+  REGISTER_SUCCESS_FALSE,
+  GET_TODAY_RECOMMEND,
+  INPUT_MARKDOWN,
+  EDIT_TAG,
+  USE_EN,
+  USE_ZH
 } from './action-types'
 
 import * as req from '../@api'
@@ -21,6 +26,16 @@ export const login = ({ username, email, userId }) =>
   ({
     type: LOGIN,
     data: { username, email, userId }
+  })
+
+export const useEn = () =>
+  ({
+    type: USE_EN
+  })
+
+export const useZh = () =>
+  ({
+    type: USE_ZH
   })
 
 /**

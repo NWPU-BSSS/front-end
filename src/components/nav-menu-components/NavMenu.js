@@ -9,42 +9,77 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
 import './NavMenu.css'
+import { useEn, useZh } from '../../@redux/actions'
 
 const languageMenu = [
   '简体中文',
   'English'
 ]
 
-const socialMenu = [
-  <a key={'1'}>找朋友</a>,
-  <a key={'2'}>留言</a>,
-  <a key={'3'}>悄悄话</a>
-]
+const language = {
+  language: PropTypes.object.isRequired
+}
 
-const downloadMenu = [
-  <a key={'1'}>新建项目</a>
-]
+function SocialMenu (props) {
+  const { language } = props
+  const { FindFriends, LeaveMessage, PillowTalk } = language // 找朋友，留言，悄悄话
+  return (
+    <>
+      <a>{FindFriends}</a>
+      <a>{LeaveMessage}</a>
+      <a>{PillowTalk}</a>
+    </>
+  )
+}
 
-const codeMenu = [
-  <a key={'1'}>新建项目</a>
-]
+SocialMenu.propTypes = language
 
-const blogMenu = (
-  <a key={'1'}>创作中心</a>
-)
+function DownloadMenu (props) {
+  const { language } = props
+  const { MyResources } = language //我的资源
+  return <a>{MyResources}</a>
+}
 
-const queAnsMenu = [
-  <a key={'1'}>我要提问</a>,
-  <a key={'2'}>向我提问</a>,
-  <a key={'3'}>回答</a>
-]
+DownloadMenu.propTypes = language
+
+function CodeMenu (props) {
+  const { language } = props
+  const { NewProject } = language //新建项目
+  return <a>{NewProject}</a>
+}
+
+CodeMenu.propTypes = language
+
+function BlogMenu (props) {
+  const { language } = props
+  const { CreationCentre } = language //创作中心
+  return <a>{CreationCentre}</a>
+}
+
+BlogMenu.propTypes = language
+
+function Q_A_Menu (props) {
+  const { language } = props
+  const { AskQuestion, ReceivedQuestion, Answer } = language //我要提问，向我提问，回答
+  return (
+    <>
+      <a>{AskQuestion}</a>
+      <a>{ReceivedQuestion}</a>
+      <a>{Answer}</a>
+    </>
+  )
+}
+
+Q_A_Menu.propTypes = language
 
 class RightComponent extends Component {
   static propTypes = {
-    user: PropTypes.object.isRequired
+    user: PropTypes.object.isRequired,
+    language: PropTypes.object.isRequired
   }
 
   render () {
+
     if (this.props.user.userId !== -1) {
       return <NavLogged/>
     } else {
@@ -62,9 +97,10 @@ class NavMenu extends Component {
     }
   }
 
-  // static propTypes = {
-  //   userState: PropTypes.object.isRequired
-  // }
+  static propTypes = {
+    userState: PropTypes.object,
+    language: PropTypes.object
+  }
 
   toggleNavbar = () => {
     this.setState({
@@ -74,21 +110,29 @@ class NavMenu extends Component {
 
   handleChangeLanguage = newIndex => {
     this.setState({ languageIndex: newIndex })
+    let method = [this.props.useEn, this.props.useZh][newIndex]
+    method()
   }
 
   render () {
+    const { FindFriends, LeaveMessage, PillowTalk, MyResources, NewProject, CreationCentre, AskQuestion, ReceivedQuestion, Answer, Blog, Code, Download, QandA, Social,  Search, UploadResource, WriteBlog, WriteCode, Subscribe } = this.props.language
     return (
-      <header className="bs-nav-header">
+      <header className="NavMenu">
         <nav className="bs-nav">
           <NavMenuAvatar/>
           <div className="bs-nav-dropdown-list">
-            <NavMenuDropdown title="博客">{blogMenu}</NavMenuDropdown>
-            <NavMenuDropdown title="代码">{codeMenu}</NavMenuDropdown>
-            <NavMenuDropdown title="下载">{downloadMenu}</NavMenuDropdown>
-            <NavMenuDropdown title="问答">{queAnsMenu}</NavMenuDropdown>
-            <NavMenuDropdown title="社交">{socialMenu}</NavMenuDropdown>
+            <NavMenuDropdown title={Blog}>{
+              <BlogMenu language={{ CreationCentre }}/>}</NavMenuDropdown>
+            <NavMenuDropdown title={Code}>{
+              <CodeMenu language={{ NewProject }}/>}</NavMenuDropdown>
+            <NavMenuDropdown title={Download}>{
+              <DownloadMenu language={{ MyResources }}/>}</NavMenuDropdown>
+            <NavMenuDropdown title={QandA}>{
+              <Q_A_Menu language={{ AskQuestion, ReceivedQuestion, Answer }}/>}</NavMenuDropdown>
+            <NavMenuDropdown title={Social}>{
+              <SocialMenu language={{ FindFriends, LeaveMessage, PillowTalk }}/>}</NavMenuDropdown>
           </div>
-          <NavMenuSearch/>
+          <NavMenuSearch language={{Search}}/>
           <RightComponent user={this.props.userState}/>
           <NavMenuDropdown
             title={<div style={{ width: 100 }}>{languageMenu[this.state.languageIndex]} <CaretDownOutlined/></div>}>
@@ -102,7 +146,14 @@ class NavMenu extends Component {
 }
 
 NavMenu = connect(
-  state => ({ userState: state.userState })
+  state => {
+    const { NavMenuAndBottom } = state.Language
+    return ({
+      userState: state.userState,
+      language: NavMenuAndBottom
+    })
+  },
+  { useEn, useZh }
 )(NavMenu)
 
 export { NavMenu }

@@ -76,7 +76,7 @@ class MdEditor extends React.Component {
 
 MdEditor = connect(
   state => ({
-    markdown: state['markdownEditor'].content,
+    markdown: state['MarkdownEditor'].content,
   }),
   { inputMarkdown }
 )(MdEditor)
