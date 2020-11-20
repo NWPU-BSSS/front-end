@@ -9,6 +9,7 @@ div.MdEditor {
     flex-direction: row;
     background-color: #fff;
     box-sizing: border-box;
+    overflow: hidden;
 }
 
 div.MdEditor .markdown-input , div.MdEditor .markdown-input textarea{

@@ -40,8 +40,8 @@ class MdEditor extends React.Component {
     let textareaHeight = e.target.scrollHeight
     let height = Math.max(previewHeight, textareaHeight, DEFAULT_SIZE)
     if (e.keyCode === 9) {
-      // e.preventDefault()
-      // this.props.inputMarkdown(this.props.markdown + '\t')
+      e.preventDefault()
+      this.props.inputMarkdown(this.props.markdown + '\t')
     } else if (e.keyCode === 13)
       return false
     else if (e.keyCode === 17) { //left ctrl
@@ -62,7 +62,7 @@ class MdEditor extends React.Component {
         height: this.state.textareaHeight
       }}>
         <div className="markdown-input">
-          <textarea onKeyDown={this.handleKeyPressMarkdown} onChange={this.handleInputMarkdown}
+          <textarea spellCheck={false} onKeyDown={this.handleKeyPressMarkdown} onChange={this.handleInputMarkdown}
                     value={this.props.markdown}/>
         </div>
         <div ref={div => this.preview = div} className="markdown-preview">
