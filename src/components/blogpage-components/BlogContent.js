@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import './BlogContent.css'
 import '../../assets/github-markdown.min.css'
 import ReactMarkdown from 'react-markdown'
-import { CodeBlock } from '../@common/CodeBlock'
-import { HeadingBlock } from '../@common/HeadingBlock'
+import { CodeBlock } from '../release-blog-components/CodeBlock'
+import { HeadingBlock } from '../release-blog-components/HeadingBlock'
 
 const init = `
 # BSSS 前端 Git 分支开发规则

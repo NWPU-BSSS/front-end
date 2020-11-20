@@ -1,0 +1,61 @@
+div.BlogInfoSetting {
+    background-color: #fff;
+    width: 100%;
+    margin-top: 20px;
+    padding: 20px;
+}
+
+div.BlogInfoSetting > div {
+    margin-top: 20px;
+}
+
+div.BlogInfoSetting div.blog-publish {
+    height: 42px;
+    font-weight: 500;
+    font-size: 20px;
+    text-transform: none;
+}
+
+div.BlogInfoSetting .photo-tag {
+    margin: 0 15px;
+}
+
+div.BlogInfoSetting .title-edit-box{
+    letter-spacing: normal;
+    text-align: left;
+    border-radius: 10px;
+    box-shadow: none;
+}
+
+div.BlogInfoSetting .title-text{
+    display: flex;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 18px;
+
+}
+
+div.BlogInfoSetting .tag-edit-box{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+}
+
+div.BlogInfoSetting .tag-text{
+    display: flex;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 17px;
+    color: #7F7F7F;
+    margin-top: -8px;
+    margin-left: 30px
+}
+
+div.BlogInfoSetting .bottom-btn > div {
+    width: 300px;
+    flex-direction: row;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

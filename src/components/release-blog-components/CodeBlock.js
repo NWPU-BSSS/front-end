@@ -23,7 +23,8 @@ export class CodeBlock extends Component {
   }
 
   render () {
-    const { language, value} = this.props
+    const { language, value = ''} = this.props
+    // debugger
     return (
       <figure className="highlight">
         <SyntaxHighlighter language={language} style={style}>

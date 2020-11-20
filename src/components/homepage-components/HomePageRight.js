@@ -9,7 +9,7 @@ export class HomePageRight extends Component {
 
   render () {
     return (
-      <div className="home-page-right">
+      <div className="HomePageRight">
         <UserCard/>
         <MessageOption/>
       </div>

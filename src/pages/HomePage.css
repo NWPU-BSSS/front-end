@@ -1,4 +1,4 @@
-.home-page-container{
+.HomePage{
     max-width: 1400px;
     display: flex;
     justify-content: space-between;
@@ -6,13 +6,15 @@
     flex-direction: row;
 }
 
-div.home-page-container div.home-page-left{
+div.HomePage div.HomePageLeft{
     width: 250px;
 }
 
-div.home-page-container div.home-page-right{
+div.HomePage div.HomePageRight{
     width: 250px;
 }
 
-div.home-page-container div.home-page-center{
+div.HomePage div.HomePageCenter{
+    background-color: #fff;
+    margin: 0 20px;
 }
