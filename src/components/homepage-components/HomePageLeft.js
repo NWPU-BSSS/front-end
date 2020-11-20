@@ -9,7 +9,7 @@ export class HomePageLeft extends Component {
 
   render () {
     return (
-      <div className="home-page-left">
+      <div className="HomePageLeft">
         <QuickEntry/>
         <TodayRecommend/>
         <RecentBrowse/>

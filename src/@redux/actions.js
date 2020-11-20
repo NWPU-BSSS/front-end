@@ -5,7 +5,7 @@ import {
   GET_ARTICLE_INFO,
   GET_ARTICLE_LIST,
   SHOW_NAV_MENU,
-  HIDE_NAV_MENU, REGISTER_SUCCESS_TRUE, REGISTER_SUCCESS_FALSE, GET_TODAY_RECOMMEND
+  HIDE_NAV_MENU, REGISTER_SUCCESS_TRUE, REGISTER_SUCCESS_FALSE, GET_TODAY_RECOMMEND, INPUT_MARKDOWN, EDIT_TAG
 } from './action-types'
 
 import * as req from '../@api'
@@ -63,6 +63,19 @@ export const getTodayRecommend = ({ announcementId, title, publisher, startTime,
     type: GET_TODAY_RECOMMEND,
     data: { announcementId, title, publisher, startTime, endTime, publishTime, content }
   })
+
+export const inputMarkdown = content =>
+  ({
+    type: INPUT_MARKDOWN,
+    data: content
+  })
+
+export const editTag = ({ tagA, tagB, tagC }) =>
+  ({
+    type: EDIT_TAG,
+    data: { tagA, tagB, tagC }
+  })
+
 /**
  *
  * @param email

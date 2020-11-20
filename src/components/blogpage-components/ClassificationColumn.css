@@ -1,21 +1,16 @@
-.classification-column-header{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+div.ClassificationColumn .list-item {
     flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+    padding: 15px 25px;
+    transition: .4s all ease-in-out;
 }
 
-.classification-column p{
-    width: 100%;
-    margin-top: 20px;
-}
-
-.classification-column p:hover{
-    color: blue!important;
-    font-weight: bolder;
-}
-
-.classification-column{
-    padding: 0;
-    width: 100%;
+div.ClassificationColumn .list-item:hover {
+    background-color: rgba(217, 0, 27, .1);
+    cursor: pointer;
+    padding: 15px 35px;
+    color: #d9001b;
+    font-weight: bold;
 }

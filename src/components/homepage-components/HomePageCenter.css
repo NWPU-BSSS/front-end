@@ -1,11 +1,8 @@
-.home-page-center{
+div.HomePageCenter{
     width: 100%;
     padding: 20px;
     min-width: 525px;
-}
-
-.top-select-option{
-
+    background-color: #fff;
 }
 
 .select-container{

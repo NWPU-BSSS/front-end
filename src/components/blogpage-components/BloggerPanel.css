@@ -1,4 +1,4 @@
-div.BloggerPanel{
+div.BloggerPanel {
     width: 320px;
     padding: 20px 0;
     background-color: #ffffff;
@@ -53,11 +53,11 @@ div.BloggerPanel .top .top-bottom {
     width: 100%;
 }
 
-div.BloggerPanel .top .top-bottom .info div, div.BloggerPanel .top .top-bottom > div{
+div.BloggerPanel .top .top-bottom .info div, div.BloggerPanel .top .top-bottom > div {
     flex-grow: 2;
 }
 
-div.BloggerPanel .top .top-bottom .info .pay-logo{
+div.BloggerPanel .top .top-bottom .info .pay-logo {
     color: #d9001b;
 }
 
@@ -81,11 +81,11 @@ div.BloggerPanel .info-content {
     color: #999;
 }
 
-div.BloggerPanel ul.info-list li:hover{
-    background-color: #d9001b;
+div.BloggerPanel ul.info-list li:hover {
+    background-color: rgba(217, 0, 27, .8);
 }
 
-div.BloggerPanel ul.info-list li:hover .info-content{
+div.BloggerPanel ul.info-list li:hover .info-content {
     color: #ffffff;
 }
 
@@ -96,4 +96,15 @@ div.BloggerPanel .bottom {
     flex-direction: row;
     justify-content: space-around;
 }
+
+div.BloggerPanel .bottom .link {
+
+}
+
+div.BloggerPanel .bottom .btn {
+    background-color: rgba(217, 0, 27, .1);
+    color: #d9001b;
+    border: 1px solid #d9001b;
+}
+
 

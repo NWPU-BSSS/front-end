@@ -48,7 +48,7 @@ export class HomePageCenter extends Component {
 
   render () {
     return (
-      <div className="home-page-center">
+      <div className="HomePageCenter">
         <div className="top-select-option">
           <div className="select-container">
             <Radio.Group onChange={this.onChange} value={this.state.value}>

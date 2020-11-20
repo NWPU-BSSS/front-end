@@ -1,56 +1,42 @@
-
-.thumb-box {
-    font-family: 'Arial Normal', 'Arial';
-    font-weight: 400;
-    font-style: normal;
+.ThumbBox {
+    font-weight: 500;
     font-size: 20px;
-    letter-spacing: normal;
-    line-height: normal;
-    text-transform: none;
-    border-width: 0px;
-    width: 1063px;
+    width: 100%;
     height: 60px;
-    background: inherit;
-    background-color: rgba(156, 183, 235, 0.172549019607843);
-    border: none;
-    box-shadow: none;
+    background-color: #FFFFFF;
     color: #333333;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
 }
-.thumb-box > button {
-    display: inline-block;
-    float: left;
-    margin-top: 12px;
-    margin-left: 4%;
-    height: 36px;
+.ThumbBox  button {
+    display: flex;
     justify-content: space-between;
     font-style: normal;
     color: rgb(233, 233, 233);
     background-color: rgb(170, 49, 49);
     font-weight: 500;
-    font-size: 20px;
-    padding: 0 15px;
+    font-size: 16px;
+    padding: 5px 15px;
 }
-.thumb-box > div {
-    float: left;
-    margin-top: 19px;
-    margin-left: 4%;
-    margin-right: 3%;
+.ThumbBox  div.item {
+    display: flex;
     justify-content: space-between;
-
+    flex-direction: row;
+    align-items: center;
 }
-.thumb-box .attention {
+
+.ThumbBox  div.item:hover {
+    cursor: pointer;
+}
+
+.ThumbBox .attention {
     height: 36px;
     text-align: center;
-    padding: 0px 15px;
+    padding: 0 15px;
     line-height: 36px;
     margin: 12px 15px;
     background-color: rgb(170, 49, 49);
-}
-
-#share:hover {
-    content: url("../../assets/img/分享_u714_mouseOver.svg");
-}
-
-#collect:hover {
-    content: url("../../assets/img/收藏_u813_mouseOver.svg");
 }
