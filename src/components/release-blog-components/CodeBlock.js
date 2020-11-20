@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { PrismLight as SyntaxHighlighter} from 'react-syntax-highlighter'
-import {jsx, javascript, sass, scss, markdown, sas} from 'react-syntax-highlighter/dist/esm/languages/prism'
+import {jsx, javascript, sass, scss, markdown, sas, csharp, cpp, c, json, java, python, go, nginx} from 'react-syntax-highlighter/dist/esm/languages/prism'
 import style from 'react-syntax-highlighter/dist/cjs/styles/prism/a11y-dark'
 
 /**
@@ -9,7 +9,7 @@ import style from 'react-syntax-highlighter/dist/cjs/styles/prism/a11y-dark'
  */
 export class CodeBlock extends Component {
   static propTypes = {
-    value: PropTypes.string.isRequired,
+    value: PropTypes.string,
     language: PropTypes.string
   }
 
@@ -20,6 +20,18 @@ export class CodeBlock extends Component {
   componentWillMount () {
     SyntaxHighlighter.registerLanguage('jsx', jsx)
     SyntaxHighlighter.registerLanguage('javascript', javascript)
+    SyntaxHighlighter.registerLanguage('markdown', markdown)
+    SyntaxHighlighter.registerLanguage('sass', sass)
+    SyntaxHighlighter.registerLanguage('scss', scss)
+    SyntaxHighlighter.registerLanguage('sas', sas)
+    SyntaxHighlighter.registerLanguage('csharp', csharp)
+    SyntaxHighlighter.registerLanguage('cpp', cpp)
+    SyntaxHighlighter.registerLanguage('c', c)
+    SyntaxHighlighter.registerLanguage('json', json)
+    SyntaxHighlighter.registerLanguage('java', java)
+    SyntaxHighlighter.registerLanguage('python', python)
+    SyntaxHighlighter.registerLanguage('nginx', nginx)
+    SyntaxHighlighter.registerLanguage('go', go)
   }
 
   render () {

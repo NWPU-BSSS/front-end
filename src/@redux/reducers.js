@@ -1,4 +1,5 @@
 import {
+  EDIT_TAG,
   GET_ARTICLE_INFO,
   GET_ARTICLE_LIST, GET_TODAY_RECOMMEND, INPUT_MARKDOWN,
   LOGIN,
@@ -92,13 +93,16 @@ console.log('hello bsss')
 `
 
 const markdownEditorInit = {
-  content
+  content,
+  tags: { tagA: 'TagA', tagB: 'TagB', tagC: 'TagC' }
 }
 
 export function markdownEditor (state = markdownEditorInit, action) {
   switch (action.type) {
     case INPUT_MARKDOWN:
-      return { content: action.data }
+      return { ...state, content: action.data }
+    case EDIT_TAG:
+      return { ...state, tags: action.data }
     default:
       return state
   }
