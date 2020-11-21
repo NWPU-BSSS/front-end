@@ -1,5 +1,8 @@
 export const SET_ACCESS_TOKEN = 'SET_ACCESS_TOKEN'
 
+export const USE_EN = 'USE_EN'
+export const USE_ZH = 'USE_ZH'
+
 export const GET_USER_INFO = 'GET_USER_INFO'
 export const LOGIN = 'LOGIN'
 export const LOGOUT = 'LOGOUT'

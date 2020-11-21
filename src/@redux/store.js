@@ -1,5 +1,5 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux'
-import { article, markdownEditor, registerSuccess, userState } from './reducers'
+import { article, Language, MarkdownEditor, registerSuccess, userState } from './reducers'
 import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
 
@@ -8,7 +8,8 @@ const store = createStore(
     userState,
     article,
     registerSuccess,
-    markdownEditor
+    MarkdownEditor,
+    Language
   }),
   composeWithDevTools(applyMiddleware(thunk))
 )

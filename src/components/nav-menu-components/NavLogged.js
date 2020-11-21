@@ -3,8 +3,7 @@ import { NavMenuDropdown } from './NavMenuDropdown'
 import { btnDanger } from './@button-style'
 import { NavUserPanel } from './NavUserPanel'
 import logo from '../../assets/img/logo192.png'
-// import PropTypes from 'prop-types'
-
+import PropTypes from 'prop-types'
 import './NavLogged.css'
 import { connect } from 'react-redux'
 import { logout } from '../../@redux/actions'
@@ -12,38 +11,42 @@ import { Link } from 'react-router-dom'
 
 class NavLogged extends Component {
 
-  // static propTypes = {
-  //   username: PropTypes.string.isRequired,
-  //   logout: PropTypes.func.isRequired
-  // }
+  static propTypes = {
+    username: PropTypes.string,
+    logout: PropTypes.func,
+    language: PropTypes.object
+  }
 
   render () {
+    debugger
+    const { CreationCentre, WriteBlog, WriteCode, UploadResource, Favorite, History } = this.props.language
+    const userPanelLanguage = { ...this.props.language }
+
     return (
-      <div className="bs-nav-logged">
+      <div className="NavLogged">
         <NavMenuDropdown
-          menuStyle={{
-            justifyContent: 'center',
-            backgroundColor: '#aa3131'
-          }}
+          menuStyle={{ justifyContent: 'center',
+            backgroundColor: '#aa3131' }}
           title={
             <div style={{
               ...btnDanger,
               margin: '0'
-            }}>创作中心</div>
+            }}>{CreationCentre}</div>
           }>
 
-          <Link to="/release-blog">写博客</Link>
-          <a>写代码</a>
-          <a>上传资源</a>
+          <Link to="/release-blog">{WriteBlog}</Link>
+          <a>{WriteCode}</a>
+          <a>{UploadResource}</a>
         </NavMenuDropdown>
-        <a>收藏</a>
-        <a>历史</a>
+        <a>{Favorite}</a>
+        <a>{History}</a>
         <NavMenuDropdown title={
           <div className="head-avatar">
-            <img src={logo} alt="头像"/>
+            <img src={logo} alt="Avatar"/>
           </div>
         }>
-          <NavUserPanel onLogout={() => this.props.logout()} username={this.props.username || ''}/>
+          <NavUserPanel language={userPanelLanguage} onLogout={() => this.props.logout()}
+                        username={this.props.username || ''}/>
         </NavMenuDropdown>
       </div>
     )
