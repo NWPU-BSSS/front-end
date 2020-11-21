@@ -4,6 +4,7 @@ import './BlogPageMain.css'
 import { ThumbBox } from './ThumbBox'
 import { RelatedBlogList } from './RelatedBlogList'
 import { AddComment } from './AddComment'
+import { CommentList } from './CommentList'
 
 export class BlogPageMain extends Component {
 
@@ -13,6 +14,7 @@ export class BlogPageMain extends Component {
         <BlogContent/>
         <ThumbBox/>
         <AddComment/>
+        <CommentList/>
         <RelatedBlogList/>
       </div>
     )
