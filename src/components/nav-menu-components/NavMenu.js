@@ -11,9 +11,14 @@ import PropTypes from 'prop-types'
 import './NavMenu.css'
 import { useEn, useZh } from '../../@redux/actions'
 
+/**
+ * 语言选项菜单 !important 顺序不可随意调换！ 关联checkLanguage的内容
+ *
+ * @type {string[]}
+ */
 const languageMenu = [
-  '简体中文',
-  'English'
+  'English',
+  '简体中文'
 ]
 
 const language = {
@@ -81,7 +86,7 @@ class RightComponent extends Component {
   render () {
 
     if (this.props.user.userId !== -1) {
-      return <NavLogged/>
+      return <NavLogged language={this.props.language}/>
     } else {
       return <NavUnloggin/>
     }
@@ -95,6 +100,8 @@ class NavMenu extends Component {
     this.state = {
       languageIndex: 0
     }
+    //顺序不可随意变换，关联 languageMenu的内容
+    this.checkLanguage = [this.props.useEn, this.props.useZh]
   }
 
   static propTypes = {
@@ -110,7 +117,7 @@ class NavMenu extends Component {
 
   handleChangeLanguage = newIndex => {
     this.setState({ languageIndex: newIndex })
-    let method = [this.props.useEn, this.props.useZh][newIndex]
+    let method = this.checkLanguage[newIndex]
     method()
   }
 
@@ -133,7 +140,7 @@ class NavMenu extends Component {
               <SocialMenu language={{ FindFriends, LeaveMessage, PillowTalk }}/>}</NavMenuDropdown>
           </div>
           <NavMenuSearch language={{Search}}/>
-          <RightComponent user={this.props.userState}/>
+          <RightComponent language={this.props.language} user={this.props.userState}/>
           <NavMenuDropdown
             title={<div style={{ width: 100 }}>{languageMenu[this.state.languageIndex]} <CaretDownOutlined/></div>}>
             {languageMenu.map((item, index) => <a key={item.toString()}
