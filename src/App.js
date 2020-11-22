@@ -15,7 +15,7 @@ import { RegisterPage } from './pages/RegisterPage'
 import { LoginPage } from './pages/LoginPage'
 import { TestPage } from './pages/TestPage'
 import { BlogInfoSetting } from './components/release-blog-components/BlogInfoSetting'
-
+import { UserSpaceLy} from './pages/UserSpace-ly'
 
 function App () {
   return (
@@ -32,6 +32,7 @@ function App () {
       <Route path="/guest" component={GuestHomePage}/>
       <Route path="/t" component={TestPage}/>
       <Route path="/edit" component={BlogInfoSetting}/>
+      <Route path="/userSpace" component={UserSpaceLy}/>
     </Layout>
   )
 }
