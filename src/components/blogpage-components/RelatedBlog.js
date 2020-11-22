@@ -4,6 +4,10 @@ import { EyeOutlined } from '@ant-design/icons'
 
 export class RelatedBlog extends Component {
 
+  constructor (props, context) {
+    super(props, context)
+  }
+
   render () {
     return (
       <div className="related-blog">
