@@ -89,9 +89,9 @@ class BlogInfoSetting extends Component {
 
 BlogInfoSetting = connect(
   state => ({
-    tagA: state.markdownEditor.tags[0],
-    tagB: state.markdownEditor.tags[1],
-    tagC: state.markdownEditor.tags[2],
+    tagA: state['MarkdownEditor'].tags.tagA,
+    tagB: state['MarkdownEditor'].tags.tagB,
+    tagC: state['MarkdownEditor'].tags.tagC,
   }),
   { editTag }
 )(BlogInfoSetting)

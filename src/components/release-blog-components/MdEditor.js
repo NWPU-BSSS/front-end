@@ -1,7 +1,6 @@
 import React from 'react'
 import './MdEditor.css'
 import ReactMarkdown from 'react-markdown'
-import '../../assets/github-markdown.min.css'
 import { CodeBlock } from './CodeBlock'
 import { connect } from 'react-redux'
 import { inputMarkdown } from '../../@redux/actions'
