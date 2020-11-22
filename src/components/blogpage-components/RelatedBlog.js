@@ -4,6 +4,10 @@ import viewLogo from '../../assets/img/u583.png'
 
 export class RelatedBlog extends Component {
 
+  constructor (props, context) {
+    super(props, context)
+  }
+
   render () {
     return (
       <div className={'related-blog'}>

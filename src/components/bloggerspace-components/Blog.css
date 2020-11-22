@@ -1,0 +1,22 @@
+.read-record{
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+    padding: 15px 25px;
+    transition: .4s all ease-in-out;
+}
+
+.blog {
+    display: flex;
+    flex-direction: column;
+    padding-left: 3%;
+    padding-top: 15px;
+    line-height: 30px;
+    margin-top: 5px;
+    background-color: #FFFFFF;
+}
+.blog:hover{
+
+    background-color: rgb(242 242 242);
+}
