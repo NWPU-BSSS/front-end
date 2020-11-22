@@ -1,6 +1,6 @@
 import { EyeOutlined } from '@ant-design/icons'
 import React, { Component } from 'react'
-import './Blog.css'
+import './BlogList.css'
 class BlogItem extends Component {
 
   render () {

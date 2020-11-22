@@ -20,3 +20,13 @@
 
     background-color: rgb(242 242 242);
 }
+
+.blog a {
+    font-weight: 700;
+    font-size: 18px;
+    color: #555555;
+}
+
+.blog a:hover {
+    color: rgb(160 0 20);
+}

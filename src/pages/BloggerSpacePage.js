@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { EyeOutlined } from '@ant-design/icons'
-import { BlogList } from '../components/bloggerspace-components/Blog'
+import { BlogList } from '../components/bloggerspace-components/BlogList'
 
 export class BloggerSpacePage extends Component {
 
