@@ -18,7 +18,6 @@ class NavLogged extends Component {
   }
 
   render () {
-    debugger
     const { CreationCentre, WriteBlog, WriteCode, UploadResource, Favorite, History } = this.props.language
     const userPanelLanguage = { ...this.props.language }
 

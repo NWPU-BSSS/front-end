@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './BloggerSpacePage.css'
+
 export class BloggerSpacePage extends Component {
 
   render () {
@@ -35,6 +35,7 @@ export class BloggerSpacePage extends Component {
         </div>
 
       </div>
+
     )
   }
 }
