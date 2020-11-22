@@ -1,0 +1,48 @@
+div.self-information div.header{
+    font-size: 20px;
+    font-weight: bold;
+    color: #1b1f23;
+
+}
+
+div.self-information div.line{
+    width: 500px;
+    height: 1px;
+    background-color: #696A6C;
+    display: block;
+    margin-top: -15px;
+    margin-left: 100px;
+}
+
+div.self-information button.button{
+    width:90px;
+    height: 30px;
+    font-size: 14px;
+    color: #b31d28;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #b31d28;
+    border-radius: 5px;
+    margin-top: -22px;
+    margin-left: 630px;
+}
+
+div.self-information div.information{
+    font-size: 14px;
+    color: #696A6C;
+}
+
+div.self-information div.information div.form{
+    width:60px;
+    height: 40px;
+    margin-top: 5px;
+    margin-left: 20px;
+    text-align: right;
+}
+
+div.self-information div.information div.detail{
+    display: block;
+    margin-left: 100px;
+    margin-top: -40px;
+    margin-bottom: 10px;
+}
