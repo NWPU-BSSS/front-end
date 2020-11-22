@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import './BlogContent.css'
-import '../../assets/github-markdown.min.css'
 import ReactMarkdown from 'react-markdown'
 import { CodeBlock } from '../release-blog-components/CodeBlock'
 import { HeadingBlock } from '../release-blog-components/HeadingBlock'
@@ -35,34 +34,13 @@ const init = `
     <type>: <subject>
     如： 【feat】添加主页HomePage
 
-## 创建pull request
-
-    1. 将开发完成的新功能模块，在gitee 上点击 +Pull Request 创建PR
-    2. 创建PR后，有管理员审查测试通过后，将合并到dev分支
-
-## 附加说明
-
-    1. 一般一个人负责一个小模块，模块开发完成后将分支提交，并创建PR，给项目管理员审查测试。
-    2. dev 分支只有管理员可以合并，其他人无法推送和合并，master分支只能由dev分支和fix分支合并。
-    3. 若有多人负责一个模块，将在模块基础上创建开发者分支
-
-        命名规则为 feat/homepage-wbn-1031，并且无需提交PR，直接由对应负责人进行分支合并。
-
-## 注意事项
-
-* commit message 使用中文
-* 如果不小心修改了本地的dev分支，可以直接在本地已修改的dev分支上，重新创建feat分支，创建好后，切换到该分支，并将dev分支回滚即可。
-* 不允许提交未经测试代码到PR
-
-## 一些其他说明
-
-1. 如果发现非自己开发的功能模块上出现了问题，可以在仓库里添加ISSUE，并指定ISSUE标签（bug，enhancement，...），并指派给开发该模块的开发者。该开发者创建该模块的fix分支修复该问题。
-2. 后续更新
-
 ## 测试代码高亮
 ~~~js
 console.log('hello world')
 ~~~
+
+> 测试样式测试样式测试样式测试样式测试样式测试样式测试样式测试样式测试样式测试样式测试样式测试样式测试样式测试样式测试样式测试样式测试样式测试样式测试样式测试样式测试样式测试样式测试样式测试样式测试样式测试样式测试样式测试样式测试样式测试样式测试样式
+
 
 `
 
