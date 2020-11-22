@@ -1,0 +1,110 @@
+div.BloggerPanel {
+    width: 320px;
+    padding: 20px 0;
+    background-color: #ffffff;
+}
+
+div.BloggerPanel .top {
+    width: 100%;
+    height: 86px;
+    display: flex;
+    flex-direction: column;
+}
+
+div.BloggerPanel .top .top-top {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px;
+}
+
+div.BloggerPanel .top .top-bottom .level {
+    background-color: white;
+    border: 2px solid #d9001b;
+    font-size: 10px;
+    margin-top: 5px;
+    margin-left: 4px;
+    color: #d9001b;
+    padding: 0 10px;
+}
+
+div.BloggerPanel .top .top-bottom {
+    flex-grow: 1;
+    flex-direction: row;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+}
+
+div.BloggerPanel .top .top-top .username {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 43px;
+}
+
+div.BloggerPanel .top .top-bottom {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 16px;
+    width: 100%;
+}
+
+div.BloggerPanel .top .top-bottom .info div, div.BloggerPanel .top .top-bottom > div {
+    flex-grow: 2;
+}
+
+div.BloggerPanel .top .top-bottom .info .pay-logo {
+    color: #d9001b;
+}
+
+div.BloggerPanel .info-list {
+    height: 100%;
+    display: flex;
+    margin-top: 10px;
+}
+
+div.BloggerPanel .info-list li {
+    flex-grow: 1;
+    padding: 5px;
+}
+
+div.BloggerPanel .info-content {
+    text-align: center;
+    width: 100%;
+    height: 50%;
+    line-height: 30px;
+    font-size: 16px;
+    color: #999;
+}
+
+div.BloggerPanel ul.info-list li:hover {
+    background-color: rgba(217, 0, 27, .8);
+}
+
+div.BloggerPanel ul.info-list li:hover .info-content {
+    color: #ffffff;
+}
+
+div.BloggerPanel .bottom {
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+div.BloggerPanel .bottom .link {
+
+}
+
+div.BloggerPanel .bottom .btn {
+    background-color: rgba(217, 0, 27, .1);
+    color: #d9001b;
+    border: 1px solid #d9001b;
+}
+
+

@@ -5,7 +5,7 @@ import './RelatedBlogList.css'
 export class RelatedBlogList extends Component {
   render () {
     return (
-      <div className={'related-blog-list'}>
+      <div className="OtherBlogList">
         <ul>
           <li>
             <RelatedBlog/>
