@@ -92,6 +92,13 @@ const content = `
 ~~~js
 console.log('hello bsss')
 ~~~
+
+
+### 表格测试
+
+| 111 | 222 |
+| --- | --- |
+| A | B |
 `
 
 const markdownEditorInit = {

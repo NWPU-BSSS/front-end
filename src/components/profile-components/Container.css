@@ -1,0 +1,7 @@
+div.ProfileBody {
+    display: flex;
+    justify-content: space-around;
+    align-items: stretch;
+    flex-direction: row;
+    margin: 20px 200px;
+}
