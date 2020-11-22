@@ -1,16 +1,16 @@
 import React, { Component } from 'react'
-import { EyeOutlined } from '@ant-design/icons'
+import { ContentNavBar } from '../components/blogger-space-components/ContentNavBar'
 import { BlogList } from '../components/bloggerspace-components/BlogList'
 
 export class BloggerSpacePage extends Component {
 
   render () {
     return (
-      <div>
-        <BlogList/>
-        <h1>博主空间页面</h1>
-      </div>
 
+    <div>
+      <ContentNavBar/>
+      <BlogList/>
+    </div>
     )
   }
 }

@@ -1,0 +1,40 @@
+div.PersonalInfo {
+    background-color: #fff;
+    flex-grow: 2;
+    margin: 0 20px;
+    padding: 20px;
+}
+
+div.InfoItem {
+}
+
+div.InfoItem .info-type {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div.InfoItem .info-type .divider {
+    flex-grow: 2;
+}
+
+div.InfoItem .info-type .divider .border-000 {
+    border-top: #000000;
+}
+
+div.InfoBaseItem {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px;
+}
+
+div.InfoBaseItem .title{
+    width: 100px;
+}
+
+div.InfoBaseItem .content {
+    flex-grow: 1;
+}
+
