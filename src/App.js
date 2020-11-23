@@ -15,11 +15,12 @@ import { RegisterPage } from './pages/RegisterPage'
 import { LoginPage } from './pages/LoginPage'
 import { TestPage } from './pages/TestPage'
 import { BlogInfoSetting } from './components/release-blog-components/BlogInfoSetting'
+import { BlogList } from './components/blogger-space-components/BlogList'
 
 function App () {
   return (
     <Layout>
-      <Route exact path="/" component={HomePage}/>
+      <Route exact path="/home" component={HomePage}/>
       <Route path="/register" component={RegisterPage}/>
       <Route path="/login" component={LoginPage}/>
       <Route path="/reg-success" component={RegisterSuccessPage}/>
