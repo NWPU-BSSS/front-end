@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { ContentNavBar } from '../components/blogger-space-components/ContentNavBar'
-import { BlogList } from '../components/bloggerspace-components/BlogList'
+import { BlogList } from '../components/blogger-space-components/BlogList'
+import { Blogger } from '../components/blogger-space-components/Blogger'
 
 export class BloggerSpacePage extends Component {
 
@@ -8,6 +9,7 @@ export class BloggerSpacePage extends Component {
     return (
 
     <div>
+      <Blogger/>
       <ContentNavBar/>
       <BlogList/>
     </div>

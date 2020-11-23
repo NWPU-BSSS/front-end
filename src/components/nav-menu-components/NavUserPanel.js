@@ -13,6 +13,7 @@ import {
 } from '@ant-design/icons'
 
 import './NavUserPanel.css'
+import { Link } from 'react-router-dom'
 
 export class NavUserPanel extends Component {
 
@@ -43,9 +44,9 @@ export class NavUserPanel extends Component {
           <div>9</div>
         </a>
       </div>
-      <a className="panel-item">
+      <Link className="panel-item" to="/profile">
         <div><IdcardFilled/>&nbsp;{PersonalCentre}</div>
-      </a>
+      </Link>
       <a className="panel-item">
         <div><EditFilled/>&nbsp;{MyBlog}</div>
       </a>

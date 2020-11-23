@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { UserSpaceTitle } from '../userSpace-components/UserSpaceTitle'
+import { UserSpaceTitle } from './UserSpaceTitle'
 
 export class ProfileTop extends Component {
 

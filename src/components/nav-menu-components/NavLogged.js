@@ -32,7 +32,6 @@ class NavLogged extends Component {
               margin: '0'
             }}>{CreationCentre}</div>
           }>
-
           <Link to="/release-blog">{WriteBlog}</Link>
           <a>{WriteCode}</a>
           <a>{UploadResource}</a>

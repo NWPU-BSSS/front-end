@@ -1,19 +1,17 @@
-div div.content-nav-bar {
-    width: 1140px;
-    height: 55px;
+div.content-nav-bar {
     display: flex;
     flex-direction: row;
     flex-grow: 1;
-    justify-content: space-evenly;
-    margin: 0 auto;
-    line-height: 35px;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px auto;
+    background-color: #fff;
 }
 
 div div.content-nav-bar div.content-nav-bar-item {
-    width: 150px;
-    margin: 10px 30px;
     flex-grow: 1;
     text-align: center;
+    padding: 10px;
 }
 
 div div.content-nav-bar div.content-nav-bar-item a {
