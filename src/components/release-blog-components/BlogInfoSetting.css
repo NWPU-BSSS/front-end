@@ -1,0 +1,52 @@
+div.BlogInfoSetting {
+    background-color: #fff;
+    width: 100%;
+    margin-top: 20px;
+    padding: 20px;
+}
+
+div.BlogInfoSetting > div {
+    margin-top: 20px;
+}
+
+div.BlogInfoSetting div.blog-publish {
+    height: 42px;
+    font-weight: 500;
+    width: 100%;
+    font-size: 20px;
+    text-align: center;
+    text-transform: none;
+}
+
+div.BlogInfoSetting .edit-tag {
+    margin: 0 15px;
+}
+
+div.BlogInfoSetting .edit-tag:hover {
+    transform: scale(1.2);
+    color: #d9001b;
+    cursor: pointer;
+}
+
+div.BlogInfoSetting .title-edit-box{
+    letter-spacing: normal;
+    text-align: left;
+    border-radius: 10px;
+    box-shadow: none;
+}
+
+div.BlogInfoSetting .tag-edit-box{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+}
+
+
+div.BlogInfoSetting .bottom-btn > div {
+    width: 300px;
+    flex-direction: row;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

@@ -20,7 +20,7 @@ class HomePage extends Component {
     // }
 
     return (
-      <div className="home-page-container">
+      <div className="HomePage">
         <HomePageLeft/>
         <HomePageCenter/>
         <HomePageRight/>

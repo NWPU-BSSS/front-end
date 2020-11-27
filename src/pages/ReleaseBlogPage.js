@@ -1,36 +1,24 @@
 import React, { Component } from 'react'
-import { Button, Input } from 'antd'
-import { connect } from 'react-redux'
-import { releaseArticleAsync } from '../@redux/actions'
+import { MdEditor } from '../components/release-blog-components/MdEditor'
+import { ToolBox } from '../components/release-blog-components/ToolBox'
+import { BlogInfoSetting } from '../components/release-blog-components/BlogInfoSetting'
+import './Pages.css'
 
 class ReleaseBlogPage extends Component {
-
-  releaseBlog = async () => {
-    const { title, content } = this
-    // this.props.releaseArticleAsync({ title, content, userId: 1 })
-  }
-
-  handleInputTitle = e => {
-    this.title = e.target.value
-  }
-
-  handleInputContent = e => {
-    this.content = e.target.value
-  }
-
   render () {
     return (
       <div>
-        博客发布界面
+        <BlogInfoSetting/>
+        <ToolBox/>
+        <MdEditor/>
       </div>
     )
   }
 }
 
-ReleaseBlogPage = connect(
-  state => ({}),
-  { releaseArticleAsync }
-)(ReleaseBlogPage)
+// ReleaseBlogPage = connect(
+//   state => ({}),
+// )(ReleaseBlogPage)
 
-export { ReleaseBlogPage}
+export { ReleaseBlogPage }
 

@@ -1,0 +1,11 @@
+div.BlogPageLeft {
+    min-width: 320px;
+    height: 1200px;
+}
+
+div.BlogPageLeft > div{
+    margin-bottom: 20px;
+}
+
+
+

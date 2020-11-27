@@ -33,3 +33,11 @@
     flex-direction: row;
     align-items: center;
 }
+
+.ItemContent .preview{
+    color: #555;
+}
+
+.ItemContent .preview:hover{
+    color: deepskyblue;
+}

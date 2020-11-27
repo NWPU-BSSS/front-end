@@ -9,20 +9,24 @@ import { TagList } from './@common/TagList'
 import { IconText } from './@common/IconText'
 
 const listData = []
-for (let i = 0; i < 8; i++) {
+for (let i = 0; i < 15; i++) {
   listData.push({
-    href: '/',
+    blogId: i,
+    userId: i,
     title: `博客${i}`,
-    avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-    description:
-      'Bsss 软件学院的专属博客',
-    content:
-      '我们致力于打造属于软件学院的最棒的博客我们致力于打造属于软件学院的最棒的博客我们致力于打造属于软件学院的最棒的博客我们致力于打造属于软件学院的最棒的博客我们致力于打造属于软件学院的最棒的博客我们致力于打造属于软件学院的最棒的博客我们致力于打造属于软件学院的最棒的博客我们致力于打造属于软件学院的最棒的博客我们致力于打造属于软件学院的最棒的博客我们致力于打造属于软件学院的最棒的博客我们致力于打造属于软件学院的最棒的博客我们致力于打造属于软件学院的最棒的博客我们致力于打造属于软件学院的最棒的博客我们致力于打造属于软件学院的最棒的博客我们致力于打造属于软件学院的最棒的博客我们致力于打造属于软件学院的最棒的博客我们致力于打造属于软件学院的最棒的博客我们致力于打造属于软件学院的最棒的博客我们致力于打造属于软件学院的最棒的博客我们致力于打造属于软件学院的最棒的博客我们致力于打造属于软件学院的最棒的博客我们致力于打造属于软件学院的最棒的博客我们致力于打造属于软件学院的最棒的博客我们致力于打造属于软件学院的最棒的博客我们致力于打造属于软件学院的最棒的博客我们致力于打造属于软件学院的最棒的博客我们致力于打造属于软件学院的最棒的博客我们致力于打造属于软件学院的最棒的博客我们致力于打造属于软件学院的最棒的博客我们致力于打造属于软件学院的最棒的博客我们致力于打造属于软件学院的最棒的博客',
-    nickname: '风神少女',
     tagA: 'C#',
     tagB: 'python',
     tagC: 'JavaScript',
-    createTime: '2020-11-21'
+    avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
+    description:
+      'Bsss 软件学院的专属博客',
+    preview:
+      '软件学院的最棒的博客我们致力于打造属于软件学院的最棒的博客我们致力于打造属于软件学院的最棒的博客我们致力于打造属于软件学院的最棒的博客我们致力于打造属于软件学院的最棒的博客我们致力于打造属于软件学院的最棒的博客我们致力于打造属于软件学院的最棒的博客我们致力于打造属于软件学院的最棒的博客我们致力于打造属于软件学院的最棒的博客我们致力于打造属于软件学院的最棒的博客',
+    nickname: '风神少女',
+    lastModifiedTime: '2020-11-21',
+    favoriteNum: i,
+    likeNum: i + 1,
+    commentNum: i + 2
   })
 }
 
@@ -44,7 +48,7 @@ export class HomePageCenter extends Component {
 
   render () {
     return (
-      <div className="home-page-center">
+      <div className="HomePageCenter">
         <div className="top-select-option">
           <div className="select-container">
             <Radio.Group onChange={this.onChange} value={this.state.value}>
@@ -68,15 +72,16 @@ export class HomePageCenter extends Component {
               <List.Item
                 key={item.title}
                 actions={[
-                  <IconText icon={StarOutlined} text="156" key="list-vertical-star-o"/>,
-                  <IconText icon={LikeOutlined} text="156" key="list-vertical-like-o"/>,
-                  <IconText icon={MessageOutlined} text="2" key="list-vertical-message"/>,
+                  <IconText icon={StarOutlined} text={item.favoriteNum} key="list-vertical-star-o"/>,
+                  <IconText icon={LikeOutlined} text={item.likeNum} key="list-vertical-like-o"/>,
+                  <IconText icon={MessageOutlined} text={item.commentNum} key="list-vertical-message"/>,
                 ]}>
                 <List.Item.Meta
                   title={<Link to="/blog?articleId=1">{item.title}</Link>}
                   description={<TagList tagA={item.tagA} tagB={item.tagB} tagC={item.tagC}/>}
                 />
-                <ItemContent content={item.content} avatar={item.avatar} createTime={item.createTime} title={item.title}/>
+                <ItemContent preview={item.preview} avatar={item.avatar} lastModifiedTime={item.lastModifiedTime}
+                             nickname={item.nickname}/>
               </List.Item>
             )}
           />,

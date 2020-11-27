@@ -1,0 +1,19 @@
+div.AddComment {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    width: 100%;
+    margin-top: 20px;
+    background-color: #fff;
+    padding: 10px;
+}
+
+div.AddComment .box {
+    margin: 0 20px;
+}
+
+
+div.AddComment .comment-input {
+    width: 100%;
+}

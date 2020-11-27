@@ -69,12 +69,12 @@ div.bs-nav-dropdown-menu a:hover{
     color: white;
 }
 
-.bs-nav-logged > a{
+.NavLogged > a{
     color: #e9e9e9;
     font-size: 16px;
     padding: 0 15px;
 }
 
-.bs-nav-logged > a:hover{
+.NavLogged > a:hover{
     color: #aa3131;
 }
