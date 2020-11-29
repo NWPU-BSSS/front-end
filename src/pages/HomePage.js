@@ -7,11 +7,19 @@ import PropTypes from 'prop-types'
 import './HomePage.css'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router'
+import { getBaseInfoAsync } from '../@redux/actions'
 
 class HomePage extends Component {
 
   static propTypes = {
-    isLogin: PropTypes.bool.isRequired
+    isLogin: PropTypes.bool.isRequired,
+    getBaseInfoAsync: PropTypes.func.isRequired
+  }
+
+  componentWillMount () {
+    this.props.getBaseInfoAsync()
+
+    // this.props.
   }
 
   render () {
@@ -30,7 +38,8 @@ class HomePage extends Component {
 }
 
 HomePage = connect(
-  state => ({ isLogin: state.userState.userId !== -1 })
+  state => ({ isLogin: state.userState.userId !== -1 }),
+  { getBaseInfoAsync}
 )(HomePage)
 
 export { HomePage }

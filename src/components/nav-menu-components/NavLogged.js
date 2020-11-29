@@ -43,7 +43,7 @@ class NavLogged extends Component {
             <img src={logo} alt="Avatar"/>
           </div>
         }>
-          <NavUserPanel language={userPanelLanguage} onLogout={() => this.props.logout()}
+          <NavUserPanel {...this.props} language={userPanelLanguage} onLogout={() => this.props.logout()}
                         username={this.props.username || ''}/>
         </NavMenuDropdown>
       </div>

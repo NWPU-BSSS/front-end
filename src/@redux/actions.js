@@ -47,15 +47,13 @@ export const useZh = () =>
 
 /**
  * 同步获取用户信息
- * @param username
- * @param email
- * @param userId
+ * @param {{userId: number}} info
  * @returns {{data: {userId: *, email: *, username: *}, type: string}}
  */
-export const getUserInfo = ({ username, email, userId }) =>
+export const getUserInfo = (info) =>
   ({
     type: GET_USER_INFO,
-    data: { username, email, userId }
+    data: { ...info }
   })
 
 export const logout = () =>
@@ -111,12 +109,7 @@ export const loginAsync = ({ email, username, password }) =>
     if (code === 1) {
       let { accessToken } = data || ''
       dispatch(setAccessToken(accessToken))
-      // const { code, msg, data } = await req.getBaseInfo()
-      // if (code === 1) {
-      //   dispatch(login({ ...(data), userId: 1 }))
-      // } else {
-      //   alert(msg)
-      // }
+      dispatch(login({ userId: 1 }))
     } else {
       alert(msg)
     }
@@ -150,7 +143,7 @@ export const getBaseInfoAsync = () =>
   async dispatch => {
     const { code, msg, data } = await req.getBaseInfo()
     if (code === 1) {
-      dispatch(getUserInfo({ ...data }))
+      dispatch(getUserInfo({ ...data, userId: 1 }))
     } else {
       alert(msg)
     }

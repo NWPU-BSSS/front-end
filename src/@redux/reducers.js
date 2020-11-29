@@ -1,13 +1,13 @@
 import {
   EDIT_TAG,
   GET_ARTICLE_INFO,
-  GET_ARTICLE_LIST, GET_TODAY_RECOMMEND, INPUT_MARKDOWN,
+  GET_ARTICLE_LIST, GET_TODAY_RECOMMEND, GET_USER_INFO, INPUT_MARKDOWN,
   LOGIN,
   LOGOUT,
   REGISTER, REGISTER_SUCCESS_FALSE, REGISTER_SUCCESS_TRUE, SEND_VERIFY_EMAIL_SUCCESS, SET_ACCESS_TOKEN, USE_EN, USE_ZH,
 } from './action-types'
 
-import {en, zh} from '../@i18n'
+import { en, zh } from '../@i18n'
 
 const initUserState = { userId: -1, username: '' }
 
@@ -20,7 +20,7 @@ export function AccessToken (state = '', action) {
   }
 }
 
-export function Language (state = en, action){
+export function Language (state = en, action) {
   switch (action.type) {
     case USE_EN:
       return en
@@ -34,12 +34,12 @@ export function Language (state = en, action){
 export function userState (state = initUserState, action) {
   switch (action.type) {
     case LOGIN:
-      //TODO: 后期解决路由跳转
-      // window.location.pathname = '/'
       return { ...state, ...action.data }
     case LOGOUT:
       return initUserState
     case REGISTER:
+      return { ...state, ...action.data }
+    case GET_USER_INFO:
       return { ...state, ...action.data }
     default:
       return state
@@ -57,10 +57,10 @@ export function article (state = {}, action) {
   }
 }
 
-export function registerPage(state = {}, action){
+export function registerPage (state = {}, action) {
   switch (action.type) {
     case SEND_VERIFY_EMAIL_SUCCESS:
-      return {...state, disableSendCodeButton: true}
+      return { ...state, disableSendCodeButton: true }
     default:
       return state
   }
