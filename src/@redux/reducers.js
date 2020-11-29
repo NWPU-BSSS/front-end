@@ -1,7 +1,7 @@
 import {
   EDIT_TAG,
-  GET_ARTICLE_INFO,
-  GET_ARTICLE_LIST, GET_TODAY_RECOMMEND, GET_USER_INFO, INPUT_MARKDOWN,
+  GET_BLOG_INFO,
+  GET_BLOG_LIST, GET_TODAY_RECOMMEND, GET_USER_INFO, INPUT_MARKDOWN,
   LOGIN,
   LOGOUT,
   REGISTER, REGISTER_SUCCESS_FALSE, REGISTER_SUCCESS_TRUE, SEND_VERIFY_EMAIL_SUCCESS, SET_ACCESS_TOKEN, USE_EN, USE_ZH,
@@ -46,12 +46,12 @@ export function userState (state = initUserState, action) {
   }
 }
 
-export function article (state = {}, action) {
+export function BlogList (state = {}, action) {
   switch (action.type) {
-    case GET_ARTICLE_INFO:
-      return { ...state, articleInfo: action.data }
-    case GET_ARTICLE_LIST:
-      return { ...state, articleList: action.data }
+    case GET_BLOG_INFO:
+      return {...state, blogInfo: action.data}
+    case GET_BLOG_LIST:
+      return { ...state, blogList: action.data}
     default:
       return state
   }

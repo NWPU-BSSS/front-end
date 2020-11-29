@@ -3,34 +3,35 @@ import { HomePageLeft } from '../components/homepage-components/HomePageLeft'
 import { HomePageCenter } from '../components/homepage-components/HomePageCenter'
 import { HomePageRight } from '../components/homepage-components/HomePageRight'
 import PropTypes from 'prop-types'
-
 import './HomePage.css'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router'
-import { getBaseInfoAsync } from '../@redux/actions'
+import { getBaseInfoAsync, getRecommendBlogListAsync } from '../@redux/actions_async'
 
 class HomePage extends Component {
 
   static propTypes = {
-    isLogin: PropTypes.bool.isRequired,
-    getBaseInfoAsync: PropTypes.func.isRequired
+    isLogin: PropTypes.bool,
+    getBaseInfoAsync: PropTypes.func,
+    blogList: PropTypes.array
   }
 
   componentWillMount () {
-    this.props.getBaseInfoAsync()
-
-    // this.props.
+    if (this.props.isLogin) {
+      this.props.getBaseInfoAsync()
+      this.props.getRecommendBlogListAsync()
+    }
   }
 
   render () {
-    // if (!this.props.isLogin) {
-    //   return <Redirect to="/login"/>
-    // }
+    if (!this.props.isLogin) {
+      return <Redirect to="/login"/>
+    }
 
     return (
       <div className="HomePage">
         <HomePageLeft/>
-        <HomePageCenter/>
+        <HomePageCenter blogList={this.props.blogList}/>
         <HomePageRight/>
       </div>
     )
@@ -38,8 +39,11 @@ class HomePage extends Component {
 }
 
 HomePage = connect(
-  state => ({ isLogin: state.userState.userId !== -1 }),
-  { getBaseInfoAsync}
+  state => ({
+    isLogin: state.userState.userId !== -1,
+    blogList: state.BlogList.blogList
+  }),
+  { getBaseInfoAsync, getRecommendBlogListAsync }
 )(HomePage)
 
 export { HomePage }

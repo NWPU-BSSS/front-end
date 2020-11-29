@@ -3,8 +3,8 @@ import { Form, Input } from 'antd'
 import { LockOutlined, UserOutlined } from '@ant-design/icons'
 import { LoginOrRegister, RememberLogin } from '../../pages/LoginPage'
 import PropTypes from 'prop-types'
-import { loginAsync } from '../../@redux/actions'
 import { connect } from 'react-redux'
+import { loginAsync } from '../../@redux/actions_async'
 
 class AccountLoginForm extends Component {
 

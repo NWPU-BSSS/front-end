@@ -29,3 +29,9 @@ export const getBaseInfo = async () =>
 
 export const getBadgeNum = async () =>
   request('/api/badgeNum', getInit())
+
+export const checkUsernameExist = async username =>
+  request('/api/usernameCheck', postInit({ username }))
+
+export const checkEmailExist = async email =>
+  request('/api/emailCheck', postInit({email}))

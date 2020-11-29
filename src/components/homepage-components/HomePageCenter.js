@@ -8,29 +8,11 @@ import { ItemContent } from './@common/ItemContent'
 import { TagList } from './@common/TagList'
 import { IconText } from './@common/IconText'
 
-const listData = []
-for (let i = 0; i < 15; i++) {
-  listData.push({
-    blogId: i,
-    userId: i,
-    title: `博客${i}`,
-    tagA: 'C#',
-    tagB: 'python',
-    tagC: 'JavaScript',
-    avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-    description:
-      'Bsss 软件学院的专属博客',
-    preview:
-      '软件学院的最棒的博客我们致力于打造属于软件学院的最棒的博客我们致力于打造属于软件学院的最棒的博客我们致力于打造属于软件学院的最棒的博客我们致力于打造属于软件学院的最棒的博客我们致力于打造属于软件学院的最棒的博客我们致力于打造属于软件学院的最棒的博客我们致力于打造属于软件学院的最棒的博客我们致力于打造属于软件学院的最棒的博客我们致力于打造属于软件学院的最棒的博客',
-    nickname: '风神少女',
-    lastModifiedTime: '2020-11-21',
-    favoriteNum: i,
-    likeNum: i + 1,
-    commentNum: i + 2
-  })
-}
-
 export class HomePageCenter extends Component {
+
+  static propTypes = {
+    blogList: PropTypes.array.isRequired
+  }
 
   constructor (props) {
     super(props)
@@ -47,13 +29,14 @@ export class HomePageCenter extends Component {
   }
 
   render () {
+    console.log(this.props.blogList)
     return (
       <div className="HomePageCenter">
         <div className="top-select-option">
           <div className="select-container">
             <Radio.Group onChange={this.onChange} value={this.state.value}>
-              <Radio value={1}>推荐</Radio>
-              <Radio value={2}>关注</Radio>
+              <Radio value={1}>Recommend</Radio>
+              <Radio value={2}>Followed</Radio>
             </Radio.Group>
           </div>
         </div>
@@ -67,21 +50,24 @@ export class HomePageCenter extends Component {
               },
               pageSize: 5,
             }}
-            dataSource={listData}
+            dataSource={this.props.blogList}
             renderItem={item => (
               <List.Item
                 key={item.title}
                 actions={[
-                  <IconText icon={StarOutlined} text={item.favoriteNum} key="list-vertical-star-o"/>,
-                  <IconText icon={LikeOutlined} text={item.likeNum} key="list-vertical-like-o"/>,
-                  <IconText icon={MessageOutlined} text={item.commentNum} key="list-vertical-message"/>,
+                  <IconText icon={StarOutlined} text={item.favoriteNum || 0} key="list-vertical-star-o"/>,
+                  <IconText icon={LikeOutlined} text={item.likeNum || 0} key="list-vertical-like-o"/>,
+                  <IconText icon={MessageOutlined} text={item.commentNum || 0} key="list-vertical-message"/>,
                 ]}>
                 <List.Item.Meta
-                  title={<Link to="/blog?articleId=1">{item.title}</Link>}
-                  description={<TagList tagA={item.tagA} tagB={item.tagB} tagC={item.tagC}/>}
+                  title={<Link to={`/blog?blogId=${item.blogId}`}>{item.title || ''}</Link>}
+                  description={<TagList tagA={item.tagA || ''} tagB={item.tagB || ''} tagC={item.tagC || ''}/>}
                 />
-                <ItemContent preview={item.preview} avatar={item.avatar} lastModifiedTime={item.lastModifiedTime}
-                             nickname={item.nickname}/>
+                <ItemContent preview={item.preview || item.content} avatar={item.avatar}
+                             lastModifiedTime={item.lastModifiedTime || 'unknow'}
+                             nickname={item.nickname || 'anonymous'}
+                             blogId={item.blogId}
+                />
               </List.Item>
             )}
           />,

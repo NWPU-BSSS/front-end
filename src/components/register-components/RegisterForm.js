@@ -2,24 +2,50 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Button, Input, Select } from 'antd'
 import { connect } from 'react-redux'
-import { registerAsync, sendVerifyCodeAsync } from '../../@redux/actions'
 import { Link } from 'react-router-dom'
 import { sendVerifyCode2Email } from '../../@api'
+import { checkEmailExist, checkUsernameExist } from '../../@api/root'
+import { registerAsync, sendVerifyCodeAsync } from '../../@redux/actions_async'
 
 const { Option } = Select
 
 class RegisterForm extends Component {
   static propTypes = {
-    register: PropTypes.func
+    registerAsync: PropTypes.func
   }
 
   constructor (props) {
     super(props)
     this.state = {
-      disableRegisterButton: false,
+      disableRegisterButton: true,
       disableGetVerifyCode: false
     }
     this.form = {}
+  }
+
+  handleCheckUsername = async () => {
+    let json = await checkUsernameExist(this.form.username)
+    let { code, msg, data } = json
+    if (code === 1) {
+      if (data.result) {
+        alert('the username has been registered')
+      }
+    } else {
+      alert(msg)
+    }
+  }
+
+  handleCheckEmail = async () => {
+    let json = await checkEmailExist(this.form.email)
+    let { code, msg, data } = json
+    if (code === 1) {
+      if (data.result) {
+        alert('the email has been registered')
+
+      }
+    } else {
+      alert(msg)
+    }
   }
 
   handleConfirmPassword = e => {
@@ -28,31 +54,41 @@ class RegisterForm extends Component {
 
   handleRegister = () => {
     let { email, username, password, confirmPassword } = this.form
-    if (email && username && password && confirmPassword){
-      if (password === confirmPassword) this.props.register({ ...this.form })
+    if (email && username && password && confirmPassword) {
+      if (password === confirmPassword) this.props.registerAsync({ ...this.form })
       else alert('password check failed')
-    }
-    else alert('please input your info')
+    } else alert('please input your info')
+  }
+
+  enableRegisterButton = () => this.setState({ disableRegisterButton: false })
+
+  checkForm = () => {
+    let { email, username, password, confirmPassword } = this.form
+    if (email && username && password && confirmPassword) this.enableRegisterButton()
   }
 
   handleInputVerifyCode = e => {
     this.form.verifyCode = e.target.value
+    this.checkForm()
   }
 
   handleInputUsername = e => {
     this.form.username = e.target.value
+    this.checkForm()
   }
 
   handleInputPassword = e => {
     this.form.password = e.target.value
+    this.checkForm()
   }
 
   handleInputEmail = e => {
     this.form.email = e.target.value
+    this.checkForm()
   }
 
   handleGetVerifyCode = async () => {
-    let { email, username, password, confirmPassword } = this.form
+    let { email } = this.form
     if (!email) {
       alert('please input your email')
       return
@@ -80,7 +116,7 @@ class RegisterForm extends Component {
           <form>
             <div style={{ margin: '20px 0' }}>
               <label>
-                <Input placeholder="username" onChange={this.handleInputUsername}/>
+                <Input placeholder="username" onBlur={this.handleCheckUsername} onChange={this.handleInputUsername}/>
               </label>
             </div>
             <div style={{ margin: '20px 0' }}>
@@ -96,15 +132,8 @@ class RegisterForm extends Component {
             <div style={{
               margin: '20px 0',
             }}>
-              {/*<Input.Group compact>*/}
-              {/*  <Select style={{ width: '20%' }} defaultValue="+86">*/}
-              {/*    <Option value="+86">+86</Option>*/}
-              {/*    <Option value="+87">+87</Option>*/}
-              {/*  </Select>*/}
-              {/*  <Input style={{ width: '80%' }} placeholder="请输入手机号"/>*/}
-              {/*</Input.Group>*/}
               <label>
-                <Input type="text" placeholder="email" onChange={this.handleInputEmail}/>
+                <Input type="text" placeholder="email" onBlur={this.handleCheckEmail} onChange={this.handleInputEmail}/>
               </label>
             </div>
             <div style={{
@@ -144,7 +173,7 @@ RegisterForm = connect(
   state => ({
     disableGetVerifyCode: state.registerPage.disableSendCodeButton
   }),
-  { register: registerAsync, getVerifyCode: sendVerifyCodeAsync }
+  { registerAsync, sendVerifyCodeAsync }
 )(RegisterForm)
 
 export { RegisterForm }

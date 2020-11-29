@@ -26,5 +26,6 @@ ItemContent.propTypes = {
   preview: PropTypes.string.isRequired,
   avatar: PropTypes.string.isRequired,
   nickname: PropTypes.string.isRequired,
-  lastModifiedTime: PropTypes.string.isRequired
+  lastModifiedTime: PropTypes.string.isRequired,
+  blogId: PropTypes.number.isRequired
 }

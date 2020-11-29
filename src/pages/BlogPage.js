@@ -1,23 +1,31 @@
 import React, { Component } from 'react'
 import { BlogPageLeft } from '../components/blogpage-components/BlogPageLeft'
 import { BlogPageMain } from '../components/blogpage-components/BlogPageMain'
+import connect from 'react-redux/lib/connect/connect'
+import PropTypes from 'prop-types'
+import { getBlogAsync } from '../@redux/actions_async'
 import './BlogPage.css'
-import { ClassificationColumn } from '../components/blogpage-components/ClassificationColumn'
-import { ThumbBox } from '../components/blogpage-components/ThumbBox'
+
 class BlogPage extends Component {
+  static propTypes = {
+    getBlogAsync: PropTypes.func,
+    blogInfo: PropTypes.object
+  }
+
+  componentWillMount () {
+    // this.props.getBlogAsync()
+  }
+
   render () {
     return (
       <div className="BlogPage">
         <BlogPageLeft/>
-        <BlogPageMain/>
+        <BlogPageMain blogInfo={this.props.blogInfo || {}}/>
       </div>
     )
   }
 }
 
-// BlogPage = connect(
-// state => ({...state.article.articleInfo})
-// )(BlogPage)
 
 export { BlogPage }
 
