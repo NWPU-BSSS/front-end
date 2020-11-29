@@ -60,7 +60,7 @@ export class HomePageCenter extends Component {
                   <IconText icon={MessageOutlined} text={item.commentNum || 0} key="list-vertical-message"/>,
                 ]}>
                 <List.Item.Meta
-                  title={<Link to={`/blog?blogId=${item.blogId}`}>{item.title || ''}</Link>}
+                  title={<Link to={`/blog/${item.blogId || 10}`}>{item.title || ''}</Link>}
                   description={<TagList tagA={item.tagA || ''} tagB={item.tagB || ''} tagC={item.tagC || ''}/>}
                 />
                 <ItemContent preview={item.preview || item.content} avatar={item.avatar}

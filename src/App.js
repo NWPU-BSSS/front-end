@@ -24,7 +24,7 @@ function App () {
       <Route path="/register" component={RegisterPage}/>
       <Route path="/login" component={LoginPage}/>
       <Route path="/reg-success" component={RegisterSuccessPage}/>
-      <Route path="/blog" component={BlogPage}/>
+      <Route path="/blog/:blogId" component={BlogPage}/>
       <Route path="/space" component={BloggerSpacePage}/>
       <Route path="/profile" component={ProfilePage}/>
       <Route path="/release-blog" component={ReleaseBlogPage}/>

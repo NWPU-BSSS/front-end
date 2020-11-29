@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { BlogPageLeft } from '../components/blogpage-components/BlogPageLeft'
 import { BlogPageMain } from '../components/blogpage-components/BlogPageMain'
-import connect from 'react-redux/lib/connect/connect'
 import PropTypes from 'prop-types'
 import { getBlogAsync } from '../@redux/actions_async'
 import './BlogPage.css'
+import { connect } from 'react-redux'
 
 class BlogPage extends Component {
   static propTypes = {
@@ -13,19 +13,26 @@ class BlogPage extends Component {
   }
 
   componentWillMount () {
-    // this.props.getBlogAsync()
+    this.props.getBlogAsync(10)
+    console.log(this.props.params)
   }
 
   render () {
     return (
       <div className="BlogPage">
         <BlogPageLeft/>
-        <BlogPageMain blogInfo={this.props.blogInfo || {}}/>
+        <BlogPageMain {...this.props.blogInfo}/>
       </div>
     )
   }
 }
 
+BlogPage = connect(
+  state => ({
+    blogInfo: state.BlogList.blogInfo
+  }),
+  { getBlogAsync }
+)(BlogPage)
 
 export { BlogPage }
 

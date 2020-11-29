@@ -6,18 +6,25 @@ import { RelatedBlogList } from './RelatedBlogList'
 import { AddComment } from './AddComment'
 import { CommentList } from './CommentList'
 import PropTypes from 'prop-types'
+import { BlogTitle } from './BlogTitle'
 
 export class BlogPageMain extends Component {
 
   static propTypes = {
-    blogInfo: PropTypes.object.isRequired
+    commentNum: PropTypes.number,
+    content: PropTypes.object,
+    favoriteNum: PropTypes.number,
+    likeNum: PropTypes.number,
+    shareNum: PropTypes.number,
+    title: PropTypes.string
   }
 
   render () {
     return (
       <div className="BlogPageMain">
-        <BlogContent content={this.props.blogInfo.content || ''}/>
-        <ThumbBox/>
+        <BlogTitle title={this.props.title}/>
+        <BlogContent content={this.props.content || ''}/>
+        <ThumbBox commentNum={this.props.commentNum} favoriteNum={this.props.favoriteNum} likeNum={this.props.likeNum} shareNum={this.props.shareNum}/>
         <AddComment/>
         <CommentList/>
         <RelatedBlogList/>
