@@ -34,5 +34,7 @@ NavMenuAndBottom.WriteCode = 'Write Code' // 导航条，创作中心下拉菜�
 NavMenuAndBottom.NewProject = 'New Project' // 导航条，左侧代码菜单列表
 NavMenuAndBottom.Privacy = 'Privacy' // 底部内容
 NavMenuAndBottom.FindFriends = 'Find Friends' // 导航条，左侧社交菜单列表
+NavMenuAndBottom.Login = 'Login'
+NavMenuAndBottom.QuickRegister = 'Quick Register'
 
 module.exports = NavMenuAndBottom

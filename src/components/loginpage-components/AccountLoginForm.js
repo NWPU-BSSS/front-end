@@ -20,6 +20,14 @@ class AccountLoginForm extends Component {
     this.password = e.target.value
   }
 
+  handleLogin = () => {
+    let { email, password } = this
+    if (email && password) {
+      if (!/@/.test(email)) alert('wrong email')
+      else this.props.loginAsync({ email, password })
+    } else alert('please input your email or username and password')
+  }
+
   render () {
     return (
       <Form
@@ -38,7 +46,7 @@ class AccountLoginForm extends Component {
           <Input prefix={<LockOutlined/>} type="password" placeholder="请输入密码" onChange={this.handleInputPassword}/>
         </div>
         <RememberLogin/>
-        <LoginOrRegister onLogin={{/*() => this.props.loginAsync(this.email, this.password)*/}}/>
+        <LoginOrRegister onLogin={this.handleLogin}/>
       </Form>
     )
   }

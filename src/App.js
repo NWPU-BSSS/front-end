@@ -20,7 +20,7 @@ import { BlogList } from './components/blogger-space-components/BlogList'
 function App () {
   return (
     <Layout>
-      <Route exact path="/home" component={HomePage}/>
+      <Route exact path="/" component={HomePage}/>
       <Route path="/register" component={RegisterPage}/>
       <Route path="/login" component={LoginPage}/>
       <Route path="/reg-success" component={RegisterSuccessPage}/>

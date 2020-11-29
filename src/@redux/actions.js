@@ -1,14 +1,15 @@
 import {
-  LOGIN,
-  LOGOUT,
-  GET_USER_INFO,
+  EDIT_TAG,
   GET_ARTICLE_INFO,
   GET_ARTICLE_LIST,
-  REGISTER_SUCCESS_TRUE,
-  REGISTER_SUCCESS_FALSE,
   GET_TODAY_RECOMMEND,
+  GET_USER_INFO,
   INPUT_MARKDOWN,
-  EDIT_TAG,
+  LOGIN,
+  LOGOUT,
+  REGISTER_SUCCESS_FALSE,
+  REGISTER_SUCCESS_TRUE,
+  SET_ACCESS_TOKEN,
   USE_EN,
   USE_ZH
 } from './action-types'
@@ -26,6 +27,12 @@ export const login = ({ username, email, userId }) =>
   ({
     type: LOGIN,
     data: { username, email, userId }
+  })
+
+export const setAccessToken = token =>
+  ({
+    type: SET_ACCESS_TOKEN,
+    data: token
   })
 
 export const useEn = () =>
@@ -100,9 +107,16 @@ export const editTag = ({ tagA, tagB, tagC }) =>
  */
 export const loginAsync = ({ email, username, password }) =>
   async dispatch => {
-    const { code, msg } = await req.login({ email, username, password })
+    let { code, msg, data } = await req.login({ email, username, password })
     if (code === 1) {
-      dispatch(login({ email, username, userId: 1 }))
+      let { accessToken } = data || ''
+      dispatch(setAccessToken(accessToken))
+      // const { code, msg, data } = await req.getBaseInfo()
+      // if (code === 1) {
+      //   dispatch(login({ ...(data), userId: 1 }))
+      // } else {
+      //   alert(msg)
+      // }
     } else {
       alert(msg)
     }
@@ -118,6 +132,7 @@ export const loginAsync = ({ email, username, password }) =>
 export const registerAsync = ({ username, password, email, verifyCode }) =>
   async dispatch => {
     const { code, msg, data } = await req.register({ email, password, username, verifyCode })
+    // debugger
     if (code === 1) {
       dispatch(login({ username, ...data }))
       dispatch(setRegisterSuccess(true))
@@ -196,3 +211,15 @@ export const getTodayRecommendAsync = () =>
       alert(msg)
     }
   }
+
+export const sendVerifyCodeAsync = ({ email }) =>
+  async dispatch => {
+    const { code, msg } = await req.sendVerifyCode2Email({ email })
+    if (code === 1) {
+      // dispatch()
+    } else {
+      alert(msg)
+    }
+  }
+
+

@@ -88,7 +88,7 @@ class RightComponent extends Component {
     if (this.props.user.userId !== -1) {
       return <NavLogged language={this.props.language}/>
     } else {
-      return <NavUnloggin/>
+      return <NavUnloggin language={this.props.language}/>
     }
   }
 }

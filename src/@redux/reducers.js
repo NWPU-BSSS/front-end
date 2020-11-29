@@ -4,12 +4,12 @@ import {
   GET_ARTICLE_LIST, GET_TODAY_RECOMMEND, INPUT_MARKDOWN,
   LOGIN,
   LOGOUT,
-  REGISTER, REGISTER_SUCCESS_FALSE, REGISTER_SUCCESS_TRUE, SET_ACCESS_TOKEN, USE_EN, USE_ZH,
+  REGISTER, REGISTER_SUCCESS_FALSE, REGISTER_SUCCESS_TRUE, SEND_VERIFY_EMAIL_SUCCESS, SET_ACCESS_TOKEN, USE_EN, USE_ZH,
 } from './action-types'
 
 import {en, zh} from '../@i18n'
 
-const initUserState = { userId: 1, username: '' }
+const initUserState = { userId: -1, username: '' }
 
 export function AccessToken (state = '', action) {
   switch (action.type) {
@@ -52,6 +52,15 @@ export function article (state = {}, action) {
       return { ...state, articleInfo: action.data }
     case GET_ARTICLE_LIST:
       return { ...state, articleList: action.data }
+    default:
+      return state
+  }
+}
+
+export function registerPage(state = {}, action){
+  switch (action.type) {
+    case SEND_VERIFY_EMAIL_SUCCESS:
+      return {...state, disableSendCodeButton: true}
     default:
       return state
   }

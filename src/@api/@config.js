@@ -3,6 +3,9 @@ import store from '../@redux/store'
 let AccessToken = ''
 store.subscribe(() => {
   AccessToken = store.getState()['AccessToken']
+  headers.append('Content-Type', 'application/json')
+  if (AccessToken !== '') headers.append('AccessToken', AccessToken)
+  console.log(AccessToken)
 })
 
 /**
@@ -10,9 +13,6 @@ store.subscribe(() => {
  * @type {Headers}
  */
 let headers = new Headers()
-headers.append('Content-Type', 'application/json')
-if (AccessToken !== '') headers.append('AccessToken', AccessToken)
-
 /**
  * post请求构造
  * @param body
