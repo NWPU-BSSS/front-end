@@ -88,31 +88,25 @@ export function todayRecommend (state = {}, action) {
 }
 
 const content = `
-# Markdown 在线编辑
-## 二级标题
+# Markdown Online Editor
+## Subtitle
 
-普通内容
+common content
 
-### 三级标题
+### Little title
 
-    代码块
+    Code Block
   
-### 代码高亮
+### Code Syntax Highlight
 ~~~js
 console.log('hello bsss')
 ~~~
-
-
-### 表格测试
-
-| 111 | 222 |
-| --- | --- |
-| A | B |
 `
 
 const markdownEditorInit = {
   content,
-  tags: { tagA: 'TagA', tagB: 'TagB', tagC: 'TagC' }
+  tags: { tagA: 'TagA', tagB: 'TagB', tagC: 'TagC' },
+  title: ''
 }
 
 export function MarkdownEditor (state = markdownEditorInit, action) {

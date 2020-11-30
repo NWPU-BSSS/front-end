@@ -97,11 +97,10 @@ export const getRecommendBLogListAsync = () =>
  */
 export const releaseBlogAsync = ({ title, content }) =>
   async dispatch => {
-
     // eslint-disable-next-line no-unused-vars
     const { code, msg, data } = await req.releaseBlog({ title, content })
     if (code === 1) {
-      // dispatch(loadArticleList(data))
+      dispatch(loadBlogList(data))
       alert('发布成功')
     } else {
       alert(msg)
