@@ -11,7 +11,8 @@ const { Option } = Select
 
 class RegisterForm extends Component {
   static propTypes = {
-    registerAsync: PropTypes.func
+    registerAsync: PropTypes.func,
+    sendVerifyCodeAsync: PropTypes.func
   }
 
   constructor (props) {
@@ -93,11 +94,7 @@ class RegisterForm extends Component {
       alert('please input your email')
       return
     }
-    this.setState({ disableGetVerifyCode: true })
-    setTimeout(() => {
-      this.setState({ disableGetVerifyCode: false })
-    }, 60000)
-    this.props.getVerifyCode({ email })
+    this.props.sendVerifyCodeAsync({ email })
   }
 
   render () {

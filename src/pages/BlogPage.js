@@ -13,8 +13,8 @@ class BlogPage extends Component {
   }
 
   componentWillMount () {
-    this.props.getBlogAsync(10)
-    console.log(this.props.params)
+    let blogId = this.props.match.params.blogId
+    this.props.getBlogAsync(blogId)
   }
 
   render () {

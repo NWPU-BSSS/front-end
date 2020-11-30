@@ -31,7 +31,7 @@ class HomePage extends Component {
     return (
       <div className="HomePage">
         <HomePageLeft/>
-        <HomePageCenter blogList={this.props.blogList}/>
+        <HomePageCenter blogList={this.props.blogList || []}/>
         <HomePageRight/>
       </div>
     )

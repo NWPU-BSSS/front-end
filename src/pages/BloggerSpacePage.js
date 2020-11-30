@@ -7,15 +7,19 @@ import { Route } from 'react-router'
 
 export class BloggerSpacePage extends Component {
 
+  componentWillMount () {
+    // this.props.params
+  }
+
   render () {
     return (
       <div>
         <Blogger/>
         <ContentNavBar/>
         <SwitchRouter>
-          <Route path="/space/blog" component={BlogList}/>
-          <Route path="/space/resource" component={Resource}/>
-          <Redirect to="/space/blog"/>
+          <Route path="blog" component={BlogList}/>
+          <Route path="resource" component={Resource}/>
+          <Redirect to="blog"/>
         </SwitchRouter>
       </div>
     )

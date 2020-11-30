@@ -12,7 +12,7 @@ export class BlogPageMain extends Component {
 
   static propTypes = {
     commentNum: PropTypes.number,
-    content: PropTypes.object,
+    content: PropTypes.string,
     favoriteNum: PropTypes.number,
     likeNum: PropTypes.number,
     shareNum: PropTypes.number,

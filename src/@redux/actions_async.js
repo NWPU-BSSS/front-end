@@ -40,7 +40,7 @@ export const registerAsync = ({ username, password, email, verifyCode }) =>
     const { code, msg, data } = await req.register({ email, password, username, verifyCode })
     // debugger
     if (code === 1) {
-      dispatch(login({ username, ...data }))
+      // dispatch(login({ username, ...data }))
       dispatch(setRegisterSuccess(true))
       // dispatch(showNav())
     } else {

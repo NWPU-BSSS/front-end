@@ -23,8 +23,10 @@ class AccountLoginForm extends Component {
   handleLogin = () => {
     let { email, password } = this
     if (email && password) {
-      if (!/@/.test(email)) alert('wrong email')
-      else this.props.loginAsync({ email, password })
+      if (!/@/.test(email)) {
+        let username = email
+        this.props.loginAsync({ username, password })
+      } else this.props.loginAsync({ email, password })
     } else alert('please input your email or username and password')
   }
 
@@ -38,12 +40,12 @@ class AccountLoginForm extends Component {
         <div style={{
           margin: '20px'
         }}>
-          <Input prefix={<UserOutlined/>} placeholder="请输入账户邮箱" onChange={this.handleInputEmail}/>
+          <Input prefix={<UserOutlined/>} placeholder="username/email" onChange={this.handleInputEmail}/>
         </div>
         <div style={{
           margin: '20px'
         }}>
-          <Input prefix={<LockOutlined/>} type="password" placeholder="请输入密码" onChange={this.handleInputPassword}/>
+          <Input prefix={<LockOutlined/>} type="password" placeholder="password" onChange={this.handleInputPassword}/>
         </div>
         <RememberLogin/>
         <LoginOrRegister onLogin={this.handleLogin}/>
