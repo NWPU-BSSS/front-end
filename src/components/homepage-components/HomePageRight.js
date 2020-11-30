@@ -4,15 +4,23 @@ import './HomePageRight.css'
 import { QuickEntry } from './QuickEntry'
 import { UserCard } from './UserCard'
 import { MessageOption } from './MessageOption'
+import { connect } from 'react-redux'
 
-export class HomePageRight extends Component {
+class HomePageRight extends Component {
 
   render () {
     return (
       <div className="HomePageRight">
-        <UserCard/>
+        <UserCard {...this.props.user}/>
         <MessageOption/>
       </div>
     )
   }
 }
+
+HomePageRight = connect(
+  state => ({
+    user: state['UserState']
+  })
+)(HomePageRight)
+export { HomePageRight }

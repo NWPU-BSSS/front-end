@@ -155,7 +155,7 @@ NavMenu = connect(
   state => {
     const { NavMenuAndBottom } = state.Language
     return ({
-      userState: state.userState,
+      userState: state['UserState'],
       language: NavMenuAndBottom
     })
   },

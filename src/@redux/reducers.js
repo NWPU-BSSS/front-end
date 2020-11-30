@@ -1,5 +1,5 @@
 import {
-  EDIT_TAG,
+  EDIT_TAG, EDIT_TITLE,
   GET_BLOG_INFO,
   GET_BLOG_LIST, GET_TODAY_RECOMMEND, GET_USER_INFO, INPUT_MARKDOWN,
   LOGIN,
@@ -31,7 +31,7 @@ export function Language (state = en, action) {
   }
 }
 
-export function userState (state = initUserState, action) {
+export function UserState (state = initUserState, action) {
   switch (action.type) {
     case LOGIN:
       return { ...state, ...action.data }
@@ -49,9 +49,9 @@ export function userState (state = initUserState, action) {
 export function BlogList (state = {}, action) {
   switch (action.type) {
     case GET_BLOG_INFO:
-      return {...state, blogInfo: action.data}
+      return { ...state, blogInfo: action.data }
     case GET_BLOG_LIST:
-      return { ...state, blogList: action.data}
+      return { ...state, blogList: action.data }
     default:
       return state
   }
@@ -115,6 +115,8 @@ export function MarkdownEditor (state = markdownEditorInit, action) {
       return { ...state, content: action.data }
     case EDIT_TAG:
       return { ...state, tags: action.data }
+    case EDIT_TITLE:
+      return { ...state, title: action.data }
     default:
       return state
   }

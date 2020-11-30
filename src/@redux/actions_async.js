@@ -40,9 +40,7 @@ export const registerAsync = ({ username, password, email, verifyCode }) =>
     const { code, msg, data } = await req.register({ email, password, username, verifyCode })
     // debugger
     if (code === 1) {
-      // dispatch(login({ username, ...data }))
       dispatch(setRegisterSuccess(true))
-      // dispatch(showNav())
     } else {
       alert(msg)
     }
@@ -93,12 +91,15 @@ export const getRecommendBLogListAsync = () =>
  *
  * @param title
  * @param content
+ * @param tagA
+ * @param tagB
+ * @param tagC
  * @returns {function(*): Promise<void>}
  */
-export const releaseBlogAsync = ({ title, content }) =>
+export const releaseBlogAsync = ({ title, content, tagA, tagB, tagC }) =>
   async dispatch => {
     // eslint-disable-next-line no-unused-vars
-    const { code, msg, data } = await req.releaseBlog({ title, content })
+    const { code, msg, data } = await req.releaseBlog({ title, content, tagA, tagB, tagC })
     if (code === 1) {
       dispatch(loadBlogList(data))
       alert('发布成功')

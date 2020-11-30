@@ -51,9 +51,4 @@ class NavLogged extends Component {
   }
 }
 
-NavLogged = connect(
-  state => ({ username: state.userState.username }),
-  { logout }
-)(NavLogged)
-
 export { NavLogged }

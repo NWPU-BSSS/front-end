@@ -1,5 +1,5 @@
 import {
-  EDIT_TAG,
+  EDIT_TAG, EDIT_TITLE,
   GET_BLOG_INFO,
   GET_BLOG_LIST,
   GET_TODAY_RECOMMEND,
@@ -92,5 +92,11 @@ export const editTag = ({ tagA, tagB, tagC }) =>
   ({
     type: EDIT_TAG,
     data: { tagA, tagB, tagC }
+  })
+
+export const editTitle = title =>
+  ({
+    type: EDIT_TITLE,
+    data: title
   })
 

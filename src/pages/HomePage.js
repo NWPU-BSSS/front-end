@@ -31,7 +31,7 @@ class HomePage extends Component {
     return (
       <div className="HomePage">
         <HomePageLeft/>
-        <HomePageCenter blogList={this.props.blogList || []}/>
+        <HomePageCenter blogList={this.props.blogList}/>
         <HomePageRight/>
       </div>
     )
@@ -40,7 +40,7 @@ class HomePage extends Component {
 
 HomePage = connect(
   state => ({
-    isLogin: state.userState.userId !== -1,
+    isLogin: state['UserState'].userId !== -1,
     blogList: state.BlogList.blogList
   }),
   { getBaseInfoAsync, getRecommendBlogListAsync }

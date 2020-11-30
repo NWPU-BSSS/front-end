@@ -29,7 +29,6 @@ export class HomePageCenter extends Component {
   }
 
   render () {
-    console.log(this.props.blogList)
     return (
       <div className="HomePageCenter">
         <div className="top-select-option">
@@ -53,7 +52,7 @@ export class HomePageCenter extends Component {
             dataSource={this.props.blogList}
             renderItem={item => (
               <List.Item
-                key={item.title}
+                key={item.toString()}
                 actions={[
                   <IconText icon={StarOutlined} text={item.favoriteNum || 0} key="list-vertical-star-o"/>,
                   <IconText icon={LikeOutlined} text={item.likeNum || 0} key="list-vertical-like-o"/>,

@@ -1,11 +1,11 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux'
-import { AccessToken, BlogList, Language, MarkdownEditor, registerPage, registerSuccess, userState } from './reducers'
+import { AccessToken, BlogList, Language, MarkdownEditor, registerPage, registerSuccess, UserState } from './reducers'
 import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
 
 const store = createStore(
   combineReducers({
-    userState,
+    UserState,
     BlogList,
     registerSuccess,
     MarkdownEditor,

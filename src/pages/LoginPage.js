@@ -129,7 +129,7 @@ class LoginPage extends Component {
 
 LoginPage = connect(
   state => ({
-    isLogin: state.userState.userId !== -1
+    isLogin: state['UserState'].userId !== -1
   })
 )(LoginPage)
 

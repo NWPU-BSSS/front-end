@@ -5,18 +5,23 @@ import { Button, Avatar, Input, Tag, Modal, Form, Space } from 'antd'
 import { TagList } from '../homepage-components/@common/TagList'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { editTag } from '../../@redux/actions'
+import { editTag, editTitle } from '../../@redux/actions'
 import { releaseBlogAsync } from '../../@redux/actions_async'
 
 class BlogInfoSetting extends Component {
 
   static propTypes = {
-    editTag: PropTypes.func,
     content: PropTypes.string,
-    title: PropTypes.string,
+    editTag: PropTypes.func,
+    editTitle: PropTypes.func,
+    releaseBlogAsync: PropTypes.func,
     tagA: PropTypes.string,
     tagB: PropTypes.string,
-    tagC: PropTypes.string
+    tagC: PropTypes.string,
+    title: PropTypes.string
+  }
+  handleInputTitle = e => {
+    this.props.editTitle(e.target.value)
   }
 
   constructor (props) {
@@ -30,6 +35,7 @@ class BlogInfoSetting extends Component {
   }
 
   handleRelease = () => {
+    console.log(this.props)
     this.props.releaseBlogAsync({ ...this.props })
   }
 
@@ -73,7 +79,7 @@ class BlogInfoSetting extends Component {
           Release Blog
         </div>
         <div className="title-edit-box">
-          <Input placeholder="input title" allowClear/>
+          <Input placeholder="input title" allowClear onChange={this.handleInputTitle}/>
         </div>
         <div className="tag-edit-box">
           <div onClick={this.handleEditTag} className="edit-tag">
@@ -119,7 +125,7 @@ BlogInfoSetting = connect(
       title
     }
   },
-  { editTag, releaseBlogAsync }
+  { editTag, releaseBlogAsync, editTitle }
 )(BlogInfoSetting)
 
 export { BlogInfoSetting }
