@@ -3,8 +3,8 @@ import { Form, Input } from 'antd'
 import { LockOutlined, UserOutlined } from '@ant-design/icons'
 import { LoginOrRegister, RememberLogin } from '../../pages/LoginPage'
 import PropTypes from 'prop-types'
-import { loginAsync } from '../../@redux/actions'
 import { connect } from 'react-redux'
+import { loginAsync } from '../../@redux/actions_async'
 
 class AccountLoginForm extends Component {
 
@@ -20,6 +20,16 @@ class AccountLoginForm extends Component {
     this.password = e.target.value
   }
 
+  handleLogin = () => {
+    let { email, password } = this
+    if (email && password) {
+      if (!/@/.test(email)) {
+        let username = email
+        this.props.loginAsync({ username, password })
+      } else this.props.loginAsync({ email, password })
+    } else alert('please input your email or username and password')
+  }
+
   render () {
     return (
       <Form
@@ -30,15 +40,15 @@ class AccountLoginForm extends Component {
         <div style={{
           margin: '20px'
         }}>
-          <Input prefix={<UserOutlined/>} placeholder="请输入账户邮箱" onChange={this.handleInputEmail}/>
+          <Input prefix={<UserOutlined/>} placeholder="username/email" onChange={this.handleInputEmail}/>
         </div>
         <div style={{
           margin: '20px'
         }}>
-          <Input prefix={<LockOutlined/>} type="password" placeholder="请输入密码" onChange={this.handleInputPassword}/>
+          <Input prefix={<LockOutlined/>} type="password" placeholder="password" onChange={this.handleInputPassword}/>
         </div>
         <RememberLogin/>
-        <LoginOrRegister onLogin={{/*() => this.props.loginAsync(this.email, this.password)*/}}/>
+        <LoginOrRegister onLogin={this.handleLogin}/>
       </Form>
     )
   }

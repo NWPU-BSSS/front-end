@@ -15,7 +15,7 @@ import { RegisterPage } from './pages/RegisterPage'
 import { LoginPage } from './pages/LoginPage'
 import { TestPage } from './pages/TestPage'
 import { BlogInfoSetting } from './components/release-blog-components/BlogInfoSetting'
-import { UserSpaceLy} from './pages/UserSpace-ly'
+import { BlogList } from './components/blogger-space-components/BlogList'
 
 function App () {
   return (
@@ -24,15 +24,14 @@ function App () {
       <Route path="/register" component={RegisterPage}/>
       <Route path="/login" component={LoginPage}/>
       <Route path="/reg-success" component={RegisterSuccessPage}/>
-      <Route path="/blog" component={BlogPage}/>
-      <Route path="/space" component={BloggerSpacePage}/>
+      <Route path="/blog/:blogId" component={BlogPage}/>
+      <Route path="/blogger/:bloggerId" component={BloggerSpacePage}/>
       <Route path="/profile" component={ProfilePage}/>
       <Route path="/release-blog" component={ReleaseBlogPage}/>
       <Route path="/code-edit" component={CodeEditPage}/>
       <Route path="/guest" component={GuestHomePage}/>
       <Route path="/t" component={TestPage}/>
       <Route path="/edit" component={BlogInfoSetting}/>
-      <Route path="/userSpace" component={UserSpaceLy}/>
     </Layout>
   )
 }

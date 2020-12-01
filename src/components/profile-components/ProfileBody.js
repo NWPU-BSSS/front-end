@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { PersonalInfoMenu } from '../personal-space-components/PersonalInfoMenu'
+import { PersonalInfoMenu } from './PersonalInfoMenu'
 import { PersonalInfo } from './PersonalInfo'
 import './Container.css'
 

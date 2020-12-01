@@ -13,7 +13,7 @@ class NavLogged extends Component {
 
   static propTypes = {
     username: PropTypes.string,
-    logout: PropTypes.func,
+    logout: PropTypes.func.isRequired,
     language: PropTypes.object
   }
 
@@ -32,7 +32,6 @@ class NavLogged extends Component {
               margin: '0'
             }}>{CreationCentre}</div>
           }>
-
           <Link to="/release-blog">{WriteBlog}</Link>
           <a>{WriteCode}</a>
           <a>{UploadResource}</a>
@@ -44,17 +43,11 @@ class NavLogged extends Component {
             <img src={logo} alt="Avatar"/>
           </div>
         }>
-          <NavUserPanel language={userPanelLanguage} onLogout={() => this.props.logout()}
-                        username={this.props.username || ''}/>
+          <NavUserPanel {...this.props} language={userPanelLanguage} onLogout={() => this.props.logout()} username={''}/>
         </NavMenuDropdown>
       </div>
     )
   }
 }
-
-NavLogged = connect(
-  state => ({ username: state.userState.username }),
-  { logout }
-)(NavLogged)
 
 export { NavLogged }

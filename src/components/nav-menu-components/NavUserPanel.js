@@ -13,13 +13,21 @@ import {
 } from '@ant-design/icons'
 
 import './NavUserPanel.css'
+import { Link } from 'react-router-dom'
 
 export class NavUserPanel extends Component {
 
   static propTypes = {
-    username: PropTypes.string.isRequired,
+    language: PropTypes.object.isRequired,
     onLogout: PropTypes.func.isRequired,
-    language: PropTypes.object.isRequired
+    username: PropTypes.string,
+    avatar: PropTypes.string,
+    nickname: PropTypes.string,
+    level: PropTypes.number,
+    codeAge: PropTypes.number,
+    blogNum: PropTypes.number,
+    followNum: PropTypes.number,
+    fanNum: PropTypes.number
   }
 
   render () {
@@ -27,25 +35,25 @@ export class NavUserPanel extends Component {
 
     return <>
       <a className="panel-item user-name">
-        <div>{this.props.username}</div>
+        <div>{this.props.nickname}</div>
       </a>
       <a className="panel-item level">
         <div><CrownOutlined/>&nbsp;{GrowthSystem}</div>
-        <div style={{ textAlign: 'center' }}>Lv2</div>
+        <div style={{ textAlign: 'center' }}>Lv{this.props.level}</div>
       </a>
       <div className="panel-item fl-wrapper">
         <a className="fl">
           <div>{Subscribe}&nbsp;<HeartOutlined/></div>
-          <div>12</div>
+          <div>{this.props.followNum}</div>
         </a>
         <a className="fl">
           <div>{Fans}&nbsp;<CheckCircleOutlined/></div>
-          <div>9</div>
+          <div>{this.props.fanNum}</div>
         </a>
       </div>
-      <a className="panel-item">
+      <Link className="panel-item" to="/profile">
         <div><IdcardFilled/>&nbsp;{PersonalCentre}</div>
-      </a>
+      </Link>
       <a className="panel-item">
         <div><EditFilled/>&nbsp;{MyBlog}</div>
       </a>

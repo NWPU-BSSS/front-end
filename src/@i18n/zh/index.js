@@ -1,7 +1,23 @@
+import BlogBrowsing from './BlogBrowsing'
+import BlogEditor from './BlogEditor'
+import BloggerSpace from './BloggerSpace'
+import CodeEditor from './CodeEditor'
+import FirstPageAfterLogin from './FirstPageAfterLogin'
+import IndividualSpace from './IndividualSpace'
+import Login from './Login'
 import NavMenuAndBottom from './NavMenuAndBottom'
 import PersonalHomepage from './PersonalHomepage'
+import Register from './Register'
+import RegisterSuccessfully from './RegisterSuccessfully'
 
-export {
-  NavMenuAndBottom,
-  PersonalHomepage
-}
+export { BlogBrowsing }
+export { BlogEditor }
+export { BloggerSpace }
+export { CodeEditor }
+export { FirstPageAfterLogin }
+export { IndividualSpace }
+export { Login }
+export { NavMenuAndBottom }
+export { PersonalHomepage }
+export { Register }
+export { RegisterSuccessfully }

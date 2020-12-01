@@ -9,7 +9,7 @@ import { postInit, query, request } from './@config'
  * @param tagC 标签C
  * @returns {Promise<JSON>}
  */
-export const releaseBlog = async ({ title, content, tagA = null, tagB = null, tagC = null }) =>
+export const releaseBlog = async ({ title, content, tagA = '', tagB = '', tagC = '' }) =>
   await request('/api/blog', postInit({ title, content, tagA, tagB, tagC }))
 
 /**

@@ -1,0 +1,36 @@
+const BlogBrowsing = {}
+
+BlogBrowsing.BlogofNPU = 'NPU\'s Blog' // 右侧底部推荐文章
+BlogBrowsing.HomepageofNPU = 'TA\'s Homepage' // 左侧顶部个人信息
+BlogBrowsing.Class = 'Class' // 左侧顶部个人信息
+BlogBrowsing.Reward = 'Reward' // 右侧博客内容下方操作栏
+BlogBrowsing.Grade = 'Grade' // 左侧顶部个人信息
+BlogBrowsing.Like = 'Like' // 右侧博客内容下方操作栏
+BlogBrowsing.SecondaryTitle = 'Secondary Title' // 左侧文章目录栏
+BlogBrowsing.ClassificationColumn = 'Classification Column' // 左侧分类专栏
+BlogBrowsing.Share = 'Share' // 右侧博客内容下方操作栏
+BlogBrowsing.Fans = 'Fans' // 左侧顶部个人信息
+BlogBrowsing.Subscribe = 'Subscribe' // 左侧顶部个人信息
+BlogBrowsing.Subscribe = 'Subscribe' // 右侧博客内容下方操作栏
+BlogBrowsing.Reply = 'Reply' // 右侧评论区
+BlogBrowsing.Praises = 'Praises' // 左侧顶部个人信息
+BlogBrowsing.CodingAge = 'Coding Age' // 左侧顶部个人信息
+BlogBrowsing.Catalogue = 'Catalogue' // 左侧文章目录栏
+BlogBrowsing.Comment = 'Comment' // 左侧顶部个人信息
+BlogBrowsing.Comment = 'Comment' // 右侧博客内容下方操作栏
+BlogBrowsing.Comment = 'Comment' // 右侧评论区
+BlogBrowsing.TopArticle = 'Top Article' // 左侧热门文章
+BlogBrowsing.TertiaryTitle = 'Tertiary Title' // 左侧文章目录栏
+BlogBrowsing.Favorite = 'Favorite' // 左侧顶部个人信息
+BlogBrowsing.Favorite = 'Favorite' // 右侧博客内容下方操作栏
+BlogBrowsing.DirectMessages = 'Direct Messages' // 左侧顶部个人信息
+BlogBrowsing.SearchBlogPosts = 'Search for Blog Posts' // 左侧搜索框
+BlogBrowsing.SubscribeLikeAndShare = 'Subscribe Like and Share' // 右侧博客内容下方操作栏
+BlogBrowsing.Username = 'Username' // 左侧顶部个人信息
+BlogBrowsing.SuperiorReviewscanHelpAuthorsGainMoreWeight = 'Superior Reviews can Help Authors Gain More Weight' // 右侧评论区
+BlogBrowsing.Originality = 'Originality' // 左侧顶部个人信息
+BlogBrowsing.NComments = 'There are * Comments' // 右侧评论区
+BlogBrowsing.RecentComments = 'Recent Comments' // 左侧最新评论
+BlogBrowsing.RecentBlog = 'Recent Blog' // 左侧最新文章
+
+module.exports = BlogBrowsing

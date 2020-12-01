@@ -1,26 +1,29 @@
 import {
-  EDIT_TAG,
-  GET_ARTICLE_INFO,
-  GET_ARTICLE_LIST, GET_TODAY_RECOMMEND, INPUT_MARKDOWN,
+  CLEAR_ACCESS_TOKEN,
+  EDIT_TAG, EDIT_TITLE, GET_BADGE_NUM,
+  GET_BLOG_INFO,
+  GET_BLOG_LIST, GET_TODAY_RECOMMEND, GET_USER_INFO, INPUT_MARKDOWN,
   LOGIN,
   LOGOUT,
-  REGISTER, REGISTER_SUCCESS_FALSE, REGISTER_SUCCESS_TRUE, SET_ACCESS_TOKEN, USE_EN, USE_ZH,
+  REGISTER, REGISTER_SUCCESS_FALSE, REGISTER_SUCCESS_TRUE, SEND_VERIFY_EMAIL_SUCCESS, SET_ACCESS_TOKEN, USE_EN, USE_ZH,
 } from './action-types'
 
-import {en, zh} from '../@i18n'
+import { en, zh } from '../@i18n'
 
-const initUserState = { userId: 1, username: '' }
+const initUserState = { userId: -1, username: '' }
 
 export function AccessToken (state = '', action) {
   switch (action.type) {
     case SET_ACCESS_TOKEN:
       return action.data
+    case CLEAR_ACCESS_TOKEN:
+      return ''
     default:
       return state
   }
 }
 
-export function Language (state = en, action){
+export function Language (state = en, action) {
   switch (action.type) {
     case USE_EN:
       return en
@@ -31,27 +34,38 @@ export function Language (state = en, action){
   }
 }
 
-export function userState (state = initUserState, action) {
+export function UserState (state = initUserState, action) {
   switch (action.type) {
     case LOGIN:
-      //TODO: 后期解决路由跳转
-      // window.location.pathname = '/'
       return { ...state, ...action.data }
     case LOGOUT:
       return initUserState
     case REGISTER:
       return { ...state, ...action.data }
+    case GET_USER_INFO:
+      return { ...state, ...action.data }
+    case GET_BADGE_NUM:
+      return { ...state, badgeNum: action.data }
     default:
       return state
   }
 }
 
-export function article (state = {}, action) {
+export function BlogList (state = {}, action) {
   switch (action.type) {
-    case GET_ARTICLE_INFO:
-      return { ...state, articleInfo: action.data }
-    case GET_ARTICLE_LIST:
-      return { ...state, articleList: action.data }
+    case GET_BLOG_INFO:
+      return { ...state, blogInfo: action.data }
+    case GET_BLOG_LIST:
+      return { ...state, blogList: action.data }
+    default:
+      return state
+  }
+}
+
+export function registerPage (state = {}, action) {
+  switch (action.type) {
+    case SEND_VERIFY_EMAIL_SUCCESS:
+      return { ...state, disableSendCodeButton: true }
     default:
       return state
   }
@@ -72,38 +86,32 @@ export function registerSuccess (state = false, action) {
 export function todayRecommend (state = {}, action) {
   switch (action.type) {
     case GET_TODAY_RECOMMEND:
-      return { ...action.data }
+      return { ...state, ...action.data }
     default:
       return state
   }
 }
 
 const content = `
-# Markdown 在线编辑
-## 二级标题
+# Markdown Online Editor
+## Subtitle
 
-普通内容
+common content
 
-### 三级标题
+### Little title
 
-    代码块
+    Code Block
   
-### 代码高亮
+### Code Syntax Highlight
 ~~~js
 console.log('hello bsss')
 ~~~
-
-
-### 表格测试
-
-| 111 | 222 |
-| --- | --- |
-| A | B |
 `
 
 const markdownEditorInit = {
   content,
-  tags: { tagA: 'TagA', tagB: 'TagB', tagC: 'TagC' }
+  tags: { tagA: 'TagA', tagB: 'TagB', tagC: 'TagC' },
+  title: ''
 }
 
 export function MarkdownEditor (state = markdownEditorInit, action) {
@@ -112,6 +120,8 @@ export function MarkdownEditor (state = markdownEditorInit, action) {
       return { ...state, content: action.data }
     case EDIT_TAG:
       return { ...state, tags: action.data }
+    case EDIT_TITLE:
+      return { ...state, title: action.data }
     default:
       return state
   }

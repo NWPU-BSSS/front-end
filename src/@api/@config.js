@@ -1,18 +1,5 @@
 import store from '../@redux/store'
 
-let AccessToken = ''
-store.subscribe(() => {
-  AccessToken = store.getState()['AccessToken']
-})
-
-/**
- * 默认post header
- * @type {Headers}
- */
-let headers = new Headers()
-headers.append('Content-Type', 'application/json')
-if (AccessToken !== '') headers.append('AccessToken', AccessToken)
-
 /**
  * post请求构造
  * @param body
@@ -21,16 +8,28 @@ if (AccessToken !== '') headers.append('AccessToken', AccessToken)
 export const postInit = body => ({
   method: 'POST',
   body: JSON.stringify(body),
-  headers,
+  headers: headers(),
   mode: 'cors'
 })
+
+/**
+ * 构造带有AccessToken 的headers
+ * @returns {Headers}
+ */
+export const headers = () => {
+  let headers = new Headers()
+  let AccessToken = store.getState()['AccessToken']
+  if (AccessToken !== '') headers.append('AccessToken', AccessToken)
+  headers.append('content-type', 'application/json')
+  return headers
+}
 
 /**
  * get请求构造
  * @returns {{mode: string, headers: Headers}}
  */
 export const getInit = () => ({
-  headers,
+  headers: headers(),
   mode: 'cors'
 })
 
