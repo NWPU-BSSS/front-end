@@ -1,10 +1,15 @@
 import React, { Component } from 'react'
+import { ProfileBody } from '../components/profile-components/ProfileBody'
+import { ProfileTop } from '../components/profile-components/ProfileTop'
 
 export class ProfilePage extends Component {
 
   render () {
     return (
-      <h1>个人中心页面</h1>
+      <div>
+        <ProfileTop/>
+        <ProfileBody/>
+      </div>
     )
   }
 }

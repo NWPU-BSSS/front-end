@@ -1,4 +1,5 @@
 .base-layout-container{
     margin: 10px auto;
     max-width: 1400px;
+    min-width: 1080px;
 }

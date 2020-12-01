@@ -1,4 +1,4 @@
-div.bs-nav-logged{
+div.NavLogged{
     height: 100%;
     display: flex;
     flex-direction: row;
@@ -6,12 +6,12 @@ div.bs-nav-logged{
     align-items: center;
 }
 
-div.bs-nav-logged .head-avatar{
+div.NavLogged .head-avatar{
     width: 36px;
     height: 36px;
 }
 
-div.bs-nav-logged .head-avatar img{
+div.NavLogged .head-avatar img{
     width: 100%;
     height: 100%;
 }

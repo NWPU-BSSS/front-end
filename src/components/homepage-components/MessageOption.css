@@ -2,10 +2,12 @@
     margin: 50px auto;
     min-width: 120px;
     max-width: 200px;
+    background-color: #fff;
 }
 
 .message-option a{
     width: 100%;
+    color: #1d1d1d;
 }
 
 .message-option a:hover{

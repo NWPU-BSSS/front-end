@@ -1,0 +1,43 @@
+.ItemContent{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.ItemContent .bottom{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+}
+
+.ItemContent .bottom .item{
+    margin: 5px;
+}
+
+.ItemContent .bottom .item.title{
+    color: #a1a1a1;
+}
+
+.ItemContent .bottom .item.date{
+    color: #c0c0c0;
+    margin-left: 50px;
+}
+
+.ItemContent .bottom .main {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+}
+
+.ItemContent .preview{
+    color: #555;
+}
+
+.ItemContent .preview:hover{
+    color: deepskyblue;
+}

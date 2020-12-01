@@ -1,61 +1,30 @@
 import React, { Component } from 'react'
-import { Button, Input } from 'antd'
+import { MdEditor } from '../components/release-blog-components/MdEditor'
+import { ToolBox } from '../components/release-blog-components/ToolBox'
+import { BlogInfoSetting } from '../components/release-blog-components/BlogInfoSetting'
+import './Pages.css'
 import { connect } from 'react-redux'
-import { releaseArticleAsync } from '../@redux/actions'
+import { Redirect } from 'react-router'
 
 class ReleaseBlogPage extends Component {
-
-  releaseBlog = async () => {
-    const { title, content } = this
-    this.props.releaseArticleAsync({ title, content, userId: 1 })
-  }
-
-  handleInputTitle = e => {
-    this.title = e.target.value
-  }
-
-  handleInputContent = e => {
-    this.content = e.target.value
-  }
-
   render () {
+    if (!this.props.isLogin) {
+      return <Redirect to="/login"/>
+    }
+
     return (
-      <div style={{
-        width: '100%',
-        textAlign: 'center'
-      }}>
-        <header style={{
-          margin: '75px auto',
-          fontSize: '18px',
-          textAlign: 'center'
-        }}>发布博客
-        </header>
-        <Input style={{
-          width: '80%',
-          margin: '20px'
-        }} type="text" placeholder="请输入标题" onChange={this.handleInputTitle}/>
-        <textarea style={{
-          margin: '0 auto',
-          width: '80%',
-          height: '400px',
-          resize: 'none',
-          border: '2px solid #e9e9e9',
-          padding: '20px'
-        }} onChange={this.handleInputContent} />
-        <Button style={{
-          width: '400px',
-          margin: '35px auto',
-          padding: 'auto 75px'
-        }} type="primary" onClick={this.releaseBlog}>点击发布</Button>
+      <div>
+        <BlogInfoSetting/>
+        <ToolBox/>
+        <MdEditor/>
       </div>
     )
   }
 }
 
 ReleaseBlogPage = connect(
-  state => ({}),
-  { releaseArticleAsync }
+  state => ({ isLogin: state['UserState'].userId === 1 }),
 )(ReleaseBlogPage)
 
-export { ReleaseBlogPage}
+export { ReleaseBlogPage }
 

@@ -1,59 +1,37 @@
 import React, { Component } from 'react'
+import { BlogPageLeft } from '../components/blogpage-components/BlogPageLeft'
+import { BlogPageMain } from '../components/blogpage-components/BlogPageMain'
 import PropTypes from 'prop-types'
+import { getBlogAsync } from '../@redux/actions_async'
+import './BlogPage.css'
 import { connect } from 'react-redux'
-import { getArticleInfoAsync } from '../@redux/actions'
-import { urlParamParser } from '../@common/tool'
 
 class BlogPage extends Component {
-
   static propTypes = {
-    title: PropTypes.string,
-    content: PropTypes.string,
-    author: PropTypes.string,
-    time: PropTypes.string
+    getBlogAsync: PropTypes.func,
+    blogInfo: PropTypes.object
   }
 
-  componentDidMount () {
-    let params = urlParamParser(this.props.location.search)
-    let articleId = params.get('articleId')
-    this.props.getArticleInfoAsync(articleId)
+  componentWillMount () {
+    let blogId = this.props.match.params.blogId
+    this.props.getBlogAsync(blogId)
   }
 
   render () {
     return (
-      <div style={{
-        width: '100%',
-        padding: '150px'
-      }}>
-        <h1 style={{
-          fontSize: '24px',
-          fontWeight: 'bolder',
-          textAlign: 'center'
-        }}>{this.props.title || ''}</h1>
-        <h2 style={{
-          fontSize: '16px',
-          fontWeight: 'normal',
-          textAlign: 'right'
-        }}>作者：{this.props.author || ''}</h2>
-        <p style={{
-          textIndent: '2em',
-          fontSize: '18px',
-          padding: '20px',
-          backgroundColor: '#e0e0e0',
-        }}>{this.props.content || ''}</p>
-        <p style={{
-          fontSize: '12px',
-          textAlign: 'center',
-          color: '#a0a0a0'
-        }}>于 {this.props.time || ''} 发布</p>
+      <div className="BlogPage">
+        <BlogPageLeft/>
+        <BlogPageMain {...this.props.blogInfo}/>
       </div>
     )
   }
 }
 
 BlogPage = connect(
-  state => ({ ...state.article.articleInfo }),
-  { getArticleInfoAsync}
+  state => ({
+    blogInfo: state.BlogList.blogInfo
+  }),
+  { getBlogAsync }
 )(BlogPage)
 
 export { BlogPage }

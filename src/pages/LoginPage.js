@@ -4,10 +4,9 @@ import { Button, Checkbox, Tabs } from 'antd'
 import { AlipayCircleFilled, TaobaoCircleFilled, WeiboCircleFilled } from '@ant-design/icons'
 import { LoginFormTop } from '../components/@common/LoginFormTop'
 import { Link, Redirect } from 'react-router-dom'
-import { AccountLoginForm } from '../containers/AccountLoginForm'
-import { PhoneLoginForm } from '../containers/PhoneLoginForm'
+import { AccountLoginForm } from '../components/loginpage-components/AccountLoginForm'
+import { PhoneLoginForm } from '../components/loginpage-components/PhoneLoginForm'
 import { connect } from 'react-redux'
-import { hideNav } from '../@redux/actions'
 
 const { TabPane } = Tabs
 
@@ -96,12 +95,10 @@ class LoginOrRegister extends Component {
 class LoginPage extends Component {
 
   static propTypes = {
-    hideNav: PropTypes.func.isRequired,
     isLogin: PropTypes.bool.isRequired
   }
 
   componentDidMount () {
-    this.props.hideNav()
   }
 
   render () {
@@ -132,9 +129,8 @@ class LoginPage extends Component {
 
 LoginPage = connect(
   state => ({
-    isLogin: state.userState.userId !== -1
-  }),
-  { hideNav }
+    isLogin: state['UserState'].userId !== -1
+  })
 )(LoginPage)
 
 export { LoginPage, LoginOrRegister }

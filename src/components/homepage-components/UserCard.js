@@ -1,11 +1,20 @@
 import React, { Component } from 'react'
 import { Card } from 'antd'
 import { Avatar } from 'antd';
-
+import PropTypes from 'prop-types'
 import './UserCard.css'
 import { Hexagon } from './Hexagon'
 
 export class UserCard extends Component {
+
+  static propTypes = {
+    blogNum: PropTypes.number,
+    codeAge: PropTypes.number,
+    fanNum: PropTypes.number,
+    followNum: PropTypes.number,
+    level: PropTypes.number,
+    nickname: PropTypes.string
+  }
 
   render () {
 
@@ -15,26 +24,26 @@ export class UserCard extends Component {
           <div className="top-left">
             <div className="card-ava">
               <Avatar size={48} src="logo192.png"/>
-              <div>码龄2年</div>
+              <div className="code-age">CA{this.props.codeAge}</div>
             </div>
-            <div className="card-username">Chyoic</div>
+            <div className="card-username">{this.props.nickname}</div>
           </div>
           <div>
-            <Hexagon>Lv6</Hexagon>
+            <Hexagon>Lv{this.props.level}</Hexagon>
           </div>
         </div>
         <div className="card-bottom">
           <div className="bottom-item">
-            <div className="item-top">5</div>
-            <div className="item-bottom">博客</div>
+            <div className="item-top">{this.props.blogNum}</div>
+            <div className="item-bottom">Blogs</div>
           </div>
           <div className="bottom-item">
-            <div className="item-top">2</div>
-            <div className="item-bottom">关注</div>
+            <div className="item-top">{this.props.followNum}</div>
+            <div className="item-bottom">Follow</div>
           </div>
           <div className="bottom-item">
-            <div className="item-top">4</div>
-            <div className="item-bottom">粉丝</div>
+            <div className="item-top">{this.props.fanNum}</div>
+            <div className="item-bottom">Fans</div>
           </div>
         </div>
       </Card>

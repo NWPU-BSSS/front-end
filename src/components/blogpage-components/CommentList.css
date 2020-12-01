@@ -1,0 +1,47 @@
+div.CommentList {
+    background-color: #fff;
+    margin-top: 20px;
+    padding: 10px;
+}
+
+div.CommentItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    padding: 5px;
+    margin-top: 5px;
+    background-color: #fff;
+}
+
+div.CommentItem div.like {
+    flex-direction: row;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div.CommentItem div.left {
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    display: flex;
+
+}
+
+div.CommentItem div.item.username {
+    font-size: 18px;
+}
+
+div.CommentItem div.item.comment {
+    font-size: 16px;
+}
+
+div.CommentItem .datetime {
+    font-size: 14px;
+    color: #a1a1a1;
+}
+
+div.left .item{
+    margin-left: 20px;
+}

@@ -1,99 +1,114 @@
 import {
+  CLEAR_ACCESS_TOKEN,
+  EDIT_TAG, EDIT_TITLE, GET_ANNOUNCEMENT, GET_BADGE_NUM,
+  GET_BLOG_INFO,
+  GET_BLOG_LIST,
+  GET_TODAY_RECOMMEND,
+  GET_USER_INFO,
+  INPUT_MARKDOWN,
   LOGIN,
   LOGOUT,
-  GET_USER_INFO,
-  GET_ARTICLE_INFO,
-  GET_ARTICLE_LIST,
-  SHOW_NAV_MENU,
-  HIDE_NAV_MENU, REGISTER_SUCCESS_TRUE, REGISTER_SUCCESS_FALSE
+  REGISTER_SUCCESS_FALSE,
+  REGISTER_SUCCESS_TRUE,
+  SET_ACCESS_TOKEN,
+  USE_EN,
+  USE_ZH
 } from './action-types'
 
-import * as req from '../@api'
+/**
+ * 同步登陆Action
+ * @param username
+ * @param email
+ * @param userId
+ * @returns {{data: {userId: *, email: *, username: *}, type: string}}
+ */
+export const login = ({ username, email, userId }) =>
+  ({
+    type: LOGIN,
+    data: { username, email, userId }
+  })
 
-export const showNav = () => ({ type: SHOW_NAV_MENU })
-export const hideNav = () => ({ type: HIDE_NAV_MENU })
+export const setAccessToken = token =>
+  ({
+    type: SET_ACCESS_TOKEN,
+    data: token
+  })
 
-export const login = ({ username, email, userId }) => ({
-  type: LOGIN,
-  data: { username, email, userId }
-})
+export const clearAccessToken = () =>
+  ({
+    type: CLEAR_ACCESS_TOKEN
+  })
 
-export const getUserInfo = ({ username, email, userId }) => ({
-  type: GET_USER_INFO,
-  data: { username, email, userId }
-})
+export const useEn = () =>
+  ({
+    type: USE_EN
+  })
 
-export const logout = () => ({ type: LOGOUT })
+export const useZh = () =>
+  ({
+    type: USE_ZH
+  })
 
-export const getArticleInfo = ({ articleId, title, content, author, time }) => ({
-  type: GET_ARTICLE_INFO,
-  data: { articleId, title, content, time, author }
-})
-export const loadArticleList = list => ({ type: GET_ARTICLE_LIST, data: list })
+/**
+ * 同步获取用户信息
+ * @param {{userId: number}} info
+ * @returns {{data: {userId: *, email: *, username: *}, type: string}}
+ */
+export const getUserInfo = (info) =>
+  ({
+    type: GET_USER_INFO,
+    data: { ...info }
+  })
 
-export const setRegisterSuccess = flag => flag ? ({ type: REGISTER_SUCCESS_TRUE }) : ({ type: REGISTER_SUCCESS_FALSE })
+export const logout = () =>
+  ({
+    type: LOGOUT
+  })
 
-export const loginAsync = (email, password) =>
-  async dispatch => {
-    const { code, msg } = await req.login({ email, password })
-    if (code === 1) {
-      dispatch(login({ email, userId: 1, username: email }))
-    } else {
-      alert(msg)
-    }
-  }
+export const getBlog = (info) =>
+  ({
+    type: GET_BLOG_INFO,
+    data: info
+  })
+export const loadBlogList = list =>
+  ({
+    type: GET_BLOG_LIST,
+    data: list
+  })
 
-export const registerAsync = (username, password, email) =>
-  async dispatch => {
-    const { code, msg, data } = await req.register({ email, password, username })
-    if (code === 1) {
-      dispatch(login({ username, ...data }))
-      dispatch(setRegisterSuccess(true))
-      // dispatch(showNav())
-    } else {
-      alert(msg)
-    }
-  }
+export const setRegisterSuccess = flag =>
+  flag ?
+    ({ type: REGISTER_SUCCESS_TRUE })
+    :
+    ({ type: REGISTER_SUCCESS_FALSE })
 
-export const getUserInfoAsync = userId =>
-  async dispatch => {
-    const { code, msg, data } = await req.getUserInfo({ userId })
-    if (code === 1) {
-      dispatch(getUserInfo({ ...data, userId, username: data.email }))
-    } else {
-      alert(msg)
-    }
-  }
+export const getTodayRecommend = ({ announcementId, title, publisher, startTime, endTime, publishTime, content }) =>
+  ({
+    type: GET_TODAY_RECOMMEND,
+    data: { announcementId, title, publisher, startTime, endTime, publishTime, content }
+  })
 
-export const getArticleInfoAsync = articleId =>
-  async dispatch => {
-    const { code, msg, data } = await req.getArticleInfo({ articleId })
-    if (code === 1) {
-      dispatch(getArticleInfo({ ...data, articleId }))
-    } else {
-      alert(msg)
-    }
-  }
+export const inputMarkdown = content =>
+  ({
+    type: INPUT_MARKDOWN,
+    data: content
+  })
 
-export const getArticleListAsync = () =>
-  async dispatch => {
-    const { code, msg, data } = await req.getArticleList()
-    if (code === 1) {
-      dispatch(loadArticleList(data))
-    } else {
-      alert(msg)
-    }
-  }
+export const editTag = ({ tagA, tagB, tagC }) =>
+  ({
+    type: EDIT_TAG,
+    data: { tagA, tagB, tagC }
+  })
 
-export const releaseArticleAsync = ({ title, content, userId }) =>
-  async dispatch => {
+export const editTitle = title =>
+  ({
+    type: EDIT_TITLE,
+    data: title
+  })
 
-    // eslint-disable-next-line no-unused-vars
-    const { code, msg, data } = await req.releaseArticle({ title, content, userId })
-    if (code === 1) {
-      // dispatch(loadArticleList(data))
-      alert('发布成功')
-    } else {
-      alert(msg)
-    }
-  }
+export const getBadgeNum = badgeList =>
+  ({
+    type: GET_BADGE_NUM,
+    data: badgeList
+  })
+

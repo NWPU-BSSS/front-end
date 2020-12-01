@@ -1,20 +1,27 @@
-div.bsss-footer {
+div.Footer {
     width: 100%;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     display: flex;
     border-top: 1px solid #e9e9e9;
     padding: 20px;
+    height: 100px;
+    background-color: #fff;
 }
 
-div.bsss-footer a.title {
-    width: 100%;
-    text-align: center;
-    margin: 5px;
+div.Footer a, div.Footer span{
+    color: #555;
+}
+
+div.Footer .top {
+    width: 200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     color: #000;
 }
 
-div.bsss-footer a.body img {
+div.Footer a.body img {
     max-height: 50px;
 }
