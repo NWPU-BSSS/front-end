@@ -13,7 +13,7 @@ class NavLogged extends Component {
 
   static propTypes = {
     username: PropTypes.string,
-    logout: PropTypes.func,
+    logout: PropTypes.func.isRequired,
     language: PropTypes.object
   }
 
@@ -43,8 +43,7 @@ class NavLogged extends Component {
             <img src={logo} alt="Avatar"/>
           </div>
         }>
-          <NavUserPanel {...this.props} language={userPanelLanguage} onLogout={() => this.props.logout()}
-                        username={this.props.username || ''}/>
+          <NavUserPanel {...this.props} language={userPanelLanguage} onLogout={() => this.props.logout()} username={''}/>
         </NavMenuDropdown>
       </div>
     )

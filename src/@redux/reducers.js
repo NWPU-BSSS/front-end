@@ -1,5 +1,6 @@
 import {
-  EDIT_TAG, EDIT_TITLE,
+  CLEAR_ACCESS_TOKEN,
+  EDIT_TAG, EDIT_TITLE, GET_BADGE_NUM,
   GET_BLOG_INFO,
   GET_BLOG_LIST, GET_TODAY_RECOMMEND, GET_USER_INFO, INPUT_MARKDOWN,
   LOGIN,
@@ -15,6 +16,8 @@ export function AccessToken (state = '', action) {
   switch (action.type) {
     case SET_ACCESS_TOKEN:
       return action.data
+    case CLEAR_ACCESS_TOKEN:
+      return ''
     default:
       return state
   }
@@ -41,6 +44,8 @@ export function UserState (state = initUserState, action) {
       return { ...state, ...action.data }
     case GET_USER_INFO:
       return { ...state, ...action.data }
+    case GET_BADGE_NUM:
+      return { ...state, badgeNum: action.data }
     default:
       return state
   }
@@ -81,7 +86,7 @@ export function registerSuccess (state = false, action) {
 export function todayRecommend (state = {}, action) {
   switch (action.type) {
     case GET_TODAY_RECOMMEND:
-      return { ...action.data }
+      return { ...state, ...action.data }
     default:
       return state
   }

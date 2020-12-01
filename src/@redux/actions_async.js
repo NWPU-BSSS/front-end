@@ -1,5 +1,6 @@
 import * as req from '../@api'
 import {
+  getBadgeNum,
   getBlog,
   getTodayRecommend,
   getUserInfo,
@@ -114,7 +115,7 @@ export const getTodayRecommendAsync = () =>
     if (code === 1) {
       dispatch(getTodayRecommend({ ...data }))
     } else {
-      alert(msg)
+      // alert(msg)
     }
   }
 
@@ -128,12 +129,21 @@ export const sendVerifyCodeAsync = ({ email }) =>
     }
   }
 
-export const getRecommendBlogListAsync  =() =>
+export const getRecommendBlogListAsync = () =>
   async dispatch => {
-    const {code, msg, data} = await  req.getRecommendBlogList()
-    console.log(data)
+    const { code, msg, data } = await req.getRecommendBlogList()
     if (code === 1) {
       dispatch(loadBlogList(data))
+    } else {
+      alert(msg)
+    }
+  }
+
+export const getBadgeNumAsync = () =>
+  async dispatch => {
+    const { code, msg, data } = await req.getBadgeNum()
+    if (code === 1) {
+      dispatch(getBadgeNum(data))
     } else {
       alert(msg)
     }

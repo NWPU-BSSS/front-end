@@ -66,6 +66,7 @@ export class HomePageCenter extends Component {
                              lastModifiedTime={item.lastModifiedTime || 'unknow'}
                              nickname={item.nickname || 'anonymous'}
                              blogId={item.blogId}
+                             userId={item.userId}
                 />
               </List.Item>
             )}

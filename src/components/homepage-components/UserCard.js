@@ -24,7 +24,7 @@ export class UserCard extends Component {
           <div className="top-left">
             <div className="card-ava">
               <Avatar size={48} src="logo192.png"/>
-              <div>Code Age {this.props.codeAge} Year</div>
+              <div className="code-age">CA{this.props.codeAge}</div>
             </div>
             <div className="card-username">{this.props.nickname}</div>
           </div>

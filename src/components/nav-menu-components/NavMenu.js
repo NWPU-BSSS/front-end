@@ -9,7 +9,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
 import './NavMenu.css'
-import { useEn, useZh } from '../../@redux/actions'
+import { clearAccessToken, logout, useEn, useZh } from '../../@redux/actions'
 
 /**
  * 语言选项菜单 !important 顺序不可随意调换！ 关联checkLanguage的内容
@@ -80,12 +80,13 @@ Q_A_Menu.propTypes = language
 class RightComponent extends Component {
   static propTypes = {
     user: PropTypes.object.isRequired,
-    language: PropTypes.object.isRequired
+    language: PropTypes.object.isRequired,
+    logout: PropTypes.func.isRequired
   }
 
   render () {
     if (this.props.user.userId !== -1) {
-      return <NavLogged language={this.props.language} {...this.props.user}/>
+      return <NavLogged logout={this.props.logout} language={this.props.language} {...this.props.user}/>
     } else {
       return <NavUnloggin language={this.props.language}/>
     }
@@ -104,8 +105,17 @@ class NavMenu extends Component {
   }
 
   static propTypes = {
-    userState: PropTypes.object,
-    language: PropTypes.object
+    clearAccessToken: PropTypes.func,
+    language: PropTypes.object,
+    logout: PropTypes.func,
+    useEn: PropTypes.func,
+    useZh: PropTypes.func,
+    userState: PropTypes.object
+  }
+
+  logout = () => {
+    this.props.logout()
+    this.props.clearAccessToken()
   }
 
   toggleNavbar = () => {
@@ -139,7 +149,7 @@ class NavMenu extends Component {
               <SocialMenu language={{ FindFriends, LeaveMessage, PillowTalk }}/>}</NavMenuDropdown>
           </div>
           <NavMenuSearch language={{Search}}/>
-          <RightComponent language={this.props.language} user={this.props.userState}/>
+          <RightComponent logout={this.logout} language={this.props.language} user={this.props.userState}/>
           <NavMenuDropdown
             title={<div style={{ width: 100 }}>{languageMenu[this.state.languageIndex]} <CaretDownOutlined/></div>}>
             {languageMenu.map((item, index) => <a key={item.toString()}
@@ -159,7 +169,7 @@ NavMenu = connect(
       language: NavMenuAndBottom
     })
   },
-  { useEn, useZh }
+  { useEn, useZh, logout, clearAccessToken }
 )(NavMenu)
 
 export { NavMenu }

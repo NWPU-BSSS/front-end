@@ -1,5 +1,6 @@
 import {
-  EDIT_TAG, EDIT_TITLE,
+  CLEAR_ACCESS_TOKEN,
+  EDIT_TAG, EDIT_TITLE, GET_ANNOUNCEMENT, GET_BADGE_NUM,
   GET_BLOG_INFO,
   GET_BLOG_LIST,
   GET_TODAY_RECOMMEND,
@@ -31,6 +32,11 @@ export const setAccessToken = token =>
   ({
     type: SET_ACCESS_TOKEN,
     data: token
+  })
+
+export const clearAccessToken = () =>
+  ({
+    type: CLEAR_ACCESS_TOKEN
   })
 
 export const useEn = () =>
@@ -98,5 +104,11 @@ export const editTitle = title =>
   ({
     type: EDIT_TITLE,
     data: title
+  })
+
+export const getBadgeNum = badgeList =>
+  ({
+    type: GET_BADGE_NUM,
+    data: badgeList
   })
 

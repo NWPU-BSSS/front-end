@@ -5,21 +5,24 @@ import { HomePageRight } from '../components/homepage-components/HomePageRight'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router'
-import { getBaseInfoAsync, getRecommendBlogListAsync } from '../@redux/actions_async'
+import { getBadgeNumAsync, getBaseInfoAsync, getRecommendBlogListAsync } from '../@redux/actions_async'
 import './HomePage.css'
 
 class HomePage extends Component {
 
   static propTypes = {
-    isLogin: PropTypes.bool,
+    blogList: PropTypes.array,
+    getBadgeNumAsync: PropTypes.func,
     getBaseInfoAsync: PropTypes.func,
-    blogList: PropTypes.array
+    getRecommendBlogListAsync: PropTypes.func,
+    isLogin: PropTypes.bool
   }
 
   componentWillMount () {
     if (this.props.isLogin) {
       this.props.getBaseInfoAsync()
       this.props.getRecommendBlogListAsync()
+      this.props.getBadgeNumAsync()
     }
   }
 
@@ -41,9 +44,10 @@ class HomePage extends Component {
 HomePage = connect(
   state => ({
     isLogin: state['UserState'].userId !== -1,
-    blogList: state.BlogList.blogList
+    blogList: state.BlogList.blogList,
+    user: state['UserState']
   }),
-  { getBaseInfoAsync, getRecommendBlogListAsync }
+  { getBaseInfoAsync, getRecommendBlogListAsync, getBadgeNumAsync }
 )(HomePage)
 
 export { HomePage }

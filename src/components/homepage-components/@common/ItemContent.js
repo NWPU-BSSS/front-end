@@ -23,9 +23,10 @@ export const ItemContent = props =>
   </div>
 
 ItemContent.propTypes = {
-  preview: PropTypes.string.isRequired,
   avatar: PropTypes.string.isRequired,
-  nickname: PropTypes.string.isRequired,
+  blogId: PropTypes.number.isRequired,
   lastModifiedTime: PropTypes.string.isRequired,
-  blogId: PropTypes.number.isRequired
+  nickname: PropTypes.string.isRequired,
+  preview: PropTypes.string.isRequired,
+  userId: PropTypes.any.isRequired
 }
