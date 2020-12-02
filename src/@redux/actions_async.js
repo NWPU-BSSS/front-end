@@ -22,6 +22,7 @@ export const loginAsync = ({ email, username, password }) =>
     let { code, msg, data } = await req.login({ email, username, password })
     if (code === 1) {
       let { accessToken } = data || ''
+      localStorage.setItem('accessToken', accessToken)
       dispatch(setAccessToken(accessToken))
       dispatch(login({ userId: 1 }))
     } else {

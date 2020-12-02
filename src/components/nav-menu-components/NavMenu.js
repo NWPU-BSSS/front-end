@@ -116,6 +116,7 @@ class NavMenu extends Component {
   logout = () => {
     this.props.logout()
     this.props.clearAccessToken()
+    localStorage.clear()
   }
 
   toggleNavbar = () => {

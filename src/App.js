@@ -16,24 +16,41 @@ import { LoginPage } from './pages/LoginPage'
 import { TestPage } from './pages/TestPage'
 import { BlogInfoSetting } from './components/release-blog-components/BlogInfoSetting'
 import { BlogList } from './components/blogger-space-components/BlogList'
+import { connect } from 'react-redux'
+import { setAccessToken } from './@redux/actions'
 
-function App () {
-  return (
-    <Layout>
-      <Route exact path="/" component={HomePage}/>
-      <Route path="/register" component={RegisterPage}/>
-      <Route path="/login" component={LoginPage}/>
-      <Route path="/reg-success" component={RegisterSuccessPage}/>
-      <Route path="/blog/:blogId" component={BlogPage}/>
-      <Route path="/blogger/:bloggerId" component={BloggerSpacePage}/>
-      <Route path="/profile" component={ProfilePage}/>
-      <Route path="/release-blog" component={ReleaseBlogPage}/>
-      <Route path="/code-edit" component={CodeEditPage}/>
-      <Route path="/guest" component={GuestHomePage}/>
-      <Route path="/t" component={TestPage}/>
-      <Route path="/edit" component={BlogInfoSetting}/>
-    </Layout>
-  )
+class App extends React.Component {
+
+  componentWillMount () {
+    let accessToken = localStorage.getItem('accessToken')
+    if (accessToken) {
+      this.props.setAccessToken(accessToken)
+    }
+  }
+
+  render () {
+    return (
+      <Layout>
+        <Route exact path="/" component={HomePage}/>
+        <Route path="/register" component={RegisterPage}/>
+        <Route path="/login" component={LoginPage}/>
+        <Route path="/reg-success" component={RegisterSuccessPage}/>
+        <Route path="/blog/:blogId" component={BlogPage}/>
+        <Route path="/blogger/:bloggerId" component={BloggerSpacePage}/>
+        <Route path="/profile" component={ProfilePage}/>
+        <Route path="/release-blog" component={ReleaseBlogPage}/>
+        <Route path="/code-edit" component={CodeEditPage}/>
+        <Route path="/guest" component={GuestHomePage}/>
+        <Route path="/t" component={TestPage}/>
+        <Route path="/edit" component={BlogInfoSetting}/>
+      </Layout>
+    )
+  }
 }
+
+App = connect(
+  state=> {},
+  { setAccessToken }
+)(App)
 
 export default App
