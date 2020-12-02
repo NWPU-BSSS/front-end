@@ -115,10 +115,10 @@ class LoginPage extends Component {
       }}>
         <LoginFormTop/>
         <Tabs centered defaultActiveKey="1">
-          <TabPane tab="账号密码登陆" key="1">
+          <TabPane tab="Account" key="1">
             <AccountLoginForm/>
           </TabPane>
-          <TabPane tab="手机号登陆" key="2">
+          <TabPane tab="Phone" key="2">
             <PhoneLoginForm/>
           </TabPane>
         </Tabs>
@@ -129,7 +129,7 @@ class LoginPage extends Component {
 
 LoginPage = connect(
   state => ({
-    isLogin: state['UserState'].userId !== -1
+    isLogin: state['AccessToken'] !== ''
   })
 )(LoginPage)
 
