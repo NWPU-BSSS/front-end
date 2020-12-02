@@ -43,7 +43,7 @@ class HomePage extends Component {
 
 HomePage = connect(
   state => ({
-    isLogin: state['UserState'].userId !== -1,
+    isLogin: state['AccessToken'] !== '',
     blogList: state.BlogList.blogList,
     user: state['UserState']
   }),
