@@ -8,7 +8,7 @@ export class UserSpaceTitle extends Component {
 
   render () {
     return (
-      <div className="userSpaceTitle" >
+      <div className="UserSpaceTitle" >
         <div style={{
           display: 'flex',
           flexDirection: 'row',

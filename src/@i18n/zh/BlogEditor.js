@@ -1,0 +1,33 @@
+const BlogEditor = {}
+
+BlogEditor.MarkDownEditor = 'MarkDown编辑器' // 右侧Markdown编辑器
+BlogEditor.Save = '保存' // 文章编辑选项导航栏
+BlogEditor.SaveDrafts = '保存草稿' // 底部博客发布块
+BlogEditor.Title = '标题' // 文章编辑选项导航栏
+BlogEditor.Tabulation = '表格' // 文章编辑选项导航栏
+BlogEditor.Hyperlink = '超链接' // 文章编辑选项导航栏
+BlogEditor.Recall = '撤销' // 文章编辑选项导航栏
+BlogEditor.CodeBlock = '代码块' // 文章编辑选项导航栏
+BlogEditor.Backlog = '待办' // 文章编辑选项导航栏
+BlogEditor.Export = '导出' // 文章编辑选项导航栏
+BlogEditor.Import = '导入' // 文章编辑选项导航栏
+BlogEditor.ClickToAddTitle = '点击此处添加标题' // 右侧Markdown编辑器
+BlogEditor.ClickToEnterTitle = '点击输入标题' // 底部博客发布块
+BlogEditor.SecondaryTitle = '二级标题' // 左侧文章目录下属标题
+BlogEditor.Publish = '发布' // 底部博客发布块
+BlogEditor.Overstriking = '加粗' // 文章编辑选项导航栏
+BlogEditor.Cancel = '取消' // 底部博客发布块
+BlogEditor.TertiaryTitle = '三级标题' // 左侧文章目录下属标题
+BlogEditor.Strikethrough = '删除线' // 文章编辑选项导航栏
+BlogEditor.video = '视频' // 文章编辑选项导航栏
+BlogEditor.AddTags = '添加标签' // 底部博客发布块
+BlogEditor.Picture = '图片' // 文章编辑选项导航栏
+BlogEditor.ArticleDirectories = '文章目录' // 左侧文章目录
+BlogEditor.Unordered = '无序' // 文章编辑选项导航栏
+BlogEditor.Italic = '斜体' // 文章编辑选项导航栏
+BlogEditor.primarytitle = '一级标题' // 左侧文章目录下属标题
+BlogEditor.Orderly = '有序' // 文章编辑选项导航栏
+BlogEditor.Abstract = '摘要' // 文章编辑选项导航栏
+BlogEditor.Redo = '重做' // 文章编辑选项导航栏
+
+module.exports = BlogEditor

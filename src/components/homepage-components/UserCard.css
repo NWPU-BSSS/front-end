@@ -6,7 +6,15 @@
 }
 
 .user-card{
-    min-width: 270px;
+    min-width: 300px;
+}
+
+.user-card .code-age {
+    font-size: 12px;
+    color: white;
+    background-color: red;
+    padding: 1px 5px;
+    margin-top: 5px;
 }
 
 .user-card .card-top .top-left{
@@ -24,7 +32,7 @@
 }
 
 .card-username{
-    font-size: 24px;
+    font-size: 16px;
     font-weight: bolder;
     padding: 0 20px;
 }

@@ -34,24 +34,23 @@ const data = [
 
 export class MessageOption extends Component {
 
-  componentWillMount () {
-    let { announcement, notice, reply, message, like, follow, comment } = {
-      'announcement': 6419320728860216,
-      'comment': 372706618290464,
-      'follow': 1258856655655276,
-      'message': 1890426755384432,
-      'reply': 1912032601999116,
-      'notice': 6078024778023332,
-      'like': 1758107999388376
-    }
+  static propTypes = {
+    announcement: PropTypes.number,
+    comment: PropTypes.number,
+    follow: PropTypes.number,
+    like: PropTypes.number,
+    message: PropTypes.number,
+    notice: PropTypes.number,
+    reply: PropTypes.number
+  }
 
+  render () {
+    let { announcement, notice, reply, message, like, follow, comment } = this.props
     let badge = [0, announcement, comment, follow, like, message, reply, notice, 0]
     for (let i = 0; i < data.length; i++) {
       data[i].badge = badge[i]
     }
-  }
 
-  render () {
     return (
       <div className="message-option">
         <List
@@ -59,7 +58,7 @@ export class MessageOption extends Component {
           bordered
           dataSource={data}
           renderItem={({ title, badge, url }) => (
-              <Option title={title} badge={badge} url={url}/>
+            <Option title={title} badge={badge} url={url}/>
           )}
         />
       </div>

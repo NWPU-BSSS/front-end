@@ -3,7 +3,7 @@ import './PersonalInfoMenu.css'
 
 function MenuItem (props) {
   return (
-    <div className={'personal-info-menu-item'}>
+    <div className="personal-info-menu-item">
       <a href={props.action}>{props.title}</a>
     </div>
   )
@@ -28,7 +28,7 @@ export class PersonalInfoMenu extends Component {
     const { PersonalInfo, AccountSecurity, Collection, Follower, Fans, MyBlog, MyDownload, MyAnswer, MyCollege} = languageHere;
 
     return (
-      <div className={'personal-info-menu'}>
+      <div className="personal-info-menu">
         <MenuItem title={PersonalInfo}/>
         <MenuItem title={AccountSecurity}/>
         <MenuItem title={Collection}/>
