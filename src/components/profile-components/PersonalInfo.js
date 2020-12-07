@@ -51,7 +51,7 @@ export class PersonalInfo extends Component {
           <InfoBaseItem content={'请填写'} title={'姓名'}/>
           <InfoBaseItem content={'男'} title={'性别'}/>
         </InfoItemBox>
-        <InfoItemBox button={'学历认证'} onEdit={this.handleEditAccountInfo} title={'学历信息'}>
+        <InfoItemBox onEdit={this.handleEditAccountInfo} title={'学历信息'}>
           <InfoBaseItem content={'软件学院'} title={'学校'}/>
           <InfoBaseItem content={'西北工业大学'} title={'学院'}/>
           <InfoBaseItem content={'1401xx0x'} title={'班级'}/>

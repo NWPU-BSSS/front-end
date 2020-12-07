@@ -27,7 +27,7 @@ export class BlogPageMain extends Component {
         <ThumbBox commentNum={this.props.commentNum} favoriteNum={this.props.favoriteNum} likeNum={this.props.likeNum} shareNum={this.props.shareNum}/>
         <AddComment/>
         <CommentList/>
-        <RelatedBlogList/>
+        {/*<RelatedBlogList/>*/}
       </div>
     )
   }
