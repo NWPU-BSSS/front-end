@@ -149,3 +149,13 @@ export const getBadgeNumAsync = () =>
       alert(msg)
     }
   }
+
+  export const getUserInfoAsync = () =>
+    async dispatch => {
+      const { code, msg, data } = await req.getBaseInfo()
+      if (code === 1) {
+        dispatch(getUserInfo(data))
+      } else {
+        alert(msg)
+      }
+    }
