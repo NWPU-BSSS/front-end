@@ -36,9 +36,9 @@ export class Blogger extends Component {
               <span>
 
               </span>
-              <span>
-                <Button danger>我要认证</Button>
-              </span>
+              {/*<span>*/}
+              {/*  <Button danger>我要认证</Button>*/}
+              {/*</span>*/}
             </div>
             <div className="introduction">
               <FunctionOutlined/>

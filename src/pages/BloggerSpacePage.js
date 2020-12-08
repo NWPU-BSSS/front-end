@@ -8,18 +8,24 @@ import { Route } from 'react-router'
 export class BloggerSpacePage extends Component {
 
   componentWillMount () {
-    // this.props.params
+    console.log(this.props.match.params)
   }
 
   render () {
+
+    let { bloggerId } = this.props.match.params
+
     return (
       <div>
         <Blogger/>
-        <ContentNavBar/>
+        <ContentNavBar bloggerId={bloggerId}/>
         <SwitchRouter>
-          <Route path="blog" component={BlogList}/>
-          <Route path="resource" component={Resource}/>
-          <Redirect to="blog"/>
+          <Route path="/blogger/:bloggerId/blog" component={BlogList}/>
+          <Route path="/blogger/:bloggerId/resource" component={Resource}/>
+          <Route path="/blogger/:bloggerId/fans" component={Resource}/>
+          <Route path="/blogger/:bloggerId/fav" component={Resource}/>
+          <Route path="/blogger/:bloggerId/subscribe" component={Resource}/>
+          <Redirect to="/blogger/:bloggerId/blog"/>
         </SwitchRouter>
       </div>
     )

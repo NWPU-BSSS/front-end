@@ -17,6 +17,7 @@ export function AccessToken (state = '', action) {
     case SET_ACCESS_TOKEN:
       return action.data
     case CLEAR_ACCESS_TOKEN:
+      localStorage.removeItem('accessToken')
       return ''
     default:
       return state
