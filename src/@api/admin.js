@@ -44,5 +44,5 @@ export const getBlogList = async () =>
  * @returns {Promise<JSON>}
  */
 export const getUserList = async () =>
-    request('api/admin/users')
+    request('/api/admin/users')
 

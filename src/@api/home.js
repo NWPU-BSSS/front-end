@@ -13,3 +13,10 @@ export const getRecommendBlogList = async () =>
  */
 export const getTodayRecommend = async () =>
   request('/api/home/recommend', getInit())
+
+/**
+ * 获取一条公告
+ * @returns {Promise<JSON>}
+ */
+export const getAnnouncement = async () =>
+    request('/api/announcement', getInit())

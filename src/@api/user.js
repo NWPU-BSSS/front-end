@@ -6,7 +6,7 @@ import {getInit, postInit, query, request} from './@config'
  * @returns {Promise<JSON>}
  */
 export const uploadUserHeadPortrait = async ({file}) =>
-    request('api/user/avatar', postInit({file}))
+    request('/api/user/avatar', postInit({file}))
 
 /**
  * 修改个人信息
@@ -22,7 +22,7 @@ export const uploadUserHeadPortrait = async ({file}) =>
  * @returns {Promise<JSON>}
  */
 export const exitUserInfo = async ({username, nickname, introduction, realName, gender, university, className, academy, graduateTime}) =>
-    request('api/user/info', postInit({username, nickname, introduction, realName, gender, university, className, academy, graduateTime }))
+    request('/api/user/info', postInit({username, nickname, introduction, realName, gender, university, className, academy, graduateTime }))
 
 /**
  * 关注、取关博主
@@ -31,14 +31,14 @@ export const exitUserInfo = async ({username, nickname, introduction, realName, 
  * @returns {Promise<JSON>}
  */
 export const subscribeOrCancelBlogger = async ({bloggerId, subscribe}) =>
-    request('api/user/subscribe', postInit({bloggerId, subscribe}))
+    request('/api/user/subscribe', postInit({bloggerId, subscribe}))
 
 /**
  * 最近浏览的博客
  * @returns {Promise<JSON>}
  */
 export const currentBrowseBlog = async () =>
-    request('api/user/browse/blogs', postInit())
+    request('/api/user/browse/blogs', postInit())
 
 /**
  * 获取对某个博主的关注状态
@@ -46,7 +46,7 @@ export const currentBrowseBlog = async () =>
  * @returns {Promise<JSON>}
  */
 export const getSubscribeStatusOfBlogger = async (bloggerId) =>
-    request(`api/user/subscribe?${query({bloggerId})}`, getInit())
+    request(`/api/user/subscribe?${query({bloggerId})}`, getInit())
 
 /**
  * 获取用户的关注列表
@@ -54,7 +54,7 @@ export const getSubscribeStatusOfBlogger = async (bloggerId) =>
  * @returns {Promise<JSON>}
  */
 export const getUserSubscribeList = async (userId) =>
-    request(`api/user/subscribes?${query({userId})}`,getInit())
+    request(`/api/user/subscribes?${query({userId})}`,getInit())
 
 /**
  * 获取用户粉丝列表
@@ -62,12 +62,12 @@ export const getUserSubscribeList = async (userId) =>
  * @returns {Promise<JSON>}
  */
 export const getUserFansList = async (userId) =>
-    request(`api/user/fans?${query({userId})}`,getInit())
+    request(`/api/user/fans?${query({userId})}`,getInit())
 
 /**
  * 获取用户详细信息
  * @returns {Promise<JSON>}
  */
 export const getUserWholeInfo = async () =>
-    request('api/user/info', getInit())
+    request('/api/user/info', getInit())
 
