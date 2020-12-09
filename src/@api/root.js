@@ -1,4 +1,4 @@
-import { getInit, postInit, request } from './@config'
+import { getInit, postInit, request, query } from './@config'
 
 /**
  * 用户注册
