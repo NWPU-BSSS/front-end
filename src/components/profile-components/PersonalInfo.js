@@ -37,28 +37,45 @@ InfoItemBox.propTypes = {
 
 export class PersonalInfo extends Component {
 
+  static propTypes = {
+    academy: PropTypes.string.isRequired,
+    avatar: PropTypes.string.isRequired,
+    codeAge: PropTypes.string.isRequired,
+    gender: PropTypes.string.isRequired,
+    graduateTime: PropTypes.string.isRequired,
+    introduction: PropTypes.string.isRequired,
+    level: PropTypes.number.isRequired,
+    nickname: PropTypes.string.isRequired,
+    realName: PropTypes.string.isRequired,
+    university: PropTypes.string.isRequired,
+    username: PropTypes.string.isRequired,
+    class: PropTypes.string.isRequired
+  }
+
   handleEditAccountInfo = () => {
     alert('修改账号信息')
   }
 
   render () {
+    const {username, nickname, introduction, realName, gender, university,  academy, class: studyClass, graduateTime, codeAge, level, avatar} = this.props
+
     return (
       <div className="PersonalInfo">
         <InfoItemBox button={'修改信息'} onEdit={this.handleEditAccountInfo} title={'账号信息'}>
-          <InfoBaseItem content={'weixin_45646'} title={'ID'}/>
-          <InfoBaseItem content={'陆喵喵学长'} title={'昵称'}/>
-          <InfoBaseItem content={' 刘刘杰也叫陆喵喵'} title={'简介'}/>
-          <InfoBaseItem content={'请填写'} title={'姓名'}/>
-          <InfoBaseItem content={'男'} title={'性别'}/>
+          <InfoBaseItem content={username} title={'ID'}/>
+          <InfoBaseItem content={nickname} title={'昵称'}/>
+          <InfoBaseItem content={introduction} title={'简介'}/>
+          <InfoBaseItem content={realName} title={'姓名'}/>
+          <InfoBaseItem content={gender} title={'性别'}/>
         </InfoItemBox>
         <InfoItemBox onEdit={this.handleEditAccountInfo} title={'学历信息'}>
-          <InfoBaseItem content={'软件学院'} title={'学校'}/>
-          <InfoBaseItem content={'西北工业大学'} title={'学院'}/>
-          <InfoBaseItem content={'1401xx0x'} title={'班级'}/>
-          <InfoBaseItem content={'2022年6月'} title={'毕业时间'}/>
+          <InfoBaseItem content={university} title={'学校'}/>
+          <InfoBaseItem content={academy} title={'学院'}/>
+          <InfoBaseItem content={studyClass} title={'班级'}/>
+          <InfoBaseItem content={graduateTime} title={'毕业时间'}/>
         </InfoItemBox>
-        <InfoItemBox button={'简历上传'} onEdit={this.handleEditAccountInfo} title={'简历上传'}>
-          <InfoBaseItem content={'待上传'} title={'简历'}/>
+        <InfoItemBox button="Upload Resume" onEdit={this.handleEditAccountInfo} title={'简历上传'}>
+          <InfoBaseItem content='Waiting Upload' title="Resume"/>
         </InfoItemBox>
       </div>
     )
@@ -69,3 +86,7 @@ InfoBaseItem.propTypes = {
   title: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired
 }
+
+
+
+
