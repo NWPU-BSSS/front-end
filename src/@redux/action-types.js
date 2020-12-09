@@ -24,3 +24,15 @@ export const EDIT_TAG = 'EDIT_TAG'
 export const EDIT_TITLE = 'EDIT_TITLE'
 
 export const SEND_VERIFY_EMAIL_SUCCESS = 'SEND_VERIFY_EMAIL_SUCCESS'
+
+/*
+  v2
+ */
+/*
+  UserState
+ */
+export const SAVE_USER_STATE = 'save_user_state'
+export const REMEMBER_USER_STATE = 'remember_user_state'
+export const REMOVE_USER_STATE = 'remove_user_state'
+export const DELETE_USER_STATE = 'delete_user_state'
+export const LOAD_USER_STATE = 'load_user_state'

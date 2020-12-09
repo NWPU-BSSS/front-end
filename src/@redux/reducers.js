@@ -12,6 +12,8 @@ import { en, zh } from '../@i18n'
 
 const initUserState = { userId: -1, username: '' }
 
+
+
 export function AccessToken (state = '', action) {
   switch (action.type) {
     case SET_ACCESS_TOKEN:
@@ -24,7 +26,7 @@ export function AccessToken (state = '', action) {
   }
 }
 
-export function Language (state = en, action) {
+export function $Language (state = en, action) {
   switch (action.type) {
     case USE_EN:
       return en

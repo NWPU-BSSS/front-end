@@ -164,7 +164,7 @@ class NavMenu extends Component {
 
 NavMenu = connect(
   state => {
-    const { NavMenuAndBottom } = state.Language
+    const { NavMenuAndBottom } = state.$Language
     return ({
       userState: state['UserState'],
       language: NavMenuAndBottom
