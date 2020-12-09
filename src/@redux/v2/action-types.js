@@ -10,8 +10,8 @@ export const LOAD_USER_STATE = 'load_user_state'
 /*
   切换语言
  */
-export const USE_EN = 'USE_EN'
-export const USE_ZH = 'USE_ZH'
+export const USE_EN = 'use_en'
+export const USE_ZH = 'use_zh'
 
 /*
   用户信息 Action
@@ -33,3 +33,27 @@ export const SET_BLOG_COMMENTS = 'set_blog_comments'
 export const SET_BLOGGER_TAGS = 'set_blogger_tags'
 export const SET_LIKE_STATUS = 'set_like_status'
 export const SET_FAV_STATUS = 'set_fav_status'
+
+/*
+  主页
+  HomePageState
+ */
+export const SET_ANNOUNCEMENT = 'set_announcement'
+export const SET_BROWSE_RECORD = 'set_browse_record'
+export const SET_RECOMMEND_BLOG_LIST = 'set_recommend_blog_list'
+
+/*
+  发布博客
+  ReleaseBlogPageState
+ */
+export const EDIT_TAG = 'edit_tag'
+export const EDIT_TITLE  = 'edit_title'
+export const EDIT_MARKDOWN = 'edit_markdown'
+
+/*
+  全局 状态
+  Global Action
+ */
+export const REGISTER_SUCCESS_TRUE = 'REGISTER_SUCCESS_TRUE'
+export const REGISTER_SUCCESS_FALSE = 'REGISTER_SUCCESS_FALSE'
+export const SEND_VERIFY_EMAIL_SUCCESS = 'SEND_VERIFY_EMAIL_SUCCESS'

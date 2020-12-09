@@ -7,11 +7,13 @@ import './HomePageCenter.css'
 import { ItemContent } from './@common/ItemContent'
 import { TagList } from './@common/TagList'
 import { IconText } from './@common/IconText'
+import { HomeBlogList } from './HomeBlogList'
+import { connect } from 'react-redux'
 
 export class HomePageCenter extends Component {
 
   static propTypes = {
-    blogList: PropTypes.array.isRequired
+    recommendBlogList: PropTypes.array
   }
 
   constructor (props) {
@@ -40,39 +42,15 @@ export class HomePageCenter extends Component {
           </div>
         </div>
         <div className="blog-list">
-          <List
-            itemLayout="vertical"
-            size="large"
-            pagination={{
-              onChange: page => {
-                console.log(page)
-              },
-              pageSize: 5,
-            }}
-            dataSource={this.props.blogList}
-            renderItem={item => (
-              <List.Item
-                key={item.toString()}
-                actions={[
-                  <IconText icon={StarOutlined} text={item.favoriteNum || 0} key="list-vertical-star-o"/>,
-                  <IconText icon={LikeOutlined} text={item.likeNum || 0} key="list-vertical-like-o"/>,
-                  <IconText icon={MessageOutlined} text={item.commentNum || 0} key="list-vertical-message"/>,
-                ]}>
-                <List.Item.Meta
-                  title={<Link to={`/blog/${item.blogId || 10}`}>{item.title || ''}</Link>}
-                  description={<TagList tagA={item.tagA || ''} tagB={item.tagB || ''} tagC={item.tagC || ''}/>}
-                />
-                <ItemContent preview={item.preview || item.content} avatar={item.avatar}
-                             lastModifiedTime={item.lastModifiedTime || 'unknow'}
-                             nickname={item.nickname || 'anonymous'}
-                             blogId={item.blogId}
-                             userId={item.userId}
-                />
-              </List.Item>
-            )}
-          />,
+          <HomeBlogList recommendBlogList={this.props.recommendBlogList}/>
         </div>
       </div>
     )
   }
 }
+
+HomePageCenter = connect(
+  state => ({
+    recommendBlogList: state.$HomePageState.recommendBlogList,
+  })
+)(HomePageCenter)

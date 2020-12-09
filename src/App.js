@@ -20,14 +20,18 @@ import { connect } from 'react-redux'
 import { setAccessToken } from './@redux/actions'
 import { Switch as SwitchRouter } from 'react-router-dom'
 import {Button,  Result } from 'antd'
+import { loadUserState } from './@redux/v2/actions'
 
 class App extends React.Component {
 
   componentWillMount () {
-    let accessToken = localStorage.getItem('accessToken')
-    if (accessToken) {
-      this.props.setAccessToken(accessToken)
-    }
+    // let accessToken = localStorage.getItem('accessToken')
+    // if (accessToken) {
+    //   this.props.setAccessToken(accessToken)
+    // }
+
+    this.props.loadUserState()
+
   }
 
   render () {
@@ -62,7 +66,7 @@ class App extends React.Component {
 
 App = connect(
   () => {},
-  { setAccessToken }
+  { loadUserState }
 )(App)
 
 export default App

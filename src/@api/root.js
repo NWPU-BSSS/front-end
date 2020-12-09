@@ -29,14 +29,28 @@ export const sendVerifyCode2Email = async ({ email }) =>
  * @returns {Promise<JSON>}
  */
 export const getBaseInfo = async () =>
-  request('/api/baseInfo', getInit())
+  request(`/api/baseInfo?${query()}`, getInit())
 
+/**
+ * 获取各种未读消息
+ * @returns {Promise<JSON>}
+ */
 export const getBadgeNum = async () =>
-  request('/api/badgeNum', getInit())
+  request(`/api/badgeNum?${query()}`, getInit())
 
+/**
+ * 检查用户名是否存在
+ * @param username
+ * @returns {Promise<JSON>}
+ */
 export const checkUsernameExist = async username =>
   request('/api/usernameCheck', postInit({ username }))
 
+/**
+ * 检查邮箱是否存在
+ * @param email
+ * @returns {Promise<JSON>}
+ */
 export const checkEmailExist = async email =>
   request('/api/emailCheck', postInit({email}))
 

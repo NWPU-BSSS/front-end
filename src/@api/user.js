@@ -5,6 +5,7 @@ import {getInit, postInit, query, request} from './@config'
  * @param {file}file
  * @returns {Promise<JSON>}
  */
+//TODO: 改成表单上传
 export const uploadUserHeadPortrait = async ({file}) =>
     request('/api/user/avatar', postInit({file}))
 
@@ -69,5 +70,5 @@ export const getUserFansList = async (userId) =>
  * @returns {Promise<JSON>}
  */
 export const getUserWholeInfo = async () =>
-    request('/api/user/info', getInit())
+    request(`/api/user/info?${query()}`, getInit())
 

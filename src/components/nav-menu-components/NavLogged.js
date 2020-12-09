@@ -5,8 +5,6 @@ import { NavUserPanel } from './NavUserPanel'
 import logo from '../../assets/img/logo192.png'
 import PropTypes from 'prop-types'
 import './NavLogged.css'
-import { connect } from 'react-redux'
-import { logout } from '../../@redux/actions'
 import { Link } from 'react-router-dom'
 
 class NavLogged extends Component {
