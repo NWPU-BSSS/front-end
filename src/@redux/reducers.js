@@ -66,14 +66,6 @@ export function registerPage (state = {}, action) {
   switch (action.type) {
     case SEND_VERIFY_EMAIL_SUCCESS:
       return { ...state, disableSendCodeButton: true }
-    default:
-      return state
-  }
-}
-
-export function registerSuccess (state = false, action) {
-  // console.log(state, action)
-  switch (action.type) {
     case REGISTER_SUCCESS_FALSE:
       return false
     case REGISTER_SUCCESS_TRUE:
