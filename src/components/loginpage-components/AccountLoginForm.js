@@ -7,6 +7,16 @@ import { connect } from 'react-redux'
 import { loginAsync } from '../../@redux/actions_async'
 
 class AccountLoginForm extends Component {
+  handleCheckRemember = () => {
+    this.setState({ remember: !this.state.remember })
+  }
+
+  constructor (props) {
+    super(props)
+    this.state = {
+      remember: false
+    }
+  }
 
   static propTypes = {
     loginAsync: PropTypes.func
@@ -22,11 +32,12 @@ class AccountLoginForm extends Component {
 
   handleLogin = () => {
     let { email, password } = this
+    let { remember } = this.state
     if (email && password) {
       if (!/@/.test(email)) {
         let username = email
-        this.props.loginAsync({ username, password })
-      } else this.props.loginAsync({ email, password })
+        this.props.loginAsync({ username, password, remember })
+      } else this.props.loginAsync({ email, password, remember })
     } else alert('please input your email or username and password')
   }
 
@@ -47,7 +58,7 @@ class AccountLoginForm extends Component {
         }}>
           <Input prefix={<LockOutlined/>} type="password" placeholder="password" onChange={this.handleInputPassword}/>
         </div>
-        <RememberLogin/>
+        <RememberLogin checked={this.state.remember} handleCheck={this.handleCheckRemember}/>
         <LoginOrRegister onLogin={this.handleLogin}/>
       </Form>
     )
