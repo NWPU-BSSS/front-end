@@ -1,5 +1,5 @@
 import './App.css'
-import { Route } from 'react-router'
+import { Redirect, Route, Router, Switch } from 'react-router'
 import React from 'react'
 import './app-layout.css'
 import { Layout } from './components/Layout'
@@ -18,6 +18,8 @@ import { BlogInfoSetting } from './components/release-blog-components/BlogInfoSe
 import { BlogList } from './components/blogger-space-components/BlogList'
 import { connect } from 'react-redux'
 import { setAccessToken } from './@redux/actions'
+import { Switch as SwitchRouter } from 'react-router-dom'
+import {Button,  Result } from 'antd'
 
 class App extends React.Component {
 
@@ -31,25 +33,35 @@ class App extends React.Component {
   render () {
     return (
       <Layout>
-        <Route exact path="/" component={HomePage}/>
-        <Route path="/register" component={RegisterPage}/>
-        <Route path="/login" component={LoginPage}/>
-        <Route path="/reg-success" component={RegisterSuccessPage}/>
-        <Route path="/blog/:blogId" component={BlogPage}/>
-        <Route path="/blogger/:bloggerId" component={BloggerSpacePage}/>
-        <Route path="/profile" component={ProfilePage}/>
-        <Route path="/release-blog" component={ReleaseBlogPage}/>
-        <Route path="/code-edit" component={CodeEditPage}/>
-        <Route path="/guest" component={GuestHomePage}/>
-        <Route path="/t" component={TestPage}/>
-        <Route path="/edit" component={BlogInfoSetting}/>
+        <SwitchRouter>
+          <Route path="/" exact component={HomePage}/>
+          <Route path="/blog/:blogId" component={BlogPage}/>
+          <Route path="/blogger/:bloggerId" component={BloggerSpacePage}/>
+          <Route path="/profile" component={ProfilePage}/>
+          <Route path="/release-blog" component={ReleaseBlogPage}/>
+          <Route path="/code-edit" component={CodeEditPage}/>
+          <Route path="/edit" component={BlogInfoSetting}/>
+          <Route path="/guest" component={GuestHomePage}/>
+          <Route path="/register" component={RegisterPage}/>
+          <Route path="/login" component={LoginPage}/>
+          <Route path="/reg-success" component={RegisterSuccessPage}/>
+          <Route path="/t" component={TestPage}/>
+          <Route>
+            <Result
+              status="404"
+              title="404"
+              subTitle="Sorry, the page you visited does not exist."
+              extra={<Button href="/" type="primary">Back Home</Button>}
+            />
+          </Route>
+        </SwitchRouter>
       </Layout>
     )
   }
 }
 
 App = connect(
-  state=> {},
+  () => {},
   { setAccessToken }
 )(App)
 

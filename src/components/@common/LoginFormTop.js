@@ -27,7 +27,7 @@ export class LoginFormTop extends Component {
           textAlign: 'center',
           color: '#8a8b8d',
           margin: '15px'
-        }}>BSSS 一个软件学院的专属博客</div>
+        }}>BSSS - A Blog System for Software College</div>
     </div>
     )
   }

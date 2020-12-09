@@ -38,7 +38,7 @@ export function RememberLogin (props) {
       justifyContent: 'space-between',
       alignItems: 'center',
     }}>
-      <Checkbox checked={props.checked}>自动登录</Checkbox>
+      <Checkbox checked={props.checked} onClick={props.handleCheck}>自动登录</Checkbox>
       <a href="#">忘记密码</a>
     </div>
   )
@@ -118,9 +118,9 @@ class LoginPage extends Component {
           <TabPane tab="Account" key="1">
             <AccountLoginForm/>
           </TabPane>
-          <TabPane tab="Phone" key="2">
-            <PhoneLoginForm/>
-          </TabPane>
+          {/*<TabPane tab="Phone" key="2">*/}
+          {/*  <PhoneLoginForm/>*/}
+          {/*</TabPane>*/}
         </Tabs>
       </div>
     )
@@ -135,3 +135,7 @@ LoginPage = connect(
 
 export { LoginPage, LoginOrRegister }
 
+RememberLogin.propTypes = {
+  checked: PropTypes.bool,
+  handleCheck: PropTypes.func
+}
