@@ -1,6 +1,6 @@
 import { message } from 'antd'
 import store from './store'
-import { clearAccessToken, logout } from './actions'
+import { logout } from './v2/actions'
 
 export const success = msg => {
   message.success(msg)
@@ -25,18 +25,11 @@ export function asyncResponseHandler (response) {
     if (code === 1) {
       resolve(data)
     } else if (code === 0) {
-      // TODO: 在后端完成 code= -2 后删掉到 ** 之间的代码
-      if (msg === 'token无效') {
-        store.dispatch(clearAccessToken())
-        store.dispatch(logout())
-      }
-      //TODO: **
-      else error(msg)
+      error(msg)
     } else if (code === -1) {
       warning(msg)
     } else if (code === -2) {
       error(msg)
-      store.dispatch(clearAccessToken())
       store.dispatch(logout())
     }
   })

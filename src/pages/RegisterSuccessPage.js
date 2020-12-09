@@ -3,7 +3,7 @@ import { LoginFormTop } from '../components/@common/LoginFormTop'
 import { Button, Result } from 'antd'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { setRegisterSuccess } from '../@redux/actions'
+import { setRegisterSuccess } from '../@redux/v2/actions'
 
 class SuccessResult extends Component {
   render () {

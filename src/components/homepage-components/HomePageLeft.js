@@ -5,7 +5,7 @@ import { QuickEntry } from './QuickEntry'
 import { TodayRecommend } from './TodayRecommend'
 import { RecentBrowse } from './RecentBrowse'
 import { connect } from 'react-redux'
-import { getTodayRecommendAsync } from '../../@redux/actions_async'
+import { getAnnouncementAsync } from '../../@redux/actions_async'
 
 class HomePageLeft extends Component {
 
@@ -26,7 +26,7 @@ class HomePageLeft extends Component {
     return (
       <div className="HomePageLeft">
         <QuickEntry/>
-        {TC}
+        {/*{TC}*/}
         <RecentBrowse/>
       </div>
     )
@@ -34,10 +34,14 @@ class HomePageLeft extends Component {
 }
 
 HomePageLeft = connect(
-  state => ({
-    announcement: state['todayRecommend']
-  }),
-  { getTodayRecommendAsync}
+  state => {
+    const { browse, announcement } = state.$HomePageState
+    return {
+      announcement,
+      browse
+    }
+  },
+  { getTodayRecommendAsync: getAnnouncementAsync}
 )(HomePageLeft)
 
 export {HomePageLeft}

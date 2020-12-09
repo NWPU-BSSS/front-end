@@ -28,9 +28,12 @@ class BlogPage extends Component {
 }
 
 BlogPage = connect(
-  state => ({
-    blogInfo: state.BlogList.blogInfo
-  }),
+  state => {
+    let {title, content, likeNum, commentNum, favoriteNum} = state.$BlogPageState
+    return ({
+      blogInfo: {title, content, likeNum, commentNum, favoriteNum}
+    })
+  },
   { getBlogAsync }
 )(BlogPage)
 

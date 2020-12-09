@@ -23,7 +23,7 @@ class ReleaseBlogPage extends Component {
 }
 
 ReleaseBlogPage = connect(
-  state => ({ isLogin: state['UserState'].userId === 1 }),
+  state => ({ isLogin: state.$UserState.userId !== -1 }),
 )(ReleaseBlogPage)
 
 export { ReleaseBlogPage }

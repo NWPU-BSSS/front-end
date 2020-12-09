@@ -11,7 +11,7 @@ import {getInit, postInit, query, request} from './@config'
  * @returns {Promise<JSON>}
  */
 export const releaseBlog = async ({ title, content, tagA = '', tagB = '', tagC = '' }) =>
-  await request('/api/blog', postInit({ title, content, tagA, tagB, tagC }))
+  await request(`/api/blog?${query()}`, postInit({ title, content, tagA, tagB, tagC }))
 
 /**
  * 收藏一个博客
@@ -20,7 +20,7 @@ export const releaseBlog = async ({ title, content, tagA = '', tagB = '', tagC =
  * @returns {Promise<JSON>}
  */
 export const favBlog = async ({blogId, favorite}) =>
-    request('/api/blog/fav', postInit({blogId, favorite}))
+    request(`/api/blog/fav?${query()}`, postInit({blogId, favorite}))
 
 /**
  * 点赞博客
@@ -29,7 +29,7 @@ export const favBlog = async ({blogId, favorite}) =>
  * @returns {Promise<JSON>}
  */
 export const likeBlog = async ({blogId, like}) =>
-    request('/api/blog/like', postInit({blogId, like}))
+    request(`/api/blog/like?${query()}`, postInit({blogId, like}))
 
 /**
  * 在指定博客评论区发表评论

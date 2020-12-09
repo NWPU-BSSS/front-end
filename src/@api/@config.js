@@ -18,8 +18,9 @@ export const postInit = body => ({
  */
 export const headers = () => {
   let headers = new Headers()
-  let AccessToken = store.getState()['AccessToken']
-  if (AccessToken !== '') headers.append('AccessToken', AccessToken)
+  let {  accessToken } = store.getState().$UserState
+
+  if (accessToken !== '') headers.append('AccessToken', accessToken)
   headers.append('content-type', 'application/json')
   return headers
 }
@@ -38,8 +39,9 @@ export const getInit = () => ({
  * @param {Object} args query参数列表，args为一个object
  * @returns {string}
  */
-export const query = args => {
+export const query = (args = {}) => {
   let result = ''
+  args.userId = args.userId || store.getState().$UserState.userId
   for (const key in args) if (args.hasOwnProperty(key)) {
     const value = args[key]
     if (result.length !== 0) result += '&'

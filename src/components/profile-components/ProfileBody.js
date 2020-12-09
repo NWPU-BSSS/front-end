@@ -37,7 +37,7 @@ class ProfileBody extends Component {
 
 ProfileBody = connect(
   state => ({
-    userInfo: state['UserState']
+    userInfo: state.$UserInfoState.userInfo
   }),
   { getUserInfoAsync }
 )(ProfileBody)

@@ -118,9 +118,6 @@ class LoginPage extends Component {
           <TabPane tab="Account" key="1">
             <AccountLoginForm/>
           </TabPane>
-          {/*<TabPane tab="Phone" key="2">*/}
-          {/*  <PhoneLoginForm/>*/}
-          {/*</TabPane>*/}
         </Tabs>
       </div>
     )
@@ -129,7 +126,7 @@ class LoginPage extends Component {
 
 LoginPage = connect(
   state => ({
-    isLogin: state['AccessToken'] !== ''
+    isLogin: state.$UserState.userId !== -1
   })
 )(LoginPage)
 

@@ -1,15 +1,14 @@
 import * as req from '../@api'
-import {
-  getBadgeNum,
-  getBlog,
-  getTodayRecommend,
-  getUserInfo,
-  loadBlogList,
-  login,
-  setAccessToken,
-  setRegisterSuccess
-} from './actions'
 import {  asyncResponseHandler } from './@common'
+import { initUserState } from './v2/initData'
+import {
+  getAnnouncement,
+  rememberUserState,
+  saveUserState, set_blog_info,
+  set_recommend_blog_list, set_user_info,
+  setBadgeNum,
+  setBaseInfo, setRegisterSuccess
+} from './v2/actions'
 
 /**
  *
@@ -21,23 +20,11 @@ import {  asyncResponseHandler } from './@common'
  */
 export const loginAsync = ({ email, username, password, remember }) =>
   async dispatch => {
-    // let { code, msg, data } = await req.login({ email, username, password })
-    // if (code === 1) {
-    //   let { accessToken } = data || ''
-    //   localStorage.setItem('accessToken', accessToken)
-    //   dispatch(setAccessToken(accessToken))
-    //   dispatch(login({ userId: 1 }))
-    // } else {
-    //   alert(msg)
-    // }
-
     let response = await req.login({ email, username, password })
     let data = await asyncResponseHandler(response)
-    let { accessToken } = data || ''
-    if (remember) localStorage.setItem('accessToken', accessToken)
-    dispatch(setAccessToken(accessToken))
-    dispatch(login({ userId: 1 }))
-
+    let userState = data || initUserState
+    if (remember) dispatch(rememberUserState(userState))
+    else dispatch(saveUserState(userState))
   }
 /**
  *
@@ -49,12 +36,6 @@ export const loginAsync = ({ email, username, password, remember }) =>
  */
 export const registerAsync = ({ username, password, email, verifyCode }) =>
   async dispatch => {
-    // const { code, msg, data } = await req.register({ email, password, username, verifyCode })
-    // if (code === 1) {
-    //   dispatch(setRegisterSuccess(true))
-    // } else {
-    //   alert(msg)
-    // }
     let response = await req.register({ email, password, username, verifyCode })
     await asyncResponseHandler(response)
     dispatch(setRegisterSuccess(true))
@@ -66,15 +47,9 @@ export const registerAsync = ({ username, password, email, verifyCode }) =>
  */
 export const getBaseInfoAsync = () =>
   async dispatch => {
-    // const { code, msg, data } = await req.getBaseInfo()
-    // if (code === 1) {
-    //   dispatch(getUserInfo({ ...data, userId: 1 }))
-    // } else {
-    //   alert(msg)
-    // }
     let response = await req.getBaseInfo()
     let data = await asyncResponseHandler(response)
-    dispatch(getUserInfo({ ...data, userId: 1 }))
+    dispatch(setBaseInfo(data))
   }
 
 /**
@@ -84,32 +59,20 @@ export const getBaseInfoAsync = () =>
  */
 export const getBlogAsync = blogId =>
   async dispatch => {
-    // const { code, msg, data } = await req.getBlog({ blogId })
-    // if (code === 1) {
-    //   dispatch(getBlog({ ...data, blogId }))
-    // } else {
-    //   alert(msg)
-    // }
     let response = await req.getBlog({ blogId })
     let data = await asyncResponseHandler(response)
-    dispatch(getBlog({ ...data, blogId }))
+    dispatch(set_blog_info(data))
   }
+
 /**
  *
  * @returns {function(*): Promise<void>}
  */
 export const getRecommendBLogListAsync = () =>
   async dispatch => {
-    // const { code, msg, data } = await req.getRecommendBlogList()
-    // if (code === 1) {
-    //   dispatch(loadBlogList(data))
-    // } else {
-    //   alert(msg)
-    // }
     let response = await req.getRecommendBlogList()
     let data = await asyncResponseHandler(response)
-    dispatch(loadBlogList(data))
-
+    dispatch(set_recommend_blog_list(data))
   }
 /**
  *
@@ -125,36 +88,36 @@ export const releaseBlogAsync = ({ title, content, tagA, tagB, tagC }) =>
     // eslint-disable-next-line no-unused-vars
     const response = await req.releaseBlog({ title, content, tagA, tagB, tagC })
     let data = await asyncResponseHandler(response)
-    dispatch(loadBlogList(data))
+    dispatch(set_recommend_blog_list(data))
   }
 
-export const getTodayRecommendAsync = () =>
+export const getAnnouncementAsync = () =>
   async dispatch => {
-    const response = await req.getTodayRecommend()
+    const response = await req.getAnnouncement()
     const data = await asyncResponseHandler(response)
-    dispatch(getTodayRecommend(data))
+    dispatch(getAnnouncement(data))
   }
 
 export const sendVerifyCodeAsync = ({ email }) =>
   async () => await req.sendVerifyCode2Email({ email })
 
-export const getRecommendBlogListAsync = () =>
+export const getRecommendBlogListAsync = page =>
   async dispatch => {
-    const response = await req.getRecommendBlogList()
+    const response = await req.getRecommendBlogList(page)
     const data = await asyncResponseHandler(response)
-    dispatch(loadBlogList(data))
+    dispatch(set_recommend_blog_list(data))
   }
 
 export const getBadgeNumAsync = () =>
   async dispatch => {
     const response = await req.getBadgeNum()
     let data = await asyncResponseHandler(response)
-    dispatch(getBadgeNum(data))
+    dispatch(setBadgeNum(data))
   }
 
 export const getUserInfoAsync = () =>
   async dispatch => {
-    const response = await req.getBaseInfo()
+    const response = await req.getUserWholeInfo()
     let data = await asyncResponseHandler(response)
-    dispatch(getUserInfo(data))
+    dispatch(set_user_info(data))
   }

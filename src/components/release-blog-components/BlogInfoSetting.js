@@ -5,7 +5,7 @@ import { Button, Avatar, Input, Tag, Modal, Form, Space } from 'antd'
 import { TagList } from '../homepage-components/@common/TagList'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { editTag, editTitle } from '../../@redux/actions'
+import { editTag, editTitle  } from '../../@redux/v2/actions'
 import { releaseBlogAsync } from '../../@redux/actions_async'
 
 class BlogInfoSetting extends Component {
@@ -101,6 +101,7 @@ class BlogInfoSetting extends Component {
                title="Edit Tag"
                onOk={this.handleModalOk}
                onCancel={this.handleModalCancel}
+               maskClosable={false}
         >
           <Space direction="vertical">
             <Input placeholder="Please Input TagA" value={this.state.tagA}
@@ -118,7 +119,7 @@ class BlogInfoSetting extends Component {
 
 BlogInfoSetting = connect(
   state => {
-    let { tags, content, title } = state['MarkdownEditor']
+    let { tags, content, title } = state.$ReleaseBlogPageState
     return {
       ...tags,
       content,

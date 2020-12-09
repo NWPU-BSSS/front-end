@@ -11,7 +11,7 @@ import './HomePage.css'
 class HomePage extends Component {
 
   static propTypes = {
-    blogList: PropTypes.array,
+    recommendBlogList: PropTypes.array,
     getBadgeNumAsync: PropTypes.func,
     getBaseInfoAsync: PropTypes.func,
     getRecommendBlogListAsync: PropTypes.func,
@@ -34,7 +34,7 @@ class HomePage extends Component {
     return (
       <div className="HomePage">
         <HomePageLeft/>
-        <HomePageCenter blogList={this.props.blogList}/>
+        <HomePageCenter/>
         <HomePageRight/>
       </div>
     )
@@ -43,9 +43,7 @@ class HomePage extends Component {
 
 HomePage = connect(
   state => ({
-    isLogin: state['AccessToken'] !== '',
-    blogList: state.BlogList.blogList,
-    user: state['UserState']
+    isLogin: state.$UserState.userId !== -1
   }),
   { getBaseInfoAsync, getRecommendBlogListAsync, getBadgeNumAsync }
 )(HomePage)

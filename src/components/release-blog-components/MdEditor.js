@@ -3,7 +3,7 @@ import './MdEditor.css'
 import ReactMarkdown from 'react-markdown'
 import { CodeBlock } from './CodeBlock'
 import { connect } from 'react-redux'
-import { inputMarkdown } from '../../@redux/actions'
+import { editMarkdown } from '../../@redux/v2/actions'
 
 const DEFAULT_SIZE = 500
 
@@ -31,7 +31,7 @@ class MdEditor extends React.Component {
     let textareaHeight = e.target.scrollHeight
     let height = Math.max(previewHeight, textareaHeight, DEFAULT_SIZE)
     this.setState({ textareaHeight: height })
-    this.props.inputMarkdown(e.target.value)
+    this.props.editMarkdown(e.target.value)
   }
 
   handleKeyPressMarkdown = e => {
@@ -40,7 +40,7 @@ class MdEditor extends React.Component {
     let height = Math.max(previewHeight, textareaHeight, DEFAULT_SIZE)
     if (e.keyCode === 9) {
       e.preventDefault()
-      this.props.inputMarkdown(this.props.markdown + '\t')
+      this.props.editMarkdown(this.props.markdown + '\t')
     } else if (e.keyCode === 13)
       return false
     else if (e.keyCode === 17) { //left ctrl
@@ -75,9 +75,9 @@ class MdEditor extends React.Component {
 
 MdEditor = connect(
   state => ({
-    markdown: state['MarkdownEditor'].content,
+    markdown: state.$ReleaseBlogPageState.content,
   }),
-  { inputMarkdown }
+  { editMarkdown }
 )(MdEditor)
 
 export { MdEditor }

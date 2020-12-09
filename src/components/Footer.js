@@ -5,7 +5,7 @@ import './Footer.css'
 import PropTypes from 'prop-types'
 import { Space } from 'antd'
 import { connect } from 'react-redux'
-import { Language } from '../@redux/reducers'
+import { $Language } from '../@redux/reducers'
 
 class Footer extends Component {
   static propTypes = {
@@ -36,7 +36,7 @@ class Footer extends Component {
 
 Footer = connect(
   state => {
-    return { language: state.Language['NavMenuAndBottom'] }
+    return { language: state.$Language['NavMenuAndBottom'] }
   }
 )(Footer)
 

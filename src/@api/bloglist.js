@@ -18,10 +18,10 @@ export const getFavsBlogList = async (userId) =>
 
 /**
  * 获取推荐博客列表
- * @param {string}page
+ * @param {number} page
  * @returns {Promise<JSON>}
  */
-export const getRecommBlogList = async(page) =>
+export const getRecommendBlogList = async(page= 0) =>
     request(`/api/blog/list/recommend?${query({page})}`, getInit())
 
 /**

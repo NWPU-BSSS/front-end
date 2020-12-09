@@ -9,7 +9,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
 import './NavMenu.css'
-import { clearAccessToken, logout, useEn, useZh } from '../../@redux/actions'
+import { logout, useEn, useZh } from '../../@redux/v2/actions'
 
 /**
  * 语言选项菜单 !important 顺序不可随意调换！ 关联checkLanguage的内容
@@ -81,11 +81,12 @@ class RightComponent extends Component {
   static propTypes = {
     user: PropTypes.object.isRequired,
     language: PropTypes.object.isRequired,
-    logout: PropTypes.func.isRequired
+    logout: PropTypes.func.isRequired,
+    isLogin: PropTypes.bool.isRequired
   }
 
   render () {
-    if (this.props.user.userId !== -1) {
+    if (this.props.isLogin) {
       return <NavLogged logout={this.props.logout} language={this.props.language} {...this.props.user}/>
     } else {
       return <NavUnloggin language={this.props.language}/>
@@ -115,8 +116,6 @@ class NavMenu extends Component {
 
   logout = () => {
     this.props.logout()
-    this.props.clearAccessToken()
-    localStorage.clear()
   }
 
   toggleNavbar = () => {
@@ -150,7 +149,7 @@ class NavMenu extends Component {
               <SocialMenu language={{ FindFriends, LeaveMessage, PillowTalk }}/>}</NavMenuDropdown>
           </div>
           <NavMenuSearch language={{Search}}/>
-          <RightComponent logout={this.logout} language={this.props.language} user={this.props.userState}/>
+          <RightComponent isLogin={this.props.isLogin} logout={this.logout} language={this.props.language} user={this.props.baseInfo}/>
           <NavMenuDropdown
             title={<div style={{ width: 100 }}>{languageMenu[this.state.languageIndex]} <CaretDownOutlined/></div>}>
             {languageMenu.map((item, index) => <a key={item.toString()}
@@ -164,13 +163,15 @@ class NavMenu extends Component {
 
 NavMenu = connect(
   state => {
-    const { NavMenuAndBottom } = state.Language
+    const { NavMenuAndBottom } = state.$Language
+    let { baseInfo } = state.$UserInfoState
     return ({
-      userState: state['UserState'],
-      language: NavMenuAndBottom
+      isLogin: state.$UserState.userId !== -1,
+      language: NavMenuAndBottom,
+      baseInfo
     })
   },
-  { useEn, useZh, logout, clearAccessToken }
+  { useEn, useZh, logout }
 )(NavMenu)
 
 export { NavMenu }
