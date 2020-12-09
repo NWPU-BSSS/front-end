@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './PersonalInfoMenu.css'
+import PropTypes from 'prop-types'
 
 function MenuItem (props) {
   return (
@@ -21,7 +22,7 @@ const languageHere = {
   MyCollege: '我的学院',
 }
 
-export class PersonalInfoMenu extends Component {
+export class ProfileMenu extends Component {
 
 
   render () {
@@ -29,16 +30,21 @@ export class PersonalInfoMenu extends Component {
 
     return (
       <div className="personal-info-menu">
-        <MenuItem title={PersonalInfo}/>
-        <MenuItem title={AccountSecurity}/>
-        <MenuItem title={Collection}/>
-        <MenuItem title={Follower}/>
-        <MenuItem title={Fans}/>
-        <MenuItem title={MyBlog}/>
-        <MenuItem title={MyDownload}/>
-        <MenuItem title={MyAnswer}/>
-        <MenuItem title={MyCollege}/>
+        <MenuItem title={PersonalInfo} action="/profile/info"/>
+        {/*<MenuItem title={AccountSecurity} action="/profile/safe"/>*/}
+        <MenuItem title={Collection} action="/profile/fav"/>
+        <MenuItem title={Follower} action="/profile/subscribe"/>
+        <MenuItem title={Fans} action="/profile/fans"/>
+        <MenuItem title={MyBlog} action="/profile/blogs"/>
+        {/*<MenuItem title={MyDownload}/>*/}
+        {/*<MenuItem title={MyAnswer}/>*/}
+        {/*<MenuItem title={MyCollege}/>*/}
       </div>
     )
   }
+}
+
+MenuItem.propTypes = {
+  action: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired
 }

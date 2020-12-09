@@ -1,10 +1,14 @@
 import React, { Component } from 'react'
-import { PersonalInfoMenu } from './PersonalInfoMenu'
+import { ProfileMenu } from './ProfileMenu'
 import { PersonalInfo } from './PersonalInfo'
 import './Container.css'
 import { connect } from 'react-redux'
 import { getUserInfoAsync } from '../../@redux/actions_async'
-import { Route, Switch as SwitchRouter } from 'react-router'
+import { Redirect, Route, Switch as SwitchRouter } from 'react-router'
+import { MyBlogs } from './MyBlogs'
+import { MyFavorite } from './MyFavorite'
+import { MySubscribes } from './MySubscribes'
+import { ProfileInfo } from './ProfileInfo'
 
 class ProfileBody extends Component {
 
@@ -15,25 +19,26 @@ class ProfileBody extends Component {
   render () {
     return (
       <div className="ProfileBody">
-        <PersonalInfoMenu/>
-        <SwitchRouter>
-          <Route path="info" component={PersonalInfoContainer}/>}/>
-        </SwitchRouter>
+        <ProfileMenu/>
+        <ProfileInfo>
+          <SwitchRouter>
+            <Route path="/profile/info"><PersonalInfo {...this.props.userInfo}/></Route>
+            <Route path="/profile/fav"><MyBlogs {...this.props.userInfo}/></Route>
+            <Route path="/profile/fav"><PersonalInfo {...this.props.userInfo}/></Route>
+            <Route path="/profile/fav"><PersonalInfo {...this.props.userInfo}/></Route>
+            <Route path="/profile/fav"><PersonalInfo {...this.props.userInfo}/></Route>
+            <Redirect to="/profile/info"/>
+          </SwitchRouter>
+        </ProfileInfo>
       </div>
     )
   }
 }
 
-let PersonalInfoContainer = props => <PersonalInfo {...props.userInfo}/>
-
-PersonalInfoContainer = connect(
+ProfileBody = connect(
   state => ({
     userInfo: state['UserState']
-  })
-)(PersonalInfoContainer)
-
-ProfileBody = connect(
-  () => {},
+  }),
   { getUserInfoAsync }
 )(ProfileBody)
 

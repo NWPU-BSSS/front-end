@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 import { sendVerifyCode2Email } from '../../@api'
 import { checkEmailExist, checkUsernameExist } from '../../@api/root'
 import { registerAsync, sendVerifyCodeAsync } from '../../@redux/actions_async'
+import { error, warning } from '../../@redux/@common'
 
 const { Option } = Select
 
@@ -29,10 +30,10 @@ class RegisterForm extends Component {
     let { code, msg, data } = json
     if (code === 1) {
       if (data.result) {
-        alert('the username has been registered')
+        warning('the username has been registered')
       }
     } else {
-      alert(msg)
+      error(msg)
     }
   }
 
@@ -41,11 +42,10 @@ class RegisterForm extends Component {
     let { code, msg, data } = json
     if (code === 1) {
       if (data.result) {
-        alert('the email has been registered')
-
+        warning('the email has been registered')
       }
     } else {
-      alert(msg)
+      error(msg)
     }
   }
 
@@ -57,8 +57,8 @@ class RegisterForm extends Component {
     let { email, username, password, confirmPassword } = this.form
     if (email && username && password && confirmPassword) {
       if (password === confirmPassword) this.props.registerAsync({ ...this.form })
-      else alert('password check failed')
-    } else alert('please input your info')
+      else error('password check failed')
+    } else error('please input your info')
   }
 
   enableRegisterButton = () => this.setState({ disableRegisterButton: false })
@@ -91,7 +91,7 @@ class RegisterForm extends Component {
   handleGetVerifyCode = async () => {
     let { email } = this.form
     if (!email) {
-      alert('please input your email')
+      warning('please input your email')
       return
     }
     this.props.sendVerifyCodeAsync({ email })
