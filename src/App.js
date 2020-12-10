@@ -21,6 +21,7 @@ import { setAccessToken } from './@redux/actions'
 import { Switch as SwitchRouter } from 'react-router-dom'
 import {Button,  Result } from 'antd'
 import { loadUserState } from './@redux/v2/actions'
+import { AdminUserPage } from './pages/AdminUserPage'
 
 class App extends React.Component {
 
@@ -49,6 +50,7 @@ class App extends React.Component {
           <Route path="/register" component={RegisterPage}/>
           <Route path="/login" component={LoginPage}/>
           <Route path="/reg-success" component={RegisterSuccessPage}/>
+          <Route path="/admin/user" component={AdminUserPage}/>
           <Route path="/t" component={TestPage}/>
           <Route>
             <Result
