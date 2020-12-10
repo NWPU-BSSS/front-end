@@ -5,11 +5,13 @@ import { Blogger } from '../components/blogger-space-components/Blogger'
 import { Redirect, Switch as SwitchRouter } from 'react-router-dom'
 import { Route } from 'react-router'
 import { connect } from 'react-redux'
+import { getBloggerInfoAsync } from '../@redux/actions_async'
 
 export class BloggerPage extends Component {
 
   componentWillMount () {
-    console.log(this.props.match.params)
+    let { bloggerId } = this.props.match.params
+    this.props.getBloggerInfoAsync(bloggerId)
   }
 
   render () {
@@ -35,11 +37,12 @@ export class BloggerPage extends Component {
 
 BloggerPage = connect(
   state => {
-    // let {bloggerInfo} =
+    const { bloggerInfo } = state.$BLoggerPageState
     return {
-
+      bloggerInfo
     }
-  }
+  },
+  { getBloggerInfoAsync }
 )(BloggerPage)
 
 function Resource () {

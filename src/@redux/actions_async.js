@@ -14,7 +14,7 @@ import {
   set_blog_comments,
   set_blog_blogger_info,
   set_blogger_tags,
-  set_blog_page_subscribe_status
+  set_blog_page_subscribe_status, set_blogger_info
 } from './actions'
 
 /**
@@ -172,4 +172,11 @@ export const getSubscribeStatusAsync = bloggerId =>
     let { status } = await asyncResponseHandler(response)
     dispatch(set_blog_page_subscribe_status(status))
   }
+
+  export const getBloggerInfoAsync = bloggerId =>
+    async dispatch => {
+      const response = await req.getBlogger({ bloggerId })
+      let data = await asyncResponseHandler(response)
+      dispatch(set_blogger_info(data))
+    }
 

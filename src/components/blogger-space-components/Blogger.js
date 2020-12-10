@@ -9,7 +9,7 @@ export class Blogger extends Component {
     return (
       <div className="Blogger">
         <div className="left">
-          <Avatar size={96} src={avatar}/>
+          <Avatar size={64} src={avatar}/>
           <Tag color="red" style={{marginRight: 0}}>CA{this.props.codeAge}</Tag>
         </div>
         <div className="main">
@@ -26,8 +26,8 @@ export class Blogger extends Component {
           </div>
         </div>
         <div className="right">
-          <Button danger>私信</Button>
-          <Button danger>关注</Button>
+          <Button danger>Chat</Button>
+          <Button danger>Subscribe</Button>
         </div>
       </div>
     )
