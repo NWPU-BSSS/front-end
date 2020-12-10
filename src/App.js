@@ -20,7 +20,7 @@ import { connect } from 'react-redux'
 import { setAccessToken } from './@redux/actions'
 import { Switch as SwitchRouter } from 'react-router-dom'
 import {Button,  Result } from 'antd'
-import { loadUserState } from './@redux/v2/actions'
+import { loadUserState } from './@redux/actions'
 
 class App extends React.Component {
 

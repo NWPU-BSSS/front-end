@@ -9,7 +9,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
 import './NavMenu.css'
-import { logout, useEn, useZh } from '../../@redux/v2/actions'
+import { logout, useEn, useZh } from '../../@redux/actions'
 
 /**
  * 语言选项菜单 !important 顺序不可随意调换！ 关联checkLanguage的内容

@@ -9,7 +9,7 @@ import {
   $ReleaseBlogPageState,
   $UserInfoState,
   $UserState
-} from './v2/reducers'
+} from './reducers'
 
 const store = createStore(
   combineReducers({

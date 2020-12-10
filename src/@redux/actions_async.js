@@ -1,6 +1,6 @@
 import * as req from '../@api'
 import {  asyncResponseHandler } from './@common'
-import { initUserState } from './v2/initData'
+import { initUserState } from './initData'
 import {
   getAnnouncement,
   rememberUserState,
@@ -8,7 +8,7 @@ import {
   set_recommend_blog_list, set_user_info,
   setBadgeNum,
   setBaseInfo, setRegisterSuccess
-} from './v2/actions'
+} from './actions'
 
 /**
  *

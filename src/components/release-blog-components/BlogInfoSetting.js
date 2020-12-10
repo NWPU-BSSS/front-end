@@ -5,7 +5,7 @@ import { Button, Avatar, Input, Tag, Modal, Form, Space } from 'antd'
 import { TagList } from '../homepage-components/@common/TagList'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { editTag, editTitle  } from '../../@redux/v2/actions'
+import { editTag, editTitle  } from '../../@redux/actions'
 import { releaseBlogAsync } from '../../@redux/actions_async'
 
 class BlogInfoSetting extends Component {
