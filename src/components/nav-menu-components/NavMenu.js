@@ -73,7 +73,9 @@ class NavMenu extends Component {
   }
 
   static propTypes = {
+    baseInfo: PropTypes.object,
     clearAccessToken: PropTypes.func,
+    isLogin: PropTypes.bool,
     language: PropTypes.object,
     logout: PropTypes.func,
     useEn: PropTypes.func,
@@ -98,7 +100,7 @@ class NavMenu extends Component {
   }
 
   render () {
-    const { FindFriends, LeaveMessage, PillowTalk, MyResources, NewProject, CreationCentre, AskQuestion, ReceivedQuestion, Answer, Blog, Code, Download, QandA, Social,  Search, UploadResource, WriteBlog, WriteCode, Subscribe } = this.props.language
+    const { FindFriends, LeaveMessage, PillowTalk, MyResources, NewProject, CreationCentre, AskQuestion, ReceivedQuestion, Answer, Blog, Code, Download, QandA, Social, Search, UploadResource, WriteBlog, WriteCode, Subscribe } = this.props.language
     return (
       <header className="NavMenu">
         <nav className="bs-nav">
@@ -115,9 +117,9 @@ class NavMenu extends Component {
             <NavMenuDropdown title={Social}>{
               <SocialMenu language={{ FindFriends, LeaveMessage, PillowTalk }}/>}</NavMenuDropdown>
           </div>
-          <NavMenuSearch language={{Search}}/>
+          <NavMenuSearch language={{ Search }}/>
           <RightComponent isLogin={this.props.isLogin}
-                          logged={<NavLogged language={this.props.language} logout={this.logout}/>}
+                          logged={<NavLogged {...this.props.baseInfo} language={this.props.language} logout={this.logout}/>}
                           unLogged={<NavUnLogged language={this.props.language}/>}
           />
           <NavMenuDropdown

@@ -10,7 +10,6 @@ import { Link } from 'react-router-dom'
 class NavLogged extends Component {
 
   static propTypes = {
-    username: PropTypes.string,
     logout: PropTypes.func.isRequired,
     language: PropTypes.object
   }
