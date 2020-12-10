@@ -4,10 +4,17 @@ import { initUserState } from './initData'
 import {
   set_announcement,
   rememberUserState,
-  saveUserState, set_blog_info,
-  set_recommend_blog_list, set_user_info,
+  saveUserState,
+  set_blog_info,
+  set_recommend_blog_list,
+  set_user_info,
   setBadgeNum,
-  setBaseInfo, setRegisterSuccess, set_blog_comments, set_blog_blogger_info, set_blogger_tags
+  setBaseInfo,
+  setRegisterSuccess,
+  set_blog_comments,
+  set_blog_blogger_info,
+  set_blogger_tags,
+  set_blog_page_subscribe_status
 } from './actions'
 
 /**
@@ -145,9 +152,24 @@ export const getBlogBloggerInfoAsync = bloggerId =>
     dispatch(set_blog_blogger_info(data))
   }
 
-  export const getBloggerTagsAsync = bloggerId =>
-    async dispatch => {
-      const response = await req.getTags({ bloggerId })
-      let data = await asyncResponseHandler(response)
-      dispatch(set_blogger_tags(data))
-    }
+export const getBloggerTagsAsync = bloggerId =>
+  async dispatch => {
+    const response = await req.getTags({ bloggerId })
+    let data = await asyncResponseHandler(response)
+    dispatch(set_blogger_tags(data))
+  }
+
+export const subscribeAsync = ({ bloggerId, subscribe }) =>
+  async dispatch => {
+    const response = await req.subscribeOrCancelBlogger({ bloggerId, subscribe })
+    await asyncResponseHandler(response)
+    dispatch(set_blog_page_subscribe_status(subscribe))
+  }
+
+export const getSubscribeStatusAsync = bloggerId =>
+  async dispatch => {
+    const response = await req.getSubscribeStatusOfBlogger( bloggerId)
+    let { status } = await asyncResponseHandler(response)
+    dispatch(set_blog_page_subscribe_status(status))
+  }
+

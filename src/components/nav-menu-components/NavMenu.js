@@ -118,7 +118,7 @@ class NavMenu extends Component {
           <NavMenuSearch language={{Search}}/>
           <RightComponent isLogin={this.props.isLogin}
                           logged={<NavLogged language={this.props.language} logout={this.logout}/>}
-                          unLogged={<NavUnLogged language={language}/>}
+                          unLogged={<NavUnLogged language={this.props.language}/>}
           />
           <NavMenuDropdown
             title={<div style={{ width: 100 }}>{languageMenu[this.state.languageIndex]} <CaretDownOutlined/></div>}>

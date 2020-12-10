@@ -32,7 +32,7 @@ export const exitUserInfo = async ({username, nickname, introduction, realName, 
  * @returns {Promise<JSON>}
  */
 export const subscribeOrCancelBlogger = async ({bloggerId, subscribe}) =>
-    request('/api/user/subscribe', postInit({bloggerId, subscribe}))
+    request(`/api/user/subscribe?${query()}`, postInit({bloggerId, subscribe}))
 
 /**
  * 最近浏览的博客

@@ -7,7 +7,7 @@ import {
   getBlogAsync,
   getBlogBloggerInfoAsync,
   getBloggerTagsAsync,
-  getCommentsAsync
+  getCommentsAsync, getSubscribeStatusAsync, subscribeAsync
 } from '../@redux/actions_async'
 import './BlogPage.css'
 import { connect } from 'react-redux'
@@ -36,6 +36,7 @@ class BlogPage extends Component {
     this.props.getCommentsAsync(blogId)
     this.props.getBlogBloggerInfoAsync(bloggerId)
     this.props.getBloggerTagsAsync(bloggerId)
+    this.props.getSubscribeStatusAsync(bloggerId)
   }
 
   handleAddComment = content => {
@@ -44,17 +45,17 @@ class BlogPage extends Component {
   }
 
   handleSubscribe = () => {
+    //TODO: 删除默认 bloggerId
+    let { bloggerId = 3 } = this.props.blogInfo
     let status = this.props.subscribeStatus
-    if (status) {
-
-    }
+    this.props.subscribeAsync({ bloggerId, subscribe: !status })
   }
 
   handleLike = () => {
     alert('like')
   }
 
-  handleFavorite = ()=> {
+  handleFavorite = () => {
     alert('fav')
   }
 
@@ -100,7 +101,15 @@ BlogPage = connect(
       subscribeStatus
     })
   },
-  { getBlogAsync, getCommentsAsync, addCommentAsync, getBlogBloggerInfoAsync, getBloggerTagsAsync }
+  {
+    getBlogAsync,
+    getCommentsAsync,
+    addCommentAsync,
+    getBlogBloggerInfoAsync,
+    getBloggerTagsAsync,
+    subscribeAsync,
+    getSubscribeStatusAsync
+  }
 )(BlogPage)
 
 export { BlogPage }
