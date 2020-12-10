@@ -4,8 +4,9 @@ import { BlogList } from '../components/blogger-space-components/BlogList'
 import { Blogger } from '../components/blogger-space-components/Blogger'
 import { Redirect, Switch as SwitchRouter } from 'react-router-dom'
 import { Route } from 'react-router'
+import { connect } from 'react-redux'
 
-export class BloggerSpacePage extends Component {
+export class BloggerPage extends Component {
 
   componentWillMount () {
     console.log(this.props.match.params)
@@ -17,7 +18,7 @@ export class BloggerSpacePage extends Component {
 
     return (
       <div>
-        <Blogger/>
+        <Blogger {...this.props.bloggerInfo}/>
         <ContentNavBar bloggerId={bloggerId}/>
         <SwitchRouter>
           <Route path="/blogger/:bloggerId/blog" component={BlogList}/>
@@ -31,6 +32,15 @@ export class BloggerSpacePage extends Component {
     )
   }
 }
+
+BloggerPage = connect(
+  state => {
+    // let {bloggerInfo} =
+    return {
+
+    }
+  }
+)(BloggerPage)
 
 function Resource () {
   return (

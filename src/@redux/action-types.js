@@ -53,6 +53,11 @@ export const EDIT_TITLE  = 'edit_title'
 export const EDIT_MARKDOWN = 'edit_markdown'
 
 /*
+  BloggerPageState
+ */
+export const SET_BLOGGER_INFO = 'set_blogger_info'
+
+/*
   全局 状态
   Global Action
  */

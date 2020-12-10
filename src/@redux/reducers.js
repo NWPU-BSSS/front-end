@@ -11,7 +11,7 @@ import {
   SET_FANS, SET_FAV_STATUS, SET_LIKE_STATUS,
   SET_RECENT_BROWSE_BLOGS, SET_RECOMMEND_BLOG_LIST, SET_BLOG_PAGE_SUBSCRIBE_STATUS,
   SET_SUBSCRIBES,
-  SET_USER_INFO, USE_EN, USE_ZH
+  SET_USER_INFO, USE_EN, USE_ZH, SET_BLOGGER_INFO
 } from './action-types'
 import {
   delete_user_state,
@@ -126,6 +126,16 @@ export function $Language (state = en, action) {
       return state
   }
 }
+
+export function $BLoggerPageState (state = {}, action) {
+  switch (action.type) {
+    case SET_BLOGGER_INFO:
+      return {...state, bloggerInfo:  action.data}
+    default:
+      return state
+  }
+}
+
 
 export function $GlobalState (state = {}, action) {
   switch (action.type) {

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './PersonalInfo.css'
 import { Button, Divider } from 'antd'
+import { ManOutlined, WomanOutlined } from '@ant-design/icons'
 import PropTypes from 'prop-types'
 
 function InfoBaseItem (props) {
@@ -66,7 +67,7 @@ export class PersonalInfo extends Component {
           <InfoBaseItem content={nickname} title={'Nickname'}/>
           <InfoBaseItem content={introduction} title={'Introduction'}/>
           <InfoBaseItem content={realName} title={'Real Name'}/>
-          <InfoBaseItem content={gender} title={'Gender'}/>
+          <InfoBaseItem content={[<ManOutlined />,<WomanOutlined />][gender]} title={'Gender'}/>
         </InfoItemBox>
         <InfoItemBox onEdit={this.handleEditAccountInfo} title={'Education'}>
           <InfoBaseItem content={university} title={'University'}/>

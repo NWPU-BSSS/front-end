@@ -4,7 +4,7 @@ import React from 'react'
 import './app-layout.css'
 import { Layout } from './components/Layout'
 import { HomePage } from './pages/HomePage'
-import { BloggerSpacePage } from './pages/BloggerSpacePage'
+import { BloggerPage } from './pages/BloggerPage'
 import { BlogPage } from './pages/BlogPage'
 import { ProfilePage } from './pages/ProfilePage'
 import { ReleaseBlogPage } from './pages/ReleaseBlogPage'
@@ -40,7 +40,7 @@ class App extends React.Component {
         <SwitchRouter>
           <Route path="/" exact component={HomePage}/>
           <Route path="/blog/:blogId" component={BlogPage}/>
-          <Route path="/blogger/:bloggerId" component={BloggerSpacePage}/>
+          <Route path="/blogger/:bloggerId" component={BloggerPage}/>
           <Route path="/profile" component={ProfilePage}/>
           <Route path="/release-blog" component={ReleaseBlogPage}/>
           <Route path="/code-edit" component={CodeEditPage}/>
