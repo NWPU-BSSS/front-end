@@ -9,12 +9,18 @@ import { MyBlogs } from './MyBlogs'
 import { MyFavorite } from './MyFavorite'
 import { MySubscribes } from './MySubscribes'
 import { ProfileInfo } from './ProfileInfo'
+import {HomeBlogList} from "../homepage-components/HomeBlogList";
+import PropTypes from "prop-types";
+import {HomePageCenter} from "../homepage-components/HomePageCenter";
+import {MyFans} from "./MyFans";
+import {BlogList} from "../blogger-space-components/BlogList";
 
 class ProfileBody extends Component {
 
   componentWillMount () {
     this.props.getUserInfoAsync()
   }
+
 
   render () {
     return (
@@ -23,10 +29,10 @@ class ProfileBody extends Component {
         <ProfileInfo>
           <SwitchRouter>
             <Route path="/profile/info"><PersonalInfo {...this.props.userInfo}/></Route>
-            <Route path="/profile/fav"><MyBlogs {...this.props.userInfo}/></Route>
-            <Route path="/profile/fav"><PersonalInfo {...this.props.userInfo}/></Route>
-            <Route path="/profile/fav"><PersonalInfo {...this.props.userInfo}/></Route>
-            <Route path="/profile/fav"><PersonalInfo {...this.props.userInfo}/></Route>
+            <Route path="/profile/fav"><MyFavorite/></Route>
+            <Route path="/profile/subscribe"><MySubscribes/></Route>
+            <Route path="/profile/fans"><PersonalInfo {...this.props.userInfo}/></Route>
+            <Route path="/profile/blogs"><MyBlogs/></Route>
             <Redirect to="/profile/info"/>
           </SwitchRouter>
         </ProfileInfo>
@@ -41,5 +47,6 @@ ProfileBody = connect(
   }),
   { getUserInfoAsync }
 )(ProfileBody)
+
 
 export { ProfileBody }

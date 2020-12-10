@@ -7,12 +7,13 @@ div div.personal-info-menu {
     background-color: white;
 }
 
-div div.personal-info-menu div.personal-info-menu-item {
+div div.personal-info-menu div.personal-info-menu-item{
     height: 50px;
     flex-grow: 1;
     text-align: center;
     margin: 5px 0;
     line-height: 59px;
+    width: 200px;
 }
 
 div div.personal-info-menu div.personal-info-menu-item:hover {
