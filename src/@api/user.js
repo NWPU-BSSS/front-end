@@ -11,19 +11,10 @@ export const uploadUserHeadPortrait = async ({file}) =>
 
 /**
  * 修改个人信息
- * @param {string}username
- * @param {string}nickname
- * @param {string}introduction
- * @param {string}realName
- * @param {string}gender
- * @param {string}university
- * @param {string}className
- * @param {string}academy
- * @param {string}graduateTime
  * @returns {Promise<JSON>}
  */
-export const exitUserInfo = async ({username, nickname, introduction, realName, gender, university, className, academy, graduateTime}) =>
-    request('/api/user/info', postInit({username, nickname, introduction, realName, gender, university, className, academy, graduateTime }))
+export const editUserInfo = async ({username, nickname, introduction, realName, gender, university, className, academy }) =>
+    request(`/api/user/info?${query()}`, postInit({username, nickname, introduction, realName, gender, university, className, academy }))
 
 /**
  * 关注、取关博主

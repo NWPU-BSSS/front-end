@@ -168,15 +168,31 @@ export const subscribeAsync = ({ bloggerId, subscribe }) =>
 
 export const getSubscribeStatusAsync = bloggerId =>
   async dispatch => {
-    const response = await req.getSubscribeStatusOfBlogger( bloggerId)
+    const response = await req.getSubscribeStatusOfBlogger(bloggerId)
     let { status } = await asyncResponseHandler(response)
     dispatch(set_blog_page_subscribe_status(status))
   }
 
-  export const getBloggerInfoAsync = bloggerId =>
-    async dispatch => {
-      const response = await req.getBlogger({ bloggerId })
-      let data = await asyncResponseHandler(response)
-      dispatch(set_blogger_info(data))
-    }
+export const getBloggerInfoAsync = bloggerId =>
+  async dispatch => {
+    const response = await req.getBlogger({ bloggerId })
+    let data = await asyncResponseHandler(response)
+    dispatch(set_blogger_info(data))
+  }
+
+export const setUserInfoAsync = ({ username, nickname, introduction, realName, gender, university, className, academy }) =>
+  async dispatch => {
+    const response = await req.editUserInfo({
+      username,
+      nickname,
+      introduction,
+      realName,
+      gender,
+      university,
+      className,
+      academy
+    })
+    let data = await asyncResponseHandler(response)
+    dispatch(set_user_info(data))
+  }
 

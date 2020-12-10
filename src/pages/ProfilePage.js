@@ -11,7 +11,7 @@ import { ProfileMenuItem } from '../components/profile-components/ProfileMenuIte
 import { ProfileInfoContainer } from '../components/profile-components/ProfileInfoContainer'
 import { ProfileBody } from '../components/profile-components/ProfileBody'
 import { connect } from 'react-redux'
-import { getUserInfoAsync } from '../@redux/actions_async'
+import { getUserInfoAsync, setUserInfoAsync } from '../@redux/actions_async'
 
 export class ProfilePage extends Component {
   componentWillMount () {
@@ -36,11 +36,11 @@ export class ProfilePage extends Component {
           </ProfileMenu>
           <ProfileInfoContainer>
             <SwitchRouter>
-              <Route path="/profile/info"><PersonalInfo {...this.props.userInfo}/></Route>
-              <Route path="/profile/info"><MyBlogs {...this.props.userInfo}/></Route>
-              <Route path="/profile/info"><MyFavorite {...this.props.userInfo}/></Route>
-              <Route path="/profile/info"><MySubscribes {...this.props.userInfo}/></Route>
-              <Route path="/profile/info"><MyFans {...this.props.userInfo}/></Route>
+              <Route path="/profile/info"><PersonalInfo/></Route>
+              <Route path="/profile/info"><MyBlogs/></Route>
+              <Route path="/profile/info"><MyFavorite/></Route>
+              <Route path="/profile/info"><MySubscribes /></Route>
+              <Route path="/profile/info"><MyFans/></Route>
               <Redirect to="/profile/info"/>
             </SwitchRouter>
           </ProfileInfoContainer>
@@ -51,8 +51,10 @@ export class ProfilePage extends Component {
 }
 
 ProfilePage = connect(
-  state => ({
-    userInfo: state.$UserInfoState.userInfo
-  }),
-  { getUserInfoAsync }
+  state => {
+    return {
+      userInfo: state.$UserInfoState.userInfo
+    }
+  },
+  { setUserInfoAsync, getUserInfoAsync }
 )(ProfilePage)
