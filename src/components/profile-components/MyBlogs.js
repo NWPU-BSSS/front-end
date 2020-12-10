@@ -1,6 +1,8 @@
 import { EyeOutlined } from '@ant-design/icons'
 import React, { Component } from 'react'
 import './MyBlogs.css'
+import {Link} from "react-router-dom";
+import * as item from "prop-types";
 
 class BlogItem extends Component {
 
@@ -9,7 +11,7 @@ class BlogItem extends Component {
         <div className="My_blog">
           <div className="related-head">
             <div className="related-head-title">
-              <a herf="">{this.props.blogtitle}</a>
+              <a herf="#">{this.props.blogtitle}</a>
             </div>
           </div>
           <div className="blog-content">
