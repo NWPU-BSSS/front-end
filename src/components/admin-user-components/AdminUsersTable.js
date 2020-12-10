@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import './UserTable.css'
 import deleteIcon from '../../assets/img/u288.svg'
-import { Space, Table, Radio, Pagination  } from 'antd'
+import { Space, Table, Radio, Pagination } from 'antd'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 
 const columns = [
   {
@@ -34,10 +35,11 @@ const columns = [
   {
     title: 'Operation',
     key: 'operation',
-    render: (text) => (
+    dataIndex: 'operation',
+    render: (props) => (
       <Space size="middle">
-        <img src={deleteIcon}/>
-        <a href={text}>Delete</a>
+        <img src={deleteIcon} alt={'Icon'}/>
+        <Link to={{ pathname: 'admin/delete', state: props }}>Delete</Link>
       </Space>
     ),
   },
@@ -50,6 +52,7 @@ const dataSources = [
     nickName: 'Dog Son',
     avatar: 'avatar',
     introduction: 'Dog Son is son of dog',
+    operation: { userID: 0 },
     gender: 'male',
   },
   {
@@ -58,6 +61,7 @@ const dataSources = [
     nickName: '黄老板',
     avatar: 'avatar',
     introduction: 'Shape of you',
+    operation: { userID: 1 },
     gender: 'male',
   },
   {
@@ -73,7 +77,7 @@ const dataSources = [
     userName: 'John Brown',
     nickName: 'Dog Son',
     avatar: 'avatar',
-    introduction: 'Dog Son is son of dog',
+    introduction: 'This is introduction',
     gender: 'male',
   },
   {
@@ -81,7 +85,7 @@ const dataSources = [
     userName: 'John Brown',
     nickName: 'Dog Son',
     avatar: 'avatar',
-    introduction: 'Dog Son is son of dog',
+    introduction: 'This is introduction',
     gender: 'male',
   },
   {
@@ -89,7 +93,7 @@ const dataSources = [
     userName: 'John Brown',
     nickName: 'Dog Son',
     avatar: 'avatar',
-    introduction: 'Dog Son is son of dog',
+    introduction: 'This is introduction',
     gender: 'male',
   },
   {
@@ -97,7 +101,7 @@ const dataSources = [
     userName: 'John Brown',
     nickName: 'Dog Son',
     avatar: 'avatar',
-    introduction: 'Dog Son is son of dog',
+    introduction: 'This is introduction',
     gender: 'male',
   },
   {
@@ -105,7 +109,7 @@ const dataSources = [
     userName: 'John Brown',
     nickName: 'Dog Son',
     avatar: 'avatar',
-    introduction: 'Dog Son is son of dog',
+    introduction: 'This is introduction',
     gender: 'male',
   },
   {
@@ -113,7 +117,7 @@ const dataSources = [
     userName: 'John Brown',
     nickName: 'Dog Son',
     avatar: 'avatar',
-    introduction: 'Dog Son is son of dog',
+    introduction: 'This is introduction',
     gender: 'male',
   },
   {
@@ -121,7 +125,7 @@ const dataSources = [
     userName: 'John Brown',
     nickName: 'Dog Son',
     avatar: 'avatar',
-    introduction: 'Dog Son is son of dog',
+    introduction: 'This is introduction',
     gender: 'male',
   },
   {
@@ -129,7 +133,7 @@ const dataSources = [
     userName: 'John Brown',
     nickName: 'Dog Son',
     avatar: 'avatar',
-    introduction: 'Dog Son is son of dog',
+    introduction: 'This is introduction',
     gender: 'male',
   },
   {
@@ -137,7 +141,7 @@ const dataSources = [
     userName: 'John Brown',
     nickName: 'Dog Son',
     avatar: 'avatar',
-    introduction: 'Dog Son is son of dog',
+    introduction: 'This is introduction',
     gender: 'male',
   },
   {
@@ -145,7 +149,7 @@ const dataSources = [
     userName: 'John Brown',
     nickName: 'Dog Son',
     avatar: 'avatar',
-    introduction: 'Dog Son is son of dog',
+    introduction: 'This is introduction',
     gender: 'male',
   },
   {
@@ -153,7 +157,7 @@ const dataSources = [
     userName: 'John Brown',
     nickName: 'Dog Son',
     avatar: 'avatar',
-    introduction: 'Dog Son is son of dog',
+    introduction: 'This is introduction',
     gender: 'male',
   },
   {
@@ -161,7 +165,7 @@ const dataSources = [
     userName: 'John Brown',
     nickName: 'Dog Son',
     avatar: 'avatar',
-    introduction: 'Dog Son is son of dog',
+    introduction: 'This is introduction',
     gender: 'male',
   },
   {
@@ -169,27 +173,27 @@ const dataSources = [
     userName: 'John Brown',
     nickName: 'Dog Son',
     avatar: 'avatar',
-    introduction: 'Dog Son is son of dog',
+    introduction: 'This is introduction',
     gender: 'male',
   },
-];
+]
 
 const rowSelection = {
   onChange: (selectedRowKeys, selectedRows) => {
-    console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
+    console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows)
   },
   getCheckboxProps: record => ({
     disabled: record.name === 'Disabled User', // Column configuration not to be checked
     name: record.name,
   }),
-};
+}
 
 export class AdminUsersTable extends Component {
 
   state = {
     top: 'topLeft',
     bottom: 'bottomLeft',
-  };
+  }
 
   static propTypes = {
     adminUserList: PropTypes.array
@@ -200,11 +204,11 @@ export class AdminUsersTable extends Component {
       <div className="user-table">
         {/*<UserListHead></UserListHead>*/}
         <Table rowSelection={{
-                 type: "checkbox",
-                 ...rowSelection,
-               }}
+          type: 'checkbox',
+          ...rowSelection,
+        }}
                columns={columns}
-               dataSource={this.props.dataSources}
+               dataSource={dataSources}
                pagination={{ position: [this.state.bottom], pageSize: 15 }}/>
         {/*<UserListRow userName='UserName1' nickName='DogSon' avatar='avatar1' introduction='DogSon is son of dog' gender='Male'></UserListRow>*/}
       </div>
@@ -212,6 +216,7 @@ export class AdminUsersTable extends Component {
   }
 }
 
+// redux中还没有，先注掉了
 // AdminUsersTable = connect(
 //   state => {
 //     dataSources: state.$AdminUsersTable.adminUserList;
@@ -224,7 +229,7 @@ export class AdminUsersTable extends Component {
 //         dataSources.gender = 'unknown'
 //       }
 //       dataSources.key = dataSources.userId;
-//       dataSources.operation = '#' + dataSources.userId
+//       dataSources.operation = dataSources.userId
 //     }
 //   },
 //   { getAdminUsersListAsync }
