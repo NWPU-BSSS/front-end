@@ -30,7 +30,7 @@ class RegisterPage extends Component {
 }
 
 RegisterPage = connect(
-  state => ({ isRegisterSuccess: state.registerSuccess })
+  state => ({ isRegisterSuccess: state.$GlobalState.registerSuccess })
 )(RegisterPage)
 
 export { RegisterPage }

@@ -2,7 +2,7 @@ import {
   EDIT_MARKDOWN,
   EDIT_TAG,
   EDIT_TITLE,
-  LOAD_USER_STATE, REGISTER_SUCCESS_FALSE, REGISTER_SUCCESS_TRUE,
+  LOAD_USER_STATE, REGISTER_SUCCESS_FALSE, REGISTER_SUCCESS,
   REMEMBER_USER_STATE,
   REMOVE_USER_STATE,
   SAVE_USER_STATE,
@@ -66,8 +66,4 @@ export const set_blog_page_subscribe_status = data => actionFactory(SET_BLOG_PAG
 /*
   Global Action
  */
-export const setRegisterSuccess = flag =>
-  flag ?
-    ({ type: REGISTER_SUCCESS_TRUE })
-    :
-    ({ type: REGISTER_SUCCESS_FALSE })
+export const setRegisterSuccess = ()=> actionFactory(REGISTER_SUCCESS)

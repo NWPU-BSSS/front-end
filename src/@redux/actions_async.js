@@ -45,7 +45,7 @@ export const registerAsync = ({ username, password, email, verifyCode }) =>
   async dispatch => {
     let response = await req.register({ email, password, username, verifyCode })
     await asyncResponseHandler(response)
-    dispatch(setRegisterSuccess(true))
+    dispatch(setRegisterSuccess())
   }
 
 /**

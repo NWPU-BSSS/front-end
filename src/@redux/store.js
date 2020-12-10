@@ -8,7 +8,8 @@ import {
   $Language,
   $ReleaseBlogPageState,
   $UserInfoState,
-  $UserState
+  $UserState,
+  $GlobalState
 } from './reducers'
 
 const store = createStore(
@@ -18,7 +19,8 @@ const store = createStore(
     $UserInfoState,
     $HomePageState,
     $ReleaseBlogPageState,
-    $BlogPageState
+    $BlogPageState,
+    $GlobalState
   }),
   composeWithDevTools(applyMiddleware(thunk))
 )

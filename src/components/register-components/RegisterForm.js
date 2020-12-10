@@ -56,7 +56,9 @@ class RegisterForm extends Component {
   handleRegister = () => {
     let { email, username, password, confirmPassword } = this.form
     if (email && username && password && confirmPassword) {
-      if (password === confirmPassword) this.props.registerAsync({ ...this.form })
+      if (password === confirmPassword) {
+        this.props.registerAsync({ ...this.form })
+      }
       else error('password check failed')
     } else error('please input your info')
   }
@@ -143,7 +145,7 @@ class RegisterForm extends Component {
                 alignItems: 'center',
               }}>
                 <Input placeholder="verify code" style={{ width: '60%' }} onChange={this.handleInputVerifyCode}/>
-                <Button disabled={this.state.disableGetVerifyCode} style={{ width: '35%' }}
+                <Button style={{ width: '35%' }}
                         onClick={this.handleGetVerifyCode}>Send Code</Button>
               </Input.Group>
             </div>
@@ -167,9 +169,7 @@ class RegisterForm extends Component {
 }
 
 RegisterForm = connect(
-  state => ({
-    disableGetVerifyCode: state.registerPage.disableSendCodeButton
-  }),
+ ()=> { },
   { registerAsync, sendVerifyCodeAsync }
 )(RegisterForm)
 

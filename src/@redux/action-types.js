@@ -56,6 +56,6 @@ export const EDIT_MARKDOWN = 'edit_markdown'
   全局 状态
   Global Action
  */
-export const REGISTER_SUCCESS_TRUE = 'register_success_true'
+export const REGISTER_SUCCESS = 'register_success_true'
 export const REGISTER_SUCCESS_FALSE = 'register_success_false'
 export const SEND_VERIFY_EMAIL_SUCCESS = 'send_verify_email_success'

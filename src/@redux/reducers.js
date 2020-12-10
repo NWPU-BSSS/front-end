@@ -1,7 +1,7 @@
 import { initBlogPage, initHomePage, initReleaseBlogPage, initUserInfo, initUserState } from './initData'
 import {
   DELETE_USER_STATE, EDIT_MARKDOWN, EDIT_TAG, EDIT_TITLE,
-  LOAD_USER_STATE, REGISTER_SUCCESS_FALSE, REGISTER_SUCCESS_TRUE,
+  LOAD_USER_STATE, REGISTER_SUCCESS_FALSE, REGISTER_SUCCESS,
   REMEMBER_USER_STATE,
   REMOVE_USER_STATE,
   SAVE_USER_STATE, SEND_VERIFY_EMAIL_SUCCESS, SET_ANNOUNCEMENT,
@@ -129,13 +129,12 @@ export function $Language (state = en, action) {
 
 export function $GlobalState (state = {}, action) {
   switch (action.type) {
-    case SEND_VERIFY_EMAIL_SUCCESS:
-      return { ...state, disableSendCodeButton: true }
+    // case SEND_VERIFY_EMAIL_SUCCESS:
+    //   return { ...state, disableSendCodeButton: true }
     // case REGISTER_SUCCESS_FALSE:
     //   return { ...state, flag }
-    // case REGISTER_SUCCESS_TRUE:
-    //   return true
-
+    case REGISTER_SUCCESS:
+      return {  ...state, registerSuccess: true }
     default:
       return state
   }
