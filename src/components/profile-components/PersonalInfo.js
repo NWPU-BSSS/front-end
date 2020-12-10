@@ -29,7 +29,7 @@ function InfoItemBox (props) {
 }
 
 InfoItemBox.propTypes = {
-  button: PropTypes.string.isRequired,
+  button: PropTypes.string,
   children: PropTypes.any.isRequired,
   onEdit: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired
@@ -57,24 +57,24 @@ export class PersonalInfo extends Component {
   }
 
   render () {
-    const {username, nickname, introduction, realName, gender, university,  academy, class: studyClass, graduateTime, codeAge, level, avatar} = this.props
+    const {username, nickname, introduction, realName, gender, university,  academy,   className, graduateTime, codeAge, level, avatar} = this.props
 
     return (
       <div className="PersonalInfo">
-        <InfoItemBox button={'修改信息'} onEdit={this.handleEditAccountInfo} title={'账号信息'}>
-          <InfoBaseItem content={username} title={'ID'}/>
-          <InfoBaseItem content={nickname} title={'昵称'}/>
-          <InfoBaseItem content={introduction} title={'简介'}/>
-          <InfoBaseItem content={realName} title={'姓名'}/>
-          <InfoBaseItem content={gender} title={'性别'}/>
+        <InfoItemBox button={'Edit'} onEdit={this.handleEditAccountInfo} title={'Account'}>
+          <InfoBaseItem content={username} title={'Username'}/>
+          <InfoBaseItem content={nickname} title={'Nickname'}/>
+          <InfoBaseItem content={introduction} title={'Introduction'}/>
+          <InfoBaseItem content={realName} title={'Real Name'}/>
+          <InfoBaseItem content={gender} title={'Gender'}/>
         </InfoItemBox>
-        <InfoItemBox onEdit={this.handleEditAccountInfo} title={'学历信息'}>
-          <InfoBaseItem content={university} title={'学校'}/>
-          <InfoBaseItem content={academy} title={'学院'}/>
-          <InfoBaseItem content={studyClass} title={'班级'}/>
-          <InfoBaseItem content={graduateTime} title={'毕业时间'}/>
+        <InfoItemBox onEdit={this.handleEditAccountInfo} title={'Education'}>
+          <InfoBaseItem content={university} title={'University'}/>
+          <InfoBaseItem content={academy} title={'Academy'}/>
+          <InfoBaseItem content={className} title={'Class'}/>
+          <InfoBaseItem content={graduateTime} title={'Graduate'}/>
         </InfoItemBox>
-        <InfoItemBox button="Upload Resume" onEdit={this.handleEditAccountInfo} title={'简历上传'}>
+        <InfoItemBox button="Upload" onEdit={this.handleEditAccountInfo} title={'Resume'}>
           <InfoBaseItem content='Waiting Upload' title="Resume"/>
         </InfoItemBox>
       </div>

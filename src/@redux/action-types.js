@@ -33,6 +33,8 @@ export const SET_BLOG_COMMENTS = 'set_blog_comments'
 export const SET_BLOGGER_TAGS = 'set_blogger_tags'
 export const SET_LIKE_STATUS = 'set_like_status'
 export const SET_FAV_STATUS = 'set_fav_status'
+export const SET_BLOG_BLOGGER_INFO = 'set_blog_blogger_info'
+export const SET_BLOG_PAGE_SUBSCRIBE_STATUS = 'set_blog_page_subscribe_status'
 
 /*
   主页
@@ -54,6 +56,6 @@ export const EDIT_MARKDOWN = 'edit_markdown'
   全局 状态
   Global Action
  */
-export const REGISTER_SUCCESS_TRUE = 'REGISTER_SUCCESS_TRUE'
-export const REGISTER_SUCCESS_FALSE = 'REGISTER_SUCCESS_FALSE'
-export const SEND_VERIFY_EMAIL_SUCCESS = 'SEND_VERIFY_EMAIL_SUCCESS'
+export const REGISTER_SUCCESS_TRUE = 'register_success_true'
+export const REGISTER_SUCCESS_FALSE = 'register_success_false'
+export const SEND_VERIFY_EMAIL_SUCCESS = 'send_verify_email_success'

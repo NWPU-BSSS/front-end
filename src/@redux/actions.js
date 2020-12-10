@@ -9,8 +9,8 @@ import {
   SET_ANNOUNCEMENT,
   SET_BADGE_NUM,
   SET_BASE_INFO, SET_BLOG_COMMENTS,
-  SET_BLOG_INFO, SET_BLOGGER_TAGS, SET_FAV_STATUS, SET_LIKE_STATUS,
-  SET_RECOMMEND_BLOG_LIST,
+  SET_BLOG_INFO, SET_BLOG_BLOGGER_INFO, SET_BLOGGER_TAGS, SET_FAV_STATUS, SET_LIKE_STATUS,
+  SET_RECOMMEND_BLOG_LIST, SET_BLOG_PAGE_SUBSCRIBE_STATUS,
   SET_USER_INFO,
   USE_EN,
   USE_ZH
@@ -42,7 +42,7 @@ export const set_user_info = data => actionFactory(SET_USER_INFO, data)
   HomePageState Action
  */
 
-export const getAnnouncement = data => actionFactory(SET_ANNOUNCEMENT, data)
+export const set_announcement = data => actionFactory(SET_ANNOUNCEMENT, data)
 export const set_recommend_blog_list = data => actionFactory(SET_RECOMMEND_BLOG_LIST, data)
 
 /*
@@ -60,6 +60,8 @@ export const set_blog_comments = data => actionFactory(SET_BLOG_COMMENTS, data)
 export const set_blogger_tags = data => actionFactory(SET_BLOGGER_TAGS, data)
 export const set_like_status = data => actionFactory(SET_LIKE_STATUS, data)
 export const set_fav_status = data => actionFactory(SET_FAV_STATUS, data)
+export const set_blog_blogger_info = data => actionFactory(SET_BLOG_BLOGGER_INFO, data)
+export const set_blog_page_subscribe_status = data => actionFactory(SET_BLOG_PAGE_SUBSCRIBE_STATUS, data)
 
 /*
   Global Action

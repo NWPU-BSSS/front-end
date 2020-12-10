@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { LoginFormTop } from '../components/@common/LoginFormTop'
+import { LoginFormTop } from '../components/base/LoginFormTop'
 import { Button, Result } from 'antd'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'

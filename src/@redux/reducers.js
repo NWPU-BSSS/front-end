@@ -7,9 +7,9 @@ import {
   SAVE_USER_STATE, SEND_VERIFY_EMAIL_SUCCESS, SET_ANNOUNCEMENT,
   SET_BADGE_NUM,
   SET_BASE_INFO, SET_BLOG_COMMENTS,
-  SET_BLOG_INFO, SET_BLOGGER_TAGS, SET_BROWSE_RECORD,
+  SET_BLOG_INFO, SET_BLOG_BLOGGER_INFO, SET_BLOGGER_TAGS, SET_BROWSE_RECORD,
   SET_FANS, SET_FAV_STATUS, SET_LIKE_STATUS,
-  SET_RECENT_BROWSE_BLOGS, SET_RECOMMEND_BLOG_LIST,
+  SET_RECENT_BROWSE_BLOGS, SET_RECOMMEND_BLOG_LIST, SET_BLOG_PAGE_SUBSCRIBE_STATUS,
   SET_SUBSCRIBES,
   SET_USER_INFO, USE_EN, USE_ZH
 } from './action-types'
@@ -80,6 +80,10 @@ export function $BlogPageState (state = initBlogPage, action) {
       return { ...state, likeStatus: action.data }
     case SET_FAV_STATUS:
       return { ...state, favStatus: action.data }
+    case SET_BLOG_BLOGGER_INFO:
+      return { ...state, bloggerInfo: action.data }
+    case SET_BLOG_PAGE_SUBSCRIBE_STATUS:
+      return { ...state, subscribeStatus: action.data }
     default:
       return state
 
@@ -127,10 +131,11 @@ export function $GlobalState (state = {}, action) {
   switch (action.type) {
     case SEND_VERIFY_EMAIL_SUCCESS:
       return { ...state, disableSendCodeButton: true }
-    case REGISTER_SUCCESS_FALSE:
-      return false
-    case REGISTER_SUCCESS_TRUE:
-      return true
+    // case REGISTER_SUCCESS_FALSE:
+    //   return { ...state, flag }
+    // case REGISTER_SUCCESS_TRUE:
+    //   return true
+
     default:
       return state
   }

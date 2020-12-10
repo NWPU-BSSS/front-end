@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Heading from '../@common/Heading'
+import Heading from '../base/Heading'
 
 export class HeadingBlock extends Component {
   renderHtml = () => {

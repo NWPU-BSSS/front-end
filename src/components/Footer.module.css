@@ -1,4 +1,4 @@
-div.Footer {
+.Footer {
     width: 100%;
     flex-direction: column;
     justify-content: space-between;
@@ -10,11 +10,11 @@ div.Footer {
     background-color: #fff;
 }
 
-div.Footer a, div.Footer span{
+.Footer a, div.Footer span{
     color: #555;
 }
 
-div.Footer .top {
+.Footer .top {
     width: 200px;
     display: flex;
     justify-content: space-between;
@@ -22,6 +22,6 @@ div.Footer .top {
     color: #000;
 }
 
-div.Footer a.body img {
+.Footer a.body img {
     max-height: 50px;
 }
