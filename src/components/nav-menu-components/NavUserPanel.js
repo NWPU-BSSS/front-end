@@ -3,17 +3,33 @@ import PropTypes from 'prop-types'
 
 import {
   BankFilled,
-  CheckCircleOutlined, CrownOutlined,
-  DownloadOutlined,
-  EditFilled,
-  ExportOutlined,
+  CheckCircleOutlined,
+  CrownOutlined, DownloadOutlined,
+  EditFilled, ExportOutlined,
   HeartOutlined,
-  IdcardFilled,
-  QuestionCircleFilled
+  IdcardFilled, QuestionCircleFilled
 } from '@ant-design/icons'
 
 import './NavUserPanel.css'
 import { Link } from 'react-router-dom'
+
+class NavUserPanelItem extends Component{
+  static propTypes = {
+    action: PropTypes.string,
+    before: PropTypes.node.isRequired,
+    onClick: PropTypes.func,
+    title: PropTypes.string.isRequired
+  }
+
+  render () {
+    const { before, action, title, onClick } = this.props
+    return (
+      <Link to={action} className="panel-item" onClick={onClick}>
+        <div>{before}&nbsp;{title}</div>
+      </Link>
+    )
+  }
+}
 
 export class NavUserPanel extends Component {
 
@@ -51,24 +67,12 @@ export class NavUserPanel extends Component {
           <div>{this.props.fanNum}</div>
         </a>
       </div>
-      <Link className="panel-item" to="/profile">
-        <div><IdcardFilled/>&nbsp;{PersonalCentre}</div>
-      </Link>
-      <a className="panel-item">
-        <div><EditFilled/>&nbsp;{MyBlog}</div>
-      </a>
-      <a className="panel-item">
-        <div><BankFilled/>&nbsp;{MySchool}</div>
-      </a>
-      <a className="panel-item">
-        <div><DownloadOutlined/>&nbsp;{MyDownload}</div>
-      </a>
-      <a className="panel-item">
-        <div><QuestionCircleFilled/>&nbsp;{Help}</div>
-      </a>
-      <a className="panel-item" onClick={this.props.onLogout}>
-        <div><ExportOutlined/>&nbsp;{Exit}</div>
-      </a>
+      <NavUserPanelItem action="/profile/info" title={PersonalCentre} before={<IdcardFilled/>}/>
+      <NavUserPanelItem action="/profile/blog" title={MyBlog} before={<EditFilled/>}/>
+      <NavUserPanelItem action="/profile/school" title={MySchool} before={<BankFilled/>}/>
+      <NavUserPanelItem action="/profile/download" title={MyDownload} before={<DownloadOutlined/>}/>
+      <NavUserPanelItem action="/profile/help" title={Help} before={<QuestionCircleFilled/>}/>
+      <NavUserPanelItem onClick={this.props.onLogout} title={Exit} before={<ExportOutlined/>}/>
     </>
   }
 }

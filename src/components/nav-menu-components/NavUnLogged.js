@@ -3,7 +3,7 @@ import { btnDanger,btnSuccess } from './@button-style'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
-export class NavUnloggin extends Component {
+export class NavUnLogged extends Component {
 
   static propTypes = {
     language: PropTypes.any.isRequired

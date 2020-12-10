@@ -1,106 +1,110 @@
+import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import { Avatar, Button, Tag } from 'antd'
 import avatar from '../../assets/temporary/u508.png'
 import { SafetyCertificateOutlined } from '@ant-design/icons'
-import './BloggerPanel.css'
+import styles from './BloggerPanel.module.css'
 import { Link } from 'react-router-dom'
 import { LeftCard } from './common/LeftCard'
 
+class BloggerPanelInfoItem extends Component {
+
+  static propTypes = {
+    action: PropTypes.string.isRequired,
+    num: PropTypes.number.isRequired,
+    text: PropTypes.string.isRequired
+  }
+
+  render () {
+    return (
+      <li>
+        <Link to={this.props.action}>
+          <div className={styles.infoItem}>
+            <div className='info-content'>{this.props.num}</div>
+            <div className='info-content'>{this.props.text}</div>
+          </div>
+        </Link>
+      </li>
+    )
+  }
+
+}
+
 export class BloggerPanel extends Component {
+
+  static defaultProps = {
+    blogNum: 0,
+    className: '1444444',
+    codeAge: 0,
+    commentNum: 0,
+    fanNum: 0,
+    favoriteNum: 0,
+    level: 0,
+    likeNum: 0
+  }
+
+  static propTypes = {
+    avatar: PropTypes.string,
+    blogNum: PropTypes.number,
+    bloggerId: PropTypes.number,
+    className: PropTypes.string.isRequired,
+    codeAge: PropTypes.number,
+    commentNum: PropTypes.number,
+    fanNum: PropTypes.number,
+    favoriteNum: PropTypes.number,
+    handleSubscribe: PropTypes.func.isRequired,
+    isSubscribed: PropTypes.bool.isRequired,
+    level: PropTypes.number,
+    likeNum: PropTypes.number,
+    nickname: PropTypes.string.isRequired
+  }
 
   render () {
     return (
       <LeftCard
-        header="博主信息"
+        header="Blogger"
         body={
-          <div className="BloggerPanel">
-            <div className="top">
-              <div className="top-top">
-                <Avatar size={56} src={avatar}/>
-                <div className="username">
-                  userName
-                </div>
+          <div className={styles.container}>
+            <div className={styles.top}>
+              <div className={styles.topLeft}>
+                <Avatar size={48} src={this.props.avatar}/>
+                <Tag color="magenta">Lv{this.props.level}</Tag>
               </div>
-              <div className="top-bottom">
-                <div>
-                  <Tag className="level">Lv3</Tag>
-                </div>
-                <div className="code-age">码龄7年</div>
-                <div style={{ flexGrow: 0 }}>
-                  <SafetyCertificateOutlined style={{ color: '#d9001b' }}/>
-                </div>
-                <div>
-                  14011801班
+              <div className={styles.topRight}>
+                <div className={styles.nickname}>{this.props.nickname}</div>
+                <div className={styles.otherInfo}>
+                  <Tag color="magenta">CA{this.props.codeAge}</Tag>
+                  {/*<div style={{ flexGrow: 0 }}>*/}
+                  {/*  <SafetyCertificateOutlined style={{ color: '#d9001b' }}/>*/}
+                  {/*</div>*/}
+                  <div>{this.props.className}</div>
                 </div>
               </div>
             </div>
-
-            <div style={{
-              width: '100%',
-              height: '60px',
-            }}>
-              <ul className='info-list'>
-                <li>
-                  <Link to={'/blog'}>
-                    <div className='info-content'>
-                      1
-                    </div>
-                    <div className='info-content'>
-                      原创
-                    </div>
-                  </Link>
-                </li>
-                <li>
-                  <Link to='/blog'>
-                    <div className='info-content'>
-                      0
-                    </div>
-                    <div className='info-content'>
-                      粉丝
-                    </div>
-                  </Link>
-                </li>
-                <li>
-                  <Link to='/blog'>
-                    <div className='info-content'>
-                      21
-                    </div>
-                    <div className='info-content'>
-                      获赞
-                    </div>
-                  </Link>
-                </li>
-                <li>
-                  <Link to='/blog'>
-                    <div className='info-content'>
-                      34
-                    </div>
-                    <div className='info-content'>
-                      评论
-                    </div>
-                  </Link>
-                </li>
-                <li>
-                  <Link to='/blog'>
-                    <div className='info-content'>
-                      5
-                    </div>
-                    <div className='info-content'>
-                      收藏
-                    </div>
-                  </Link>
-                </li>
+            <div className={styles.middle}>
+              <ul>
+                <BloggerPanelInfoItem text="Blog" action={`/blogger/${this.props.bloggerId}/blog`}
+                                      num={this.props.blogNum}/>
+                <BloggerPanelInfoItem text="Fan" action={`/blogger/${this.props.bloggerId}/fans`}
+                                      num={this.props.fanNum}/>
+                <BloggerPanelInfoItem text="Like" action={`/blogger/${this.props.bloggerId}/blog`}
+                                      num={this.props.likeNum}/>
+                <BloggerPanelInfoItem text="Comment" action={`/blogger/${this.props.bloggerId}/blog`}
+                                      num={this.props.commentNum}/>
+                <BloggerPanelInfoItem text="Fav" action={`/blogger/${this.props.bloggerId}/fav`}
+                                      num={this.props.favoriteNum}/>
               </ul>
             </div>
-
-            <div className="bottom">
+            <div className={styles.bottom}>
               <Link className="link" to="/">
-                <Button size='large'>TA的主页</Button>
+                <Button size='large'>Profile</Button>
               </Link>
               <Link className="link" to="/">
-                <Button size='large'>私信</Button>
+                <Button size='large'>Chat</Button>
               </Link>
-              <Button className="btn" size='large'>关注</Button>
+              <Button danger size='large'
+                      type={this.props.isSubscribed ? "default": "primary"}
+                      onClick={this.props.handleSubscribe}>{this.props.isSubscribed ? 'Subscribed' : 'Subscribe'}</Button>
             </div>
           </div>
         }

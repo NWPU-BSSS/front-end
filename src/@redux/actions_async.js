@@ -1,14 +1,21 @@
 import * as req from '../@api'
-import {  asyncResponseHandler } from './@common'
-import { initUserState } from './v2/initData'
+import { asyncResponseHandler } from './@common'
+import { initUserState } from './initData'
 import {
-  getAnnouncement,
+  set_announcement,
   rememberUserState,
-  saveUserState, set_blog_info,
-  set_recommend_blog_list, set_user_info,
+  saveUserState,
+  set_blog_info,
+  set_recommend_blog_list,
+  set_user_info,
   setBadgeNum,
-  setBaseInfo, setRegisterSuccess
-} from './v2/actions'
+  setBaseInfo,
+  setRegisterSuccess,
+  set_blog_comments,
+  set_blog_blogger_info,
+  set_blogger_tags,
+  set_blog_page_subscribe_status, set_blogger_info
+} from './actions'
 
 /**
  *
@@ -38,7 +45,7 @@ export const registerAsync = ({ username, password, email, verifyCode }) =>
   async dispatch => {
     let response = await req.register({ email, password, username, verifyCode })
     await asyncResponseHandler(response)
-    dispatch(setRegisterSuccess(true))
+    dispatch(setRegisterSuccess())
   }
 
 /**
@@ -95,7 +102,7 @@ export const getAnnouncementAsync = () =>
   async dispatch => {
     const response = await req.getAnnouncement()
     const data = await asyncResponseHandler(response)
-    dispatch(getAnnouncement(data))
+    dispatch(set_announcement(data))
   }
 
 export const sendVerifyCodeAsync = ({ email }) =>
@@ -121,3 +128,71 @@ export const getUserInfoAsync = () =>
     let data = await asyncResponseHandler(response)
     dispatch(set_user_info(data))
   }
+
+export const addCommentAsync = ({ blogId, content, commentId = 0 }) =>
+  async dispatch => {
+    const response1 = await req.addComment({ blogId, content, commentId })
+    await asyncResponseHandler(response1)
+    const response2 = await req.getComments({ blogId })
+    let data2 = await asyncResponseHandler(response2)
+    dispatch(set_blog_comments(data2))
+  }
+
+export const getCommentsAsync = blogId =>
+  async dispatch => {
+    const response = await req.getComments({ blogId })
+    let data = await asyncResponseHandler(response)
+    dispatch(set_blog_comments(data))
+  }
+
+export const getBlogBloggerInfoAsync = bloggerId =>
+  async dispatch => {
+    const response = await req.getBlogger({ bloggerId })
+    let data = await asyncResponseHandler(response)
+    dispatch(set_blog_blogger_info(data))
+  }
+
+export const getBloggerTagsAsync = bloggerId =>
+  async dispatch => {
+    const response = await req.getTags({ bloggerId })
+    let data = await asyncResponseHandler(response)
+    dispatch(set_blogger_tags(data))
+  }
+
+export const subscribeAsync = ({ bloggerId, subscribe }) =>
+  async dispatch => {
+    const response = await req.subscribeOrCancelBlogger({ bloggerId, subscribe })
+    await asyncResponseHandler(response)
+    dispatch(set_blog_page_subscribe_status(subscribe))
+  }
+
+export const getSubscribeStatusAsync = bloggerId =>
+  async dispatch => {
+    const response = await req.getSubscribeStatusOfBlogger(bloggerId)
+    let { status } = await asyncResponseHandler(response)
+    dispatch(set_blog_page_subscribe_status(status))
+  }
+
+export const getBloggerInfoAsync = bloggerId =>
+  async dispatch => {
+    const response = await req.getBlogger({ bloggerId })
+    let data = await asyncResponseHandler(response)
+    dispatch(set_blogger_info(data))
+  }
+
+export const setUserInfoAsync = ({ username, nickname, introduction, realName, gender, university, className, academy }) =>
+  async dispatch => {
+    const response = await req.editUserInfo({
+      username,
+      nickname,
+      introduction,
+      realName,
+      gender,
+      university,
+      className,
+      academy
+    })
+    let data = await asyncResponseHandler(response)
+    dispatch(set_user_info(data))
+  }
+

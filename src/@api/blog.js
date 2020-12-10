@@ -63,7 +63,7 @@ export const getComments = async ({ blogId }) =>
  * @returns {Promise<JSON>}
  */
 export const getTags = async ({ bloggerId }) =>
-  await request(`/api/blog/blogger/tags?${query(bloggerId)}`)
+  await request(`/api/blog/blogger/tags?${query({ bloggerId })}`)
 
 /**
  * 获取博主详细信息
@@ -71,7 +71,7 @@ export const getTags = async ({ bloggerId }) =>
  * @returns {Promise<*>}
  */
 export const getBlogger = async ({ bloggerId }) =>
-  await request(`/api/blog/blogger?${query(bloggerId)}`)
+  await request(`/api/blog/blogger?${query({ bloggerId })}`)
 
 /**
  * 获取我对某个博客的收藏状态

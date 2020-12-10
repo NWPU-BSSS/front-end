@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
 import './PersonalInfo.css'
-import { Button, Divider } from 'antd'
+import { Button, Divider, Input, Modal, Radio, Space } from 'antd'
+import { ManOutlined, WomanOutlined } from '@ant-design/icons'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import { getUserInfoAsync, setUserInfoAsync } from '../../@redux/actions_async'
 
 function InfoBaseItem (props) {
   return (
@@ -29,64 +32,155 @@ function InfoItemBox (props) {
 }
 
 InfoItemBox.propTypes = {
-  button: PropTypes.string.isRequired,
+  button: PropTypes.string,
   children: PropTypes.any.isRequired,
-  onEdit: PropTypes.func.isRequired,
+  onEdit: PropTypes.func,
   title: PropTypes.string.isRequired
 }
 
 export class PersonalInfo extends Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      showModal: false,
+      nickname: '',
+      introduction: '',
+      realName: '',
+      university: '',
+      className: '',
+      academy: '',
+      gender: ''
+    }
+  }
+
+  componentWillMount () {
+    this.props.getUserInfoAsync()
+
+  }
+
+  componentWillReceiveProps (nextProps, nextContext) {
+    let { nickname, introduction, realName, university, className, academy, gender } = nextProps
+    this.setState({ nickname, introduction, realName, university, className, academy, gender })
+  }
 
   static propTypes = {
-    academy: PropTypes.string.isRequired,
-    avatar: PropTypes.string.isRequired,
-    codeAge: PropTypes.string.isRequired,
-    gender: PropTypes.string.isRequired,
-    graduateTime: PropTypes.string.isRequired,
-    introduction: PropTypes.string.isRequired,
-    level: PropTypes.number.isRequired,
-    nickname: PropTypes.string.isRequired,
-    realName: PropTypes.string.isRequired,
-    university: PropTypes.string.isRequired,
-    username: PropTypes.string.isRequired,
-    class: PropTypes.string.isRequired
+    academy: PropTypes.string,
+    avatar: PropTypes.string,
+    class: PropTypes.string,
+    className: PropTypes.any,
+    codeAge: PropTypes.string,
+    gender: PropTypes.string,
+    graduateTime: PropTypes.string,
+    introduction: PropTypes.string,
+    level: PropTypes.number,
+    nickname: PropTypes.string,
+    realName: PropTypes.string,
+    university: PropTypes.string,
+    username: PropTypes.string
   }
 
   handleEditAccountInfo = () => {
-    alert('修改账号信息')
+    this.setState({ showModal: true })
+  }
+
+  handleModalOk = () => {
+    this.props.setUserInfoAsync({ ...this.form })
+    this.setState({ showModal: false })
+  }
+
+  handleModalCancel = () => {
+    this.setState({ showModal: false })
+  }
+
+  handleInputNickname = ({ target: { value: nickname } }) => {
+    this.setState({ nickname })
+  }
+
+  handleInputIntroduction = ({ target: { value: introduction } }) => {
+    this.setState({ introduction })
+  }
+
+  handleInputRealName = ({ target: { value: realName } }) => {
+    this.setState({ realName })
+  }
+
+  handleInputUniversity = ({ target: { value: university } }) => {
+    this.setState({ university })
+  }
+
+  handleInputClassName = ({ target: { value: className } }) => {
+    this.setState({ className })
+  }
+
+  handleInputAcademy = ({ target: { value: academy } }) => {
+    this.setState({ academy })
+  }
+
+  handleInputGender = ({ target: { value: gender } }) => {
+    this.setState({ gender })
   }
 
   render () {
-    const {username, nickname, introduction, realName, gender, university,  academy, class: studyClass, graduateTime, codeAge, level, avatar} = this.props
-
+    const { username, nickname, introduction, realName, gender, university, academy, className, graduateTime } = this.props
     return (
       <div className="PersonalInfo">
-        <InfoItemBox button={'修改信息'} onEdit={this.handleEditAccountInfo} title={'账号信息'}>
-          <InfoBaseItem content={username} title={'ID'}/>
-          <InfoBaseItem content={nickname} title={'昵称'}/>
-          <InfoBaseItem content={introduction} title={'简介'}/>
-          <InfoBaseItem content={realName} title={'姓名'}/>
-          <InfoBaseItem content={gender} title={'性别'}/>
+        <InfoItemBox button={'Edit'} onEdit={this.handleEditAccountInfo} title={'Account'}>
+          <InfoBaseItem content={username} title={'Username'}/>
+          <InfoBaseItem content={nickname} title={'Nickname'}/>
+          <InfoBaseItem content={introduction} title={'Introduction'}/>
+          <InfoBaseItem content={realName} title={'Real Name'}/>
+          <InfoBaseItem content={[<ManOutlined/>, <WomanOutlined/>][gender]} title={'Gender'}/>
         </InfoItemBox>
-        <InfoItemBox onEdit={this.handleEditAccountInfo} title={'学历信息'}>
-          <InfoBaseItem content={university} title={'学校'}/>
-          <InfoBaseItem content={academy} title={'学院'}/>
-          <InfoBaseItem content={studyClass} title={'班级'}/>
-          <InfoBaseItem content={graduateTime} title={'毕业时间'}/>
+        <InfoItemBox title={'Education'}>
+          <InfoBaseItem content={university} title={'University'}/>
+          <InfoBaseItem content={academy} title={'Academy'}/>
+          <InfoBaseItem content={className} title={'Class'}/>
+          <InfoBaseItem content={graduateTime} title={'Graduate'}/>
         </InfoItemBox>
-        <InfoItemBox button="Upload Resume" onEdit={this.handleEditAccountInfo} title={'简历上传'}>
+        <InfoItemBox button="Upload" onEdit={this.handleEditAccountInfo} title={'Resume'}>
           <InfoBaseItem content='Waiting Upload' title="Resume"/>
         </InfoItemBox>
+        <Modal
+          visible={this.state.showModal}
+          title="Edit Profile"
+          onOk={this.handleModalOk}
+          onCancel={this.handleModalCancel}
+          maskClosable={false}
+        >
+          <Space direction="vertical">
+            <Input onChange={this.handleInputNickname} value={this.state.nickname} maxLength={20}
+                   addonBefore={<span>Nickname</span>}/>
+            <Input onChange={this.handleInputIntroduction} value={this.state.introduction} maxLength={20}
+                   addonBefore={<span>Introduction</span>}/>
+            <Input onChange={this.handleInputRealName} value={this.state.realName} maxLength={20}
+                   addonBefore={<span>Real Name</span>}/>
+            <Input onChange={this.handleInputUniversity} value={this.state.university} maxLength={20}
+                   addonBefore={<span>University</span>}/>
+            <Input onChange={this.handleInputClassName} value={this.state.className} maxLength={20}
+                   addonBefore={<span>Class Name</span>}/>
+            <Input onChange={this.handleInputAcademy} value={this.state.academy} maxLength={20}
+                   addonBefore={<span>Academy</span>}/>
+            <Radio.Group value={this.state.gender} onChange={this.handleInputGender}>
+              <Radio value={0}><ManOutlined/></Radio>
+              <Radio value={1}><WomanOutlined/></Radio>
+            </Radio.Group>
+          </Space>
+        </Modal>
       </div>
     )
   }
 }
 
+PersonalInfo = connect(
+  state => {
+    return {
+      ...state.$UserInfoState.userInfo
+    }
+  },
+  { setUserInfoAsync, getUserInfoAsync }
+)(PersonalInfo)
+
 InfoBaseItem.propTypes = {
   title: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired
 }
-
-
-
-

@@ -1,6 +1,6 @@
 import { message } from 'antd'
 import store from './store'
-import { logout } from './v2/actions'
+import { logout } from './actions'
 
 export const success = msg => {
   message.success(msg)
