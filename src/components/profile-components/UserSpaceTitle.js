@@ -7,11 +7,13 @@ export class UserSpaceTitle extends Component {
 
   static propTypes = {
     avatar: PropTypes.string.isRequired,
+    changeAvatar: PropTypes.func.isRequired,
     className: PropTypes.string.isRequired,
     codeAge: PropTypes.number.isRequired,
     introduction: PropTypes.string.isRequired,
     level: PropTypes.number.isRequired,
-    nickname: PropTypes.string.isRequired
+    nickname: PropTypes.string.isRequired,
+    username: PropTypes.any
   }
 
   render () {
@@ -19,7 +21,13 @@ export class UserSpaceTitle extends Component {
       <div className={styles.container}>
         <div className={styles.content}>
           <div className={styles.avatar}>
-            <Avatar size={64} src={this.props.avatar}/>
+            <div className={styles.avatarContainer} onClick={this.props.changeAvatar}>
+              <Avatar style={{marginBottom: 0}} size={64} src={this.props.avatar}>
+                {this.props.username}
+              </Avatar>
+              <span className={styles.text}>Change</span>
+              <span className={styles.mask}/>
+            </div>
             <Tag style={{ marginRight: 0 }} color="red">CA{this.props.codeAge}</Tag>
           </div>
           <div className={styles.info}>

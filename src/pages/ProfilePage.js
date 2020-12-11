@@ -13,16 +13,28 @@ import { ProfileBody } from '../components/profile-components/ProfileBody'
 import { connect } from 'react-redux'
 import { getUserInfoAsync, setUserInfoAsync } from '../@redux/actions_async'
 import { Layout } from '../components/Layout'
+import { Modal } from 'antd'
 
 export class ProfilePage extends Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      showModal: false
+    }
+  }
+
   componentWillMount () {
     this.props.getUserInfoAsync()
+  }
+
+  handleChangeAvatar = () => {
+
   }
 
   render () {
     return (
       <Layout>
-        <UserSpaceTitle {...this.props.userInfo}/>
+        <UserSpaceTitle {...this.props.userInfo} changeAvatar={this.handleChangeAvatar}/>
         <ProfileBody>
           <ProfileMenu>
             <ProfileMenuItem title={`My Profile`} action="/profile/info"/>
@@ -46,6 +58,9 @@ export class ProfilePage extends Component {
             </SwitchRouter>
           </ProfileInfoContainer>
         </ProfileBody>
+        <Modal>
+
+        </Modal>
       </Layout>
     )
   }
