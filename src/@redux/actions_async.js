@@ -1,5 +1,5 @@
 import * as req from '../@api'
-import { asyncResponseHandler } from './@common'
+import { asyncResponseHandler, success } from './@common'
 import { initUserState } from './initData'
 import {
   set_announcement,
@@ -99,8 +99,8 @@ export const releaseBlogAsync = ({ title, content, tagA, tagB, tagC }) =>
   async dispatch => {
     // eslint-disable-next-line no-unused-vars
     const response = await req.releaseBlog({ title, content, tagA, tagB, tagC })
-    let data = await asyncResponseHandler(response)
-    dispatch(set_recommend_blog_list(data))
+    await asyncResponseHandler(response)
+    success('Success!')
   }
 
 export const getAnnouncementAsync = () =>
