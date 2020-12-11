@@ -67,3 +67,10 @@ export const REGISTER_SUCCESS = 'register_success_true'
 export const REGISTER_SUCCESS_FALSE = 'register_success_false'
 export const SEND_VERIFY_EMAIL_SUCCESS = 'send_verify_email_success'
 export const SET_SEARCH_BLOG_LIST = 'set_search_blog_list'
+
+/*
+  管理员操作
+  Admin Action
+ */
+export const ADMIN_SET_BLOG_LIST = 'admin_set_blog_list'
+export const ADMIN_DELETE_BLOG = 'admin_delete_blog'   //abandon
