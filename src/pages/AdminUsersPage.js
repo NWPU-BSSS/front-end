@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 // import { connect } from 'react-redux'
 // import { getAdminUsersAsync } from '../@redux/actions_async'
-import { AdminUsersTable } from '../components/admin-user-components/AdminUsersTable'
-import { AdminUsersSearch } from '../components/admin-user-components/AdminUsersSearch'
+import { AdminUsersTable } from '../components/admin/admin-user-components/AdminUsersTable'
+import { AdminUsersSearch } from '../components/admin/admin-user-components/AdminUsersSearch'
 
 class AdminUsersPage extends Component {
 

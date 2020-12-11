@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import  {Space,Table,Button} from 'antd'
 import { connect } from 'react-redux'
-import { getBlogAsync } from '../../@redux/actions_async'
-import { BlogPage } from '../../pages/BlogPage'
+import { getBlogAsync } from '../../../@redux/actions_async'
+import { BlogPage } from '../../../pages/BlogPage'
 
 
 const handleDelete = () => {
