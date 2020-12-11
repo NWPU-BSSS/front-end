@@ -1,11 +1,11 @@
 div.blogSearch {
-    margin: 0 0 0 150px
+    margin: 0 0 20px 150px
 }
 
 div.searchTitle {
     display: flex;
     flex-direction: row;
-    margin: 40px 0 30px 0;
+    margin: 40px 0 10px 0;
 }
 
 div.blog-title-tag{
