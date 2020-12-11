@@ -6,6 +6,7 @@ import styles from './AdminPage.module.css'
 import logo from '../assets/img/bsss.png'
 import { Switch as SwitchRouter } from 'react-router-dom'
 import ReleaseAnnouncement from '../components/admin-page-components/ReleaseAnnouncement'
+import AdminHome from '../components/admin/AdminHome'
 
 class AdminMenu extends Component {
   render () {
@@ -47,7 +48,9 @@ export default class AdminPage extends Component {
       <div className={styles.container}>
         <AdminMenu/>
         <SwitchRouter>
-          <Route path="/admin/insights"> </Route>
+          <Route path="/admin/insights">
+            <AdminHome/>
+          </Route>
           <Route path="/admin/blogs"></Route>
           <Route path="/admin/users"></Route>
           <Route path="/admin/announcement">
