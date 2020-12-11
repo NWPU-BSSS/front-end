@@ -6,7 +6,7 @@ import { MyFavorite } from '../components/profile-components/MyFavorite'
 import { MySubscribes } from '../components/profile-components/MySubscribes'
 import { MyBlogs } from '../components/profile-components/MyBlogs'
 import { UserSpaceTitle } from '../components/profile-components/UserSpaceTitle'
-import { MyFans } from '../components/profile-components/MyFans'
+import MyFans from '../components/profile-components/MyFans'
 import { ProfileMenuItem } from '../components/profile-components/ProfileMenuItem'
 import { ProfileInfoContainer } from '../components/profile-components/ProfileInfoContainer'
 import { ProfileBody } from '../components/profile-components/ProfileBody'
@@ -37,10 +37,10 @@ export class ProfilePage extends Component {
           <ProfileInfoContainer>
             <SwitchRouter>
               <Route path="/profile/info"><PersonalInfo/></Route>
-              <Route path="/profile/info"><MyBlogs/></Route>
-              <Route path="/profile/info"><MyFavorite/></Route>
-              <Route path="/profile/info"><MySubscribes /></Route>
-              <Route path="/profile/info"><MyFans/></Route>
+              <Route path="/profile/blogs"><MyBlogs/></Route>
+              <Route path="/profile/fav"><MyFavorite/></Route>
+              <Route path="/profile/subscribe"><MySubscribes/></Route>
+              <Route path="/profile/fans"><MyFans/></Route>
               <Redirect to="/profile/info"/>
             </SwitchRouter>
           </ProfileInfoContainer>
