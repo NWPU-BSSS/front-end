@@ -41,7 +41,7 @@ import {
   SET_BLOGGER_BLOGS,
   SET_BLOGGER_FAV_BLOGS,
   SET_SEARCH_BLOG_LIST,
-  SET_FAV_BLOGS
+  SET_FAV_BLOGS, SET_MY_BLOGS
 } from './action-types'
 import {
   delete_user_state,
@@ -95,6 +95,8 @@ export function $UserInfoState (state = initUserInfo, { data, type }) {
       return { ...state, subscribes: data }
     case SET_FAV_BLOGS:
       return { ...state, favBlogs: data }
+    case SET_MY_BLOGS:
+      return {...state, myBlogs: data}
     default:
       return state
   }
