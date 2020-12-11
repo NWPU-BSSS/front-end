@@ -10,7 +10,6 @@ const Layout = props => (
       {props.children}
     </div>
     <Footer/>
-    {/*<button onClick={this.handleClick}>ajax</button>*/}
   </div>
 )
 

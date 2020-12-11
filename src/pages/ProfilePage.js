@@ -25,10 +25,10 @@ export class ProfilePage extends Component {
         <ProfileBody>
           <ProfileMenu>
             <ProfileMenuItem title={`My Profile`} action="/profile/info"/>
-            <ProfileMenuItem title={`My Collection`} action="/profile/fav"/>
-            <ProfileMenuItem title={`My Follower`} action="/profile/subscribe"/>
+            <ProfileMenuItem title={`My Favorite`} action="/profile/fav"/>
+            <ProfileMenuItem title={`My Subscribes`} action="/profile/subscribe"/>
             <ProfileMenuItem title={`My Fans`} action="/profile/fans"/>
-            <ProfileMenuItem title={`My Blog`} action="/profile/blogs"/>
+            <ProfileMenuItem title={`My Blogs`} action="/profile/blogs"/>
             <ProfileMenuItem title={`My Download`}/>
             <ProfileMenuItem title={`My Q&A`}/>
             <ProfileMenuItem title={`My School`}/>
