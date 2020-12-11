@@ -5,7 +5,7 @@ import { NavUserPanel } from './NavUserPanel'
 import PropTypes from 'prop-types'
 import './NavLogged.css'
 import { Link } from 'react-router-dom'
-import { Avatar } from 'antd'
+import { Avatar, Button } from 'antd'
 
 class NavLogged extends Component {
 
@@ -21,26 +21,25 @@ class NavLogged extends Component {
     return (
       <div className="NavLogged">
         <NavMenuDropdown
-          menuStyle={{ justifyContent: 'center',
-            backgroundColor: '#aa3131' }}
+          menuStyle={{
+            justifyContent: 'center',
+            backgroundColor: '#ff4d4f'
+          }}
           title={
-            <div style={{
-              ...btnDanger,
-              margin: '0'
-            }}>{CreationCentre}</div>
+            <Button danger type="primary">{CreationCentre}</Button>
           }>
           <Link to="/release-blog">{WriteBlog}</Link>
-          <a>{WriteCode}</a>
           <a>{UploadResource}</a>
         </NavMenuDropdown>
-        <a>{Favorite}</a>
-        <a>{History}</a>
+        <Link to="/profile/fav">{Favorite}</Link>
+        {/*<a>{History}</a>*/}
         <NavMenuDropdown title={
           <div className="head-avatar">
             <Avatar src={this.props.avatar} alt="Avatar"/>
           </div>
         }>
-          <NavUserPanel {...this.props} language={userPanelLanguage} onLogout={() => this.props.logout()} username={''}/>
+          <NavUserPanel {...this.props} language={userPanelLanguage} onLogout={() => this.props.logout()}
+                        username={''}/>
         </NavMenuDropdown>
       </div>
     )

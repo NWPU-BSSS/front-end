@@ -108,8 +108,8 @@ class NavMenu extends Component {
           <div className="bs-nav-dropdown-list">
             <NavMenuDropdown title={Blog}>{
               <BlogMenu language={{ CreationCentre }}/>}</NavMenuDropdown>
-            <NavMenuDropdown title={Code}>{
-              <CodeMenu language={{ NewProject }}/>}</NavMenuDropdown>
+            {/*<NavMenuDropdown title={Code}>{*/}
+            {/*  <CodeMenu language={{ NewProject }}/>}</NavMenuDropdown>*/}
             <NavMenuDropdown title={Download}>{
               <DownloadMenu language={{ MyResources }}/>}</NavMenuDropdown>
             <NavMenuDropdown title={QandA}>{
