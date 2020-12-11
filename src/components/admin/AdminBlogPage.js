@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { AdminBlogSearch } from '../components/admin-blog-components/AdminBlogSearch'
-import { BlogTable } from '../components/admin-blog-components/AdminBlogTable'
+import { AdminBlogSearch } from './admin-blog-components/AdminBlogSearch'
+import { BlogTable } from './admin-blog-components/AdminBlogTable'
 
 class AdminBlogPage extends Component {
 

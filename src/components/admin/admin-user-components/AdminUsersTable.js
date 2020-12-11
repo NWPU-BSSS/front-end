@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './AdminUsersTable.css'
-import deleteIcon from '../../assets/img/u288.svg'
+import deleteIcon from '../../../assets/img/u288.svg'
 import { Space, Table } from 'antd'
 // import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
