@@ -41,7 +41,7 @@ import {
   SET_BLOGGER_BLOGS,
   SET_BLOGGER_FAV_BLOGS,
   SET_SEARCH_BLOG_LIST,
-  SET_FAV_BLOGS, SET_MY_BLOGS
+  SET_FAV_BLOGS, SET_MY_BLOGS, SET_RECENT_BLOG_LIST, SET_FOLLOWED_BLOG_LIST
 } from './action-types'
 import {
   delete_user_state,
@@ -132,6 +132,10 @@ export function $HomePageState (state = initHomePage, { data, type }) {
       return { ...state, browse: data }
     case SET_RECOMMEND_BLOG_LIST:
       return { ...state, recommendBlogList: data }
+    case SET_RECENT_BLOG_LIST:
+      return { ...state, recentBlogList: data }
+    case SET_FOLLOWED_BLOG_LIST:
+      return { ...state, followedBlogList: data }
     default:
       return state
   }

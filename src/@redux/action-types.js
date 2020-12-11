@@ -45,7 +45,8 @@ export const SET_BLOG_PAGE_SUBSCRIBE_STATUS = 'set_blog_page_subscribe_status'
 export const SET_ANNOUNCEMENT = 'set_announcement'
 export const SET_BROWSE_RECORD = 'set_browse_record'
 export const SET_RECOMMEND_BLOG_LIST = 'set_recommend_blog_list'
-
+export const SET_RECENT_BLOG_LIST = 'set_recent_blog_list'
+export const SET_FOLLOWED_BLOG_LIST = 'set_followed_blog_list'
 /*
   发布博客
   ReleaseBlogPageState

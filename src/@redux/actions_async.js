@@ -20,7 +20,13 @@ import {
   set_blogger_fav_blogs,
   set_like_status,
   set_fav_status,
-  set_search_blog_list, set_fav_blogs, set_my_fans, set_my_subscribes, set_my_blogs
+  set_search_blog_list,
+  set_fav_blogs,
+  set_my_fans,
+  set_my_subscribes,
+  set_my_blogs,
+  set_recent_blogList,
+  set_followed_blog_list
 } from './actions'
 import { SET_MY_FANS, SET_SEARCH_BLOG_LIST } from './action-types'
 
@@ -303,9 +309,23 @@ export const getUserSubscribesAsync = bloggerId =>
     dispatch(set_my_subscribes(data))
   }
 
-  export const getMyBLogsAsync = bloggerId =>
-    async dispatch => {
-      const response = await req.getUserBlogList(bloggerId)
-      let data = await asyncResponseHandler(response)
-      dispatch(set_my_blogs(data))
-    }
+export const getMyBLogsAsync = bloggerId =>
+  async dispatch => {
+    const response = await req.getUserBlogList(bloggerId)
+    let data = await asyncResponseHandler(response)
+    dispatch(set_my_blogs(data))
+  }
+
+export const getRecentBlogListAsync = page =>
+  async dispatch => {
+    const response = await req.getRecentBlogs(page || 0)
+    let data = await asyncResponseHandler(response)
+    dispatch(set_recent_blogList(data))
+  }
+
+export const getFollowedBloggerBlogListAsync = page =>
+  async dispatch => {
+    const response = await req.getSubscribeBloggerList(page || 0)
+    let data = await asyncResponseHandler(response)
+    dispatch(set_followed_blog_list(data))
+  }

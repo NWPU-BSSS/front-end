@@ -29,7 +29,7 @@ export const getRecommendBlogList = (page = 0) =>
  * @param {string}page
  * @returns {Promise<JSON>}
  */
-export const getCurrentReleaseBlog = (page) =>
+export const getRecentBlogs = page =>
   request(`/api/blog/list/recent?${query({ page })}`, getInit())
 
 /**

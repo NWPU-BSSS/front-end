@@ -28,7 +28,7 @@ import {
   SET_SEARCH_BLOG_LIST,
   SET_FAV_BLOGS,
   SET_MY_FANS,
-  SET_MY_SUBSCRIBES, SET_MY_BLOGS
+  SET_MY_SUBSCRIBES, SET_MY_BLOGS, SET_RECENT_BLOG_LIST, SET_FOLLOWED_BLOG_LIST
 } from './action-types'
 
 export const actionFactory = (type, data = undefined) => ({
@@ -63,6 +63,8 @@ export const set_my_blogs = data => actionFactory(SET_MY_BLOGS, data)
 
 export const set_announcement = data => actionFactory(SET_ANNOUNCEMENT, data)
 export const set_recommend_blog_list = data => actionFactory(SET_RECOMMEND_BLOG_LIST, data)
+export const set_recent_blogList = data => actionFactory(SET_RECENT_BLOG_LIST, data)
+export const set_followed_blog_list = data => actionFactory(SET_FOLLOWED_BLOG_LIST, data)
 
 /*
   ReleaseBlogPage Action

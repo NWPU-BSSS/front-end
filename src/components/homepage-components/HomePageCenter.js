@@ -4,27 +4,24 @@ import PropTypes from 'prop-types'
 import './HomePageCenter.css'
 import { BaseBlogList } from '../base/BaseBlogList'
 import { connect } from 'react-redux'
-import { Redirect, Route, Switch as SwitchRouter } from 'react-router-dom'
 
 export class HomePageCenter extends Component {
 
   static propTypes = {
-    recommendBlogList: PropTypes.array,
-    subscribeBlogList: PropTypes.array
+    followedBlogList: PropTypes.array,
+    recentBlogList: PropTypes.array,
+    recommendBlogList: PropTypes.array
   }
 
   constructor (props) {
     super(props)
     this.state = {
-      value: 1,
+      index: 0
     }
   }
 
-  onChange = e => {
-    console.log('radio checked', e.target.value)
-    this.setState({
-      value: e.target.value,
-    })
+  onChange = ({ target: { value } }) => {
+    this.setState({ index: value })
   }
 
   render () {
@@ -32,22 +29,18 @@ export class HomePageCenter extends Component {
       <div className="HomePageCenter">
         <div className="top-select-option">
           <div className="select-container">
-            <Radio.Group onChange={this.onChange} value={this.state.value}>
-              <Radio value={1}>Recommend</Radio>
-              <Radio value={2}>Subscribed</Radio>
+            <Radio.Group onChange={this.onChange} value={this.state.index}>
+              <Radio value={0}>Recommend</Radio>
+              <Radio value={1}>Subscribed</Radio>
+              <Radio value={2}>Newest</Radio>
             </Radio.Group>
           </div>
         </div>
         <div className="blog-list">
-          <SwitchRouter>
-            <Route path="/home/recommend">
-              <BaseBlogList blogList={this.props.recommendBlogList}/>
-            </Route>
-            <Route path="/home/subscribe">
-              <BaseBlogList blogList={this.props.subscribeBlogList}/>
-            </Route>
-            <Redirect to="/home/recommend"/>
-          </SwitchRouter>
+          {[<BaseBlogList blogList={this.props.recommendBlogList}/>,
+            <BaseBlogList blogList={this.props.followedBlogList}/>,
+            <BaseBlogList blogList={this.props.recentBlogList}/>]
+            [this.state.index]}
         </div>
       </div>
     )
@@ -55,8 +48,9 @@ export class HomePageCenter extends Component {
 }
 
 HomePageCenter = connect(
-  ({ $HomePageState: { recommendBlogList, subscribeBlogList } }) => ({
+  ({ $HomePageState: { recommendBlogList, followedBlogList, recentBlogList } }) => ({
     recommendBlogList,
-    subscribeBlogList,
+    followedBlogList,
+    recentBlogList
   })
 )(HomePageCenter)
