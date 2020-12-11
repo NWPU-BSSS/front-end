@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Col, Image, Row, Typography } from 'antd'
-import logo from '../../assets/img/logo_u9.png'
+import logo from '../../assets/img/bsss.png'
 
 export class LoginFormTop extends Component {
 

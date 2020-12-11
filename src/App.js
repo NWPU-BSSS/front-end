@@ -14,56 +14,63 @@ import { RegisterSuccessPage } from './pages/RegisterSuccessPage'
 import { RegisterPage } from './pages/RegisterPage'
 import { LoginPage } from './pages/LoginPage'
 import { TestPage } from './pages/TestPage'
-import { BlogInfoSetting } from './components/release-blog-components/BlogInfoSetting'
-import { BlogList } from './components/blogger-space-components/BlogList'
 import { connect } from 'react-redux'
-import { setAccessToken } from './@redux/actions'
 import { Switch as SwitchRouter } from 'react-router-dom'
-import {Button,  Result } from 'antd'
+import { Button, Result } from 'antd'
 import { loadUserState } from './@redux/actions'
 import { SearchResultPage } from './pages/SearchResultPage'
+import AdminPage from './pages/AdminPage'
 
 class App extends React.Component {
 
   componentWillMount () {
-    // let accessToken = localStorage.getItem('accessToken')
-    // if (accessToken) {
-    //   this.props.setAccessToken(accessToken)
-    // }
-
     this.props.loadUserState()
-
   }
 
   render () {
     return (
-      <Layout>
-        <SwitchRouter>
-          <Route path="/home" component={HomePage}/>
-          <Route path="/search/:word" component={SearchResultPage}/>
-          <Route path="/blog/:blogId" component={BlogPage}/>
-          <Route path="/blogger/:bloggerId" component={BloggerPage}/>
-          <Route path="/profile" component={ProfilePage}/>
-          <Route path="/release-blog" component={ReleaseBlogPage}/>
-          <Route path="/code-edit" component={CodeEditPage}/>
-          <Route path="/guest" component={GuestHomePage}/>
-          <Route path="/register" component={RegisterPage}/>
-          <Route path="/login" component={LoginPage}/>
-          <Route path="/reg-success" component={RegisterSuccessPage}/>
-          <Route path="/t" component={TestPage}/>
-          <Route exact path="/">
-            <Redirect to="/home"/>
-          </Route>
-          <Route>
-            <Result
-              status="404"
-              title="404"
-              subTitle="Sorry, the page you visited does not exist."
-              extra={<Button href="/" type="primary">Back Home</Button>}
-            />
-          </Route>
-        </SwitchRouter>
-      </Layout>
+      <SwitchRouter>
+        <Route path="/home">
+          <Layout><HomePage/></Layout>
+        </Route>
+        <Route path="/search/:word">
+          <Layout><SearchResultPage/></Layout>
+        </Route>
+        <Route path="/blog/:blogId">
+          <Layout><BlogPage/></Layout>
+        </Route>
+        <Route path="/blogger/:bloggerId" component={BloggerPage}>
+          <Layout><BloggerPage/></Layout>
+        </Route>
+        <Route path="/profile" component={ProfilePage}>
+          <Layout><ProfilePage/></Layout>
+        </Route>
+        <Route path="/release-blog">
+          <Layout><ReleaseBlogPage/></Layout>
+        </Route>
+        <Route path="/code-edit" component={CodeEditPage}>
+          <Layout><CodeEditPage/></Layout>
+        </Route>
+        <Route path="/guest" component={GuestHomePage}>
+          <Layout><GuestHomePage/></Layout>
+        </Route>
+        <Route path="/register" component={RegisterPage}/>
+        <Route path="/login" component={LoginPage}/>
+        <Route path="/reg-success" component={RegisterSuccessPage}/>
+        <Route path="/t" component={TestPage}/>
+        <Route path="/admin" component={AdminPage}/>
+        <Route exact path="/">
+          <Redirect to="/home"/>
+        </Route>
+        <Route>
+          <Result
+            status="404"
+            title="404"
+            subTitle="Sorry, the page you visited does not exist."
+            extra={<Button href="/" type="primary">Back Home</Button>}
+          />
+        </Route>
+      </SwitchRouter>
     )
   }
 }
