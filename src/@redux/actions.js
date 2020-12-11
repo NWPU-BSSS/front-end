@@ -13,7 +13,7 @@ import {
   SET_RECOMMEND_BLOG_LIST, SET_BLOG_PAGE_SUBSCRIBE_STATUS,
   SET_USER_INFO,
   USE_EN,
-  USE_ZH, SET_BLOGGER_INFO, SET_BLOGGER_BLOGS, SET_BLOGGER_FAV_BLOGS
+  USE_ZH, SET_BLOGGER_INFO, SET_BLOGGER_BLOGS, SET_BLOGGER_FAV_BLOGS, SEARCH_BLOG_LIST
 } from './action-types'
 
 export const actionFactory = (type, data = undefined) => ({
@@ -67,10 +67,11 @@ export const set_blog_page_subscribe_status = data => actionFactory(SET_BLOG_PAG
   BloggerPage Action
  */
 export const set_blogger_info = data => actionFactory(SET_BLOGGER_INFO, data)
-export const set_blogger_blogs =data => actionFactory(SET_BLOGGER_BLOGS, data)
+export const set_blogger_blogs = data => actionFactory(SET_BLOGGER_BLOGS, data)
 export const set_blogger_fav_blogs = data => actionFactory(SET_BLOGGER_FAV_BLOGS, data)
 
 /*
   Global Action
  */
 export const setRegisterSuccess = () => actionFactory(REGISTER_SUCCESS)
+export const search_blog_list = data => actionFactory(SEARCH_BLOG_LIST, data)
