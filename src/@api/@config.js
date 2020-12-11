@@ -18,10 +18,19 @@ export const postInit = body => ({
  */
 export const headers = () => {
   let headers = new Headers()
-  let {  accessToken } = store.getState().$UserState
+  let { accessToken } = store.getState().$UserState
 
   if (accessToken !== '') headers.append('AccessToken', accessToken)
   headers.append('content-type', 'application/json')
+  return headers
+}
+
+export const formHeaders = () => {
+  let headers = new Headers()
+  let { accessToken } = store.getState().$UserState
+
+  if (accessToken !== '') headers.append('AccessToken', accessToken)
+  headers.append('content-type', 'multipart/form-data')
   return headers
 }
 
@@ -33,6 +42,17 @@ export const getInit = () => ({
   headers: headers(),
   mode: 'cors'
 })
+
+export const uploadFileInit = file => {
+  let form = new FormData()
+  form.append('file', file)
+  return {
+    headers: formHeaders(),
+    mode: 'cors',
+    method: 'POST',
+    body: form
+  }
+}
 
 /**
  * 生成url query字符串, 不带问号，需自行添加问号
@@ -58,3 +78,10 @@ export const query = (args = {}) => {
  */
 export const request = async (url, init = {}) => (await fetch(url, init)).json()
 
+/**
+ *
+ * @param {string} url
+ * @param {Object} init
+ * @returns {Promise<JSON>}
+ */
+export const uploadFile = async (url, init = {}) => (await fetch(url, init)).json()

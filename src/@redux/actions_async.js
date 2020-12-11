@@ -309,11 +309,22 @@ export const getUserSubscribesAsync = bloggerId =>
     dispatch(set_my_subscribes(data))
   }
 
-export const getMyBLogsAsync = bloggerId =>
+/**
+ *
+ * @returns {function(*): Promise<void>}
+ */
+export const getMyBLogsAsync = ({ userId, page }) =>
   async dispatch => {
-    const response = await req.getUserBlogList(bloggerId)
+    const response = await req.getUserBlogList({ page: page || 0, userId })
     let data = await asyncResponseHandler(response)
     dispatch(set_my_blogs(data))
+  }
+
+export const getFavBlogsAsync = bloggerId =>
+  async dispatch => {
+    const response = await req.getFavBlogList(bloggerId)
+    let data = await asyncResponseHandler(response)
+    dispatch(set_fav_blogs(data))
   }
 
 export const getRecentBlogListAsync = page =>

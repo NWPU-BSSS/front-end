@@ -1,4 +1,4 @@
-import { getInit, postInit, query, request } from './@config'
+import { getInit, postInit, query, request, uploadFile, uploadFileInit } from './@config'
 
 /**
  * 上传用户头像
@@ -72,4 +72,8 @@ export const getUserFansList = bloggerId =>
  */
 export const getUserWholeInfo = async () =>
   request(`/api/user/info?${query()}`, getInit())
+
+export const uploadUserAvatar = file =>
+  uploadFile(`/api/user/avatar${query()}`, uploadFileInit(file) )
+
 
