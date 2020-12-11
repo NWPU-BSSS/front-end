@@ -11,9 +11,9 @@ class AdminUsersPage extends Component {
       <div className="AdminUserPage">
         <div className="ManageUsers">Manage Users</div>
         <div className="UserName">Username:</div>
-        <input className="InputUserName"></input>
+        <input className="InputUserName"/>
         <div className="NickName">Nickname:</div>
-        <input className="InputNickName"></input>
+        <input className="InputNickName"/>
         <button className="Query">Query</button>
         <button className="Reset">Reset</button>
         <button className="NewUser">+ New User</button>
@@ -24,7 +24,6 @@ class AdminUsersPage extends Component {
           <div className="Font"> items have been selected</div>
           <button className="Clear">clear</button>
         </div>
-        <h1>admin user</h1>
         <AdminUsersTable/>
       </div>
     )
