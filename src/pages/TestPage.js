@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { login } from '../@api'
+import { BlogTable } from '../components/manager-blogs-components/BlogTable'
 
 export class TestPage extends Component {
 
@@ -11,6 +12,7 @@ export class TestPage extends Component {
     return (
       <div>
         <button onClick={this.handleClick}>点击</button>
+        <BlogTable />
       </div>
     )
   }
