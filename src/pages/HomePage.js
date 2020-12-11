@@ -17,6 +17,7 @@ import { TodayRecommend } from '../components/homepage-components/TodayRecommend
 import { RecentBrowse } from '../components/homepage-components/RecentBrowse'
 import { UserCard } from '../components/homepage-components/UserCard'
 import { MessageOption } from '../components/homepage-components/MessageOption'
+import { Layout } from '../components/Layout'
 
 class HomePage extends Component {
 
@@ -43,18 +44,20 @@ class HomePage extends Component {
     }
 
     return (
-      <div className="HomePage">
-        <HomePageLeft>
-          <QuickEntry/>
-          <TodayRecommend {...this.props.announcement}/>
-          <RecentBrowse/>
-        </HomePageLeft>
-        <HomePageCenter/>
-        <HomePageRight>
-          <UserCard {...this.props.baseInfo}/>
-          <MessageOption {...this.props.badgeNum}/>
-        </HomePageRight>
-      </div>
+      <Layout>
+        <div className="HomePage">
+          <HomePageLeft>
+            <QuickEntry/>
+            <TodayRecommend {...this.props.announcement}/>
+            <RecentBrowse/>
+          </HomePageLeft>
+          <HomePageCenter/>
+          <HomePageRight>
+            <UserCard {...this.props.baseInfo}/>
+            <MessageOption {...this.props.badgeNum}/>
+          </HomePageRight>
+        </div>
+      </Layout>
     )
   }
 }

@@ -12,6 +12,7 @@ import { ProfileInfoContainer } from '../components/profile-components/ProfileIn
 import { ProfileBody } from '../components/profile-components/ProfileBody'
 import { connect } from 'react-redux'
 import { getUserInfoAsync, setUserInfoAsync } from '../@redux/actions_async'
+import { Layout } from '../components/Layout'
 
 export class ProfilePage extends Component {
   componentWillMount () {
@@ -20,7 +21,7 @@ export class ProfilePage extends Component {
 
   render () {
     return (
-      <div>
+      <Layout>
         <UserSpaceTitle {...this.props.userInfo}/>
         <ProfileBody>
           <ProfileMenu>
@@ -45,7 +46,7 @@ export class ProfilePage extends Component {
             </SwitchRouter>
           </ProfileInfoContainer>
         </ProfileBody>
-      </div>
+      </Layout>
     )
   }
 }
