@@ -5,8 +5,18 @@ import { HomePageRight } from '../components/homepage-components/HomePageRight'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router'
-import { getBadgeNumAsync, getBaseInfoAsync, getRecommendBlogListAsync } from '../@redux/actions_async'
+import {
+  getAnnouncementAsync,
+  getBadgeNumAsync,
+  getBaseInfoAsync,
+  getRecommendBlogListAsync
+} from '../@redux/actions_async'
 import './HomePage.css'
+import { QuickEntry } from '../components/homepage-components/QuickEntry'
+import { TodayRecommend } from '../components/homepage-components/TodayRecommend'
+import { RecentBrowse } from '../components/homepage-components/RecentBrowse'
+import { UserCard } from '../components/homepage-components/UserCard'
+import { MessageOption } from '../components/homepage-components/MessageOption'
 
 class HomePage extends Component {
 
@@ -23,6 +33,7 @@ class HomePage extends Component {
       this.props.getBaseInfoAsync()
       this.props.getRecommendBlogListAsync()
       this.props.getBadgeNumAsync()
+      this.props.getAnnouncementAsync()
     }
   }
 
@@ -33,19 +44,35 @@ class HomePage extends Component {
 
     return (
       <div className="HomePage">
-        <HomePageLeft/>
+        <HomePageLeft>
+          <QuickEntry/>
+          <TodayRecommend {...this.props.announcement}/>
+          <RecentBrowse/>
+        </HomePageLeft>
         <HomePageCenter/>
-        <HomePageRight/>
+        <HomePageRight>
+          <UserCard {...this.props.baseInfo}/>
+          <MessageOption {...this.props.badgeNum}/>
+        </HomePageRight>
       </div>
     )
   }
 }
 
 HomePage = connect(
-  state => ({
-    isLogin: state.$UserState.userId !== -1
-  }),
-  { getBaseInfoAsync, getRecommendBlogListAsync, getBadgeNumAsync }
+  state => {
+    const { browse, announcement } = state.$HomePageState
+    let {  $UserInfoState } = state, { badgeNum, baseInfo } = $UserInfoState
+    let  isLogin = state.$UserState.userId !== -1
+    return {
+      isLogin,
+      announcement,
+      browse,
+      badgeNum,
+      baseInfo
+    }
+  },
+  { getBaseInfoAsync, getRecommendBlogListAsync, getBadgeNumAsync, getAnnouncementAsync }
 )(HomePage)
 
 export { HomePage }

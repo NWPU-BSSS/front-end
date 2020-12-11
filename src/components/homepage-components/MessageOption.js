@@ -21,15 +21,15 @@ Option.propTypes = {
 }
 
 const data = [
-  { title: '我的消息', url: '/', badge: 0 },
-  { title: '公告', url: '/', badge: 0 },
-  { title: '评论', url: '/', badge: 0 },
-  { title: '关注', url: '/', badge: 0 },
-  { title: '点赞', url: '/', badge: 0 },
-  { title: '私信', url: '/', badge: 0 },
-  { title: '回答', url: '/', badge: 0 },
-  { title: '系统通知', url: '/', badge: 0 },
-  { title: '消息设置', url: '/', badge: 0 }
+  { title: 'My Message', url: '/', badge: 0 },
+  { title: 'Announcements', url: '/', badge: 0 },
+  { title: 'Comments', url: '/', badge: 0 },
+  { title: 'Subscribes', url: '/', badge: 0 },
+  { title: 'Likes', url: '/', badge: 0 },
+  { title: 'Chats', url: '/', badge: 0 },
+  { title: 'Answers', url: '/', badge: 0 },
+  { title: 'Notices', url: '/', badge: 0 },
+  { title: 'Settings', url: '/', badge: 0 }
 ]
 
 export class MessageOption extends Component {

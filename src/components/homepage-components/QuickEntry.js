@@ -3,15 +3,15 @@ import { List, Button, Card } from 'antd'
 import './QuickEntry.css'
 
 const data = [
-  <a>我的博客</a>,
-  <a>我的空间</a>,
-  <a>我的好友</a>,
+  <a>My blog</a>,
+  <a>My Space</a>,
+  <a>My Friends</a>,
 ]
 
 export class QuickEntry extends Component {
 
   render () {
-    let header = <div className="quick-entry-header">快捷入口<Button type="primary">添加</Button></div>
+    let header = <div className="quick-entry-header">Quick Entry<Button type="primary">Add</Button></div>
 
     return (
       <Card className="quick-entry">
