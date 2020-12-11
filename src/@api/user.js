@@ -10,10 +10,11 @@ export const uploadUserHeadPortrait = async ({ file }) =>
   request('/api/user/avatar', postInit({ file }))
 
 /**
+ * //TODO: 由于后端api对应没有弄对，此处暂时引用userName
  * 修改个人信息
  * @returns {Promise<JSON>}
  */
-export const editUserInfo = async ({ nickname, introduction, realName, gender, university, className, academy }) =>
+export const editUserInfo = async ({ userName, nickname, introduction, realName, gender, university, className, academy }) =>
   request(`/api/user/info?${query()}`, postInit({
     nickname,
     introduction,
@@ -21,7 +22,8 @@ export const editUserInfo = async ({ nickname, introduction, realName, gender, u
     gender,
     university,
     className,
-    academy
+    academy,
+    userName
   }))
 
 /**

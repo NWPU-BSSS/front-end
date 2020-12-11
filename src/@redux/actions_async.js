@@ -187,7 +187,20 @@ export const getBloggerInfoAsync = bloggerId =>
     dispatch(set_blogger_info(data))
   }
 
-export const setUserInfoAsync = ({  nickname, introduction, realName, gender, university, className, academy }) =>
+/**
+ * //TODO: 等后端API改好后，去掉userName 字段
+ * 异步设置用户信息
+ * @param userName
+ * @param nickname
+ * @param introduction
+ * @param realName
+ * @param gender
+ * @param university
+ * @param className
+ * @param academy
+ * @returns {function(*): Promise<void>}
+ */
+export const setUserInfoAsync = ({ username, nickname, introduction, realName, gender, university, className, academy }) =>
   async dispatch => {
     const response = await req.editUserInfo({
       nickname,
@@ -196,10 +209,12 @@ export const setUserInfoAsync = ({  nickname, introduction, realName, gender, un
       gender,
       university,
       className,
-      academy
+      academy,
+      //TODO
+      userName: username
     })
-    let data = await asyncResponseHandler(response)
-    dispatch(set_user_info(data))
+    await asyncResponseHandler(response)
+    dispatch(set_user_info({ username, nickname, introduction, realName, gender, university, className, academy }))
   }
 
 /**

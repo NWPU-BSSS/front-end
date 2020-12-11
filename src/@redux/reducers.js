@@ -86,7 +86,7 @@ export function $UserInfoState (state = initUserInfo, { data, type }) {
     case SET_BADGE_NUM:
       return { ...state, badgeNum: data }
     case SET_USER_INFO:
-      return { ...state, userInfo: data }
+      return { ...state, userInfo: { ...state.userInfo, ...data } }
     case SET_RECENT_BROWSE_BLOGS:
       return { ...state, recentBrowseBlogs: data }
     case SET_MY_FANS:
@@ -96,7 +96,7 @@ export function $UserInfoState (state = initUserInfo, { data, type }) {
     case SET_FAV_BLOGS:
       return { ...state, favBlogs: data }
     case SET_MY_BLOGS:
-      return {...state, myBlogs: data}
+      return { ...state, myBlogs: data }
     default:
       return state
   }
