@@ -20,6 +20,7 @@ import { BlogContent } from '../components/blogpage-components/BlogContent'
 import { ThumbBox } from '../components/blogpage-components/ThumbBox'
 import { AddComment } from '../components/blogpage-components/AddComment'
 import { CommentList } from '../components/blogpage-components/CommentList'
+import { Layout } from '../components/Layout'
 
 class BlogPage extends Component {
   static propTypes = {
@@ -62,7 +63,7 @@ class BlogPage extends Component {
 
   handleSubscribe = () => {
     //TODO: 删除默认 bloggerId
-    let { bloggerId = 3 } = this.props.blogInfo
+    let { bloggerId } = this.props.blogInfo
     let status = this.props.subscribeStatus
     this.props.subscribeAsync({ bloggerId, subscribe: !status })
   }
@@ -82,32 +83,34 @@ class BlogPage extends Component {
     let { likeStatus, favStatus, subscribeStatus } = this.props
 
     return (
-      <div className="BlogPage">
-        <BlogPageLeft>
-          <BloggerPanel {...this.props.bloggerInfo} isSubscribed={this.props.subscribeStatus}
-                        handleSubscribe={this.handleSubscribe}/>
-          <ClassificationColumn tagsList={this.props.tagList}/>
-          {/*<BlogCategory/>*/}
-        </BlogPageLeft>
-        <BlogPageMain>
-          <BlogTitle title={title}/>
-          <BlogContent content={content || ''}/>
-          <ThumbBox handleLike={this.handleLike}
-                    handleFavorite={this.handleFavorite}
-                    handleSubscribe={this.handleSubscribe}
-                    commentNum={commentNum}
-                    favoriteNum={favoriteNum}
-                    likeNum={likeNum}
-                    shareNum={shareNum}
-                    favStatus={favStatus}
-                    subscribeStatus={subscribeStatus}
-                    likeStatus={likeStatus}
-          />
-          <AddComment addComment={this.handleAddComment}/>
-          <CommentList commentList={this.props.commentList}/>
-          {/*<RelatedBlogList/>*/}
-        </BlogPageMain>
-      </div>
+      <Layout>
+        <div className="BlogPage">
+          <BlogPageLeft>
+            <BloggerPanel {...this.props.bloggerInfo} isSubscribed={this.props.subscribeStatus}
+                          handleSubscribe={this.handleSubscribe}/>
+            <ClassificationColumn tagsList={this.props.tagList}/>
+            {/*<BlogCategory/>*/}
+          </BlogPageLeft>
+          <BlogPageMain>
+            <BlogTitle title={title}/>
+            <BlogContent content={content || ''}/>
+            <ThumbBox handleLike={this.handleLike}
+                      handleFavorite={this.handleFavorite}
+                      // handleSubscribe={this.handleSubscribe}
+                      commentNum={commentNum}
+                      favoriteNum={favoriteNum}
+                      likeNum={likeNum}
+                      shareNum={shareNum}
+                      favStatus={favStatus}
+                      subscribeStatus={subscribeStatus}
+                      likeStatus={likeStatus}
+            />
+            <AddComment addComment={this.handleAddComment}/>
+            <CommentList commentList={this.props.commentList}/>
+            {/*<RelatedBlogList/>*/}
+          </BlogPageMain>
+        </div>
+      </Layout>
     )
   }
 }
@@ -117,6 +120,7 @@ BlogPage = connect(
     $BlogPageState: {
       bloggerInfo,
       commentNum,
+      bloggerId,
       comments: commentList,
       content,
       favoriteNum,
@@ -134,7 +138,8 @@ BlogPage = connect(
         content,
         likeNum,
         commentNum,
-        favoriteNum
+        favoriteNum,
+        bloggerId,
       },
       commentList,
       tagList,

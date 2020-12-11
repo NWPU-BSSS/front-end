@@ -59,8 +59,8 @@ export class PersonalInfo extends Component {
   }
 
   componentWillReceiveProps (nextProps, nextContext) {
-    let { nickname, introduction, realName, university, className, academy, gender } = nextProps
-    this.setState({ nickname, introduction, realName, university, className, academy, gender })
+    let { nickname, introduction, realName, university, className, academy, gender, username } = nextProps
+    this.setState({ nickname, introduction, realName, university, className, academy, gender,username })
   }
 
   static propTypes = {
@@ -84,7 +84,7 @@ export class PersonalInfo extends Component {
   }
 
   handleModalOk = () => {
-    this.props.setUserInfoAsync({ ...this.form })
+    this.props.setUserInfoAsync({ ...this.state })
     this.setState({ showModal: false })
   }
 

@@ -1,4 +1,5 @@
 import {
+  initAdminPage,
   initBloggerPage,
   initBlogPage,
   initHomePage,
@@ -7,18 +8,40 @@ import {
   initUserState
 } from './initData'
 import {
-  DELETE_USER_STATE, EDIT_MARKDOWN, EDIT_TAG, EDIT_TITLE,
-  LOAD_USER_STATE, REGISTER_SUCCESS_FALSE, REGISTER_SUCCESS,
+  DELETE_USER_STATE,
+  EDIT_MARKDOWN,
+  EDIT_TAG,
+  EDIT_TITLE,
+  LOAD_USER_STATE,
+  REGISTER_SUCCESS_FALSE,
+  REGISTER_SUCCESS,
   REMEMBER_USER_STATE,
   REMOVE_USER_STATE,
-  SAVE_USER_STATE, SEND_VERIFY_EMAIL_SUCCESS, SET_ANNOUNCEMENT,
+  SAVE_USER_STATE,
+  SEND_VERIFY_EMAIL_SUCCESS,
+  SET_ANNOUNCEMENT,
   SET_BADGE_NUM,
-  SET_BASE_INFO, SET_BLOG_COMMENTS,
-  SET_BLOG_INFO, SET_BLOG_BLOGGER_INFO, SET_BLOGGER_TAGS, SET_BROWSE_RECORD,
-  SET_FANS, SET_FAV_STATUS, SET_LIKE_STATUS,
-  SET_RECENT_BROWSE_BLOGS, SET_RECOMMEND_BLOG_LIST, SET_BLOG_PAGE_SUBSCRIBE_STATUS,
-  SET_SUBSCRIBES,
-  SET_USER_INFO, USE_EN, USE_ZH, SET_BLOGGER_INFO, SET_BLOGGER_BLOGS, SET_BLOGGER_FAV_BLOGS, SET_SEARCH_BLOG_LIST
+  SET_BASE_INFO,
+  SET_BLOG_COMMENTS,
+  SET_BLOG_INFO,
+  SET_BLOG_BLOGGER_INFO,
+  SET_BLOGGER_TAGS,
+  SET_BROWSE_RECORD,
+  SET_MY_FANS,
+  SET_FAV_STATUS,
+  SET_LIKE_STATUS,
+  SET_RECENT_BROWSE_BLOGS,
+  SET_RECOMMEND_BLOG_LIST,
+  SET_BLOG_PAGE_SUBSCRIBE_STATUS,
+  SET_MY_SUBSCRIBES,
+  SET_USER_INFO,
+  USE_EN,
+  USE_ZH,
+  SET_BLOGGER_INFO,
+  SET_BLOGGER_BLOGS,
+  SET_BLOGGER_FAV_BLOGS,
+  SET_SEARCH_BLOG_LIST,
+  SET_FAV_BLOGS, SET_MY_BLOGS, SET_RECENT_BLOG_LIST, SET_FOLLOWED_BLOG_LIST, SET_BLOGGER_SUBSCRIBE, SET_BLOGGER_FANS
 } from './action-types'
 import {
   delete_user_state,
@@ -63,13 +86,17 @@ export function $UserInfoState (state = initUserInfo, { data, type }) {
     case SET_BADGE_NUM:
       return { ...state, badgeNum: data }
     case SET_USER_INFO:
-      return { ...state, userInfo: data }
+      return { ...state, userInfo: { ...state.userInfo, ...data } }
     case SET_RECENT_BROWSE_BLOGS:
       return { ...state, recentBrowseBlogs: data }
-    case SET_FANS:
+    case SET_MY_FANS:
       return { ...state, fans: data }
-    case SET_SUBSCRIBES:
+    case SET_MY_SUBSCRIBES:
       return { ...state, subscribes: data }
+    case SET_FAV_BLOGS:
+      return { ...state, favBlogs: data }
+    case SET_MY_BLOGS:
+      return { ...state, myBlogs: data }
     default:
       return state
   }
@@ -105,6 +132,10 @@ export function $HomePageState (state = initHomePage, { data, type }) {
       return { ...state, browse: data }
     case SET_RECOMMEND_BLOG_LIST:
       return { ...state, recommendBlogList: data }
+    case SET_RECENT_BLOG_LIST:
+      return { ...state, recentBlogList: data }
+    case SET_FOLLOWED_BLOG_LIST:
+      return { ...state, followedBlogList: data }
     default:
       return state
   }
@@ -134,15 +165,25 @@ export function $Language (state = en, action) {
   }
 }
 
-export function $BLoggerPageState (state = initBloggerPage, action) {
-  let data = action.data
-  switch (action.type) {
+export function $BLoggerPageState (state = initBloggerPage, { data, type }) {
+  switch (type) {
     case SET_BLOGGER_INFO:
-      return {...state, bloggerInfo:  data}
+      return { ...state, bloggerInfo: data }
     case SET_BLOGGER_BLOGS:
-      return {...state, bloggerBlogs: data}
+      return { ...state, bloggerBlogs: data }
     case SET_BLOGGER_FAV_BLOGS:
-      return {...state, bloggerFavBlogs: data}
+      return { ...state, bloggerFavBlogs: data }
+    case SET_BLOGGER_FANS:
+      return { ...state, fans: data }
+    case SET_BLOGGER_SUBSCRIBE:
+      return { ...state, subscribes: data }
+    default:
+      return state
+  }
+}
+
+export function $AdminPageState (state = initAdminPage, { type, data }) {
+  switch (type) {
     default:
       return state
   }
@@ -155,9 +196,9 @@ export function $GlobalState (state = {}, action) {
     // case REGISTER_SUCCESS_FALSE:
     //   return { ...state, flag }
     case REGISTER_SUCCESS:
-      return {  ...state, registerSuccess: true }
+      return { ...state, registerSuccess: true }
     case SET_SEARCH_BLOG_LIST:
-      return {...state, searchBlogList: action.data}
+      return { ...state, searchBlogList: action.data }
     default:
       return state
   }

@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import { Avatar, Button, List } from 'antd'
+import { connect } from 'react-redux'
+import { subscribeAsync } from '../../@redux/actions_async'
 
 export class FanItem extends Component {
   static propTypes = {
@@ -11,8 +13,23 @@ export class FanItem extends Component {
     subscribeStatus: PropTypes.bool.isRequired
   }
 
+  constructor (props) {
+    super(props)
+    this.state = {
+      subscribeStatus: undefined
+    }
+  }
+
+  handleSubscribe = () => {
+    let { bloggerId, isSubscribed } = this.props
+    let subscribe = !isSubscribed
+    this.props.subscribeAsync({ bloggerId, subscribe })
+    this.setState({ subscribeStatus: subscribe })
+  }
+
   render () {
-    const { nickname, avatar, subscribeStatus, bloggerId, introduction } = this.props
+    const { nickname, avatar, isSubscribed, bloggerId, introduction } = this.props
+    let status = this.state.subscribeStatus !== undefined ? this.state.subscribeStatus : isSubscribed
     return (
       <List.Item>
         <List.Item.Meta
@@ -20,9 +37,14 @@ export class FanItem extends Component {
           title={<a href={`/blogger/${bloggerId}/blog`}>{nickname}</a>}
           description={<span>{introduction}</span>}
         />
-        <Button type={subscribeStatus ? '' : 'primary'}
-                danger>{subscribeStatus ? 'Subscribed' : 'Subscribe'}</Button>
+        <Button onClick={this.handleSubscribe} type={status ? '' : 'primary'}
+                danger>{status ? 'Subscribed' : 'Subscribe'}</Button>
       </List.Item>
     )
   }
 }
+
+FanItem = connect(
+  () => {},
+  { subscribeAsync }
+)(FanItem)

@@ -1,4 +1,4 @@
-import {getInit, postInit, query, request} from './@config'
+import { getInit, postInit, query, request, uploadFile, uploadFileInit } from './@config'
 
 /**
  * 上传用户头像
@@ -6,15 +6,25 @@ import {getInit, postInit, query, request} from './@config'
  * @returns {Promise<JSON>}
  */
 //TODO: 改成表单上传
-export const uploadUserHeadPortrait = async ({file}) =>
-    request('/api/user/avatar', postInit({file}))
+export const uploadUserHeadPortrait = async ({ file }) =>
+  request('/api/user/avatar', postInit({ file }))
 
 /**
+ * //TODO: 由于后端api对应没有弄对，此处暂时引用userName
  * 修改个人信息
  * @returns {Promise<JSON>}
  */
-export const editUserInfo = async ({username, nickname, introduction, realName, gender, university, className, academy }) =>
-    request(`/api/user/info?${query()}`, postInit({username, nickname, introduction, realName, gender, university, className, academy }))
+export const editUserInfo = async ({ userName, nickname, introduction, realName, gender, university, className, academy }) =>
+  request(`/api/user/info?${query()}`, postInit({
+    nickname,
+    introduction,
+    realName,
+    gender,
+    university,
+    className,
+    academy,
+    userName
+  }))
 
 /**
  * 关注、取关博主
@@ -22,15 +32,15 @@ export const editUserInfo = async ({username, nickname, introduction, realName, 
  * @param {boolean}subscribe
  * @returns {Promise<JSON>}
  */
-export const subscribeOrCancelBlogger = async ({bloggerId, subscribe}) =>
-    request(`/api/user/subscribe?${query()}`, postInit({bloggerId, subscribe}))
+export const subscribeOrCancelBlogger = async ({ bloggerId, subscribe }) =>
+  request(`/api/user/subscribe?${query()}`, postInit({ bloggerId, subscribe }))
 
 /**
  * 最近浏览的博客
  * @returns {Promise<JSON>}
  */
 export const currentBrowseBlog = async () =>
-    request('/api/user/browse/blogs', postInit())
+  request('/api/user/browse/blogs', postInit())
 
 /**
  * 获取对某个博主的关注状态
@@ -38,28 +48,32 @@ export const currentBrowseBlog = async () =>
  * @returns {Promise<JSON>}
  */
 export const getSubscribeStatusOfBlogger = async (bloggerId) =>
-    request(`/api/user/subscribe?${query({bloggerId})}`, getInit())
+  request(`/api/user/subscribe?${query({ bloggerId })}`, getInit())
 
 /**
  * 获取用户的关注列表
- * @param {string}userId
  * @returns {Promise<JSON>}
+ * @param bloggerId
  */
-export const getUserSubscribeList = async (userId) =>
-    request(`/api/user/subscribes?${query({userId})}`,getInit())
+export const getUserSubscribeList = async (bloggerId) =>
+  request(`/api/user/subscribes?${query({ bloggerId })}`, getInit())
 
 /**
  * 获取用户粉丝列表
- * @param userId
  * @returns {Promise<JSON>}
+ * @param bloggerId
  */
-export const getUserFansList = async (userId) =>
-    request(`/api/user/fans?${query({userId})}`,getInit())
+export const getUserFansList = bloggerId =>
+  request(`/api/user/fans?${query({ bloggerId })}`, getInit())
 
 /**
  * 获取用户详细信息
  * @returns {Promise<JSON>}
  */
 export const getUserWholeInfo = async () =>
-    request(`/api/user/info?${query()}`, getInit())
+  request(`/api/user/info?${query()}`, getInit())
+
+export const uploadUserAvatar = file =>
+  uploadFile(`/api/user/avatar?${query()}`, uploadFileInit(file) )
+
 

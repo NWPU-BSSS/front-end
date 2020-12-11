@@ -20,9 +20,15 @@ import {
   set_blogger_fav_blogs,
   set_like_status,
   set_fav_status,
-  set_search_blog_list
+  set_search_blog_list,
+  set_fav_blogs,
+  set_my_fans,
+  set_my_subscribes,
+  set_my_blogs,
+  set_recent_blogList,
+  set_followed_blog_list, set_blogger_fans, set_blogger_subscribe
 } from './actions'
-import { SET_SEARCH_BLOG_LIST } from './action-types'
+import { SET_MY_FANS, SET_SEARCH_BLOG_LIST } from './action-types'
 
 /**
  *
@@ -187,20 +193,34 @@ export const getBloggerInfoAsync = bloggerId =>
     dispatch(set_blogger_info(data))
   }
 
+/**
+ * //TODO: 等后端API改好后，去掉userName 字段
+ * 异步设置用户信息
+ * @param userName
+ * @param nickname
+ * @param introduction
+ * @param realName
+ * @param gender
+ * @param university
+ * @param className
+ * @param academy
+ * @returns {function(*): Promise<void>}
+ */
 export const setUserInfoAsync = ({ username, nickname, introduction, realName, gender, university, className, academy }) =>
   async dispatch => {
     const response = await req.editUserInfo({
-      username,
       nickname,
       introduction,
       realName,
       gender,
       university,
       className,
-      academy
+      academy,
+      //TODO
+      userName: username
     })
-    let data = await asyncResponseHandler(response)
-    dispatch(set_user_info(data))
+    await asyncResponseHandler(response)
+    dispatch(set_user_info({ username, nickname, introduction, realName, gender, university, className, academy }))
   }
 
 /**
@@ -216,6 +236,11 @@ export const getBloggerBlogsAsync = ({ userId, page }) =>
     dispatch(set_blogger_blogs(data))
   }
 
+/**
+ * 获取某博主收藏的博客列表
+ * @param userId
+ * @returns {function(*): Promise<void>}
+ */
 export const getBloggerFavBlogsAsync = userId =>
   async dispatch => {
     const response = await req.getFavBlogList(userId)
@@ -251,10 +276,90 @@ export const setBlogFavStatusAsync = ({ blogId, favorite }) =>
     dispatch(set_fav_status(favorite))
   }
 
-  export const getSearchResultAsync = word =>
-    async dispatch => {
-      const response = await req.keySearchBlog(word)
-      let data = await asyncResponseHandler(response)
-      dispatch(set_search_blog_list(data))
-    }
+export const getSearchResultAsync = word =>
+  async dispatch => {
+    const response = await req.keySearchBlog(word)
+    let data = await asyncResponseHandler(response)
+    dispatch(set_search_blog_list(data))
+  }
 
+export const releaseAnnouncementAsync = ({}) =>
+  async dispatch => {
+    // const response = await req.keySearchBlog()
+    // let data = await asyncResponseHandler(response)
+    // dispatch(set_search_blog_list(data))
+  }
+
+/**
+ * 获取指定用户的粉丝列表
+ * @param bloggerId
+ * @returns {function(*): Promise<void>}
+ */
+export const getUserFansAsync = bloggerId =>
+  async dispatch => {
+    const response = await req.getUserFansList(bloggerId)
+    let data = await asyncResponseHandler(response)
+    dispatch(set_my_fans(data))
+  }
+
+export const getUserSubscribesAsync = bloggerId =>
+  async dispatch => {
+    const response = await req.getUserSubscribeList(bloggerId)
+    let data = await asyncResponseHandler(response)
+    dispatch(set_my_subscribes(data))
+  }
+
+/**
+ *
+ * @returns {function(*): Promise<void>}
+ */
+export const getMyBLogsAsync = ({ userId, page }) =>
+  async dispatch => {
+    const response = await req.getUserBlogList({ page: page || 0, userId })
+    let data = await asyncResponseHandler(response)
+    dispatch(set_my_blogs(data))
+  }
+
+export const getFavBlogsAsync = bloggerId =>
+  async dispatch => {
+    const response = await req.getFavBlogList(bloggerId)
+    let data = await asyncResponseHandler(response)
+    dispatch(set_fav_blogs(data))
+  }
+
+export const getRecentBlogListAsync = page =>
+  async dispatch => {
+    const response = await req.getRecentBlogs(page || 0)
+    let data = await asyncResponseHandler(response)
+    dispatch(set_recent_blogList(data))
+  }
+
+export const getFollowedBloggerBlogListAsync = page =>
+  async dispatch => {
+    const response = await req.getSubscribeBloggerList(page || 0)
+    let data = await asyncResponseHandler(response)
+    dispatch(set_followed_blog_list(data))
+  }
+
+export const getBloggerFansAsync = bloggerId =>
+  async dispatch => {
+    const response = await req.getUserFansList(bloggerId)
+    let data = await asyncResponseHandler(response)
+    dispatch(set_blogger_fans(data))
+  }
+
+export const getBloggerSubscribesAsync = bloggerId =>
+  async dispatch => {
+    const response = await req.getUserSubscribeList(bloggerId)
+    let data = await asyncResponseHandler(response)
+    dispatch(set_blogger_subscribe(data))
+  }
+
+  export const uploadUserAvatarAsync = file =>
+    async dispatch => {
+      const response = await req.uploadUserAvatar(file)
+      await asyncResponseHandler(response)
+      success('Success')
+      let data = await asyncResponseHandler(await req.getUserWholeInfo())
+      dispatch(set_user_info(data))
+    }

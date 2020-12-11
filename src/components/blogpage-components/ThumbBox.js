@@ -42,14 +42,14 @@ export class ThumbBox extends Component {
             <span>Favorite</span>
             <span>{this.props.favoriteNum}</span>
           </div>
-          <div className="item" onClick={this.props.handleSubscribe}>
-            <Button danger
-                    type={this.props.subscribeStatus ? "default": "primary"}
-                    onClick={this.props.handleSubscribe}>{this.props.subscribeStatus ? 'Subscribed' : 'Subscribe'}</Button>
-          </div>
-          <div className="item" onClick={this.handleSLS}>
-            <Button danger type="primary">Subscribe + Like + Favorite</Button>
-          </div>
+          {/*<div className="item" onClick={this.props.handleSubscribe}>*/}
+          {/*  <Button danger*/}
+          {/*          type={this.props.subscribeStatus ? "default": "primary"}*/}
+          {/*          onClick={this.props.handleSubscribe}>{this.props.subscribeStatus ? 'Subscribed' : 'Subscribe'}</Button>*/}
+          {/*</div>*/}
+          {/*<div className="item" onClick={this.handleSLS}>*/}
+          {/*  <Button danger type="primary">Subscribe + Like + Favorite</Button>*/}
+          {/*</div>*/}
       </div>
     )
   }

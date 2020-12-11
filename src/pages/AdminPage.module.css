@@ -1,5 +1,5 @@
 .container {
-
+    padding-left: 300px;
 }
 
 .menu {
@@ -11,6 +11,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: stretch;
+    left: 0;
+    top: 0;
 }
 
 .menuContainer {

@@ -21,8 +21,10 @@ export const SET_BASE_INFO = 'set_base_info'
 export const SET_BADGE_NUM = 'set_badge_num'
 export const SET_USER_INFO = 'set_user_info'
 export const SET_RECENT_BROWSE_BLOGS = 'set_recent_browse_blogs'
-export const SET_FANS = 'set_fans'
-export const SET_SUBSCRIBES = 'set_subscribes'
+export const SET_MY_FANS = 'set_my_fans'
+export const SET_MY_SUBSCRIBES = 'set_my_subscribes'
+export const SET_FAV_BLOGS = 'set_fav_blogs'
+export const SET_MY_BLOGS = 'set_my_blogs'
 
 /*
   博客页面的 Action
@@ -43,7 +45,8 @@ export const SET_BLOG_PAGE_SUBSCRIBE_STATUS = 'set_blog_page_subscribe_status'
 export const SET_ANNOUNCEMENT = 'set_announcement'
 export const SET_BROWSE_RECORD = 'set_browse_record'
 export const SET_RECOMMEND_BLOG_LIST = 'set_recommend_blog_list'
-
+export const SET_RECENT_BLOG_LIST = 'set_recent_blog_list'
+export const SET_FOLLOWED_BLOG_LIST = 'set_followed_blog_list'
 /*
   发布博客
   ReleaseBlogPageState
@@ -58,6 +61,10 @@ export const EDIT_MARKDOWN = 'edit_markdown'
 export const SET_BLOGGER_INFO = 'set_blogger_info'
 export const SET_BLOGGER_BLOGS = 'set_blogger_blogs'
 export const SET_BLOGGER_FAV_BLOGS = 'set_blogger_fav_blogs'
+export const SET_BLOGGER_FANS = 'set_blogger_fans'
+export const SET_BLOGGER_SUBSCRIBE = 'set_blogger_subscribe'
+
+export const SET_ADMIN_STATE = 'set_admin_state'
 
 /*
   全局 状态

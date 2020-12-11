@@ -51,3 +51,8 @@ export const initBloggerPage = {
   bloggerInfo: {},
   bloggerBlogs: []
 }
+
+export const initAdminPage = {
+  username: '',
+  password: ''
+}

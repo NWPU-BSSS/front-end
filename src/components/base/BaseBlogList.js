@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
-import { IconText } from '../homepage-components/@common/IconText'
+import { IconText } from '../homepage-components/base/IconText'
 import  {List} from 'antd'
 import { Link } from 'react-router-dom'
-import { TagList } from '../homepage-components/@common/TagList'
-import { ItemContent } from '../homepage-components/@common/ItemContent'
+import { TagList } from '../homepage-components/base/TagList'
+import { ItemContent } from '../homepage-components/base/ItemContent'
 import { LikeOutlined, MessageOutlined, StarOutlined } from '@ant-design/icons'
 
 export class BaseBlogList extends Component {
@@ -38,7 +38,7 @@ export class BaseBlogList extends Component {
               description={<TagList tagA={item.tagA || ''} tagB={item.tagB || ''} tagC={item.tagC || ''}/>}
             />
             <ItemContent preview={item.preview || item.content} avatar={item.avatar}
-                         lastModifiedTime={item.lastModifiedTime || 'unknow'}
+                         lastModifiedTime={item.lastModifiedTime || 'unknown'}
                          nickname={item.nickname || 'anonymous'}
                          blogId={item.blogId}
                          userId={item.userId}

@@ -1,0 +1,20 @@
+.container {
+    padding: 20px;
+    max-width: 800px;
+}
+
+.pageTitle {
+    text-align: left;
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #000;
+}
+
+.box {
+    width: 100%;
+}
+
+.pageMain {
+    max-height: 500px;
+}

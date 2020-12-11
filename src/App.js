@@ -31,30 +31,13 @@ class App extends React.Component {
   render () {
     return (
       <SwitchRouter>
-        <Route path="/home">
-          <Layout><HomePage/></Layout>
-        </Route>
-        <Route path="/search/:word">
-          <Layout><SearchResultPage/></Layout>
-        </Route>
-        <Route path="/blog/:blogId">
-          <Layout><BlogPage/></Layout>
-        </Route>
-        <Route path="/blogger/:bloggerId" component={BloggerPage}>
-          <Layout><BloggerPage/></Layout>
-        </Route>
-        <Route path="/profile" component={ProfilePage}>
-          <Layout><ProfilePage/></Layout>
-        </Route>
-        <Route path="/release-blog">
-          <Layout><ReleaseBlogPage/></Layout>
-        </Route>
-        <Route path="/code-edit" component={CodeEditPage}>
-          <Layout><CodeEditPage/></Layout>
-        </Route>
-        <Route path="/guest" component={GuestHomePage}>
-          <Layout><GuestHomePage/></Layout>
-        </Route>
+        <Route path="/home" component={HomePage}/>
+        <Route path="/search/:word" component={SearchResultPage}/>
+        <Route path="/blog/:blogId" component={BlogPage}/>
+        <Route path="/blogger/:bloggerId" component={BloggerPage}/>
+        <Route path="/profile" component={ProfilePage}/>
+        <Route path="/release-blog" component={ReleaseBlogPage}/>
+        <Route path="/guest" component={GuestHomePage}/>
         <Route path="/register" component={RegisterPage}/>
         <Route path="/login" component={LoginPage}/>
         <Route path="/reg-success" component={RegisterSuccessPage}/>

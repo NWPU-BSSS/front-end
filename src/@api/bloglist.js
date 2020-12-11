@@ -2,7 +2,7 @@ import { getInit, postInit, query, request } from './@config'
 
 /**
  * 获取我关注的所有博主的博客列表
- * @param {string}page
+ * @param {number} page
  * @returns {Promise<JSON>}
  */
 export const getSubscribeBloggerList = (page) =>
@@ -10,7 +10,7 @@ export const getSubscribeBloggerList = (page) =>
 
 /**
  * 获取我收藏的博客列表
- * @param {string}userId
+ * @param {number} userId
  * @returns {Promise<JSON>}
  */
 export const getFavBlogList = (userId) =>
@@ -26,16 +26,16 @@ export const getRecommendBlogList = (page = 0) =>
 
 /**
  * 获取最近发布的博客列表
- * @param {string}page
+ * @param {number} page
  * @returns {Promise<JSON>}
  */
-export const getCurrentReleaseBlog = (page) =>
+export const getRecentBlogs = page =>
   request(`/api/blog/list/recent?${query({ page })}`, getInit())
 
 /**
  * 获取某用户的所有博客列表
- * @param {number}page
- * @param {number}userId
+ * @param {number} page
+ * @param {number} userId
  * @returns {Promise<JSON>}
  */
 export const getUserBlogList = ({ page, userId }) =>
