@@ -9,9 +9,7 @@ export class BlogPageLeft extends Component {
   render () {
     return (
       <div className="BlogPageLeft">
-        <BloggerPanel/>
-        <ClassificationColumn/>
-        {/*<BlogCategory/>*/}
+        {this.props.children}
       </div>
     )
   }

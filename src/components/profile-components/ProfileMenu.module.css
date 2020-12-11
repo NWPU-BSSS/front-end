@@ -1,0 +1,7 @@
+.ProfileMenu {
+    min-width: 200px;
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+}

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { LoginFormTop } from '../components/@common/LoginFormTop'
+import { LoginFormTop } from '../components/base/LoginFormTop'
 import { RegisterForm } from '../components/register-components/RegisterForm'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router'
@@ -30,7 +30,7 @@ class RegisterPage extends Component {
 }
 
 RegisterPage = connect(
-  state => ({ isRegisterSuccess: state.registerSuccess })
+  state => ({ isRegisterSuccess: state.$GlobalState.registerSuccess })
 )(RegisterPage)
 
 export { RegisterPage }

@@ -1,0 +1,12 @@
+.container{
+    height: 50px;
+    margin: 5px 0;
+    line-height: 50px;
+    color: #a0a0a0;
+    text-align: left;
+    padding: 0 15px;
+}
+
+.container:hover{
+    background-color: rgb(242 242 242);
+}

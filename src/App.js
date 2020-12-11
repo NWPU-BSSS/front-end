@@ -4,7 +4,7 @@ import React from 'react'
 import './app-layout.css'
 import { Layout } from './components/Layout'
 import { HomePage } from './pages/HomePage'
-import { BloggerSpacePage } from './pages/BloggerSpacePage'
+import { BloggerPage } from './pages/BloggerPage'
 import { BlogPage } from './pages/BlogPage'
 import { ProfilePage } from './pages/ProfilePage'
 import { ReleaseBlogPage } from './pages/ReleaseBlogPage'
@@ -20,8 +20,8 @@ import { connect } from 'react-redux'
 import { setAccessToken } from './@redux/actions'
 import { Switch as SwitchRouter } from 'react-router-dom'
 import {Button,  Result } from 'antd'
-import { loadUserState } from './@redux/v2/actions'
-import { AdminUsersPage } from './pages/AdminUsersPage'
+import { loadUserState } from './@redux/actions'
+import { SearchResultPage } from './pages/SearchResultPage'
 
 class App extends React.Component {
 
@@ -39,19 +39,22 @@ class App extends React.Component {
     return (
       <Layout>
         <SwitchRouter>
-          <Route path="/" exact component={HomePage}/>
+          <Route path="/home" component={HomePage}/>
+          <Route path="/search/:word" component={SearchResultPage}/>
           <Route path="/blog/:blogId" component={BlogPage}/>
-          <Route path="/blogger/:bloggerId" component={BloggerSpacePage}/>
+          <Route path="/blogger/:bloggerId" component={BloggerPage}/>
           <Route path="/profile" component={ProfilePage}/>
           <Route path="/release-blog" component={ReleaseBlogPage}/>
           <Route path="/code-edit" component={CodeEditPage}/>
-          <Route path="/edit" component={BlogInfoSetting}/>
           <Route path="/guest" component={GuestHomePage}/>
           <Route path="/register" component={RegisterPage}/>
           <Route path="/login" component={LoginPage}/>
           <Route path="/reg-success" component={RegisterSuccessPage}/>
           <Route path="/admin/users" component={AdminUsersPage}/>
           <Route path="/t" component={TestPage}/>
+          <Route exact path="/">
+            <Redirect to="/home"/>
+          </Route>
           <Route>
             <Result
               status="404"

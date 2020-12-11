@@ -3,7 +3,7 @@ import './MdEditor.css'
 import ReactMarkdown from 'react-markdown'
 import { CodeBlock } from './CodeBlock'
 import { connect } from 'react-redux'
-import { editMarkdown } from '../../@redux/v2/actions'
+import { editMarkdown } from '../../@redux/actions'
 
 const DEFAULT_SIZE = 500
 
