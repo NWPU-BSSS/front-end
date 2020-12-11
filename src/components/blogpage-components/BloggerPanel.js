@@ -1,8 +1,6 @@
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import { Avatar, Button, Tag } from 'antd'
-import avatar from '../../assets/temporary/u508.png'
-import { SafetyCertificateOutlined } from '@ant-design/icons'
 import styles from './BloggerPanel.module.css'
 import { Link } from 'react-router-dom'
 import { LeftCard } from './common/LeftCard'

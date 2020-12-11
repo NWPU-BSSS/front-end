@@ -1,9 +1,7 @@
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
-import { Avatar, Button, Input, Space } from 'antd'
-import logo from '../../assets/img/u208.png'
+import { Avatar, Button, Input } from 'antd'
 import styles from './AddComment.module.css'
-import { connect } from 'react-redux'
 
 export class AddComment extends Component {
   static propTypes = {

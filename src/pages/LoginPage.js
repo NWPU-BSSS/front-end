@@ -5,7 +5,6 @@ import { AlipayCircleFilled, TaobaoCircleFilled, WeiboCircleFilled } from '@ant-
 import { LoginFormTop } from '../components/base/LoginFormTop'
 import { Link, Redirect } from 'react-router-dom'
 import { AccountLoginForm } from '../components/loginpage-components/AccountLoginForm'
-import { PhoneLoginForm } from '../components/loginpage-components/PhoneLoginForm'
 import { connect } from 'react-redux'
 
 const { TabPane } = Tabs
