@@ -14,7 +14,7 @@ import {
   set_blog_comments,
   set_blog_blogger_info,
   set_blogger_tags,
-  set_blog_page_subscribe_status, set_blogger_info
+  set_blog_page_subscribe_status, set_blogger_info, set_blogger_blogs
 } from './actions'
 
 /**
@@ -194,5 +194,18 @@ export const setUserInfoAsync = ({ username, nickname, introduction, realName, g
     })
     let data = await asyncResponseHandler(response)
     dispatch(set_user_info(data))
+  }
+
+/**
+ *
+ * @param userId
+ * @param page
+ * @returns {function(*): Promise<void>}
+ */
+export const getBloggerBlogsAsync = ({ userId, page }) =>
+  async dispatch => {
+    const response = await req.getUserBlogList({ userId, page })
+    let data = await asyncResponseHandler(response)
+    dispatch(set_blogger_blogs(data))
   }
 

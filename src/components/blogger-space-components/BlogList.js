@@ -16,7 +16,7 @@ class BlogItem extends Component {
           <div>{this.props.blogcontent}</div>
         </div>
         <div className="read-record">
-          <div>{this.props.blogamount}阅读</div>
+          <div>{this.props.blogamount} Read</div>
           <div>{this.props.datetime}</div>
         </div>
       </div>

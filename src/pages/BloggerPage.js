@@ -23,7 +23,9 @@ export class BloggerPage extends Component {
         <Blogger {...this.props.bloggerInfo}/>
         <ContentNavBar bloggerId={bloggerId}/>
         <SwitchRouter>
-          <Route path="/blogger/:bloggerId/blog" component={BlogList}/>
+          <Route path="/blogger/:bloggerId/blog">
+            <BlogList/>
+          </Route>
           <Route path="/blogger/:bloggerId/resource" component={Resource}/>
           <Route path="/blogger/:bloggerId/fans" component={Resource}/>
           <Route path="/blogger/:bloggerId/fav" component={Resource}/>

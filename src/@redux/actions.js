@@ -13,7 +13,7 @@ import {
   SET_RECOMMEND_BLOG_LIST, SET_BLOG_PAGE_SUBSCRIBE_STATUS,
   SET_USER_INFO,
   USE_EN,
-  USE_ZH, SET_BLOGGER_INFO
+  USE_ZH, SET_BLOGGER_INFO, SET_BLOGGER_BLOGS
 } from './action-types'
 
 export const actionFactory = (type, data = undefined) => ({
@@ -67,6 +67,7 @@ export const set_blog_page_subscribe_status = data => actionFactory(SET_BLOG_PAG
   BloggerPage Action
  */
 export const set_blogger_info = data => actionFactory(SET_BLOGGER_INFO, data)
+export const set_blogger_blogs =data => actionFactory(SET_BLOGGER_BLOGS, data)
 
 /*
   Global Action

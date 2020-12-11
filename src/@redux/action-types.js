@@ -56,6 +56,7 @@ export const EDIT_MARKDOWN = 'edit_markdown'
   BloggerPageState
  */
 export const SET_BLOGGER_INFO = 'set_blogger_info'
+export const SET_BLOGGER_BLOGS = 'set_blogger_blogs'
 
 /*
   全局 状态
