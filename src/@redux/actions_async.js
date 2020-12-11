@@ -14,7 +14,12 @@ import {
   set_blog_comments,
   set_blog_blogger_info,
   set_blogger_tags,
-  set_blog_page_subscribe_status, set_blogger_info, set_blogger_blogs, set_blogger_fav_blogs, set_like_status
+  set_blog_page_subscribe_status,
+  set_blogger_info,
+  set_blogger_blogs,
+  set_blogger_fav_blogs,
+  set_like_status,
+  set_fav_status
 } from './actions'
 
 /**
@@ -220,12 +225,27 @@ export const getBlogLikeStatusAsync = blogId =>
   async dispatch => {
     const response = await req.getStatusOfLikeBlog(blogId)
     let data = await asyncResponseHandler(response)
-    dispatch(set_like_status(data))
+    dispatch(set_like_status(data.status))
+  }
+
+export const getBlogFavStatusAsync = blogId =>
+  async dispatch => {
+    const response = await req.getStatusOfFavoriteBlog(blogId)
+    let data = await asyncResponseHandler(response)
+    dispatch(set_fav_status(data.status))
   }
 
 export const setBlogLikeStatusAsync = ({ blogId, like }) =>
   async dispatch => {
     const response = await req.likeBlog(({ blogId, like }))
     await asyncResponseHandler(response)
-    dispatch(set_like_status({ status: like }))
+    dispatch(set_like_status(like))
   }
+
+export const setBlogFavStatusAsync = ({ blogId, favorite }) =>
+  async dispatch => {
+    const response = await req.favBlog(({ blogId, favorite }))
+    await asyncResponseHandler(response)
+    dispatch(set_fav_status(favorite))
+  }
+

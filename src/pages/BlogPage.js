@@ -5,10 +5,10 @@ import PropTypes from 'prop-types'
 import {
   addCommentAsync,
   getBlogAsync,
-  getBlogBloggerInfoAsync,
+  getBlogBloggerInfoAsync, getBlogFavStatusAsync,
   getBloggerTagsAsync, getBlogLikeStatusAsync,
   getCommentsAsync,
-  getSubscribeStatusAsync, setBlogLikeStatusAsync,
+  getSubscribeStatusAsync, setBlogFavStatusAsync, setBlogLikeStatusAsync,
   subscribeAsync
 } from '../@redux/actions_async'
 import './BlogPage.css'
@@ -52,6 +52,7 @@ class BlogPage extends Component {
     this.props.getBloggerTagsAsync(bloggerId)
     this.props.getSubscribeStatusAsync(bloggerId)
     this.props.getBlogLikeStatusAsync(blogId)
+    this.props.getBlogFavStatusAsync(blogId)
   }
 
   handleAddComment = content => {
@@ -72,7 +73,8 @@ class BlogPage extends Component {
   }
 
   handleFavorite = () => {
-    alert('fav')
+    let blogId = this.props.match.params.blogId
+    this.props.setBlogFavStatusAsync({ blogId, favorite: !this.props.favStatus })
   }
 
   render () {
@@ -150,7 +152,9 @@ BlogPage = connect(
     subscribeAsync,
     getSubscribeStatusAsync,
     getBlogLikeStatusAsync,
-    setBlogLikeStatusAsync
+    setBlogLikeStatusAsync,
+    setBlogFavStatusAsync,
+    getBlogFavStatusAsync
   }
 )(BlogPage)
 
