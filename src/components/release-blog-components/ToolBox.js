@@ -37,30 +37,31 @@ const LineDiv = () =>
  * @constructor
  */
 function ToolBox (props) {
+  const fontSize = 28
   return <div className="ToolBox">
-    <ToolBarItem icon={<BoldOutlined style={{ fontSize: 28 }}/>} text="Bold"/>
-    <ToolBarItem icon={<ItalicOutlined style={{ fontSize: 28 }}/>} text="Italic"/>
-    <ToolBarItem icon={<HighlightOutlined style={{ fontSize: 28 }}/>} text="H1"/>
-    <ToolBarItem icon={<StrikethroughOutlined style={{ fontSize: 28 }}/>} text="DL"/>
+    <ToolBarItem icon={<BoldOutlined style={{ fontSize }}/>} text="Bold"/>
+    <ToolBarItem icon={<ItalicOutlined style={{ fontSize }}/>} text="Italic"/>
+    <ToolBarItem icon={<HighlightOutlined style={{ fontSize }}/>} text="H1"/>
+    <ToolBarItem icon={<StrikethroughOutlined style={{ fontSize }}/>} text="DL"/>
     <LineDiv/>
-    <ToolBarItem icon={<UnorderedListOutlined style={{ fontSize: 28 }}/>} text="UL"/>
-    <ToolBarItem icon={<OrderedListOutlined style={{ fontSize: 28 }}/>} text="OL"/>
-    <ToolBarItem icon={<BellOutlined style={{ fontSize: 28 }}/>} text="Event"/>
-    <ToolBarItem icon={<CodeOutlined style={{ fontSize: 28 }}/>} text="Code"/>
+    <ToolBarItem icon={<UnorderedListOutlined style={{ fontSize }}/>} text="UL"/>
+    <ToolBarItem icon={<OrderedListOutlined style={{ fontSize }}/>} text="OL"/>
+    <ToolBarItem icon={<BellOutlined style={{ fontSize }}/>} text="Event"/>
+    <ToolBarItem icon={<CodeOutlined style={{ fontSize }}/>} text="Code"/>
     <LineDiv/>
-    <ToolBarItem icon={<PictureOutlined style={{ fontSize: 28 }}/>} text="Image"/>
-    <ToolBarItem icon={<PlaySquareOutlined style={{ fontSize: 28 }}/>} text="Video"/>
+    <ToolBarItem icon={<PictureOutlined style={{ fontSize }}/>} text="Image"/>
+    <ToolBarItem icon={<PlaySquareOutlined style={{ fontSize }}/>} text="Video"/>
     <LineDiv/>
-    <ToolBarItem icon={<TableOutlined style={{ fontSize: 28 }}/>} text="Table"/>
-    <ToolBarItem icon={<LinkOutlined style={{ fontSize: 28 }}/>} text="Link"/>
-    <ToolBarItem icon={<MenuOutlined style={{ fontSize: 28 }}/>} text="Digest"/>
+    <ToolBarItem icon={<TableOutlined style={{ fontSize }}/>} text="Table"/>
+    <ToolBarItem icon={<LinkOutlined style={{ fontSize }}/>} text="Link"/>
+    <ToolBarItem icon={<MenuOutlined style={{ fontSize }}/>} text="Digest"/>
     <LineDiv/>
-    <ToolBarItem icon={<ImportOutlined style={{ fontSize: 28 }}/>} text="Import"/>
-    <ToolBarItem icon={<ExportOutlined style={{ fontSize: 28 }}/>} text="Export"/>
+    <ToolBarItem icon={<ImportOutlined style={{ fontSize }}/>} text="Import"/>
+    <ToolBarItem icon={<ExportOutlined style={{ fontSize }}/>} text="Export"/>
     <LineDiv/>
-    <ToolBarItem icon={<SaveOutlined style={{ fontSize: 28 }}/>} text="Save"/>
-    <ToolBarItem icon={<UndoOutlined style={{ fontSize: 28 }}/>} text="Undo"/>
-    <ToolBarItem icon={<RedoOutlined style={{ fontSize: 28 }}/>} text="Redo"/>
+    <ToolBarItem icon={<SaveOutlined style={{ fontSize }}/>} text="Save"/>
+    <ToolBarItem icon={<UndoOutlined style={{ fontSize }}/>} text="Undo"/>
+    <ToolBarItem icon={<RedoOutlined style={{ fontSize }}/>} text="Redo"/>
   </div>
 }
 
