@@ -26,7 +26,7 @@ import {
   set_my_subscribes,
   set_my_blogs,
   set_recent_blogList,
-  set_followed_blog_list
+  set_followed_blog_list, set_blogger_fans, set_blogger_subscribe
 } from './actions'
 import { SET_MY_FANS, SET_SEARCH_BLOG_LIST } from './action-types'
 
@@ -328,4 +328,18 @@ export const getFollowedBloggerBlogListAsync = page =>
     const response = await req.getSubscribeBloggerList(page || 0)
     let data = await asyncResponseHandler(response)
     dispatch(set_followed_blog_list(data))
+  }
+
+export const getBloggerFansAsync = bloggerId =>
+  async dispatch => {
+    const response = await req.getUserFansList(bloggerId)
+    let data = await asyncResponseHandler(response)
+    dispatch(set_blogger_fans(data))
+  }
+
+export const getBloggerSubscribesAsync = bloggerId =>
+  async dispatch => {
+    const response = await req.getUserSubscribeList(bloggerId)
+    let data = await asyncResponseHandler(response)
+    dispatch(set_blogger_subscribe(data))
   }

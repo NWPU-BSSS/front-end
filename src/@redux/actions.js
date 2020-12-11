@@ -28,7 +28,7 @@ import {
   SET_SEARCH_BLOG_LIST,
   SET_FAV_BLOGS,
   SET_MY_FANS,
-  SET_MY_SUBSCRIBES, SET_MY_BLOGS, SET_RECENT_BLOG_LIST, SET_FOLLOWED_BLOG_LIST
+  SET_MY_SUBSCRIBES, SET_MY_BLOGS, SET_RECENT_BLOG_LIST, SET_FOLLOWED_BLOG_LIST, SET_BLOGGER_FANS, SET_BLOGGER_SUBSCRIBE
 } from './action-types'
 
 export const actionFactory = (type, data = undefined) => ({
@@ -90,6 +90,8 @@ export const set_blog_page_subscribe_status = data => actionFactory(SET_BLOG_PAG
 export const set_blogger_info = data => actionFactory(SET_BLOGGER_INFO, data)
 export const set_blogger_blogs = data => actionFactory(SET_BLOGGER_BLOGS, data)
 export const set_blogger_fav_blogs = data => actionFactory(SET_BLOGGER_FAV_BLOGS, data)
+export const set_blogger_fans = data => actionFactory(SET_BLOGGER_FANS, data)
+export const set_blogger_subscribe = data => actionFactory(SET_BLOGGER_SUBSCRIBE, data)
 
 /*
   Global Action

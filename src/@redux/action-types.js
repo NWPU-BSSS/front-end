@@ -61,7 +61,8 @@ export const EDIT_MARKDOWN = 'edit_markdown'
 export const SET_BLOGGER_INFO = 'set_blogger_info'
 export const SET_BLOGGER_BLOGS = 'set_blogger_blogs'
 export const SET_BLOGGER_FAV_BLOGS = 'set_blogger_fav_blogs'
-
+export const SET_BLOGGER_FANS = 'set_blogger_fans'
+export const SET_BLOGGER_SUBSCRIBE = 'set_blogger_subscribe'
 
 export const SET_ADMIN_STATE = 'set_admin_state'
 

@@ -41,7 +41,7 @@ import {
   SET_BLOGGER_BLOGS,
   SET_BLOGGER_FAV_BLOGS,
   SET_SEARCH_BLOG_LIST,
-  SET_FAV_BLOGS, SET_MY_BLOGS, SET_RECENT_BLOG_LIST, SET_FOLLOWED_BLOG_LIST
+  SET_FAV_BLOGS, SET_MY_BLOGS, SET_RECENT_BLOG_LIST, SET_FOLLOWED_BLOG_LIST, SET_BLOGGER_SUBSCRIBE, SET_BLOGGER_FANS
 } from './action-types'
 import {
   delete_user_state,
@@ -173,6 +173,10 @@ export function $BLoggerPageState (state = initBloggerPage, { data, type }) {
       return { ...state, bloggerBlogs: data }
     case SET_BLOGGER_FAV_BLOGS:
       return { ...state, bloggerFavBlogs: data }
+    case SET_BLOGGER_FANS:
+      return { ...state, fans: data }
+    case SET_BLOGGER_SUBSCRIBE:
+      return { ...state, subscribes: data }
     default:
       return state
   }

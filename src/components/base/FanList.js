@@ -6,10 +6,12 @@ import { FanItem } from './FanItem'
 class FanList extends Component {
   render () {
     return (
-      <List
-        dataSource={this.props.fanList}
-        renderItem={item => <FanItem {...item}/>}
-      />
+      <div style={{padding: 20}}>
+        <List
+          dataSource={this.props.fanList}
+          renderItem={item => <FanItem {...item}/>}
+        />
+      </div>
     )
   }
 }

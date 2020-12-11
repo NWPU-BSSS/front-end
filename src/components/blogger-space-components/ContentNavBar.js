@@ -15,7 +15,7 @@ export class ContentNavBar extends Component {
     return (
       <div className="ContentNavBar">
         <ContentNavBarItem to={`blog`} name="Blog"/>
-        <ContentNavBarItem to={`resource`} name="Resources"/>
+        {/*<ContentNavBarItem to={`resource`} name="Resources"/>*/}
         <ContentNavBarItem to={`fans`} name="Fans"/>
         <ContentNavBarItem to={`fav`} name="Favorite"/>
         <ContentNavBarItem to={`subscribe`} name="Subscribe"/>
