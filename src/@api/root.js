@@ -59,5 +59,5 @@ export const checkEmailExist = async email =>
  * @param {string}word
  * @returns {Promise<JSON>}
  */
-export const keySearchBlog = async ({word}) =>
+export const keySearchBlog = word =>
     request(`/api/search?${query({word})}`, getInit())

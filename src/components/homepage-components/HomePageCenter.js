@@ -1,19 +1,16 @@
 import React, { Component } from 'react'
-import { List, Avatar, Space, Radio, Tag } from 'antd'
-import { MessageOutlined, LikeOutlined, StarOutlined } from '@ant-design/icons'
-import { Link } from 'react-router-dom'
+import { Radio } from 'antd'
 import PropTypes from 'prop-types'
 import './HomePageCenter.css'
-import { ItemContent } from './@common/ItemContent'
-import { TagList } from './@common/TagList'
-import { IconText } from './@common/IconText'
-import { HomeBlogList } from './HomeBlogList'
+import { BaseBlogList } from '../base/BaseBlogList'
 import { connect } from 'react-redux'
+import { Redirect, Route, Switch as SwitchRouter } from 'react-router-dom'
 
 export class HomePageCenter extends Component {
 
   static propTypes = {
-    recommendBlogList: PropTypes.array
+    recommendBlogList: PropTypes.array,
+    subscribeBlogList: PropTypes.array
   }
 
   constructor (props) {
@@ -37,12 +34,20 @@ export class HomePageCenter extends Component {
           <div className="select-container">
             <Radio.Group onChange={this.onChange} value={this.state.value}>
               <Radio value={1}>Recommend</Radio>
-              <Radio value={2}>Followed</Radio>
+              <Radio value={2}>Subscribed</Radio>
             </Radio.Group>
           </div>
         </div>
         <div className="blog-list">
-          <HomeBlogList recommendBlogList={this.props.recommendBlogList}/>
+          <SwitchRouter>
+            <Route path="/home/recommend">
+              <BaseBlogList blogList={this.props.recommendBlogList}/>
+            </Route>
+            <Route path="/home/subscribe">
+              <BaseBlogList blogList={this.props.subscribeBlogList}/>
+            </Route>
+            <Redirect to="/home/recommend"/>
+          </SwitchRouter>
         </div>
       </div>
     )
@@ -50,7 +55,8 @@ export class HomePageCenter extends Component {
 }
 
 HomePageCenter = connect(
-  state => ({
-    recommendBlogList: state.$HomePageState.recommendBlogList,
+  ({ $HomePageState: { recommendBlogList, subscribeBlogList } }) => ({
+    recommendBlogList,
+    subscribeBlogList,
   })
 )(HomePageCenter)

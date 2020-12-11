@@ -73,10 +73,7 @@ export class BloggerPanel extends Component {
               <div className={styles.topRight}>
                 <div className={styles.nickname}>{this.props.nickname}</div>
                 <div className={styles.otherInfo}>
-                  <Tag color="magenta">CA{this.props.codeAge}</Tag>
-                  {/*<div style={{ flexGrow: 0 }}>*/}
-                  {/*  <SafetyCertificateOutlined style={{ color: '#d9001b' }}/>*/}
-                  {/*</div>*/}
+                  <Tag color="red">CA{this.props.codeAge}</Tag>
                   <div>{this.props.className}</div>
                 </div>
               </div>

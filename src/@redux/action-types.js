@@ -56,6 +56,8 @@ export const EDIT_MARKDOWN = 'edit_markdown'
   BloggerPageState
  */
 export const SET_BLOGGER_INFO = 'set_blogger_info'
+export const SET_BLOGGER_BLOGS = 'set_blogger_blogs'
+export const SET_BLOGGER_FAV_BLOGS = 'set_blogger_fav_blogs'
 
 /*
   全局 状态
@@ -64,3 +66,4 @@ export const SET_BLOGGER_INFO = 'set_blogger_info'
 export const REGISTER_SUCCESS = 'register_success_true'
 export const REGISTER_SUCCESS_FALSE = 'register_success_false'
 export const SEND_VERIFY_EMAIL_SUCCESS = 'send_verify_email_success'
+export const SET_SEARCH_BLOG_LIST = 'set_search_blog_list'

@@ -1,5 +1,5 @@
 import * as req from '../@api'
-import { asyncResponseHandler } from './@common'
+import { asyncResponseHandler, success } from './@common'
 import { initUserState } from './initData'
 import {
   set_announcement,
@@ -14,8 +14,15 @@ import {
   set_blog_comments,
   set_blog_blogger_info,
   set_blogger_tags,
-  set_blog_page_subscribe_status, set_blogger_info
+  set_blog_page_subscribe_status,
+  set_blogger_info,
+  set_blogger_blogs,
+  set_blogger_fav_blogs,
+  set_like_status,
+  set_fav_status,
+  set_search_blog_list
 } from './actions'
+import { SET_SEARCH_BLOG_LIST } from './action-types'
 
 /**
  *
@@ -94,8 +101,8 @@ export const releaseBlogAsync = ({ title, content, tagA, tagB, tagC }) =>
   async dispatch => {
     // eslint-disable-next-line no-unused-vars
     const response = await req.releaseBlog({ title, content, tagA, tagB, tagC })
-    let data = await asyncResponseHandler(response)
-    dispatch(set_recommend_blog_list(data))
+    await asyncResponseHandler(response)
+    success('Success!')
   }
 
 export const getAnnouncementAsync = () =>
@@ -195,4 +202,59 @@ export const setUserInfoAsync = ({ username, nickname, introduction, realName, g
     let data = await asyncResponseHandler(response)
     dispatch(set_user_info(data))
   }
+
+/**
+ *
+ * @param userId
+ * @param page
+ * @returns {function(*): Promise<void>}
+ */
+export const getBloggerBlogsAsync = ({ userId, page }) =>
+  async dispatch => {
+    const response = await req.getUserBlogList({ userId, page })
+    let data = await asyncResponseHandler(response)
+    dispatch(set_blogger_blogs(data))
+  }
+
+export const getBloggerFavBlogsAsync = userId =>
+  async dispatch => {
+    const response = await req.getFavBlogList(userId)
+    let data = await asyncResponseHandler(response)
+    dispatch(set_blogger_fav_blogs(data))
+  }
+
+export const getBlogLikeStatusAsync = blogId =>
+  async dispatch => {
+    const response = await req.getStatusOfLikeBlog(blogId)
+    let data = await asyncResponseHandler(response)
+    dispatch(set_like_status(data.status))
+  }
+
+export const getBlogFavStatusAsync = blogId =>
+  async dispatch => {
+    const response = await req.getStatusOfFavoriteBlog(blogId)
+    let data = await asyncResponseHandler(response)
+    dispatch(set_fav_status(data.status))
+  }
+
+export const setBlogLikeStatusAsync = ({ blogId, like }) =>
+  async dispatch => {
+    const response = await req.likeBlog(({ blogId, like }))
+    await asyncResponseHandler(response)
+    dispatch(set_like_status(like))
+  }
+
+export const setBlogFavStatusAsync = ({ blogId, favorite }) =>
+  async dispatch => {
+    const response = await req.favBlog(({ blogId, favorite }))
+    await asyncResponseHandler(response)
+    dispatch(set_fav_status(favorite))
+  }
+
+  export const getSearchResultAsync = word =>
+    async dispatch => {
+      const response = await req.keySearchBlog(word)
+      let data = await asyncResponseHandler(response)
+      dispatch(set_search_blog_list(data))
+    }
 

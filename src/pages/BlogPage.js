@@ -5,9 +5,11 @@ import PropTypes from 'prop-types'
 import {
   addCommentAsync,
   getBlogAsync,
-  getBlogBloggerInfoAsync,
-  getBloggerTagsAsync,
-  getCommentsAsync, getSubscribeStatusAsync, subscribeAsync
+  getBlogBloggerInfoAsync, getBlogFavStatusAsync,
+  getBloggerTagsAsync, getBlogLikeStatusAsync,
+  getCommentsAsync,
+  getSubscribeStatusAsync, setBlogFavStatusAsync, setBlogLikeStatusAsync,
+  subscribeAsync
 } from '../@redux/actions_async'
 import './BlogPage.css'
 import { connect } from 'react-redux'
@@ -21,11 +23,23 @@ import { CommentList } from '../components/blogpage-components/CommentList'
 
 class BlogPage extends Component {
   static propTypes = {
-    getBlogAsync: PropTypes.func,
+    addCommentAsync: PropTypes.func,
     blogInfo: PropTypes.object,
+    bloggerInfo: PropTypes.object,
     commentList: PropTypes.array,
-    tagList: PropTypes.array,
-    bloggerInfo: PropTypes.object
+    favStatus: PropTypes.bool,
+    getBlogAsync: PropTypes.func,
+    getBlogBloggerInfoAsync: PropTypes.func,
+    getBlogLikeStatusAsync: PropTypes.func,
+    getBloggerTagsAsync: PropTypes.func,
+    getCommentsAsync: PropTypes.func,
+    getSubscribeStatusAsync: PropTypes.func,
+    likeStatus: PropTypes.bool,
+    match: PropTypes.string,
+    setBlogLikeStatusAsync: PropTypes.func,
+    subscribeAsync: PropTypes.func,
+    subscribeStatus: PropTypes.bool,
+    tagList: PropTypes.array
   }
 
   componentWillMount () {
@@ -37,6 +51,8 @@ class BlogPage extends Component {
     this.props.getBlogBloggerInfoAsync(bloggerId)
     this.props.getBloggerTagsAsync(bloggerId)
     this.props.getSubscribeStatusAsync(bloggerId)
+    this.props.getBlogLikeStatusAsync(blogId)
+    this.props.getBlogFavStatusAsync(blogId)
   }
 
   handleAddComment = content => {
@@ -52,15 +68,18 @@ class BlogPage extends Component {
   }
 
   handleLike = () => {
-    alert('like')
+    let blogId = this.props.match.params.blogId
+    this.props.setBlogLikeStatusAsync({ blogId, like: !this.props.likeStatus })
   }
 
   handleFavorite = () => {
-    alert('fav')
+    let blogId = this.props.match.params.blogId
+    this.props.setBlogFavStatusAsync({ blogId, favorite: !this.props.favStatus })
   }
 
   render () {
     let { title, content, likeNum, commentNum, favoriteNum, shareNum } = this.props.blogInfo
+    let { likeStatus, favStatus, subscribeStatus } = this.props
 
     return (
       <div className="BlogPage">
@@ -80,6 +99,9 @@ class BlogPage extends Component {
                     favoriteNum={favoriteNum}
                     likeNum={likeNum}
                     shareNum={shareNum}
+                    favStatus={favStatus}
+                    subscribeStatus={subscribeStatus}
+                    likeStatus={likeStatus}
           />
           <AddComment addComment={this.handleAddComment}/>
           <CommentList commentList={this.props.commentList}/>
@@ -91,16 +113,36 @@ class BlogPage extends Component {
 }
 
 BlogPage = connect(
-  state => {
-    let { title, content, likeNum, commentNum, favoriteNum, comments: commentList, tags: tagList, bloggerInfo, subscribeStatus } = state.$BlogPageState
-    return ({
-      blogInfo: { title, content, likeNum, commentNum, favoriteNum },
+  ({
+    $BlogPageState: {
+      bloggerInfo,
+      commentNum,
+      comments: commentList,
+      content,
+      favoriteNum,
+      likeNum,
+      subscribeStatus,
+      tags: tagList,
+      title,
+      likeStatus,
+      favStatus,
+    }
+  }) =>
+    ({
+      blogInfo: {
+        title,
+        content,
+        likeNum,
+        commentNum,
+        favoriteNum
+      },
       commentList,
       tagList,
       bloggerInfo,
-      subscribeStatus
-    })
-  },
+      subscribeStatus,
+      likeStatus,
+      favStatus,
+    }),
   {
     getBlogAsync,
     getCommentsAsync,
@@ -108,7 +150,11 @@ BlogPage = connect(
     getBlogBloggerInfoAsync,
     getBloggerTagsAsync,
     subscribeAsync,
-    getSubscribeStatusAsync
+    getSubscribeStatusAsync,
+    getBlogLikeStatusAsync,
+    setBlogLikeStatusAsync,
+    setBlogFavStatusAsync,
+    getBlogFavStatusAsync
   }
 )(BlogPage)
 

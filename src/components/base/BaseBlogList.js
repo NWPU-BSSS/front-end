@@ -1,16 +1,16 @@
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
-import { IconText } from './@common/IconText'
+import { IconText } from '../homepage-components/@common/IconText'
 import  {List} from 'antd'
 import { Link } from 'react-router-dom'
-import { TagList } from './@common/TagList'
-import { ItemContent } from './@common/ItemContent'
+import { TagList } from '../homepage-components/@common/TagList'
+import { ItemContent } from '../homepage-components/@common/ItemContent'
 import { LikeOutlined, MessageOutlined, StarOutlined } from '@ant-design/icons'
 
-export class HomeBlogList extends Component {
+export class BaseBlogList extends Component {
 
   static propTypes = {
-    recommendBlogList: PropTypes.array.isRequired
+    blogList: PropTypes.array.isRequired
   }
 
   render () {
@@ -24,7 +24,7 @@ export class HomeBlogList extends Component {
           },
           pageSize: 5,
         }}
-        dataSource={this.props.recommendBlogList}
+        dataSource={this.props.blogList}
         renderItem={item => (
           <List.Item
             key={item.toString()}

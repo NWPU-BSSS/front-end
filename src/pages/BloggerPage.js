@@ -5,13 +5,17 @@ import { Blogger } from '../components/blogger-space-components/Blogger'
 import { Redirect, Switch as SwitchRouter } from 'react-router-dom'
 import { Route } from 'react-router'
 import { connect } from 'react-redux'
-import { getBloggerInfoAsync } from '../@redux/actions_async'
+import { getBloggerBlogsAsync, getBloggerFavBlogsAsync, getBloggerInfoAsync } from '../@redux/actions_async'
+import { BaseBlogList } from '../components/base/BaseBlogList'
+import { BloggerPageBody } from '../components/blogger-space-components/BloggerPageBody'
 
 export class BloggerPage extends Component {
 
   componentWillMount () {
     let { bloggerId } = this.props.match.params
     this.props.getBloggerInfoAsync(bloggerId)
+    this.props.getBloggerBlogsAsync({ userId: bloggerId, page: 0 })
+    this.props.getBloggerFavBlogsAsync(bloggerId)
   }
 
   render () {
@@ -22,27 +26,32 @@ export class BloggerPage extends Component {
       <div>
         <Blogger {...this.props.bloggerInfo}/>
         <ContentNavBar bloggerId={bloggerId}/>
-        <SwitchRouter>
-          <Route path="/blogger/:bloggerId/blog" component={BlogList}/>
-          <Route path="/blogger/:bloggerId/resource" component={Resource}/>
-          <Route path="/blogger/:bloggerId/fans" component={Resource}/>
-          <Route path="/blogger/:bloggerId/fav" component={Resource}/>
-          <Route path="/blogger/:bloggerId/subscribe" component={Resource}/>
-          <Redirect to="/blogger/:bloggerId/blog"/>
-        </SwitchRouter>
+        <BloggerPageBody>
+          <SwitchRouter>
+            <Route path="/blogger/:bloggerId/blog">
+              <BaseBlogList blogList={this.props.bloggerBlogs}/>
+            </Route>
+            <Route path="/blogger/:bloggerId/resource" component={Resource}/>
+            <Route path="/blogger/:bloggerId/fans" component={Resource}/>
+            <Route path="/blogger/:bloggerId/fav">
+              <BaseBlogList blogList={this.props.bloggerFavBlogs}/>
+            </Route>
+            <Route path="/blogger/:bloggerId/subscribe" component={Resource}/>
+            <Redirect to="/blogger/:bloggerId/fav"/>
+          </SwitchRouter>
+        </BloggerPageBody>
       </div>
     )
   }
 }
 
 BloggerPage = connect(
-  state => {
-    const { bloggerInfo } = state.$BLoggerPageState
-    return {
-      bloggerInfo
-    }
-  },
-  { getBloggerInfoAsync }
+  ({ $BLoggerPageState: { bloggerInfo, bloggerBlogs, bloggerFavBlogs } }) => ({
+    bloggerInfo,
+    bloggerBlogs,
+    bloggerFavBlogs
+  }),
+  { getBloggerInfoAsync, getBloggerBlogsAsync, getBloggerFavBlogsAsync }
 )(BloggerPage)
 
 function Resource () {

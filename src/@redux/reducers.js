@@ -1,4 +1,11 @@
-import { initBlogPage, initHomePage, initReleaseBlogPage, initUserInfo, initUserState } from './initData'
+import {
+  initBloggerPage,
+  initBlogPage,
+  initHomePage,
+  initReleaseBlogPage,
+  initUserInfo,
+  initUserState
+} from './initData'
 import {
   DELETE_USER_STATE, EDIT_MARKDOWN, EDIT_TAG, EDIT_TITLE,
   LOAD_USER_STATE, REGISTER_SUCCESS_FALSE, REGISTER_SUCCESS,
@@ -11,7 +18,7 @@ import {
   SET_FANS, SET_FAV_STATUS, SET_LIKE_STATUS,
   SET_RECENT_BROWSE_BLOGS, SET_RECOMMEND_BLOG_LIST, SET_BLOG_PAGE_SUBSCRIBE_STATUS,
   SET_SUBSCRIBES,
-  SET_USER_INFO, USE_EN, USE_ZH, SET_BLOGGER_INFO
+  SET_USER_INFO, USE_EN, USE_ZH, SET_BLOGGER_INFO, SET_BLOGGER_BLOGS, SET_BLOGGER_FAV_BLOGS, SET_SEARCH_BLOG_LIST
 } from './action-types'
 import {
   delete_user_state,
@@ -49,68 +56,68 @@ export function $UserState (state = initUserState, action) {
   }
 }
 
-export function $UserInfoState (state = initUserInfo, action) {
-  switch (action.type) {
+export function $UserInfoState (state = initUserInfo, { data, type }) {
+  switch (type) {
     case SET_BASE_INFO:
-      return { ...state, baseInfo: action.data }
+      return { ...state, baseInfo: data }
     case SET_BADGE_NUM:
-      return { ...state, badgeNum: action.data }
+      return { ...state, badgeNum: data }
     case SET_USER_INFO:
-      return { ...state, userInfo: action.data }
+      return { ...state, userInfo: data }
     case SET_RECENT_BROWSE_BLOGS:
-      return { ...state, recentBrowseBlogs: action.data }
+      return { ...state, recentBrowseBlogs: data }
     case SET_FANS:
-      return { ...state, fans: action.data }
+      return { ...state, fans: data }
     case SET_SUBSCRIBES:
-      return { ...state, subscribes: action.data }
+      return { ...state, subscribes: data }
     default:
       return state
   }
 }
 
-export function $BlogPageState (state = initBlogPage, action) {
-  switch (action.type) {
+export function $BlogPageState (state = initBlogPage, { data, type }) {
+  switch (type) {
     case SET_BLOG_INFO:
-      return { ...state, ...action.data }
+      return { ...state, ...(data) }
     case SET_BLOG_COMMENTS:
-      return { ...state, comments: action.data }
+      return { ...state, comments: data }
     case SET_BLOGGER_TAGS:
-      return { ...state, tags: action.data }
+      return { ...state, tags: data }
     case SET_LIKE_STATUS:
-      return { ...state, likeStatus: action.data }
+      return { ...state, likeStatus: data }
     case SET_FAV_STATUS:
-      return { ...state, favStatus: action.data }
+      return { ...state, favStatus: data }
     case SET_BLOG_BLOGGER_INFO:
-      return { ...state, bloggerInfo: action.data }
+      return { ...state, bloggerInfo: data }
     case SET_BLOG_PAGE_SUBSCRIBE_STATUS:
-      return { ...state, subscribeStatus: action.data }
+      return { ...state, subscribeStatus: data }
     default:
       return state
 
   }
 }
 
-export function $HomePageState (state = initHomePage, action) {
-  switch (action.type) {
+export function $HomePageState (state = initHomePage, { data, type }) {
+  switch (type) {
     case SET_ANNOUNCEMENT:
-      return { ...state, announcement: action.data }
+      return { ...state, announcement: data }
     case SET_BROWSE_RECORD:
-      return { ...state, browse: action.data }
+      return { ...state, browse: data }
     case SET_RECOMMEND_BLOG_LIST:
-      return { ...state, recommendBlogList: action.data }
+      return { ...state, recommendBlogList: data }
     default:
       return state
   }
 }
 
-export function $ReleaseBlogPageState (state = initReleaseBlogPage, action) {
-  switch (action.type) {
+export function $ReleaseBlogPageState (state = initReleaseBlogPage, { data, type }) {
+  switch (type) {
     case EDIT_TAG:
-      return { ...state, tags: action.data }
+      return { ...state, tags: data }
     case EDIT_TITLE:
-      return { ...state, title: action.data }
+      return { ...state, title: data }
     case EDIT_MARKDOWN:
-      return { ...state, content: action.data }
+      return { ...state, content: data }
     default:
       return state
   }
@@ -127,15 +134,19 @@ export function $Language (state = en, action) {
   }
 }
 
-export function $BLoggerPageState (state = {}, action) {
+export function $BLoggerPageState (state = initBloggerPage, action) {
+  let data = action.data
   switch (action.type) {
     case SET_BLOGGER_INFO:
-      return {...state, bloggerInfo:  action.data}
+      return {...state, bloggerInfo:  data}
+    case SET_BLOGGER_BLOGS:
+      return {...state, bloggerBlogs: data}
+    case SET_BLOGGER_FAV_BLOGS:
+      return {...state, bloggerFavBlogs: data}
     default:
       return state
   }
 }
-
 
 export function $GlobalState (state = {}, action) {
   switch (action.type) {
@@ -145,6 +156,8 @@ export function $GlobalState (state = {}, action) {
     //   return { ...state, flag }
     case REGISTER_SUCCESS:
       return {  ...state, registerSuccess: true }
+    case SET_SEARCH_BLOG_LIST:
+      return {...state, searchBlogList: action.data}
     default:
       return state
   }
