@@ -19,8 +19,10 @@ import {
   set_blogger_blogs,
   set_blogger_fav_blogs,
   set_like_status,
-  set_fav_status
+  set_fav_status,
+  set_search_blog_list
 } from './actions'
+import { SET_SEARCH_BLOG_LIST } from './action-types'
 
 /**
  *
@@ -248,4 +250,11 @@ export const setBlogFavStatusAsync = ({ blogId, favorite }) =>
     await asyncResponseHandler(response)
     dispatch(set_fav_status(favorite))
   }
+
+  export const getSearchResultAsync = word =>
+    async dispatch => {
+      const response = await req.keySearchBlog(word)
+      let data = await asyncResponseHandler(response)
+      dispatch(set_search_blog_list(data))
+    }
 

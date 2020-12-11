@@ -18,7 +18,7 @@ import {
   SET_FANS, SET_FAV_STATUS, SET_LIKE_STATUS,
   SET_RECENT_BROWSE_BLOGS, SET_RECOMMEND_BLOG_LIST, SET_BLOG_PAGE_SUBSCRIBE_STATUS,
   SET_SUBSCRIBES,
-  SET_USER_INFO, USE_EN, USE_ZH, SET_BLOGGER_INFO, SET_BLOGGER_BLOGS, SET_BLOGGER_FAV_BLOGS, SEARCH_BLOG_LIST
+  SET_USER_INFO, USE_EN, USE_ZH, SET_BLOGGER_INFO, SET_BLOGGER_BLOGS, SET_BLOGGER_FAV_BLOGS, SET_SEARCH_BLOG_LIST
 } from './action-types'
 import {
   delete_user_state,
@@ -156,7 +156,7 @@ export function $GlobalState (state = {}, action) {
     //   return { ...state, flag }
     case REGISTER_SUCCESS:
       return {  ...state, registerSuccess: true }
-    case SEARCH_BLOG_LIST:
+    case SET_SEARCH_BLOG_LIST:
       return {...state, searchBlogList: action.data}
     default:
       return state

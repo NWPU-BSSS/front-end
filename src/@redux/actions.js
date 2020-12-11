@@ -13,7 +13,7 @@ import {
   SET_RECOMMEND_BLOG_LIST, SET_BLOG_PAGE_SUBSCRIBE_STATUS,
   SET_USER_INFO,
   USE_EN,
-  USE_ZH, SET_BLOGGER_INFO, SET_BLOGGER_BLOGS, SET_BLOGGER_FAV_BLOGS, SEARCH_BLOG_LIST
+  USE_ZH, SET_BLOGGER_INFO, SET_BLOGGER_BLOGS, SET_BLOGGER_FAV_BLOGS, SET_SEARCH_BLOG_LIST
 } from './action-types'
 
 export const actionFactory = (type, data = undefined) => ({
@@ -74,4 +74,4 @@ export const set_blogger_fav_blogs = data => actionFactory(SET_BLOGGER_FAV_BLOGS
   Global Action
  */
 export const setRegisterSuccess = () => actionFactory(REGISTER_SUCCESS)
-export const search_blog_list = data => actionFactory(SEARCH_BLOG_LIST, data)
+export const set_search_blog_list = data => actionFactory(SET_SEARCH_BLOG_LIST, data)

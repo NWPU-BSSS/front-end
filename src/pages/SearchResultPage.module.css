@@ -1,0 +1,12 @@
+.container {
+    background-color: #fff;
+    max-width: 1080px;
+    min-width: 576px;
+    margin: 0 auto;
+}
+
+.title {
+    font-size: 28px;
+    border-bottom: 1px solid red;
+    padding: 5px 0 5px 25px;
+}
