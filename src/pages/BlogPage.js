@@ -8,7 +8,7 @@ import {
   getBlogBloggerInfoAsync,
   getBloggerTagsAsync, getBlogLikeStatusAsync,
   getCommentsAsync,
-  getSubscribeStatusAsync,
+  getSubscribeStatusAsync, setBlogLikeStatusAsync,
   subscribeAsync
 } from '../@redux/actions_async'
 import './BlogPage.css'
@@ -23,11 +23,23 @@ import { CommentList } from '../components/blogpage-components/CommentList'
 
 class BlogPage extends Component {
   static propTypes = {
-    getBlogAsync: PropTypes.func,
+    addCommentAsync: PropTypes.func,
     blogInfo: PropTypes.object,
+    bloggerInfo: PropTypes.object,
     commentList: PropTypes.array,
-    tagList: PropTypes.array,
-    bloggerInfo: PropTypes.object
+    favStatus: PropTypes.bool,
+    getBlogAsync: PropTypes.func,
+    getBlogBloggerInfoAsync: PropTypes.func,
+    getBlogLikeStatusAsync: PropTypes.func,
+    getBloggerTagsAsync: PropTypes.func,
+    getCommentsAsync: PropTypes.func,
+    getSubscribeStatusAsync: PropTypes.func,
+    likeStatus: PropTypes.bool,
+    match: PropTypes.string,
+    setBlogLikeStatusAsync: PropTypes.func,
+    subscribeAsync: PropTypes.func,
+    subscribeStatus: PropTypes.bool,
+    tagList: PropTypes.array
   }
 
   componentWillMount () {
@@ -55,7 +67,8 @@ class BlogPage extends Component {
   }
 
   handleLike = () => {
-    alert('like')
+    let blogId = this.props.match.params.blogId
+    this.props.setBlogLikeStatusAsync({ blogId, like: !this.props.likeStatus })
   }
 
   handleFavorite = () => {
@@ -136,7 +149,8 @@ BlogPage = connect(
     getBloggerTagsAsync,
     subscribeAsync,
     getSubscribeStatusAsync,
-    getBlogLikeStatusAsync
+    getBlogLikeStatusAsync,
+    setBlogLikeStatusAsync
   }
 )(BlogPage)
 

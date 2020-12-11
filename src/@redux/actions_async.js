@@ -223,3 +223,9 @@ export const getBlogLikeStatusAsync = blogId =>
     dispatch(set_like_status(data))
   }
 
+export const setBlogLikeStatusAsync = ({ blogId, like }) =>
+  async dispatch => {
+    const response = await req.likeBlog(({ blogId, like }))
+    await asyncResponseHandler(response)
+    dispatch(set_like_status({ status: like }))
+  }
