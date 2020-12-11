@@ -14,10 +14,7 @@ import { RegisterSuccessPage } from './pages/RegisterSuccessPage'
 import { RegisterPage } from './pages/RegisterPage'
 import { LoginPage } from './pages/LoginPage'
 import { TestPage } from './pages/TestPage'
-import { BlogInfoSetting } from './components/release-blog-components/BlogInfoSetting'
-import { BlogList } from './components/blogger-space-components/BlogList'
 import { connect } from 'react-redux'
-import { setAccessToken } from './@redux/actions'
 import { Switch as SwitchRouter } from 'react-router-dom'
 import {Button,  Result } from 'antd'
 import { loadUserState } from './@redux/actions'
@@ -26,13 +23,7 @@ import { SearchResultPage } from './pages/SearchResultPage'
 class App extends React.Component {
 
   componentWillMount () {
-    // let accessToken = localStorage.getItem('accessToken')
-    // if (accessToken) {
-    //   this.props.setAccessToken(accessToken)
-    // }
-
     this.props.loadUserState()
-
   }
 
   render () {
