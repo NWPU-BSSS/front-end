@@ -36,7 +36,7 @@ class AdminBlogSearch extends Component {
   }
 
   render () {
-    const total = 4 // TODO
+    const total = 4 // TODO total selected item
     const message = total + ' items have been selected'
 
     return (

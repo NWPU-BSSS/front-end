@@ -1,30 +1,24 @@
 import React, { Component } from 'react'
-import { login } from '../@api'
-import { BlogTable } from '../components/admin-blog-components/AdminBlogTable'
-import { AdminBlogSearch } from '../components/admin-blog-components/AdminBlogSearch'
+import { Statistic } from 'antd'
+import './AdminHome.module.css'
+import AdminHome, { InfoItem } from './AdminHome'
 
 export class TestPage extends Component {
-
-  render () {
-    return (
-      <div>
-        <AdminBlogSearch/>
-        <BlogTable/>
-      </div>
-    )
-  }
 
   // handleClick = async () => {
   //   await login({ email: '925993394@qq.com', password: '0' })
   // }
   //
-  // render () {
-  //   return (
-  //     <div>
-  //       <button onClick={this.handleClick}>点击</button>
-  //     </div>
-  //   )
-  // }
 
+  render () {
+    return (
+      <AdminHome>
+        <InfoItem count={123} text="Blogs"/>
+        <InfoItem count={123} text="New Blogs"/>
+        <InfoItem count={123} text="Users"/>
+        <InfoItem count={123} text="New Users"/>
+      </AdminHome>
+    )
+  }
 
 }

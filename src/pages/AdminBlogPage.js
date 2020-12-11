@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { AdminBlogSearch } from '../components/admin-blog-components/AdminBlogSearch'
+import { BlogTable } from '../components/admin-blog-components/AdminBlogTable'
 
 class AdminBlogPage extends Component {
 
@@ -10,10 +11,12 @@ class AdminBlogPage extends Component {
   render () {
     return (
       <div>
-        <AdminBlogSearch />
+        <AdminBlogSearch/>
+        <BlogTable/>
       </div>
     )
   }
+
 }
 
 export { AdminBlogPage }
