@@ -2,13 +2,14 @@ import React, { Component } from 'react'
 // import { connect } from 'react-redux'
 // import { getAdminUsersAsync } from '../@redux/actions_async'
 import { AdminUsersTable } from '../components/admin-user-components/AdminUsersTable'
+import { AdminUsersSearch } from '../components/admin-user-components/AdminUsersSearch'
 
 class AdminUsersPage extends Component {
 
   render () {
     return (
-      <div className="AdminUserPage">
-        <h1>admin user</h1>
+      <div>
+        <AdminUsersSearch/>
         <AdminUsersTable/>
       </div>
     )

@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import './UserTable.css'
+import './AdminUsersTable.css'
 import deleteIcon from '../../assets/img/u288.svg'
-import { Space, Table, Radio, Pagination } from 'antd'
-import { connect } from 'react-redux'
+import { Space, Table } from 'antd'
+// import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 
