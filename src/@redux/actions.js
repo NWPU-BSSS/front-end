@@ -70,6 +70,8 @@ export const set_blogger_info = data => actionFactory(SET_BLOGGER_INFO, data)
 export const set_blogger_blogs = data => actionFactory(SET_BLOGGER_BLOGS, data)
 export const set_blogger_fav_blogs = data => actionFactory(SET_BLOGGER_FAV_BLOGS, data)
 
+
+
 /*
   Global Action
  */

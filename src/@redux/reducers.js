@@ -1,4 +1,5 @@
 import {
+  initAdminPage,
   initBloggerPage,
   initBlogPage,
   initHomePage,
@@ -134,15 +135,21 @@ export function $Language (state = en, action) {
   }
 }
 
-export function $BLoggerPageState (state = initBloggerPage, action) {
-  let data = action.data
-  switch (action.type) {
+export function $BLoggerPageState (state = initBloggerPage, { data, type }) {
+  switch (type) {
     case SET_BLOGGER_INFO:
-      return {...state, bloggerInfo:  data}
+      return { ...state, bloggerInfo: data }
     case SET_BLOGGER_BLOGS:
-      return {...state, bloggerBlogs: data}
+      return { ...state, bloggerBlogs: data }
     case SET_BLOGGER_FAV_BLOGS:
-      return {...state, bloggerFavBlogs: data}
+      return { ...state, bloggerFavBlogs: data }
+    default:
+      return state
+  }
+}
+
+export function $AdminPageState (state = initAdminPage, { type, data }) {
+  switch (type) {
     default:
       return state
   }
@@ -155,9 +162,9 @@ export function $GlobalState (state = {}, action) {
     // case REGISTER_SUCCESS_FALSE:
     //   return { ...state, flag }
     case REGISTER_SUCCESS:
-      return {  ...state, registerSuccess: true }
+      return { ...state, registerSuccess: true }
     case SET_SEARCH_BLOG_LIST:
-      return {...state, searchBlogList: action.data}
+      return { ...state, searchBlogList: action.data }
     default:
       return state
   }

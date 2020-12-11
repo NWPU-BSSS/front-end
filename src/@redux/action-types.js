@@ -59,6 +59,9 @@ export const SET_BLOGGER_INFO = 'set_blogger_info'
 export const SET_BLOGGER_BLOGS = 'set_blogger_blogs'
 export const SET_BLOGGER_FAV_BLOGS = 'set_blogger_fav_blogs'
 
+
+export const SET_ADMIN_STATE = 'set_admin_state'
+
 /*
   全局 状态
   Global Action

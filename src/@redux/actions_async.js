@@ -251,10 +251,16 @@ export const setBlogFavStatusAsync = ({ blogId, favorite }) =>
     dispatch(set_fav_status(favorite))
   }
 
-  export const getSearchResultAsync = word =>
-    async dispatch => {
-      const response = await req.keySearchBlog(word)
-      let data = await asyncResponseHandler(response)
-      dispatch(set_search_blog_list(data))
-    }
+export const getSearchResultAsync = word =>
+  async dispatch => {
+    const response = await req.keySearchBlog(word)
+    let data = await asyncResponseHandler(response)
+    dispatch(set_search_blog_list(data))
+  }
 
+export const releaseAnnouncementAsync = ({}) =>
+  async dispatch => {
+    // const response = await req.keySearchBlog()
+    // let data = await asyncResponseHandler(response)
+    // dispatch(set_search_blog_list(data))
+  }
