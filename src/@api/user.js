@@ -13,9 +13,8 @@ export const uploadUserHeadPortrait = async ({ file }) =>
  * 修改个人信息
  * @returns {Promise<JSON>}
  */
-export const editUserInfo = async ({ username, nickname, introduction, realName, gender, university, className, academy }) =>
+export const editUserInfo = async ({ nickname, introduction, realName, gender, university, className, academy }) =>
   request(`/api/user/info?${query()}`, postInit({
-    username,
     nickname,
     introduction,
     realName,

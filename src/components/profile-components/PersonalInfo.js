@@ -84,7 +84,7 @@ export class PersonalInfo extends Component {
   }
 
   handleModalOk = () => {
-    this.props.setUserInfoAsync({ ...this.form })
+    this.props.setUserInfoAsync({ ...this.state })
     this.setState({ showModal: false })
   }
 

@@ -187,10 +187,9 @@ export const getBloggerInfoAsync = bloggerId =>
     dispatch(set_blogger_info(data))
   }
 
-export const setUserInfoAsync = ({ username, nickname, introduction, realName, gender, university, className, academy }) =>
+export const setUserInfoAsync = ({  nickname, introduction, realName, gender, university, className, academy }) =>
   async dispatch => {
     const response = await req.editUserInfo({
-      username,
       nickname,
       introduction,
       realName,
