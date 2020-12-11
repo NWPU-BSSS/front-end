@@ -21,8 +21,9 @@ export const SET_BASE_INFO = 'set_base_info'
 export const SET_BADGE_NUM = 'set_badge_num'
 export const SET_USER_INFO = 'set_user_info'
 export const SET_RECENT_BROWSE_BLOGS = 'set_recent_browse_blogs'
-export const SET_FANS = 'set_fans'
-export const SET_SUBSCRIBES = 'set_subscribes'
+export const SET_MY_FANS = 'set_my_fans'
+export const SET_MY_SUBSCRIBES = 'set_my_subscribes'
+export const SET_FAV_BLOGS = 'set_fav_blogs'
 
 /*
   博客页面的 Action

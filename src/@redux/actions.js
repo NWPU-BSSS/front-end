@@ -2,18 +2,33 @@ import {
   EDIT_MARKDOWN,
   EDIT_TAG,
   EDIT_TITLE,
-  LOAD_USER_STATE, REGISTER_SUCCESS_FALSE, REGISTER_SUCCESS,
+  LOAD_USER_STATE,
+  REGISTER_SUCCESS_FALSE,
+  REGISTER_SUCCESS,
   REMEMBER_USER_STATE,
   REMOVE_USER_STATE,
   SAVE_USER_STATE,
   SET_ANNOUNCEMENT,
   SET_BADGE_NUM,
-  SET_BASE_INFO, SET_BLOG_COMMENTS,
-  SET_BLOG_INFO, SET_BLOG_BLOGGER_INFO, SET_BLOGGER_TAGS, SET_FAV_STATUS, SET_LIKE_STATUS,
-  SET_RECOMMEND_BLOG_LIST, SET_BLOG_PAGE_SUBSCRIBE_STATUS,
+  SET_BASE_INFO,
+  SET_BLOG_COMMENTS,
+  SET_BLOG_INFO,
+  SET_BLOG_BLOGGER_INFO,
+  SET_BLOGGER_TAGS,
+  SET_FAV_STATUS,
+  SET_LIKE_STATUS,
+  SET_RECOMMEND_BLOG_LIST,
+  SET_BLOG_PAGE_SUBSCRIBE_STATUS,
   SET_USER_INFO,
   USE_EN,
-  USE_ZH, SET_BLOGGER_INFO, SET_BLOGGER_BLOGS, SET_BLOGGER_FAV_BLOGS, SET_SEARCH_BLOG_LIST
+  USE_ZH,
+  SET_BLOGGER_INFO,
+  SET_BLOGGER_BLOGS,
+  SET_BLOGGER_FAV_BLOGS,
+  SET_SEARCH_BLOG_LIST,
+  SET_FAV_BLOGS,
+  SET_MY_FANS,
+  SET_MY_SUBSCRIBES
 } from './action-types'
 
 export const actionFactory = (type, data = undefined) => ({
@@ -37,6 +52,9 @@ export const rememberUserState = data => actionFactory(REMEMBER_USER_STATE, data
 export const setBaseInfo = data => actionFactory(SET_BASE_INFO, data)
 export const setBadgeNum = data => actionFactory(SET_BADGE_NUM, data)
 export const set_user_info = data => actionFactory(SET_USER_INFO, data)
+export const set_fav_blogs = data => actionFactory(SET_FAV_BLOGS, data)
+export const set_my_fans = data => actionFactory(SET_MY_FANS, data)
+export const set_my_subscribes = data => actionFactory(SET_MY_SUBSCRIBES, data)
 
 /*
   HomePageState Action
@@ -69,8 +87,6 @@ export const set_blog_page_subscribe_status = data => actionFactory(SET_BLOG_PAG
 export const set_blogger_info = data => actionFactory(SET_BLOGGER_INFO, data)
 export const set_blogger_blogs = data => actionFactory(SET_BLOGGER_BLOGS, data)
 export const set_blogger_fav_blogs = data => actionFactory(SET_BLOGGER_FAV_BLOGS, data)
-
-
 
 /*
   Global Action

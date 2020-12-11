@@ -20,9 +20,9 @@ import {
   set_blogger_fav_blogs,
   set_like_status,
   set_fav_status,
-  set_search_blog_list
+  set_search_blog_list, set_fav_blogs, set_my_fans, set_my_subscribes
 } from './actions'
-import { SET_SEARCH_BLOG_LIST } from './action-types'
+import { SET_MY_FANS, SET_SEARCH_BLOG_LIST } from './action-types'
 
 /**
  *
@@ -216,6 +216,11 @@ export const getBloggerBlogsAsync = ({ userId, page }) =>
     dispatch(set_blogger_blogs(data))
   }
 
+/**
+ * 获取某博主收藏的博客列表
+ * @param userId
+ * @returns {function(*): Promise<void>}
+ */
 export const getBloggerFavBlogsAsync = userId =>
   async dispatch => {
     const response = await req.getFavBlogList(userId)
@@ -263,4 +268,23 @@ export const releaseAnnouncementAsync = ({}) =>
     // const response = await req.keySearchBlog()
     // let data = await asyncResponseHandler(response)
     // dispatch(set_search_blog_list(data))
+  }
+
+/**
+ * 获取指定用户的粉丝列表
+ * @param bloggerId
+ * @returns {function(*): Promise<void>}
+ */
+export const getUserFansAsync = bloggerId =>
+  async dispatch => {
+    const response = await req.getUserFansList(bloggerId)
+    let data = await asyncResponseHandler(response)
+    dispatch(set_my_fans(data))
+  }
+
+export const getUserSubscribesAsync = bloggerId =>
+  async dispatch => {
+    const response = await req.getUserSubscribeList(bloggerId)
+    let data = await asyncResponseHandler(response)
+    dispatch(set_my_subscribes(data))
   }
