@@ -13,7 +13,7 @@ export const getSubscribeBloggerList = (page) =>
  * @param {string}userId
  * @returns {Promise<JSON>}
  */
-export const getFavsBlogList = (userId) =>
+export const getFavBlogList = (userId) =>
   request(`/api/blog/list/favs?${query({ userId })}`, getInit())
 
 /**

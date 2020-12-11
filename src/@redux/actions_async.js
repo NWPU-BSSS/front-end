@@ -211,7 +211,7 @@ export const getBloggerBlogsAsync = ({ userId, page }) =>
 
 export const getBloggerFavBlogsAsync = userId =>
   async dispatch => {
-    const response = await req.getFavsBlogList(userId)
+    const response = await req.getFavBlogList(userId)
     let data = await asyncResponseHandler(response)
     dispatch(set_blogger_fav_blogs(data))
   }
