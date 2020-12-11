@@ -354,3 +354,12 @@ export const getBloggerSubscribesAsync = bloggerId =>
     let data = await asyncResponseHandler(response)
     dispatch(set_blogger_subscribe(data))
   }
+
+  export const uploadUserAvatarAsync = file =>
+    async dispatch => {
+      const response = await req.uploadUserAvatar(file)
+      await asyncResponseHandler(response)
+      success('Success')
+      let data = await asyncResponseHandler(await req.getUserWholeInfo())
+      dispatch(set_user_info(data))
+    }

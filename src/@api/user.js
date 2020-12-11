@@ -74,6 +74,6 @@ export const getUserWholeInfo = async () =>
   request(`/api/user/info?${query()}`, getInit())
 
 export const uploadUserAvatar = file =>
-  uploadFile(`/api/user/avatar${query()}`, uploadFileInit(file) )
+  uploadFile(`/api/user/avatar?${query()}`, uploadFileInit(file) )
 
 

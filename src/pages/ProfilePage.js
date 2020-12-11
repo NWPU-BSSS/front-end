@@ -11,15 +11,17 @@ import { ProfileMenuItem } from '../components/profile-components/ProfileMenuIte
 import { ProfileInfoContainer } from '../components/profile-components/ProfileInfoContainer'
 import { ProfileBody } from '../components/profile-components/ProfileBody'
 import { connect } from 'react-redux'
-import { getUserInfoAsync, setUserInfoAsync } from '../@redux/actions_async'
+import { getUserInfoAsync, setUserInfoAsync, uploadUserAvatarAsync } from '../@redux/actions_async'
 import { Layout } from '../components/Layout'
-import { Modal } from 'antd'
+import { Modal, Upload } from 'antd'
+import ImgCrop from 'antd-img-crop'
 
 export class ProfilePage extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      showModal: false
+      showModal: false,
+      fileList: []
     }
   }
 
@@ -28,10 +30,39 @@ export class ProfilePage extends Component {
   }
 
   handleChangeAvatar = () => {
+    this.setState({ showModal: true })
+  }
 
+  handleModalChange = ({ fileList: newFileList }) => {
+    this.setState({ fileList: newFileList })
+  }
+
+  handleModalPreview = async file => {
+    let src = file.url;
+    if (!src) {
+      src = await new Promise(resolve => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file.originFileObj);
+        reader.onload = () => resolve(reader.result);
+      });
+    }
+    const image = new Image();
+    image.src = src;
+    const imgWindow = window.open(src);
+    imgWindow.document.write(image.outerHTML);
+  }
+
+  handleOk = () => {
+    let file = this.state.fileList[0].originFileObj
+    this.props.uploadUserAvatarAsync(file)
+  }
+
+  handleCancel = () => {
+    this.setState({ showModal: false })
   }
 
   render () {
+    const { fileList } = this.state
     return (
       <Layout>
         <UserSpaceTitle {...this.props.userInfo} changeAvatar={this.handleChangeAvatar}/>
@@ -58,8 +89,22 @@ export class ProfilePage extends Component {
             </SwitchRouter>
           </ProfileInfoContainer>
         </ProfileBody>
-        <Modal>
-
+        <Modal
+          title="Choose Your Avatar"
+          visible={this.state.showModal}
+          onCancel={this.handleCancel}
+          onOk={this.handleOk}
+        >
+          <ImgCrop rotate>
+            <Upload
+              listType="picture-card"
+              fileList={fileList}
+              onChange={this.handleModalChange}
+              onPreview={this.handleModalPreview}
+            >
+              {fileList.length < 1 && '+ Upload'}
+            </Upload>
+          </ImgCrop>
         </Modal>
       </Layout>
     )
@@ -72,5 +117,5 @@ ProfilePage = connect(
       userInfo: state.$UserInfoState.userInfo
     }
   },
-  { setUserInfoAsync, getUserInfoAsync }
+  { setUserInfoAsync, getUserInfoAsync, uploadUserAvatarAsync }
 )(ProfilePage)
