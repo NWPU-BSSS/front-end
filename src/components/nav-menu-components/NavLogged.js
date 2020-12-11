@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 import { NavMenuDropdown } from './NavMenuDropdown'
 import { btnDanger } from './@button-style'
 import { NavUserPanel } from './NavUserPanel'
-import logo from '../../assets/img/logo192.png'
 import PropTypes from 'prop-types'
 import './NavLogged.css'
 import { Link } from 'react-router-dom'
+import { Avatar } from 'antd'
 
 class NavLogged extends Component {
 
@@ -37,7 +37,7 @@ class NavLogged extends Component {
         <a>{History}</a>
         <NavMenuDropdown title={
           <div className="head-avatar">
-            <img src={logo} alt="Avatar"/>
+            <Avatar src={this.props.avatar} alt="Avatar"/>
           </div>
         }>
           <NavUserPanel {...this.props} language={userPanelLanguage} onLogout={() => this.props.logout()} username={''}/>
