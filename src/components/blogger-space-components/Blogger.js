@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import { Avatar, Tag, Button } from 'antd'
 import avatar from '../../assets/img/logo192.png'
@@ -5,11 +6,19 @@ import './Blogger.css'
 
 export class Blogger extends Component {
 
+  static propTypes = {
+    avatar: PropTypes.string.isRequired,
+    className: PropTypes.string.isRequired,
+    codeAge: PropTypes.number.isRequired,
+    introduction: PropTypes.string.isRequired,
+    nickname: PropTypes.string.isRequired
+  }
+
   render () {
     return (
       <div className="Blogger">
         <div className="left">
-          <Avatar size={64} src={avatar}/>
+          <Avatar size={64} src={this.props.avatar}/>
           <Tag color="red" style={{marginRight: 0}}>CA{this.props.codeAge}</Tag>
         </div>
         <div className="main">
