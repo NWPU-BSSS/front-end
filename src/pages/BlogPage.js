@@ -6,8 +6,10 @@ import {
   addCommentAsync,
   getBlogAsync,
   getBlogBloggerInfoAsync,
-  getBloggerTagsAsync,
-  getCommentsAsync, getSubscribeStatusAsync, subscribeAsync
+  getBloggerTagsAsync, getBlogLikeStatusAsync,
+  getCommentsAsync,
+  getSubscribeStatusAsync,
+  subscribeAsync
 } from '../@redux/actions_async'
 import './BlogPage.css'
 import { connect } from 'react-redux'
@@ -37,6 +39,7 @@ class BlogPage extends Component {
     this.props.getBlogBloggerInfoAsync(bloggerId)
     this.props.getBloggerTagsAsync(bloggerId)
     this.props.getSubscribeStatusAsync(bloggerId)
+    this.props.getBlogLikeStatusAsync(blogId)
   }
 
   handleAddComment = content => {
@@ -61,6 +64,7 @@ class BlogPage extends Component {
 
   render () {
     let { title, content, likeNum, commentNum, favoriteNum, shareNum } = this.props.blogInfo
+    let { likeStatus, favStatus, subscribeStatus } = this.props
 
     return (
       <div className="BlogPage">
@@ -80,6 +84,9 @@ class BlogPage extends Component {
                     favoriteNum={favoriteNum}
                     likeNum={likeNum}
                     shareNum={shareNum}
+                    favStatus={favStatus}
+                    subscribeStatus={subscribeStatus}
+                    likeStatus={likeStatus}
           />
           <AddComment addComment={this.handleAddComment}/>
           <CommentList commentList={this.props.commentList}/>
@@ -91,16 +98,36 @@ class BlogPage extends Component {
 }
 
 BlogPage = connect(
-  state => {
-    let { title, content, likeNum, commentNum, favoriteNum, comments: commentList, tags: tagList, bloggerInfo, subscribeStatus } = state.$BlogPageState
-    return ({
-      blogInfo: { title, content, likeNum, commentNum, favoriteNum },
+  ({
+    $BlogPageState: {
+      bloggerInfo,
+      commentNum,
+      comments: commentList,
+      content,
+      favoriteNum,
+      likeNum,
+      subscribeStatus,
+      tags: tagList,
+      title,
+      likeStatus,
+      favStatus,
+    }
+  }) =>
+    ({
+      blogInfo: {
+        title,
+        content,
+        likeNum,
+        commentNum,
+        favoriteNum
+      },
       commentList,
       tagList,
       bloggerInfo,
-      subscribeStatus
-    })
-  },
+      subscribeStatus,
+      likeStatus,
+      favStatus,
+    }),
   {
     getBlogAsync,
     getCommentsAsync,
@@ -108,7 +135,8 @@ BlogPage = connect(
     getBlogBloggerInfoAsync,
     getBloggerTagsAsync,
     subscribeAsync,
-    getSubscribeStatusAsync
+    getSubscribeStatusAsync,
+    getBlogLikeStatusAsync
   }
 )(BlogPage)
 

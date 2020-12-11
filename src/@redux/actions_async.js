@@ -14,7 +14,7 @@ import {
   set_blog_comments,
   set_blog_blogger_info,
   set_blogger_tags,
-  set_blog_page_subscribe_status, set_blogger_info, set_blogger_blogs, set_blogger_fav_blogs
+  set_blog_page_subscribe_status, set_blogger_info, set_blogger_blogs, set_blogger_fav_blogs, set_like_status
 } from './actions'
 
 /**
@@ -214,5 +214,12 @@ export const getBloggerFavBlogsAsync = userId =>
     const response = await req.getFavBlogList(userId)
     let data = await asyncResponseHandler(response)
     dispatch(set_blogger_fav_blogs(data))
+  }
+
+export const getBlogLikeStatusAsync = blogId =>
+  async dispatch => {
+    const response = await req.getStatusOfLikeBlog(blogId)
+    let data = await asyncResponseHandler(response)
+    dispatch(set_like_status(data))
   }
 
