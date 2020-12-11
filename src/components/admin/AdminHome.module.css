@@ -1,3 +1,9 @@
+.page{
+    min-width: 960px;
+    margin-top: 20px;
+    padding: 20px;
+}
+
 .container {
     display: flex;
     justify-content: space-between;

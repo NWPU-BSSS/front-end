@@ -5,8 +5,10 @@ import { Link, Route } from 'react-router-dom'
 import styles from './AdminPage.module.css'
 import logo from '../assets/img/bsss.png'
 import { Switch as SwitchRouter } from 'react-router-dom'
-import ReleaseAnnouncement from '../components/admin-page-components/ReleaseAnnouncement'
+import ReleaseAnnouncement from '../components/admin/ReleaseAnnouncement'
 import AdminHome from '../components/admin/AdminHome'
+import { AdminBlogPage } from '../components/admin/AdminBlogPage'
+import { AdminUsersPage } from '../components/admin/AdminUsersPage'
 
 class AdminMenu extends Component {
   render () {
@@ -51,8 +53,12 @@ export default class AdminPage extends Component {
           <Route path="/admin/insights">
             <AdminHome/>
           </Route>
-          <Route path="/admin/blogs"></Route>
-          <Route path="/admin/users"></Route>
+          <Route path="/admin/blogs">
+            <AdminBlogPage/>
+          </Route>
+          <Route path="/admin/users">
+            <AdminUsersPage/>
+          </Route>
           <Route path="/admin/announcement">
             <ReleaseAnnouncement/>
           </Route>

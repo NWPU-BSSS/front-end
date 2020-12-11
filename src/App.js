@@ -19,7 +19,7 @@ import { Switch as SwitchRouter } from 'react-router-dom'
 import { Button, Result } from 'antd'
 import { loadUserState } from './@redux/actions'
 import { SearchResultPage } from './pages/SearchResultPage'
-import { AdminUsersPage } from './pages/AdminUsersPage'
+import { AdminUsersPage } from './components/admin/AdminUsersPage'
 import AdminPage from './pages/AdminPage'
 
 class App extends React.Component {

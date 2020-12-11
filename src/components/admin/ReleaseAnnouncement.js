@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import styles from './ReleaseAnnouncement.module.css'
 import { Button, DatePicker, Input, Space } from 'antd'
+import { PageTitle } from './base/PageTitle'
 
 export default class ReleaseAnnouncement extends Component {
 
@@ -32,9 +33,7 @@ export default class ReleaseAnnouncement extends Component {
   render () {
     return (
       <div className={styles.container}>
-        <div className={styles.pageTitle}>
-          Release Announcement
-        </div>
+        <PageTitle>Release Announcement</PageTitle>
         <div className={styles.pageMain}>
           <Space className={styles.box} direction="vertical">
             <Input onChange={this.handleInputTitle} placeholder="Input Announcement Title"/>

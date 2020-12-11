@@ -1,5 +1,6 @@
 .container {
     padding-left: 300px;
+    max-width: 960px;
 }
 
 .menu {

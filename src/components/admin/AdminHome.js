@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import styles from './AdminHome.module.css'
 import PropTypes from 'prop-types'
+import { PageTitle } from './base/PageTitle'
 
 export class InfoItem extends Component{
   render () {
@@ -17,8 +18,14 @@ class AdminHome extends Component {
 
   render () {
     return (
-      <div className={styles.container}>
-        {this.props.children}
+      <div className={styles.page}>
+        <PageTitle>Insights</PageTitle>
+        <div className={styles.container}>
+          <InfoItem count={1} text="New Blogs"/>
+          <InfoItem count={2} text="All Blogs"/>
+          <InfoItem count={3} text="New Users"/>
+          <InfoItem count={4} text="All Users"/>
+        </div>
       </div>
     )
   }
