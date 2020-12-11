@@ -1,4 +1,11 @@
-import { initBlogPage, initHomePage, initReleaseBlogPage, initUserInfo, initUserState } from './initData'
+import {
+  initBloggerPage,
+  initBlogPage,
+  initHomePage,
+  initReleaseBlogPage,
+  initUserInfo,
+  initUserState
+} from './initData'
 import {
   DELETE_USER_STATE, EDIT_MARKDOWN, EDIT_TAG, EDIT_TITLE,
   LOAD_USER_STATE, REGISTER_SUCCESS_FALSE, REGISTER_SUCCESS,
@@ -127,7 +134,7 @@ export function $Language (state = en, action) {
   }
 }
 
-export function $BLoggerPageState (state = {}, action) {
+export function $BLoggerPageState (state = initBloggerPage, action) {
   let data = action.data
   switch (action.type) {
     case SET_BLOGGER_INFO:

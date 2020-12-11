@@ -46,3 +46,8 @@ console.log('hello bsss')
   tags: { tagA: 'TagA', tagB: 'TagB', tagC: 'TagC' },
   title: ''
 }
+
+export const initBloggerPage = {
+  bloggerInfo: {},
+  bloggerBlogs: []
+}

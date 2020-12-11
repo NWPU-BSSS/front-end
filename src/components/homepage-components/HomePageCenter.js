@@ -7,7 +7,7 @@ import './HomePageCenter.css'
 import { ItemContent } from './@common/ItemContent'
 import { TagList } from './@common/TagList'
 import { IconText } from './@common/IconText'
-import { HomeBlogList } from './HomeBlogList'
+import { BaseBlogList } from '../base/BaseBlogList'
 import { connect } from 'react-redux'
 
 export class HomePageCenter extends Component {
@@ -42,7 +42,8 @@ export class HomePageCenter extends Component {
           </div>
         </div>
         <div className="blog-list">
-          <HomeBlogList recommendBlogList={this.props.recommendBlogList}/>
+          <BaseBlogList blogList={this.props.recommendBlogList}/>
+          <BaseBlogList blogList={this.props.subscribeBlogList}/>
         </div>
       </div>
     )
@@ -50,7 +51,8 @@ export class HomePageCenter extends Component {
 }
 
 HomePageCenter = connect(
-  state => ({
-    recommendBlogList: state.$HomePageState.recommendBlogList,
+  ({ $HomePageState: { recommendBlogList, subscribeBlogList } }) => ({
+    recommendBlogList,
+    subscribeBlogList,
   })
 )(HomePageCenter)
