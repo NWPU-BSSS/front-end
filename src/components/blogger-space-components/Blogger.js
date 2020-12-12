@@ -4,7 +4,7 @@ import { Avatar, Button, Space, Tag } from 'antd'
 import styles from './Blogger.module.css'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { subscribeAsync } from '../../@redux/actions_async'
+import { subscribeBloggerPageBloggerAsync, subscribeBlogPageBloggerAsync } from '../../@redux/actions_async'
 
 export class Blogger extends Component {
 
@@ -20,7 +20,7 @@ export class Blogger extends Component {
   handleSubscribe = () => {
     let subscribe = !this.props.subscribeStatus
     let bloggerId = this.props.bloggerId
-    this.props.subscribeAsync({ bloggerId, subscribe })
+    this.props.subscribeBloggerPageBloggerAsync({ bloggerId, subscribe })
   }
 
   render () {
@@ -38,17 +38,17 @@ export class Blogger extends Component {
           </div>
           <div className={styles.verify}>
             <div className={styles.introduction}>
-              {this.props.className}
+              {this.props.className|| 'Unknown Class'}
             </div>
             <div className={styles.introduction}>
-              {this.props.introduction}
+              {this.props.introduction || 'This guy is too lazy to write anything'}
             </div>
           </div>
         </div>
         <div className={styles.right}>
           <Button danger>Chat</Button>
           <Button type={this.props.subscribeStatus ? '' : 'primary'} danger
-                  onClick={this.props.handleSubscribe}>{this.props.subscribeStatus ? 'Subscribed' : 'Subscribe'}</Button>
+                  onClick={this.handleSubscribe}>{this.props.subscribeStatus ? 'Subscribed' : 'Subscribe'}</Button>
         </div>
       </div>
     )
@@ -62,5 +62,5 @@ Blogger = connect(
       subscribeStatus: subscribeStatus
     }
   },
-  { subscribeAsync }
+  { subscribeBloggerPageBloggerAsync }
 )(Blogger)

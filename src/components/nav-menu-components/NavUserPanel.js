@@ -68,7 +68,7 @@ export class NavUserPanel extends Component {
         </Link>
       </div>
       <NavUserPanelItem action="/profile/info" title={PersonalCentre} before={<IdcardFilled/>}/>
-      <NavUserPanelItem action="/profile/blog" title={MyBlog} before={<EditFilled/>}/>
+      <NavUserPanelItem action="/profile/blogs" title={MyBlog} before={<EditFilled/>}/>
       <NavUserPanelItem action="/profile/school" title={MySchool} before={<BankFilled/>}/>
       <NavUserPanelItem action="/profile/download" title={MyDownload} before={<DownloadOutlined/>}/>
       <NavUserPanelItem action="/profile/help" title={Help} before={<QuestionCircleFilled/>}/>

@@ -2,22 +2,22 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: stretch;
     background-color: #fff;
     padding: 20px 10px;
-    max-height: 120px;
 }
 
-.container div{
-    display: flex;
-}
-
-.container .main {
+.main {
     flex-grow: 100;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
 }
 
 .container .left, .container .right {
-    flex-grow: 1;
+    flex-grow: 2;
+    padding: 20px;
 }
 
 .container .left {
@@ -52,10 +52,11 @@
     align-items: flex-start;
 }
 
-.container .main .userinfo .verify {
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
+.verify {
+    flex-direction: column;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
 }
 
 .container .main .userinfo .verify > span {

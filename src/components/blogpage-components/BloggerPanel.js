@@ -91,7 +91,7 @@ export class BloggerPanel extends Component {
               </ul>
             </div>
             <div className={styles.bottom}>
-              <Link className="link" to="/">
+              <Link className="link" to={`/blogger/${this.props.bloggerId}`}>
                 <Button size='large'>Profile</Button>
               </Link>
               <Link className="link" to="/">

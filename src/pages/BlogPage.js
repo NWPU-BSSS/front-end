@@ -9,7 +9,7 @@ import {
   getBloggerTagsAsync, getBlogLikeStatusAsync,
   getCommentsAsync,
   getBlogPageSubscribeStatusAsync, setBlogFavStatusAsync, setBlogLikeStatusAsync,
-  subscribeAsync
+  subscribeBlogPageBloggerAsync
 } from '../@redux/actions_async'
 import './BlogPage.css'
 import { connect } from 'react-redux'
@@ -90,10 +90,10 @@ class BlogPage extends Component {
       <Layout>
         <div className="BlogPage">
           <BlogPageLeft>
-            <BloggerPanel {...this.props.bloggerInfo} isSubscribed={this.props.subscribeStatus}
-                          handleSubscribe={this.handleSubscribe}/>
+            <BloggerPanel {...this.props.blogInfo} isSubscribed={this.props.subscribeStatus}
+                          handleSubscribe={this.handleSubscribe}
+                          bloggerId={this.props.blogInfo ? this.props.blogInfo.bloggerId : -1}/>
             <ClassificationColumn tagsList={this.props.tagList}/>
-            {/*<BlogCategory/>*/}
           </BlogPageLeft>
           <BlogPageMain>
             <BlogTitle title={title}/>
@@ -160,7 +160,7 @@ BlogPage = connect(
     addCommentAsync,
     getBlogBloggerInfoAsync,
     getBloggerTagsAsync,
-    subscribeAsync,
+    subscribeAsync: subscribeBlogPageBloggerAsync,
     getSubscribeStatusAsync: getBlogPageSubscribeStatusAsync,
     getBlogLikeStatusAsync,
     setBlogLikeStatusAsync,

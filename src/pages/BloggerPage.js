@@ -31,8 +31,9 @@ export class BloggerPage extends Component {
   render () {
 
     let { bloggerId } = this.props.match.params
-    if (bloggerId === this.props.userId) return <Redirect to="/profile/info"/>
-    debugger
+    if (+bloggerId === this.props.userId) {
+      return <Redirect to="/profile/info"/>
+    }
 
     return (
       <Layout>
@@ -61,7 +62,7 @@ export class BloggerPage extends Component {
 }
 
 BloggerPage = connect(
-  ({ $BLoggerPageState: { bloggerInfo, bloggerBlogs, bloggerFavBlogs, subscribes, fans }, $UserState: {userId} }) => ({
+  ({ $BLoggerPageState: { bloggerInfo, bloggerBlogs, bloggerFavBlogs, subscribes, fans }, $UserState: { userId } }) => ({
     bloggerInfo,
     bloggerBlogs,
     bloggerFavBlogs,

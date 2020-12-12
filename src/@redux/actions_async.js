@@ -177,11 +177,18 @@ export const getBloggerTagsAsync = bloggerId =>
     dispatch(set_blogger_tags(data))
   }
 
-export const subscribeAsync = ({ bloggerId, subscribe }) =>
+export const subscribeBlogPageBloggerAsync = ({ bloggerId, subscribe }) =>
   async dispatch => {
     const response = await req.subscribeOrCancelBlogger({ bloggerId, subscribe })
     await asyncResponseHandler(response)
     dispatch(set_blog_page_subscribe_status(subscribe))
+  }
+
+export const subscribeBloggerPageBloggerAsync = ({ bloggerId, subscribe }) =>
+  async dispatch => {
+    const response = await req.subscribeOrCancelBlogger({ bloggerId, subscribe })
+    await asyncResponseHandler(response)
+    dispatch(set_blogger_subscribe_status(subscribe))
   }
 
 export const getBlogPageSubscribeStatusAsync = bloggerId =>
