@@ -1,78 +1,80 @@
-div.Blogger {
+.container {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: stretch;
     background-color: #fff;
     padding: 20px 10px;
 }
 
-div.Blogger div{
+.main {
+    flex-grow: 100;
     display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
 }
 
-div.Blogger .main {
-    flex-grow: 10;
+.container .left, .container .right {
+    flex-grow: 2;
+    padding: 20px;
 }
 
-div.Blogger .left, div.Blogger.right {
-    flex-grow: 0;
-    width: 150px;
-}
-
-div.Blogger .left {
+.container .left {
+    display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
 
-div.Blogger .right {
+.container .right {
     justify-content: space-between;
     align-items: flex-start;
     flex-direction: row;
 }
 
-div.Blogger .main {
+.container .main {
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
 }
 
-div.Blogger .main .username {
+.container .main .username {
     justify-content: flex-start;
     flex-direction: row;
     align-items: center;
     font-size: 28px;
 }
 
-div.Blogger .main .userinfo {
+.container .main .userinfo {
     justify-content: space-between;
     flex-direction: column;
     align-items: flex-start;
 }
 
-div.Blogger .main .userinfo .verify {
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
+.verify {
+    flex-direction: column;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
 }
 
-div.Blogger .main .userinfo .verify > span {
+.container .main .userinfo .verify > span {
     margin-left: 20px;
 }
 
-div.Blogger .main .userinfo .introduction {
+.container .main .userinfo .introduction {
     justify-content: flex-start;
     align-items: center;
     flex-direction: row;
 }
 
-div.Blogger .right {
+.container .right {
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
 }
 
-div.Blogger .right > button {
+.container .right > button {
     margin-right: 20px;
 }

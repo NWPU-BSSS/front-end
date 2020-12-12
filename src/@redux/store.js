@@ -1,5 +1,5 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux'
-import {  registerPage, UserState } from './reducers'
+import { $AdminPageState, registerPage, UserState } from './reducers'
 import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import {
@@ -22,7 +22,8 @@ const store = createStore(
     $HomePageState,
     $ReleaseBlogPageState,
     $BlogPageState,
-    $BLoggerPageState
+    $BLoggerPageState,
+    $AdminPageState
   }),
   composeWithDevTools(applyMiddleware(thunk))
 )

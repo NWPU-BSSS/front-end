@@ -43,6 +43,13 @@ export const getInit = () => ({
   mode: 'cors'
 })
 
+export const deleteInit = body => ({
+  headers: headers(),
+  mode: 'cors',
+  method: 'DELETE',
+  body: JSON.stringify(body),
+})
+
 export const uploadFileInit = file => {
   let form = new FormData()
   form.append('file', file)

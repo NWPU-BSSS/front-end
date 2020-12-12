@@ -150,7 +150,7 @@ export class PersonalInfo extends Component {
           <Space direction="vertical">
             <Input onChange={this.handleInputNickname} value={this.state.nickname} maxLength={20}
                    addonBefore={<span>Nickname</span>}/>
-            <Input onChange={this.handleInputIntroduction} value={this.state.introduction} maxLength={20}
+            <Input.TextArea onChange={this.handleInputIntroduction} value={this.state.introduction} maxLength={60}
                    addonBefore={<span>Introduction</span>}/>
             <Input onChange={this.handleInputRealName} value={this.state.realName} maxLength={20}
                    addonBefore={<span>Real Name</span>}/>

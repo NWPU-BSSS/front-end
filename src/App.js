@@ -19,8 +19,9 @@ import { Switch as SwitchRouter } from 'react-router-dom'
 import { Button, Result } from 'antd'
 import { loadUserState } from './@redux/actions'
 import { SearchResultPage } from './pages/SearchResultPage'
-import { AdminUsersPage } from './pages/AdminUsersPage'
+import { AdminUsersPage } from './components/admin/AdminUsersPage'
 import AdminPage from './pages/AdminPage'
+import AdminLogin from './pages/AdminLogin'
 
 class App extends React.Component {
 
@@ -41,11 +42,10 @@ class App extends React.Component {
         <Route path="/register" component={RegisterPage}/>
         <Route path="/login" component={LoginPage}/>
         <Route path="/reg-success" component={RegisterSuccessPage}/>
-        <Route path="/t" component={TestPage}/>
+        <Route path="/admin/login" component={AdminLogin}/>
         <Route path="/admin" component={AdminPage}/>
-        <Route exact path="/">
-          <Redirect to="/home"/>
-        </Route>
+        <Route exact path="/"> <Redirect to="/home"/> </Route>
+        <Route path="/t" component={TestPage}/>
         <Route>
           <Result
             status="404"

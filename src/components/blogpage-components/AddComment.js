@@ -5,7 +5,9 @@ import styles from './AddComment.module.css'
 
 export class AddComment extends Component {
   static propTypes = {
-    addComment: PropTypes.func
+    addComment: PropTypes.func,
+    avatar: PropTypes.string,
+    nickname: PropTypes.string
   }
 
   constructor (props) {
@@ -27,15 +29,17 @@ export class AddComment extends Component {
     return (
       <div className={styles.container}>
         <div className={styles.left}>
-          <Avatar src={""} size={36}/>
+          <Avatar src={this.props.avatar} size={36}>
+            {this.props.nickname}
+          </Avatar>
         </div>
         <div className={styles.right}>
           <div className={styles.textarea}>
-            <Input.TextArea className={styles.textarea} type="text" placeholder="Reply" value={this.state.comment}
+            <Input.TextArea className={styles.textarea} type="text" placeholder="Content" value={this.state.comment}
                             onChange={this.handleInputComment}/>
           </div>
           <div className={styles.button}>
-            <Button type="primary" danger onClick={this.handleClickComment}>评论</Button>
+            <Button type="primary" danger onClick={this.handleClickComment}>Send Comment</Button>
           </div>
         </div>
       </div>

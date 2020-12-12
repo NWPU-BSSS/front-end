@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import { Avatar, Button, List } from 'antd'
 import { connect } from 'react-redux'
-import { subscribeAsync } from '../../@redux/actions_async'
+import { subscribeBlogPageBloggerAsync } from '../../@redux/actions_async'
 
 export class FanItem extends Component {
   static propTypes = {
@@ -46,5 +46,5 @@ export class FanItem extends Component {
 
 FanItem = connect(
   () => {},
-  { subscribeAsync }
+  { subscribeAsync: subscribeBlogPageBloggerAsync }
 )(FanItem)

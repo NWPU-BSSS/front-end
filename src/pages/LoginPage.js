@@ -76,12 +76,12 @@ class LoginOrRegister extends Component {
           alignItems: 'center',
           display: 'flex'
         }}>
-          <div>其他登录方式</div>
-          <div>
-            <AlipayCircleFilled style={fontIcon}/>
-            <TaobaoCircleFilled style={fontIcon}/>
-            <WeiboCircleFilled style={fontIcon}/>
-          </div>
+          {/*<div>Other</div>*/}
+          {/*<div>*/}
+          {/*  <AlipayCircleFilled style={fontIcon}/>*/}
+          {/*  <TaobaoCircleFilled style={fontIcon}/>*/}
+          {/*  <WeiboCircleFilled style={fontIcon}/>*/}
+          {/*</div>*/}
         </div>
         <Link to="/register" type="default" style={{
           textAlign: 'center', width: '10%'

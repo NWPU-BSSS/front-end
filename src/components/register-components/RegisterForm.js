@@ -20,7 +20,8 @@ class RegisterForm extends Component {
     super(props)
     this.state = {
       disableRegisterButton: true,
-      disableGetVerifyCode: false
+      disableGetVerifyCode: false,
+      nextSendTime: ''
     }
     this.form = {}
   }
@@ -58,8 +59,7 @@ class RegisterForm extends Component {
     if (email && username && password && confirmPassword) {
       if (password === confirmPassword) {
         this.props.registerAsync({ ...this.form })
-      }
-      else error('password check failed')
+      } else error('password check failed')
     } else error('please input your info')
   }
 
@@ -97,6 +97,15 @@ class RegisterForm extends Component {
       return
     }
     this.props.sendVerifyCodeAsync({ email })
+    this.setState({ nextSendTime: 60, disableGetVerifyCode: true })
+    let timer = setInterval(() => {
+      let nextSendTime = --this.state.nextSendTime
+      this.setState({ nextSendTime })
+      if (this.state.nextSendTime === 0) {
+        clearInterval(timer)
+        this.setState({ nextSendTime: '', disableGetVerifyCode: false })
+      }
+    }, 1000)
   }
 
   render () {
@@ -145,8 +154,8 @@ class RegisterForm extends Component {
                 alignItems: 'center',
               }}>
                 <Input placeholder="verify code" style={{ width: '60%' }} onChange={this.handleInputVerifyCode}/>
-                <Button style={{ width: '35%' }}
-                        onClick={this.handleGetVerifyCode}>Send Code</Button>
+                <Button  disabled={this.state.disableGetVerifyCode}
+                        onClick={this.handleGetVerifyCode}>Send Code {this.state.nextSendTime}</Button>
               </Input.Group>
             </div>
             <div style={{
@@ -169,7 +178,7 @@ class RegisterForm extends Component {
 }
 
 RegisterForm = connect(
- ()=> { },
+  () => { },
   { registerAsync, sendVerifyCodeAsync }
 )(RegisterForm)
 

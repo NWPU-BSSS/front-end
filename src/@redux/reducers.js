@@ -41,7 +41,19 @@ import {
   SET_BLOGGER_BLOGS,
   SET_BLOGGER_FAV_BLOGS,
   SET_SEARCH_BLOG_LIST,
-  SET_FAV_BLOGS, SET_MY_BLOGS, SET_RECENT_BLOG_LIST, SET_FOLLOWED_BLOG_LIST, SET_BLOGGER_SUBSCRIBE, SET_BLOGGER_FANS
+  SET_FAV_BLOGS,
+  SET_MY_BLOGS,
+  SET_RECENT_BLOG_LIST,
+  SET_FOLLOWED_BLOG_LIST,
+  SET_BLOGGER_SUBSCRIBE,
+  SET_BLOGGER_FANS,
+  ADMIN_SET_BLOG_LIST,
+  ADMIN_DELETE_BLOG,
+  ADMIN_SET_USER_LIST,
+  ADMIN_LOGOUT,
+  ADMIN_LOGIN,
+  ADMIN_DELETE_USER,
+  SET_MY_BROWSE, SET_BLOGGER_SUBSCRIBE_STATUS
 } from './action-types'
 import {
   delete_user_state,
@@ -97,6 +109,8 @@ export function $UserInfoState (state = initUserInfo, { data, type }) {
       return { ...state, favBlogs: data }
     case SET_MY_BLOGS:
       return { ...state, myBlogs: data }
+    case SET_MY_BROWSE:
+      return { ...state, myBrowse: data }
     default:
       return state
   }
@@ -177,6 +191,8 @@ export function $BLoggerPageState (state = initBloggerPage, { data, type }) {
       return { ...state, fans: data }
     case SET_BLOGGER_SUBSCRIBE:
       return { ...state, subscribes: data }
+    case SET_BLOGGER_SUBSCRIBE_STATUS:
+      return { ...state, subscribeStatus: data }
     default:
       return state
   }
@@ -184,6 +200,20 @@ export function $BLoggerPageState (state = initBloggerPage, { data, type }) {
 
 export function $AdminPageState (state = initAdminPage, { type, data }) {
   switch (type) {
+    case ADMIN_LOGIN:
+      return { ...state, ...data }
+    case ADMIN_LOGOUT:
+      return { ...state, admin: '', password: '' }
+    case ADMIN_SET_USER_LIST:
+      return { ...state, users: data }
+    case ADMIN_SET_BLOG_LIST:
+      return { ...state, blogs: data }
+    case ADMIN_DELETE_BLOG:
+      let newBlogs = JSON.parse(JSON.stringify([...state.blogs])).filter((_, index) => index !== data)
+      return { ...state, blogs: newBlogs }
+    case ADMIN_DELETE_USER:
+      let newUsers = JSON.parse(JSON.stringify([...state.users])).filter((_, index) => index !== data)
+      return { ...state, users: newUsers }
     default:
       return state
   }

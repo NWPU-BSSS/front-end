@@ -35,7 +35,9 @@ class NavLogged extends Component {
         {/*<a>{History}</a>*/}
         <NavMenuDropdown title={
           <div className="head-avatar">
-            <Avatar src={this.props.avatar} alt="Avatar"/>
+            <Avatar src={this.props.avatar} alt="Avatar">
+              {this.props.nickname}
+            </Avatar>
           </div>
         }>
           <NavUserPanel {...this.props} language={userPanelLanguage} onLogout={() => this.props.logout()}

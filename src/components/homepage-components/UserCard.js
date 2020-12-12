@@ -23,10 +23,10 @@ export class UserCard extends Component {
         <div className="card-top">
           <div className="top-left">
             <div className="card-ava">
-              <Avatar size={48} src={avatar}/>
+              <Avatar size={48} src={avatar}>{nickname}</Avatar>
               <div className="code-age">CA{codeAge}</div>
             </div>
-            <Link  to="/profile/info" className="card-username">{nickname}</Link>
+            <Link to="/profile/info" className="card-username">{nickname}</Link>
           </div>
           <div>
             <Hexagon>Lv{level}</Hexagon>

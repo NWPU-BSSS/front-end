@@ -1,8 +1,10 @@
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
-import { Avatar, Tag, Button } from 'antd'
-import avatar from '../../assets/img/logo192.png'
-import './Blogger.css'
+import { Avatar, Button, Space, Tag } from 'antd'
+import styles from './Blogger.module.css'
+import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { subscribeBloggerPageBloggerAsync, subscribeBlogPageBloggerAsync } from '../../@redux/actions_async'
 
 export class Blogger extends Component {
 
@@ -11,34 +13,54 @@ export class Blogger extends Component {
     className: PropTypes.string.isRequired,
     codeAge: PropTypes.number.isRequired,
     introduction: PropTypes.string.isRequired,
-    nickname: PropTypes.string.isRequired
+    nickname: PropTypes.string.isRequired,
+    bloggerId: PropTypes.number.isRequired
+  }
+
+  handleSubscribe = () => {
+    let subscribe = !this.props.subscribeStatus
+    let bloggerId = this.props.bloggerId
+    this.props.subscribeBloggerPageBloggerAsync({ bloggerId, subscribe })
   }
 
   render () {
     return (
-      <div className="Blogger">
-        <div className="left">
-          <Avatar size={64} src={this.props.avatar}/>
-          <Tag color="red" style={{marginRight: 0}}>CA{this.props.codeAge}</Tag>
-        </div>
-        <div className="main">
-          <div className="username">
+      <div className={styles.container}>
+        <Link to="/profile/info" className={styles.left}>
+          <Space direction="vertical" align="center">
+            <Avatar size={64} src={this.props.avatar}>{this.props.username}</Avatar>
+            <Tag color="red" style={{ marginRight: 0 }}>CA{this.props.codeAge}</Tag>
+          </Space>
+        </Link>
+        <div className={styles.main}>
+          <div className={styles.username}>
             {this.props.nickname}
           </div>
-          <div className="userinfo">
-            <div className="verify">
-              {this.props.className}
+          <div className={styles.verify}>
+            <div className={styles.introduction}>
+              {this.props.className|| 'Unknown Class'}
             </div>
-            <div className="introduction">
-              {this.props.introduction}
+            <div className={styles.introduction}>
+              {this.props.introduction || 'This guy is too lazy to write anything'}
             </div>
           </div>
         </div>
-        <div className="right">
+        <div className={styles.right}>
           <Button danger>Chat</Button>
-          <Button danger>Subscribe</Button>
+          <Button type={this.props.subscribeStatus ? '' : 'primary'} danger
+                  onClick={this.handleSubscribe}>{this.props.subscribeStatus ? 'Subscribed' : 'Subscribe'}</Button>
         </div>
       </div>
     )
   }
 }
+
+Blogger = connect(
+  state => {
+    const { subscribeStatus } = state.$BLoggerPageState
+    return {
+      subscribeStatus: subscribeStatus
+    }
+  },
+  { subscribeBloggerPageBloggerAsync }
+)(Blogger)

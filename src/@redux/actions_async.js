@@ -26,7 +26,12 @@ import {
   set_my_subscribes,
   set_my_blogs,
   set_recent_blogList,
-  set_followed_blog_list, set_blogger_fans, set_blogger_subscribe
+  set_followed_blog_list,
+  set_blogger_fans,
+  set_blogger_subscribe,
+  admin_set_user_list,
+  admin_set_blog_list,
+  set_my_browse, admin_delete_user, admin_delete_blog, set_blogger_subscribe_status
 } from './actions'
 import { SET_MY_FANS, SET_SEARCH_BLOG_LIST } from './action-types'
 
@@ -172,14 +177,21 @@ export const getBloggerTagsAsync = bloggerId =>
     dispatch(set_blogger_tags(data))
   }
 
-export const subscribeAsync = ({ bloggerId, subscribe }) =>
+export const subscribeBlogPageBloggerAsync = ({ bloggerId, subscribe }) =>
   async dispatch => {
     const response = await req.subscribeOrCancelBlogger({ bloggerId, subscribe })
     await asyncResponseHandler(response)
     dispatch(set_blog_page_subscribe_status(subscribe))
   }
 
-export const getSubscribeStatusAsync = bloggerId =>
+export const subscribeBloggerPageBloggerAsync = ({ bloggerId, subscribe }) =>
+  async dispatch => {
+    const response = await req.subscribeOrCancelBlogger({ bloggerId, subscribe })
+    await asyncResponseHandler(response)
+    dispatch(set_blogger_subscribe_status(subscribe))
+  }
+
+export const getBlogPageSubscribeStatusAsync = bloggerId =>
   async dispatch => {
     const response = await req.getSubscribeStatusOfBlogger(bloggerId)
     let { status } = await asyncResponseHandler(response)
@@ -260,6 +272,13 @@ export const getBlogFavStatusAsync = blogId =>
     const response = await req.getStatusOfFavoriteBlog(blogId)
     let data = await asyncResponseHandler(response)
     dispatch(set_fav_status(data.status))
+  }
+
+export const getBloggerPageSubscribeStatusAsync = bloggerId =>
+  async dispatch => {
+    const response = await req.getSubscribeStatusOfBlogger(bloggerId)
+    let data = await asyncResponseHandler(response)
+    dispatch(set_blogger_subscribe_status(data))
   }
 
 export const setBlogLikeStatusAsync = ({ blogId, like }) =>
@@ -355,11 +374,46 @@ export const getBloggerSubscribesAsync = bloggerId =>
     dispatch(set_blogger_subscribe(data))
   }
 
-  export const uploadUserAvatarAsync = file =>
-    async dispatch => {
-      const response = await req.uploadUserAvatar(file)
-      await asyncResponseHandler(response)
-      success('Success')
-      let data = await asyncResponseHandler(await req.getUserWholeInfo())
-      dispatch(set_user_info(data))
-    }
+export const uploadUserAvatarAsync = file =>
+  async dispatch => {
+    const response = await req.uploadUserAvatar(file)
+    await asyncResponseHandler(response)
+    success('Success')
+    let data = await asyncResponseHandler(await req.getUserWholeInfo())
+    dispatch(set_user_info(data))
+  }
+
+export const getAllUsersListAsync = () =>
+  async dispatch => {
+    const response = await req.getAllUserList()
+    let data = await asyncResponseHandler(response)
+    dispatch(admin_set_user_list(data))
+  }
+
+export const getAllBlogListAsync = () =>
+  async dispatch => {
+    const response = await req.getAllBlogList()
+    let data = await asyncResponseHandler(response)
+    dispatch(admin_set_blog_list(data))
+  }
+
+export const getMyBrowseAsync = () =>
+  async dispatch => {
+    const response = await req.getMyBrowseBlog()
+    let data = await asyncResponseHandler(response)
+    dispatch(set_my_browse(data))
+  }
+
+export const deleteUserAsync = ({ admin, password, userId, index }) =>
+  async dispatch => {
+    const response = await req.deleteUser(({ admin, password, userId }))
+    await asyncResponseHandler(response)
+    dispatch(admin_delete_user(index))
+  }
+
+export const deleteBlogAsync = ({ admin, password, blogId, index }) =>
+  async dispatch => {
+    const response = await req.deleteBlog(({ admin, password, blogId }))
+    await asyncResponseHandler(response)
+    dispatch(admin_delete_blog(index))
+  }

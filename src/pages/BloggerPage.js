@@ -7,7 +7,7 @@ import { connect } from 'react-redux'
 import {
   getBloggerBlogsAsync, getBloggerFansAsync,
   getBloggerFavBlogsAsync,
-  getBloggerInfoAsync,
+  getBloggerInfoAsync, getBloggerPageSubscribeStatusAsync,
   getBloggerSubscribesAsync
 } from '../@redux/actions_async'
 import { BaseBlogList } from '../components/base/BaseBlogList'
@@ -25,15 +25,19 @@ export class BloggerPage extends Component {
     this.props.getBloggerFavBlogsAsync(bloggerId)
     this.props.getBloggerSubscribesAsync(bloggerId)
     this.props.getBloggerFansAsync(bloggerId)
+    this.props.getBloggerPageSubscribeStatusAsync(bloggerId)
   }
 
   render () {
 
     let { bloggerId } = this.props.match.params
+    if (+bloggerId === this.props.userId) {
+      return <Redirect to="/profile/info"/>
+    }
 
     return (
       <Layout>
-        <Blogger {...this.props.bloggerInfo}/>
+        <Blogger {...this.props.bloggerInfo} bloggerId={bloggerId}/>
         <ContentNavBar bloggerId={bloggerId}/>
         <BloggerPageBody>
           <SwitchRouter>
@@ -58,18 +62,20 @@ export class BloggerPage extends Component {
 }
 
 BloggerPage = connect(
-  ({ $BLoggerPageState: { bloggerInfo, bloggerBlogs, bloggerFavBlogs, subscribes, fans } }) => ({
+  ({ $BLoggerPageState: { bloggerInfo, bloggerBlogs, bloggerFavBlogs, subscribes, fans }, $UserState: { userId } }) => ({
     bloggerInfo,
     bloggerBlogs,
     bloggerFavBlogs,
     fans,
-    subscribes
+    subscribes,
+    userId
   }),
   {
     getBloggerInfoAsync,
     getBloggerFansAsync,
     getBloggerSubscribesAsync,
     getBloggerBlogsAsync,
-    getBloggerFavBlogsAsync
+    getBloggerFavBlogsAsync,
+    getBloggerPageSubscribeStatusAsync
   }
 )(BloggerPage)

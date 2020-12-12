@@ -8,8 +8,8 @@ import {
   getBlogBloggerInfoAsync, getBlogFavStatusAsync,
   getBloggerTagsAsync, getBlogLikeStatusAsync,
   getCommentsAsync,
-  getSubscribeStatusAsync, setBlogFavStatusAsync, setBlogLikeStatusAsync,
-  subscribeAsync
+  getBlogPageSubscribeStatusAsync, setBlogFavStatusAsync, setBlogLikeStatusAsync,
+  subscribeBlogPageBloggerAsync
 } from '../@redux/actions_async'
 import './BlogPage.css'
 import { connect } from 'react-redux'
@@ -21,6 +21,7 @@ import { ThumbBox } from '../components/blogpage-components/ThumbBox'
 import { AddComment } from '../components/blogpage-components/AddComment'
 import { CommentList } from '../components/blogpage-components/CommentList'
 import { Layout } from '../components/Layout'
+import { DEFAULT_AJAX_INTERVAL } from '../global'
 
 class BlogPage extends Component {
   static propTypes = {
@@ -45,15 +46,19 @@ class BlogPage extends Component {
 
   componentWillMount () {
     let blogId = this.props.match.params.blogId
-    //TODO: 在后端完成 /blog 接口后，删除 默认bloggerId
-    let bloggerId = this.props.blogInfo.bloggerId || 3
     this.props.getBlogAsync(blogId)
-    this.props.getCommentsAsync(blogId)
-    this.props.getBlogBloggerInfoAsync(bloggerId)
-    this.props.getBloggerTagsAsync(bloggerId)
-    this.props.getSubscribeStatusAsync(bloggerId)
-    this.props.getBlogLikeStatusAsync(blogId)
-    this.props.getBlogFavStatusAsync(blogId)
+    let timer = setInterval(() => {
+      let bloggerId = this.props.blogInfo.bloggerId
+      if (bloggerId) {
+        this.props.getCommentsAsync(blogId)
+        this.props.getBlogBloggerInfoAsync(bloggerId)
+        this.props.getBloggerTagsAsync(bloggerId)
+        this.props.getSubscribeStatusAsync(bloggerId)
+        this.props.getBlogLikeStatusAsync(blogId)
+        this.props.getBlogFavStatusAsync(blogId)
+        clearInterval(timer)
+      }
+    }, DEFAULT_AJAX_INTERVAL)
   }
 
   handleAddComment = content => {
@@ -62,7 +67,6 @@ class BlogPage extends Component {
   }
 
   handleSubscribe = () => {
-    //TODO: 删除默认 bloggerId
     let { bloggerId } = this.props.blogInfo
     let status = this.props.subscribeStatus
     this.props.subscribeAsync({ bloggerId, subscribe: !status })
@@ -86,17 +90,17 @@ class BlogPage extends Component {
       <Layout>
         <div className="BlogPage">
           <BlogPageLeft>
-            <BloggerPanel {...this.props.bloggerInfo} isSubscribed={this.props.subscribeStatus}
-                          handleSubscribe={this.handleSubscribe}/>
+            <BloggerPanel {...this.props.blogInfo} isSubscribed={this.props.subscribeStatus}
+                          handleSubscribe={this.handleSubscribe}
+                          bloggerId={this.props.blogInfo ? this.props.blogInfo.bloggerId : -1}/>
             <ClassificationColumn tagsList={this.props.tagList}/>
-            {/*<BlogCategory/>*/}
           </BlogPageLeft>
           <BlogPageMain>
             <BlogTitle title={title}/>
             <BlogContent content={content || ''}/>
             <ThumbBox handleLike={this.handleLike}
                       handleFavorite={this.handleFavorite}
-                      // handleSubscribe={this.handleSubscribe}
+              // handleSubscribe={this.handleSubscribe}
                       commentNum={commentNum}
                       favoriteNum={favoriteNum}
                       likeNum={likeNum}
@@ -105,7 +109,9 @@ class BlogPage extends Component {
                       subscribeStatus={subscribeStatus}
                       likeStatus={likeStatus}
             />
-            <AddComment addComment={this.handleAddComment}/>
+            <AddComment addComment={this.handleAddComment}
+                        avatar={this.props.bloggerInfo ? this.props.bloggerInfo.avatar : ''}
+                        nickname={this.props.bloggerInfo ? this.props.bloggerInfo.nickname : ''}/>
             <CommentList commentList={this.props.commentList}/>
             {/*<RelatedBlogList/>*/}
           </BlogPageMain>
@@ -154,8 +160,8 @@ BlogPage = connect(
     addCommentAsync,
     getBlogBloggerInfoAsync,
     getBloggerTagsAsync,
-    subscribeAsync,
-    getSubscribeStatusAsync,
+    subscribeAsync: subscribeBlogPageBloggerAsync,
+    getSubscribeStatusAsync: getBlogPageSubscribeStatusAsync,
     getBlogLikeStatusAsync,
     setBlogLikeStatusAsync,
     setBlogFavStatusAsync,
