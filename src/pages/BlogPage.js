@@ -8,7 +8,7 @@ import {
   getBlogBloggerInfoAsync, getBlogFavStatusAsync,
   getBloggerTagsAsync, getBlogLikeStatusAsync,
   getCommentsAsync,
-  getSubscribeStatusAsync, setBlogFavStatusAsync, setBlogLikeStatusAsync,
+  getBlogPageSubscribeStatusAsync, setBlogFavStatusAsync, setBlogLikeStatusAsync,
   subscribeAsync
 } from '../@redux/actions_async'
 import './BlogPage.css'
@@ -161,7 +161,7 @@ BlogPage = connect(
     getBlogBloggerInfoAsync,
     getBloggerTagsAsync,
     subscribeAsync,
-    getSubscribeStatusAsync,
+    getSubscribeStatusAsync: getBlogPageSubscribeStatusAsync,
     getBlogLikeStatusAsync,
     setBlogLikeStatusAsync,
     setBlogFavStatusAsync,

@@ -53,7 +53,7 @@ import {
   ADMIN_LOGOUT,
   ADMIN_LOGIN,
   ADMIN_DELETE_USER,
-  SET_MY_BROWSE
+  SET_MY_BROWSE, SET_BLOGGER_SUBSCRIBE_STATUS
 } from './action-types'
 import {
   delete_user_state,
@@ -191,6 +191,8 @@ export function $BLoggerPageState (state = initBloggerPage, { data, type }) {
       return { ...state, fans: data }
     case SET_BLOGGER_SUBSCRIBE:
       return { ...state, subscribes: data }
+    case SET_BLOGGER_SUBSCRIBE_STATUS:
+      return { ...state, subscribeStatus: data }
     default:
       return state
   }

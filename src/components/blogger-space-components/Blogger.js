@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
-import { Avatar, Tag, Button, Space } from 'antd'
+import { Avatar, Button, Space, Tag } from 'antd'
 import styles from './Blogger.module.css'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { subscribeAsync } from '../../@redux/actions_async'
 
 export class Blogger extends Component {
 
@@ -12,7 +13,14 @@ export class Blogger extends Component {
     className: PropTypes.string.isRequired,
     codeAge: PropTypes.number.isRequired,
     introduction: PropTypes.string.isRequired,
-    nickname: PropTypes.string.isRequired
+    nickname: PropTypes.string.isRequired,
+    bloggerId: PropTypes.number.isRequired
+  }
+
+  handleSubscribe = () => {
+    let subscribe = !this.props.subscribeStatus
+    let bloggerId = this.props.bloggerId
+    this.props.subscribeAsync({ bloggerId, subscribe })
   }
 
   render () {
@@ -39,7 +47,8 @@ export class Blogger extends Component {
         </div>
         <div className={styles.right}>
           <Button danger>Chat</Button>
-          <Button danger>Subscribe</Button>
+          <Button type={this.props.subscribeStatus ? '' : 'primary'} danger
+                  onClick={this.props.handleSubscribe}>{this.props.subscribeStatus ? 'Subscribed' : 'Subscribe'}</Button>
         </div>
       </div>
     )
@@ -47,6 +56,11 @@ export class Blogger extends Component {
 }
 
 Blogger = connect(
-  ()=>{},
-  {  }
+  state => {
+    const { subscribeStatus } = state.$BLoggerPageState
+    return {
+      subscribeStatus: subscribeStatus
+    }
+  },
+  { subscribeAsync }
 )(Blogger)

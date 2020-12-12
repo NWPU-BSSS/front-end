@@ -31,7 +31,7 @@ import {
   set_blogger_subscribe,
   admin_set_user_list,
   admin_set_blog_list,
-  set_my_browse, admin_delete_user, admin_delete_blog
+  set_my_browse, admin_delete_user, admin_delete_blog, set_blogger_subscribe_status
 } from './actions'
 import { SET_MY_FANS, SET_SEARCH_BLOG_LIST } from './action-types'
 
@@ -184,7 +184,7 @@ export const subscribeAsync = ({ bloggerId, subscribe }) =>
     dispatch(set_blog_page_subscribe_status(subscribe))
   }
 
-export const getSubscribeStatusAsync = bloggerId =>
+export const getBlogPageSubscribeStatusAsync = bloggerId =>
   async dispatch => {
     const response = await req.getSubscribeStatusOfBlogger(bloggerId)
     let { status } = await asyncResponseHandler(response)
@@ -265,6 +265,13 @@ export const getBlogFavStatusAsync = blogId =>
     const response = await req.getStatusOfFavoriteBlog(blogId)
     let data = await asyncResponseHandler(response)
     dispatch(set_fav_status(data.status))
+  }
+
+export const getBloggerPageSubscribeStatusAsync = bloggerId =>
+  async dispatch => {
+    const response = await req.getSubscribeStatusOfBlogger(bloggerId)
+    let data = await asyncResponseHandler(response)
+    dispatch(set_blogger_subscribe_status(data))
   }
 
 export const setBlogLikeStatusAsync = ({ blogId, like }) =>

@@ -64,6 +64,7 @@ export const SET_BLOGGER_BLOGS = 'set_blogger_blogs'
 export const SET_BLOGGER_FAV_BLOGS = 'set_blogger_fav_blogs'
 export const SET_BLOGGER_FANS = 'set_blogger_fans'
 export const SET_BLOGGER_SUBSCRIBE = 'set_blogger_subscribe'
+export const SET_BLOGGER_SUBSCRIBE_STATUS = 'set_blogger_subscribe_status'
 
 /*
   全局 状态
