@@ -13,16 +13,16 @@ export default class Error extends Component {
   }
 
   render () {
-    // if (this.state.hasError) {
-    //   // 你可以自定义降级后的 UI 并渲染
-    //   return (
-    //     <Result
-    //       status="500"
-    //       title="500"
-    //       subTitle="Sorry, something went wrong."
-    //     />
-    //   )
-    // }
+    if (this.state.hasError) {
+      // 你可以自定义降级后的 UI 并渲染
+      return (
+        <Result
+          status="500"
+          title="500"
+          subTitle="Sorry, something went wrong."
+        />
+      )
+    }
 
     return this.props.children
   }
