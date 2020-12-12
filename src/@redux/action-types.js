@@ -25,6 +25,7 @@ export const SET_MY_FANS = 'set_my_fans'
 export const SET_MY_SUBSCRIBES = 'set_my_subscribes'
 export const SET_FAV_BLOGS = 'set_fav_blogs'
 export const SET_MY_BLOGS = 'set_my_blogs'
+export const SET_MY_BROWSE = 'set_my_browse'
 
 /*
   博客页面的 Action

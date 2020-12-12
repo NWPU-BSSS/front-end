@@ -39,8 +39,8 @@ export const subscribeOrCancelBlogger = async ({ bloggerId, subscribe }) =>
  * 最近浏览的博客
  * @returns {Promise<JSON>}
  */
-export const currentBrowseBlog = async () =>
-  request('/api/user/browse/blogs', postInit())
+export const getMyBrowseBlog = async () =>
+  request(`/api/user/browse/blogs?${query()}`, postInit())
 
 /**
  * 获取对某个博主的关注状态

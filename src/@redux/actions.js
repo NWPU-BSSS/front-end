@@ -34,7 +34,7 @@ import {
   SET_FOLLOWED_BLOG_LIST,
   SET_BLOGGER_FANS,
   SET_BLOGGER_SUBSCRIBE,
-  ADMIN_LOGIN, ADMIN_SET_USER_LIST, ADMIN_DELETE_USER, ADMIN_SET_BLOG_LIST
+  ADMIN_LOGIN, ADMIN_SET_USER_LIST, ADMIN_DELETE_USER, ADMIN_SET_BLOG_LIST, SET_MY_BROWSE
 } from './action-types'
 
 export const actionFactory = (type, data = undefined) => ({
@@ -62,6 +62,7 @@ export const set_fav_blogs = data => actionFactory(SET_FAV_BLOGS, data)
 export const set_my_fans = data => actionFactory(SET_MY_FANS, data)
 export const set_my_subscribes = data => actionFactory(SET_MY_SUBSCRIBES, data)
 export const set_my_blogs = data => actionFactory(SET_MY_BLOGS, data)
+export const set_my_browse = data => actionFactory(SET_MY_BROWSE, data)
 
 /*
   HomePageState Action

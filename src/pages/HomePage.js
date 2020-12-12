@@ -8,7 +8,7 @@ import { Redirect } from 'react-router'
 import {
   getAnnouncementAsync,
   getBadgeNumAsync,
-  getBaseInfoAsync, getFollowedBloggerBlogListAsync, getRecentBlogListAsync, getRecommendBlogListAsync
+  getBaseInfoAsync, getFollowedBloggerBlogListAsync, getMyBrowseAsync, getRecentBlogListAsync, getRecommendBlogListAsync
 } from '../@redux/actions_async'
 import './HomePage.css'
 import { QuickEntry } from '../components/homepage-components/QuickEntry'
@@ -36,6 +36,7 @@ class HomePage extends Component {
       this.props.getBadgeNumAsync()
       this.props.getAnnouncementAsync()
       this.props.getFollowedBloggerBlogListAsync()
+      this.props.getMyBrowseAsync()
     }
   }
 
@@ -64,25 +65,26 @@ class HomePage extends Component {
 }
 
 HomePage = connect(
-  state => {
-    const { browse, announcement } = state.$HomePageState
-    let { $UserInfoState } = state, { badgeNum, baseInfo } = $UserInfoState
-    let isLogin = state.$UserState.userId !== -1
-    return {
-      isLogin,
+  ({
+    $HomePageState: { browse, announcement },
+    $UserInfoState: { badgeNum, baseInfo },
+    $UserState: { userId }
+  }) =>
+    ({
+      isLogin: userId !== -1,
       announcement,
       browse,
       badgeNum,
       baseInfo
-    }
-  },
+    }),
   {
     getBaseInfoAsync,
     getFollowedBloggerBlogListAsync,
     getRecommendBlogListAsync,
     getBadgeNumAsync,
     getAnnouncementAsync,
-    getRecentBlogListAsync
+    getRecentBlogListAsync,
+    getMyBrowseAsync
   }
 )(HomePage)
 

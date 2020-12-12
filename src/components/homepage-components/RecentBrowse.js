@@ -1,19 +1,21 @@
 import React, { Component } from 'react'
-import { Card } from 'antd'
-import './RecentBrowse.css'
+import { List } from 'antd'
+import styles from './RecentBrowse.module.css'
+import { Link } from 'react-router-dom'
 
 export class RecentBrowse extends Component {
 
   render () {
     return (
-      <div className="recent-browse">
-        <div className="title">Recent Browse</div>
-        <Card title=".NET 5">
-          <div>ASP .NET Core</div>
-        </Card>
-        <Card title=".NET 5">
-          <div>ASP .NET Core</div>
-        </Card>
+      <div className={styles.container}>
+        <List
+          size="large"
+          header={<div style={{paddingLeft: 20}}>Recent Browse</div>}
+          dataSource={this.props.data}
+          renderItem={item => <List.Item>
+            <Link to={`/blog/${item.blogId}`}>{item.title}</Link>
+          </List.Item>}
+        />
       </div>
     )
   }
