@@ -1,0 +1,47 @@
+div.blogSearch {
+    margin: 0 0 20px 150px
+}
+
+div.searchTitle {
+    display: flex;
+    flex-direction: row;
+    margin: 40px 0 10px 0;
+}
+
+div.blog-title-tag{
+    display: flex;
+    flex-direction: row;
+}
+
+div.blogTitle {
+    display: flex;
+    width: 350px;
+    height: 33px;
+    text-align: center;
+    line-height: 33px;
+    margin: 0 20px 0 0;
+}
+
+div.blogTag {
+    display: flex;
+    width: 350px;
+    height: 33px;
+    text-align: center;
+    line-height: 33px;
+    margin: 0 202px 0 0;
+}
+
+button.queryButton{
+    margin: 0 20px 0 0 ;
+    background-color: red;
+    color: white;
+    font-weight: 700;
+}
+
+button.resetButton{
+    font-weight: 700;
+}
+
+div.infoText{
+    width: 87%;
+}

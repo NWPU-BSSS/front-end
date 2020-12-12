@@ -5,6 +5,7 @@ import { BlogInfoSetting } from '../components/release-blog-components/BlogInfoS
 import './Pages.css'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router'
+import { Layout } from '../components/Layout'
 
 class ReleaseBlogPage extends Component {
   render () {
@@ -13,17 +14,17 @@ class ReleaseBlogPage extends Component {
     }
 
     return (
-      <div>
+      <Layout>
         <BlogInfoSetting/>
         <ToolBox/>
         <MdEditor/>
-      </div>
+      </Layout>
     )
   }
 }
 
 ReleaseBlogPage = connect(
-  state => ({ isLogin: state['UserState'].userId === 1 }),
+  state => ({ isLogin: state.$UserState.userId !== -1 }),
 )(ReleaseBlogPage)
 
 export { ReleaseBlogPage }

@@ -2,10 +2,9 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Button, Checkbox, Tabs } from 'antd'
 import { AlipayCircleFilled, TaobaoCircleFilled, WeiboCircleFilled } from '@ant-design/icons'
-import { LoginFormTop } from '../components/@common/LoginFormTop'
+import { LoginFormTop } from '../components/base/LoginFormTop'
 import { Link, Redirect } from 'react-router-dom'
 import { AccountLoginForm } from '../components/loginpage-components/AccountLoginForm'
-import { PhoneLoginForm } from '../components/loginpage-components/PhoneLoginForm'
 import { connect } from 'react-redux'
 
 const { TabPane } = Tabs
@@ -38,7 +37,7 @@ export function RememberLogin (props) {
       justifyContent: 'space-between',
       alignItems: 'center',
     }}>
-      <Checkbox checked={props.checked}>自动登录</Checkbox>
+      <Checkbox checked={props.checked} onClick={props.handleCheck}>自动登录</Checkbox>
       <a href="#">忘记密码</a>
     </div>
   )
@@ -77,12 +76,12 @@ class LoginOrRegister extends Component {
           alignItems: 'center',
           display: 'flex'
         }}>
-          <div>其他登录方式</div>
-          <div>
-            <AlipayCircleFilled style={fontIcon}/>
-            <TaobaoCircleFilled style={fontIcon}/>
-            <WeiboCircleFilled style={fontIcon}/>
-          </div>
+          {/*<div>Other</div>*/}
+          {/*<div>*/}
+          {/*  <AlipayCircleFilled style={fontIcon}/>*/}
+          {/*  <TaobaoCircleFilled style={fontIcon}/>*/}
+          {/*  <WeiboCircleFilled style={fontIcon}/>*/}
+          {/*</div>*/}
         </div>
         <Link to="/register" type="default" style={{
           textAlign: 'center', width: '10%'
@@ -118,9 +117,6 @@ class LoginPage extends Component {
           <TabPane tab="Account" key="1">
             <AccountLoginForm/>
           </TabPane>
-          <TabPane tab="Phone" key="2">
-            <PhoneLoginForm/>
-          </TabPane>
         </Tabs>
       </div>
     )
@@ -129,9 +125,13 @@ class LoginPage extends Component {
 
 LoginPage = connect(
   state => ({
-    isLogin: state['AccessToken'] !== ''
+    isLogin: state.$UserState.userId !== -1
   })
 )(LoginPage)
 
 export { LoginPage, LoginOrRegister }
 
+RememberLogin.propTypes = {
+  checked: PropTypes.bool,
+  handleCheck: PropTypes.func
+}

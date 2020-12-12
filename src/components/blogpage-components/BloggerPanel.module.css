@@ -1,0 +1,89 @@
+.container div{
+    display: flex;
+}
+
+.container {
+    display: flex;
+    justify-content: stretch;
+    align-items: stretch;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.top{
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+    padding: 10px 20px;
+}
+
+.topLeft {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+
+.topLeft span {
+    margin: 5px auto;
+}
+
+.topRight{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-grow: 1;
+    margin-left: 10px;
+    padding: 5px;
+}
+
+.middle ul{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.middle ul li{
+    flex-grow: 1;
+}
+
+.bottom{
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.infoItem {
+    display: flex;
+    padding: 5px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.infoItem:hover{
+    background-color: #fff;
+}
+
+.otherInfo{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.otherInfo > span{
+
+}
+
+.nickname{
+    font-size: 16px;
+    font-weight: 600;
+}
+
+

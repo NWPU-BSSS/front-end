@@ -1,58 +1,66 @@
+import PropTypes from 'prop-types'
 import React, { Component } from 'react'
-import { UserOutlined, FunctionOutlined } from '@ant-design/icons'
-import { Avatar, Button } from 'antd'
-import avatar from '../../assets/img/logo192.png'
-import './Blogger.css'
+import { Avatar, Button, Space, Tag } from 'antd'
+import styles from './Blogger.module.css'
+import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { subscribeBloggerPageBloggerAsync, subscribeBlogPageBloggerAsync } from '../../@redux/actions_async'
 
 export class Blogger extends Component {
 
+  static propTypes = {
+    avatar: PropTypes.string.isRequired,
+    className: PropTypes.string.isRequired,
+    codeAge: PropTypes.number.isRequired,
+    introduction: PropTypes.string.isRequired,
+    nickname: PropTypes.string.isRequired,
+    bloggerId: PropTypes.number.isRequired
+  }
+
+  handleSubscribe = () => {
+    let subscribe = !this.props.subscribeStatus
+    let bloggerId = this.props.bloggerId
+    this.props.subscribeBloggerPageBloggerAsync({ bloggerId, subscribe })
+  }
+
   render () {
     return (
-      <div className="Blogger">
-        <div className="left">
-          <Avatar size={96} src={avatar}/>
-          <span>
-            {
-              '码龄3年'
-            }
-          </span>
-        </div>
-        <div className="main">
-          <div className="username">
-            <UserOutlined/>
-            {
-              '路喵喵学长'
-            }
+      <div className={styles.container}>
+        <Link to="/profile/info" className={styles.left}>
+          <Space direction="vertical" align="center">
+            <Avatar size={64} src={this.props.avatar}>{this.props.username}</Avatar>
+            <Tag color="red" style={{ marginRight: 0 }}>CA{this.props.codeAge}</Tag>
+          </Space>
+        </Link>
+        <div className={styles.main}>
+          <div className={styles.username}>
+            {this.props.nickname}
           </div>
-          <div className="userinfo">
-            <div className="verify">
-              <UserOutlined/>
-              <span>
-                {
-                  '14011111班'
-                }
-              </span>
-              学生
-              <span>
-
-              </span>
-              <span>
-                <Button danger>我要认证</Button>
-              </span>
+          <div className={styles.verify}>
+            <div className={styles.introduction}>
+              {this.props.className|| 'Unknown Class'}
             </div>
-            <div className="introduction">
-              <FunctionOutlined/>
-              {
-                '刘刘杰也叫陆喵喵'
-              }
+            <div className={styles.introduction}>
+              {this.props.introduction || 'This guy is too lazy to write anything'}
             </div>
           </div>
         </div>
-        <div className="right">
-          <Button danger>私信</Button>
-          <Button danger>关注</Button>
+        <div className={styles.right}>
+          <Button danger>Chat</Button>
+          <Button type={this.props.subscribeStatus ? '' : 'primary'} danger
+                  onClick={this.handleSubscribe}>{this.props.subscribeStatus ? 'Subscribed' : 'Subscribe'}</Button>
         </div>
       </div>
     )
   }
 }
+
+Blogger = connect(
+  state => {
+    const { subscribeStatus } = state.$BLoggerPageState
+    return {
+      subscribeStatus
+    }
+  },
+  { subscribeBloggerPageBloggerAsync }
+)(Blogger)

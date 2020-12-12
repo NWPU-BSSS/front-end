@@ -1,4 +1,4 @@
-import { getInit, postInit, request } from './@config'
+import { getInit, postInit, request, query } from './@config'
 
 /**
  * 用户注册
@@ -12,7 +12,7 @@ export const register = async ({ username, password, email, verifyCode }) =>
   request('/api/register', postInit({ username, password, email, verifyCode }))
 
 /**
- *
+ * 客户端用户登陆
  * @param password
  * @param email
  * @param username
@@ -24,14 +24,40 @@ export const login = async ({ password, email, username }) =>
 export const sendVerifyCode2Email = async ({ email }) =>
   request('/api/register/verifyCode', postInit({ email }))
 
+/**
+ * 获取用户基本信息，显示在导航栏和首页
+ * @returns {Promise<JSON>}
+ */
 export const getBaseInfo = async () =>
-  request('/api/baseInfo', getInit())
+  request(`/api/baseInfo?${query()}`, getInit())
 
+/**
+ * 获取各种未读消息
+ * @returns {Promise<JSON>}
+ */
 export const getBadgeNum = async () =>
-  request('/api/badgeNum', getInit())
+  request(`/api/badgeNum?${query()}`, getInit())
 
+/**
+ * 检查用户名是否存在
+ * @param username
+ * @returns {Promise<JSON>}
+ */
 export const checkUsernameExist = async username =>
   request('/api/usernameCheck', postInit({ username }))
 
+/**
+ * 检查邮箱是否存在
+ * @param email
+ * @returns {Promise<JSON>}
+ */
 export const checkEmailExist = async email =>
   request('/api/emailCheck', postInit({email}))
+
+/**
+ * 关键词搜索博客
+ * @param {string}word
+ * @returns {Promise<JSON>}
+ */
+export const keySearchBlog = word =>
+    request(`/api/search?${query({word})}`, getInit())

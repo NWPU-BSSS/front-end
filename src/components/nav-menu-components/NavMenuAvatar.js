@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import { NavMenuDropdown } from './NavMenuDropdown'
 import { EditOutlined, UserOutlined } from '@ant-design/icons'
 import './NavLogged.css'
-import logo from '../../assets/img/logo_u9.png'
+import logo from '../../assets/img/bsss.png'
+import { Link } from 'react-router-dom'
 
 export class NavMenuAvatar extends Component {
   constructor (props) {
@@ -28,7 +29,7 @@ export class NavMenuAvatar extends Component {
       <div style={{
         height: '100%'
       }}>
-        <a href="/"><img style={{height: '100%'}} src={logo} alt="logo"/></a>
+        <Link to="/"><img style={{height: '100%'}} src={logo} alt="logo"/></Link>
       </div>
     )
   }

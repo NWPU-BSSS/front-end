@@ -1,0 +1,80 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+    background-color: #fff;
+    padding: 20px 10px;
+}
+
+.main {
+    flex-grow: 100;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.container .left, .container .right {
+    flex-grow: 2;
+    padding: 20px;
+}
+
+.container .left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.container .right {
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: row;
+}
+
+.container .main {
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.container .main .username {
+    justify-content: flex-start;
+    flex-direction: row;
+    align-items: center;
+    font-size: 28px;
+}
+
+.container .main .userinfo {
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.verify {
+    flex-direction: column;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.container .main .userinfo .verify > span {
+    margin-left: 20px;
+}
+
+.container .main .userinfo .introduction {
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+}
+
+.container .right {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.container .right > button {
+    margin-right: 20px;
+}

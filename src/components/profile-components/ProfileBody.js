@@ -1,16 +1,18 @@
 import React, { Component } from 'react'
-import { PersonalInfoMenu } from './PersonalInfoMenu'
-import { PersonalInfo } from './PersonalInfo'
 import './Container.css'
 
-export class ProfileBody extends Component {
-
+class ProfileBody extends Component {
   render () {
+    // const { PersonalInfo, AccountSecurity, Collection, Follower, Fans, MyBlog, MyDownload, MyAnswer, MyCollege} = languageHere;
+
+
     return (
       <div className="ProfileBody">
-        <PersonalInfoMenu/>
-        <PersonalInfo/>
+        {this.props.children}
       </div>
     )
   }
 }
+
+
+export { ProfileBody }

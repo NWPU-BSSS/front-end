@@ -37,30 +37,31 @@ const LineDiv = () =>
  * @constructor
  */
 function ToolBox (props) {
+  const fontSize = 28
   return <div className="ToolBox">
-    <ToolBarItem icon={<BoldOutlined style={{ fontSize: 28 }}/>} text="加粗"/>
-    <ToolBarItem icon={<ItalicOutlined style={{ fontSize: 28 }}/>} text="斜体"/>
-    <ToolBarItem icon={<HighlightOutlined style={{ fontSize: 28 }}/>} text="标题"/>
-    <ToolBarItem icon={<StrikethroughOutlined style={{ fontSize: 28 }}/>} text="删除线"/>
+    <ToolBarItem icon={<BoldOutlined style={{ fontSize }}/>} text="Bold"/>
+    <ToolBarItem icon={<ItalicOutlined style={{ fontSize }}/>} text="Italic"/>
+    <ToolBarItem icon={<HighlightOutlined style={{ fontSize }}/>} text="H1"/>
+    <ToolBarItem icon={<StrikethroughOutlined style={{ fontSize }}/>} text="DL"/>
     <LineDiv/>
-    <ToolBarItem icon={<UnorderedListOutlined style={{ fontSize: 28 }}/>} text="无序"/>
-    <ToolBarItem icon={<OrderedListOutlined style={{ fontSize: 28 }}/>} text="有序"/>
-    <ToolBarItem icon={<BellOutlined style={{ fontSize: 28 }}/>} text="待办"/>
-    <ToolBarItem icon={<CodeOutlined style={{ fontSize: 28 }}/>} text="代码块"/>
+    <ToolBarItem icon={<UnorderedListOutlined style={{ fontSize }}/>} text="UL"/>
+    <ToolBarItem icon={<OrderedListOutlined style={{ fontSize }}/>} text="OL"/>
+    <ToolBarItem icon={<BellOutlined style={{ fontSize }}/>} text="Event"/>
+    <ToolBarItem icon={<CodeOutlined style={{ fontSize }}/>} text="Code"/>
     <LineDiv/>
-    <ToolBarItem icon={<PictureOutlined style={{ fontSize: 28 }}/>} text="图片"/>
-    <ToolBarItem icon={<PlaySquareOutlined style={{ fontSize: 28 }}/>} text="视频"/>
+    <ToolBarItem icon={<PictureOutlined style={{ fontSize }}/>} text="Image"/>
+    <ToolBarItem icon={<PlaySquareOutlined style={{ fontSize }}/>} text="Video"/>
     <LineDiv/>
-    <ToolBarItem icon={<TableOutlined style={{ fontSize: 28 }}/>} text="表格"/>
-    <ToolBarItem icon={<LinkOutlined style={{ fontSize: 28 }}/>} text="超链接"/>
-    <ToolBarItem icon={<MenuOutlined style={{ fontSize: 28 }}/>} text="摘要"/>
+    <ToolBarItem icon={<TableOutlined style={{ fontSize }}/>} text="Table"/>
+    <ToolBarItem icon={<LinkOutlined style={{ fontSize }}/>} text="Link"/>
+    <ToolBarItem icon={<MenuOutlined style={{ fontSize }}/>} text="Digest"/>
     <LineDiv/>
-    <ToolBarItem icon={<ImportOutlined style={{ fontSize: 28 }}/>} text="导入"/>
-    <ToolBarItem icon={<ExportOutlined style={{ fontSize: 28 }}/>} text="导出"/>
+    <ToolBarItem icon={<ImportOutlined style={{ fontSize }}/>} text="Import"/>
+    <ToolBarItem icon={<ExportOutlined style={{ fontSize }}/>} text="Export"/>
     <LineDiv/>
-    <ToolBarItem icon={<SaveOutlined style={{ fontSize: 28 }}/>} text="保存"/>
-    <ToolBarItem icon={<UndoOutlined style={{ fontSize: 28 }}/>} text="撤销"/>
-    <ToolBarItem icon={<RedoOutlined style={{ fontSize: 28 }}/>} text="重做"/>
+    <ToolBarItem icon={<SaveOutlined style={{ fontSize }}/>} text="Save"/>
+    <ToolBarItem icon={<UndoOutlined style={{ fontSize }}/>} text="Undo"/>
+    <ToolBarItem icon={<RedoOutlined style={{ fontSize }}/>} text="Redo"/>
   </div>
 }
 

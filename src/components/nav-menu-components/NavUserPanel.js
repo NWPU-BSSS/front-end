@@ -3,17 +3,33 @@ import PropTypes from 'prop-types'
 
 import {
   BankFilled,
-  CheckCircleOutlined, CrownOutlined,
-  DownloadOutlined,
-  EditFilled,
-  ExportOutlined,
+  CheckCircleOutlined,
+  CrownOutlined, DownloadOutlined,
+  EditFilled, ExportOutlined,
   HeartOutlined,
-  IdcardFilled,
-  QuestionCircleFilled
+  IdcardFilled, QuestionCircleFilled
 } from '@ant-design/icons'
 
 import './NavUserPanel.css'
 import { Link } from 'react-router-dom'
+
+class NavUserPanelItem extends Component{
+  static propTypes = {
+    action: PropTypes.string,
+    before: PropTypes.node.isRequired,
+    onClick: PropTypes.func,
+    title: PropTypes.string.isRequired
+  }
+
+  render () {
+    const { before, action, title, onClick } = this.props
+    return (
+      <Link to={action} className="panel-item" onClick={onClick}>
+        <div>{before}&nbsp;{title}</div>
+      </Link>
+    )
+  }
+}
 
 export class NavUserPanel extends Component {
 
@@ -34,41 +50,29 @@ export class NavUserPanel extends Component {
     const { GrowthSystem, Subscribe, Fans, PersonalCentre, MyBlog, MySchool, MyDownload, Help, Exit } = this.props.language
 
     return <>
-      <a className="panel-item user-name">
+      <Link to="/profile/info" className="panel-item user-name">
         <div>{this.props.nickname}</div>
-      </a>
-      <a className="panel-item level">
+      </Link>
+      <Link to="/profile/info" className="panel-item level">
         <div><CrownOutlined/>&nbsp;{GrowthSystem}</div>
         <div style={{ textAlign: 'center' }}>Lv{this.props.level}</div>
-      </a>
+      </Link>
       <div className="panel-item fl-wrapper">
-        <a className="fl">
+        <Link to="/profile/subscribe" className="fl">
           <div>{Subscribe}&nbsp;<HeartOutlined/></div>
           <div>{this.props.followNum}</div>
-        </a>
-        <a className="fl">
+        </Link>
+        <Link to="/profile/fans" className="fl">
           <div>{Fans}&nbsp;<CheckCircleOutlined/></div>
           <div>{this.props.fanNum}</div>
-        </a>
+        </Link>
       </div>
-      <Link className="panel-item" to="/profile">
-        <div><IdcardFilled/>&nbsp;{PersonalCentre}</div>
-      </Link>
-      <a className="panel-item">
-        <div><EditFilled/>&nbsp;{MyBlog}</div>
-      </a>
-      <a className="panel-item">
-        <div><BankFilled/>&nbsp;{MySchool}</div>
-      </a>
-      <a className="panel-item">
-        <div><DownloadOutlined/>&nbsp;{MyDownload}</div>
-      </a>
-      <a className="panel-item">
-        <div><QuestionCircleFilled/>&nbsp;{Help}</div>
-      </a>
-      <a className="panel-item" onClick={this.props.onLogout}>
-        <div><ExportOutlined/>&nbsp;{Exit}</div>
-      </a>
+      <NavUserPanelItem action="/profile/info" title={PersonalCentre} before={<IdcardFilled/>}/>
+      <NavUserPanelItem action="/profile/blogs" title={MyBlog} before={<EditFilled/>}/>
+      <NavUserPanelItem action="/profile/school" title={MySchool} before={<BankFilled/>}/>
+      <NavUserPanelItem action="/profile/download" title={MyDownload} before={<DownloadOutlined/>}/>
+      <NavUserPanelItem action="/profile/help" title={Help} before={<QuestionCircleFilled/>}/>
+      <NavUserPanelItem onClick={this.props.onLogout} title={Exit} before={<ExportOutlined/>}/>
     </>
   }
 }

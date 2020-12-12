@@ -6,7 +6,7 @@ export class ProfileTop extends Component {
   render () {
     return (
       <div>
-        <UserSpaceTitle/>
+
       </div>
     )
   }

@@ -1,4 +1,4 @@
-import { postInit, query, request } from './@config'
+import { getInit, postInit, query, request } from './@config'
 
 /**
  * 发布博客
@@ -10,7 +10,25 @@ import { postInit, query, request } from './@config'
  * @returns {Promise<JSON>}
  */
 export const releaseBlog = async ({ title, content, tagA = '', tagB = '', tagC = '' }) =>
-  await request('/api/blog', postInit({ title, content, tagA, tagB, tagC }))
+  await request(`/api/blog?${query()}`, postInit({ title, content, tagA, tagB, tagC }))
+
+/**
+ * 收藏一个博客
+ * @param {number}blogId
+ * @param {boolean}favorite
+ * @returns {Promise<JSON>}
+ */
+export const favBlog = async ({ blogId, favorite }) =>
+  request(`/api/blog/fav?${query()}`, postInit({ blogId, favorite }))
+
+/**
+ * 点赞博客
+ * @param {number}blogId
+ * @param {boolean}like
+ * @returns {Promise<JSON>}
+ */
+export const likeBlog = async ({ blogId, like }) =>
+  request(`/api/blog/like?${query()}`, postInit({ blogId, like }))
 
 /**
  * 在指定博客评论区发表评论
@@ -44,7 +62,7 @@ export const getComments = async ({ blogId }) =>
  * @returns {Promise<JSON>}
  */
 export const getTags = async ({ bloggerId }) =>
-  await request(`/api/blog/blogger/tags?${query(bloggerId)}`)
+  await request(`/api/blog/blogger/tags?${query({ bloggerId })}`)
 
 /**
  * 获取博主详细信息
@@ -52,4 +70,20 @@ export const getTags = async ({ bloggerId }) =>
  * @returns {Promise<*>}
  */
 export const getBlogger = async ({ bloggerId }) =>
-  await request(`/api/blog/blogger?${query(bloggerId)}`)
+  await request(`/api/blog/blogger?${query({ bloggerId })}`)
+
+/**
+ * 获取我对某个博客的收藏状态
+ * @param {string}blogId
+ * @returns {Promise<JSON>}
+ */
+export const getStatusOfFavoriteBlog = blogId =>
+  request(`/api/blog/fav?${query({ blogId })}`, getInit())
+
+/**
+ * 获取我对某个博客的点赞状态
+ * @param {string}blogId
+ * @returns {Promise<JSON>}
+ */
+export const getStatusOfLikeBlog = blogId =>
+  request(`api/blog/like?${query({ blogId })}`, getInit())

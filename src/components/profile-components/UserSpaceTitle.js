@@ -1,101 +1,52 @@
+import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import { Avatar, Tag } from 'antd'
-import avatar from '../../assets/temporary/u508.png'
-import { UserOutlined, FunctionOutlined } from '@ant-design/icons'
-import './UserSpaceTitle.css'
+import styles from './UserSpaceTitle.module.css'
 
 export class UserSpaceTitle extends Component {
 
+  static propTypes = {
+    avatar: PropTypes.string.isRequired,
+    changeAvatar: PropTypes.func.isRequired,
+    className: PropTypes.string.isRequired,
+    codeAge: PropTypes.number.isRequired,
+    introduction: PropTypes.string.isRequired,
+    level: PropTypes.number.isRequired,
+    nickname: PropTypes.string.isRequired,
+    username: PropTypes.any
+  }
+
   render () {
     return (
-      <div className="UserSpaceTitle" >
-        <div style={{
-          display: 'flex',
-          flexDirection: 'row',
-        }}>
-          <div>
-            <Avatar size={100} src={avatar}/>
-            <div style={{
-              textAlign: 'center',
-              marginTop: '10px',
-              fontSize: '20px',
-              color: 'white',
-              fontWeight: '700',
-            }}>
-              码龄3年
+      <div className={styles.container}>
+        <div className={styles.content}>
+          <div className={styles.avatar}>
+            <div className={styles.avatarContainer} onClick={this.props.changeAvatar}>
+              <Avatar style={{marginBottom: 0}} size={64} src={this.props.avatar}>
+                {this.props.nickname}
+              </Avatar>
+              <span className={styles.text}>Change</span>
+              <span className={styles.mask}/>
+            </div>
+            <Tag style={{ marginRight: 0 }} color="red">CA{this.props.codeAge}</Tag>
+          </div>
+          <div className={styles.info}>
+            <div className={styles.nickname}>
+              {this.props.nickname}
+            </div>
+            <div className={styles.otherInfo}>
+              {this.props.className}
+            </div>
+            <div className={styles.otherInfo}>
+              {this.props.introduction}
             </div>
           </div>
-          <div style={{
-            marginLeft: '20px',
-          }}>
-            <div style={{
-              display: 'flex',
-              flexDirection: 'row',
-            }}>
-              <UserOutlined style={{
-                fontSize: '50px',
-              }}/>
-              <div style={{
-                fontSize: '30px',
-                marginLeft: '10px',
-                color: 'white',
-                fontWeight: '700',
-              }}>
-                陆喵喵学长
-              </div>
-            </div>
-
-            <div style={{
-              margin: '10px 0px 0px 42px',
-            }}>
-              <div style={{
-                display: 'flex',
-                flexDirection: 'row',
-              }}>
-                <UserOutlined style={{
-                  fontSize: '25px',
-                }}/>
-                <div style={{
-                  fontSize: '15px',
-                  marginLeft: '10px',
-                  color: 'white',
-                }}>
-                  1401xx0x班 学生
-                </div>
-                <Tag style={{
-                  border: '2px solid #FEFE00',
-                  fontSize: '10px',
-                  marginLeft: '10px',
-                  color: '#F1D279',
-                  padding: '0 10px',
-                }}>
-                  V 已认证
-                </Tag>
-              </div>
-
-              <div style={{
-                display: 'flex',
-                flexDirection: 'row',
-                margin: '15px 0px',
-              }}>
-                <FunctionOutlined style={{
-                  fontSize: '25px',
-                }}/>
-                <div style={{
-                  fontSize: '15px',
-                  marginLeft: '10px',
-                  color: 'white',
-                }}>
-                  刘刘杰也叫陆喵喵
-                </div>
-              </div>
-            </div>
+          <div className={styles.level}>
+            <Tag color="red">Lv {this.props.level}</Tag>
           </div>
-        </div>
-        <div className="hexagon">
-          Lv 3
         </div>
       </div>
+
     )
   }
 }

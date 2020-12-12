@@ -2,17 +2,14 @@ import React, { Component } from 'react'
 import { NavMenuDropdown } from './NavMenuDropdown'
 import { btnDanger } from './@button-style'
 import { NavUserPanel } from './NavUserPanel'
-import logo from '../../assets/img/logo192.png'
 import PropTypes from 'prop-types'
 import './NavLogged.css'
-import { connect } from 'react-redux'
-import { logout } from '../../@redux/actions'
 import { Link } from 'react-router-dom'
+import { Avatar, Button } from 'antd'
 
 class NavLogged extends Component {
 
   static propTypes = {
-    username: PropTypes.string,
     logout: PropTypes.func.isRequired,
     language: PropTypes.object
   }
@@ -24,26 +21,27 @@ class NavLogged extends Component {
     return (
       <div className="NavLogged">
         <NavMenuDropdown
-          menuStyle={{ justifyContent: 'center',
-            backgroundColor: '#aa3131' }}
+          menuStyle={{
+            justifyContent: 'center',
+            backgroundColor: '#ff4d4f'
+          }}
           title={
-            <div style={{
-              ...btnDanger,
-              margin: '0'
-            }}>{CreationCentre}</div>
+            <Button danger type="primary">{CreationCentre}</Button>
           }>
           <Link to="/release-blog">{WriteBlog}</Link>
-          <a>{WriteCode}</a>
           <a>{UploadResource}</a>
         </NavMenuDropdown>
-        <a>{Favorite}</a>
-        <a>{History}</a>
+        <Link to="/profile/fav">{Favorite}</Link>
+        {/*<a>{History}</a>*/}
         <NavMenuDropdown title={
           <div className="head-avatar">
-            <img src={logo} alt="Avatar"/>
+            <Avatar src={this.props.avatar} alt="Avatar">
+              {this.props.nickname}
+            </Avatar>
           </div>
         }>
-          <NavUserPanel {...this.props} language={userPanelLanguage} onLogout={() => this.props.logout()} username={''}/>
+          <NavUserPanel {...this.props} language={userPanelLanguage} onLogout={() => this.props.logout()}
+                        username={''}/>
         </NavMenuDropdown>
       </div>
     )

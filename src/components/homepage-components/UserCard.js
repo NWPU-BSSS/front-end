@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import { Card } from 'antd'
-import { Avatar } from 'antd';
+import { Avatar, Card } from 'antd'
 import PropTypes from 'prop-types'
 import './UserCard.css'
 import { Hexagon } from './Hexagon'
+import { Link } from 'react-router-dom'
 
 export class UserCard extends Component {
 
@@ -17,34 +17,34 @@ export class UserCard extends Component {
   }
 
   render () {
-
+    const { nickname, codeAge, fanNum, blogNum, level, avatar, followNum } = this.props
     return (
       <Card className="user-card">
         <div className="card-top">
           <div className="top-left">
             <div className="card-ava">
-              <Avatar size={48} src="logo192.png"/>
-              <div className="code-age">CA{this.props.codeAge}</div>
+              <Avatar size={48} src={avatar}>{nickname}</Avatar>
+              <div className="code-age">CA{codeAge}</div>
             </div>
-            <div className="card-username">{this.props.nickname}</div>
+            <Link to="/profile/info" className="card-username">{nickname}</Link>
           </div>
           <div>
-            <Hexagon>Lv{this.props.level}</Hexagon>
+            <Hexagon>Lv{level}</Hexagon>
           </div>
         </div>
         <div className="card-bottom">
-          <div className="bottom-item">
-            <div className="item-top">{this.props.blogNum}</div>
+          <Link to="/profile/blogs" className="bottom-item">
+            <div className="item-top">{blogNum}</div>
             <div className="item-bottom">Blogs</div>
-          </div>
-          <div className="bottom-item">
-            <div className="item-top">{this.props.followNum}</div>
-            <div className="item-bottom">Follow</div>
-          </div>
-          <div className="bottom-item">
-            <div className="item-top">{this.props.fanNum}</div>
+          </Link>
+          <Link to="/profile/subscribe" className="bottom-item">
+            <div className="item-top">{followNum}</div>
+            <div className="item-bottom">Subscribe</div>
+          </Link>
+          <Link to="/profile/fans" className="bottom-item">
+            <div className="item-top">{fanNum}</div>
             <div className="item-bottom">Fans</div>
-          </div>
+          </Link>
         </div>
       </Card>
     )

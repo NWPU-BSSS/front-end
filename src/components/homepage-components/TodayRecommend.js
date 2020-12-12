@@ -1,15 +1,15 @@
 import React from 'react'
 import { Card } from 'antd'
-import './TodayRecommend.css'
+import styles from './TodayRecommend.module.css'
 import { connect } from 'react-redux'
-import { getTodayRecommendAsync } from '../../@redux/actions_async'
+import { getAnnouncementAsync } from '../../@redux/actions_async'
 import { Link } from 'react-router-dom'
 
 let TodayRecommend = props => {
-  const {announcementId, title, publisher, startTime, endTime, publishTime, content} = this.props
+  const { id, title, publisher, startTime, endTime, publishTime, content} = props
 
   return (
-    <Card className="today-recommend" title="Today Recommend">
+    <Card className={styles.todayRecommend} title="Announcement">
       <Link to={`/`} className="item">{title}</Link>
       <div className="item">{publisher}</div>
       <div className="item">{content}</div>
@@ -20,7 +20,7 @@ let TodayRecommend = props => {
 
 TodayRecommend = connect(
   state => ({ ...state['todayRecommend'] }),
-  { getTodayRecommendAsync }
+  { getTodayRecommendAsync: getAnnouncementAsync }
 )(TodayRecommend)
 
 export {TodayRecommend}

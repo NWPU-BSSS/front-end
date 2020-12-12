@@ -8,6 +8,7 @@
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "antd": "^4.7.3",
+    "antd-img-crop": "^3.13.2",
     "axios": "^0.21.0",
     "http-proxy-middleware": "^1.0.6",
     "jquery": "^3.5.1",
@@ -52,5 +53,5 @@
   "devDependencies": {
     "redux-devtools-extension": "^2.13.8"
   },
-  "proxy": "http://localhost:5277/"
+  "proxy": "http://localhost:5277"
 }

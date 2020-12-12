@@ -7,16 +7,18 @@ import reportWebVitals from './reportWebVitals'
 import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import store from './@redux/store'
-import PropTypes from 'prop-types'
+import Error from './Error'
 
 const baseUrl = document.getElementsByTagName('base')[0].getAttribute('href')
 
 ReactDOM.render(
-  <Provider store={store}>
-    <BrowserRouter basename={baseUrl}>
-      <App/>
-    </BrowserRouter>
-  </Provider>,
+  <Error>
+    <Provider store={store}>
+      <BrowserRouter basename={baseUrl}>
+        <App/>
+      </BrowserRouter>
+    </Provider>
+  </Error>,
   document.getElementById('root')
 )
 

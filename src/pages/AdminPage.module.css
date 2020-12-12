@@ -1,0 +1,21 @@
+.container {
+    padding-left: 300px;
+    box-sizing: content-box;
+}
+
+.menu {
+    width: 300px;
+    height: 100%;
+    position: fixed;
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    left: 0;
+    top: 0;
+}
+
+.menuContainer {
+    flex-grow: 2;
+}

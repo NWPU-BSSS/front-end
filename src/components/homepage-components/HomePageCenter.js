@@ -1,31 +1,27 @@
 import React, { Component } from 'react'
-import { List, Avatar, Space, Radio, Tag } from 'antd'
-import { MessageOutlined, LikeOutlined, StarOutlined } from '@ant-design/icons'
-import { Link } from 'react-router-dom'
+import { Radio } from 'antd'
 import PropTypes from 'prop-types'
 import './HomePageCenter.css'
-import { ItemContent } from './@common/ItemContent'
-import { TagList } from './@common/TagList'
-import { IconText } from './@common/IconText'
+import { BaseBlogList } from '../base/BaseBlogList'
+import { connect } from 'react-redux'
 
 export class HomePageCenter extends Component {
 
   static propTypes = {
-    blogList: PropTypes.array.isRequired
+    followedBlogList: PropTypes.array,
+    recentBlogList: PropTypes.array,
+    recommendBlogList: PropTypes.array
   }
 
   constructor (props) {
     super(props)
     this.state = {
-      value: 1,
+      index: 0
     }
   }
 
-  onChange = e => {
-    console.log('radio checked', e.target.value)
-    this.setState({
-      value: e.target.value,
-    })
+  onChange = ({ target: { value } }) => {
+    this.setState({ index: value })
   }
 
   render () {
@@ -33,46 +29,28 @@ export class HomePageCenter extends Component {
       <div className="HomePageCenter">
         <div className="top-select-option">
           <div className="select-container">
-            <Radio.Group onChange={this.onChange} value={this.state.value}>
-              <Radio value={1}>Recommend</Radio>
-              <Radio value={2}>Followed</Radio>
+            <Radio.Group onChange={this.onChange} value={this.state.index}>
+              <Radio value={0}>Recommend</Radio>
+              <Radio value={1}>Subscribed</Radio>
+              <Radio value={2}>Newest</Radio>
             </Radio.Group>
           </div>
         </div>
         <div className="blog-list">
-          <List
-            itemLayout="vertical"
-            size="large"
-            pagination={{
-              onChange: page => {
-                console.log(page)
-              },
-              pageSize: 5,
-            }}
-            dataSource={this.props.blogList}
-            renderItem={item => (
-              <List.Item
-                key={item.toString()}
-                actions={[
-                  <IconText icon={StarOutlined} text={item.favoriteNum || 0} key="list-vertical-star-o"/>,
-                  <IconText icon={LikeOutlined} text={item.likeNum || 0} key="list-vertical-like-o"/>,
-                  <IconText icon={MessageOutlined} text={item.commentNum || 0} key="list-vertical-message"/>,
-                ]}>
-                <List.Item.Meta
-                  title={<Link to={`/blog/${item.blogId || 10}`}>{item.title || ''}</Link>}
-                  description={<TagList tagA={item.tagA || ''} tagB={item.tagB || ''} tagC={item.tagC || ''}/>}
-                />
-                <ItemContent preview={item.preview || item.content} avatar={item.avatar}
-                             lastModifiedTime={item.lastModifiedTime || 'unknow'}
-                             nickname={item.nickname || 'anonymous'}
-                             blogId={item.blogId}
-                             userId={item.userId}
-                />
-              </List.Item>
-            )}
-          />,
+          {[<BaseBlogList blogList={this.props.recommendBlogList}/>,
+            <BaseBlogList blogList={this.props.followedBlogList}/>,
+            <BaseBlogList blogList={this.props.recentBlogList}/>]
+            [this.state.index]}
         </div>
       </div>
     )
   }
 }
+
+HomePageCenter = connect(
+  ({ $HomePageState: { recommendBlogList, followedBlogList, recentBlogList } }) => ({
+    recommendBlogList,
+    followedBlogList,
+    recentBlogList
+  })
+)(HomePageCenter)

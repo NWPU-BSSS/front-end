@@ -5,13 +5,23 @@ import { HomePageRight } from '../components/homepage-components/HomePageRight'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router'
-import { getBadgeNumAsync, getBaseInfoAsync, getRecommendBlogListAsync } from '../@redux/actions_async'
+import {
+  getAnnouncementAsync,
+  getBadgeNumAsync,
+  getBaseInfoAsync, getFollowedBloggerBlogListAsync, getMyBrowseAsync, getRecentBlogListAsync, getRecommendBlogListAsync
+} from '../@redux/actions_async'
 import './HomePage.css'
+import { QuickEntry } from '../components/homepage-components/QuickEntry'
+import { TodayRecommend } from '../components/homepage-components/TodayRecommend'
+import { RecentBrowse } from '../components/homepage-components/RecentBrowse'
+import { UserCard } from '../components/homepage-components/UserCard'
+import { MessageOption } from '../components/homepage-components/MessageOption'
+import { Layout } from '../components/Layout'
 
 class HomePage extends Component {
 
   static propTypes = {
-    blogList: PropTypes.array,
+    recommendBlogList: PropTypes.array,
     getBadgeNumAsync: PropTypes.func,
     getBaseInfoAsync: PropTypes.func,
     getRecommendBlogListAsync: PropTypes.func,
@@ -22,7 +32,11 @@ class HomePage extends Component {
     if (this.props.isLogin) {
       this.props.getBaseInfoAsync()
       this.props.getRecommendBlogListAsync()
+      this.props.getRecentBlogListAsync()
       this.props.getBadgeNumAsync()
+      this.props.getAnnouncementAsync()
+      this.props.getFollowedBloggerBlogListAsync()
+      this.props.getMyBrowseAsync()
     }
   }
 
@@ -32,22 +46,46 @@ class HomePage extends Component {
     }
 
     return (
-      <div className="HomePage">
-        <HomePageLeft/>
-        <HomePageCenter blogList={this.props.blogList}/>
-        <HomePageRight/>
-      </div>
+      <Layout>
+        <div className="HomePage">
+          <HomePageLeft>
+            <QuickEntry/>
+            <TodayRecommend {...this.props.announcement}/>
+            <RecentBrowse/>
+          </HomePageLeft>
+          <HomePageCenter/>
+          <HomePageRight>
+            <UserCard {...this.props.baseInfo}/>
+            <MessageOption {...this.props.badgeNum}/>
+          </HomePageRight>
+        </div>
+      </Layout>
     )
   }
 }
 
 HomePage = connect(
-  state => ({
-    isLogin: state['AccessToken'] !== '',
-    blogList: state.BlogList.blogList,
-    user: state['UserState']
-  }),
-  { getBaseInfoAsync, getRecommendBlogListAsync, getBadgeNumAsync }
+  ({
+    $HomePageState: { browse, announcement },
+    $UserInfoState: { badgeNum, baseInfo },
+    $UserState: { userId }
+  }) =>
+    ({
+      isLogin: userId !== -1,
+      announcement,
+      browse,
+      badgeNum,
+      baseInfo
+    }),
+  {
+    getBaseInfoAsync,
+    getFollowedBloggerBlogListAsync,
+    getRecommendBlogListAsync,
+    getBadgeNumAsync,
+    getAnnouncementAsync,
+    getRecentBlogListAsync,
+    getMyBrowseAsync
+  }
 )(HomePage)
 
 export { HomePage }
