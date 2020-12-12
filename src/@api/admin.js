@@ -1,23 +1,24 @@
-import { getInit, postInit, query, request } from './@config'
+import { deleteInit, getInit, postInit, query, request } from './@config'
 
-//
 /**
- //  * 删除某个博客
- //  * @param {string}admin
- //  * @param {string}password
- //  * @param {string}blogId
- //  * @returns {Promise<JSON>}
- //  */
-// export const deleteBlog = async({admin, password, blogId}) =>
-//
-// /**
-//  * 删掉用户（删库）
-//  * @param {string}admin
-//  * @param {string}userId
-//  * @param {string}password
-//  * @returns {Promise<JSON>}
-//  */
-// export const deleteUser = async({admin, userId, password}) =>
+ * 删除某个博客
+ * @param {string}admin
+ * @param {string}password
+ * @param {string}blogId
+ * @returns {Promise<JSON>}
+ */
+export const deleteBlog = async ({ admin, password, blogId }) =>
+  request('/api/admin/blog', deleteInit({ admin, password, blogId }))
+
+/**
+ * 删掉用户（删库）
+ * @param {string}admin
+ * @param {string}userId
+ * @param {string}password
+ * @returns {Promise<JSON>}
+ */
+export const deleteUser = async ({ admin, userId, password }) =>
+  request('/api/admin/user', deleteInit({ admin, userId, password }))
 
 /**
  * 发布公告

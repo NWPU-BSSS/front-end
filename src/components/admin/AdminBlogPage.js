@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Button, Space, Table, Tag } from 'antd'
 import { PageTitle } from './base/PageTitle'
-import { getAllBlogListAsync } from '../../@redux/actions_async'
+import { deleteBlogAsync, getAllBlogListAsync } from '../../@redux/actions_async'
 import styles from './AdminBlogPage.module.css'
 
 const columns = [
@@ -41,7 +41,7 @@ const columns = [
   },
 ]
 
-const dataFactory = blogs => {
+const dataFactory = (blogs, handle, data) => {
   return blogs.map((item, index) => {
     let { blogId, userId, title, tagA, tagB, tagC, preview } = item
     let tags = [tagA, tagB, tagC]
@@ -55,7 +55,7 @@ const dataFactory = blogs => {
       action: {
         blogId,
         handleClick: blogId => {
-          alert('delete ' + blogId)
+          handle({ ...data, blogId })
         }
       }
     }
@@ -69,13 +69,12 @@ class AdminBlogPage extends Component {
   }
 
   render () {
-    const data = dataFactory(this.props.blogs)
+    const { admin, password } = this.props
+    const data = dataFactory(this.props.blogs, this.props.deleteBlogAsync, { admin, password })
 
     return (
       <div className={styles.container}>
         <PageTitle>Manage Blogs</PageTitle>
-        {/*<AdminBlogSearch/>*/}
-        {/*<BlogTable/>*/}
         <Table columns={columns} dataSource={data} pagination={false}/>
       </div>
     )
@@ -89,7 +88,7 @@ AdminBlogPage = connect(
     password,
     blogs
   }),
-  { getAllBlogListAsync }
+  { getAllBlogListAsync, deleteBlogAsync }
 )(AdminBlogPage)
 
 export { AdminBlogPage }

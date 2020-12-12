@@ -207,11 +207,11 @@ export function $AdminPageState (state = initAdminPage, { type, data }) {
     case ADMIN_SET_BLOG_LIST:
       return { ...state, blogs: data }
     case ADMIN_DELETE_BLOG:
-      let newBlogs = state.blogs.splice(data, 1)
-      return { ...state, blogs: newBlogs }
+      state.blogs.splice(data, 1)
+      return { ...state }
     case ADMIN_DELETE_USER:
-      let newUsers = state.users.splice(data, 1)
-      return { ...state, users: newUsers }
+      state.users.splice(data, 1)
+      return { ...state }
     default:
       return state
   }

@@ -31,7 +31,7 @@ import {
   set_blogger_subscribe,
   admin_set_user_list,
   admin_set_blog_list,
-  set_my_browse
+  set_my_browse, admin_delete_user, admin_delete_blog
 } from './actions'
 import { SET_MY_FANS, SET_SEARCH_BLOG_LIST } from './action-types'
 
@@ -383,9 +383,23 @@ export const getAllBlogListAsync = () =>
     dispatch(admin_set_blog_list(data))
   }
 
-  export const getMyBrowseAsync = () =>
-    async dispatch => {
-      const response = await req.getMyBrowseBlog()
-      let data = await asyncResponseHandler(response)
-      dispatch(set_my_browse(data))
-    }
+export const getMyBrowseAsync = () =>
+  async dispatch => {
+    const response = await req.getMyBrowseBlog()
+    let data = await asyncResponseHandler(response)
+    dispatch(set_my_browse(data))
+  }
+
+export const deleteUserAsync = ({ admin, password, userId, index }) =>
+  async dispatch => {
+    const response = await req.deleteUser(({ admin, password, userId }))
+    await asyncResponseHandler(response)
+    dispatch(admin_delete_user(index))
+  }
+
+export const deleteBlogAsync = ({ admin, password, blogId, index }) =>
+  async dispatch => {
+    const response = await req.deleteBlog(({ admin, password, blogId }))
+    await asyncResponseHandler(response)
+    dispatch(admin_delete_blog(index))
+  }

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import styles from './AdminUsersPage.module.css'
 import { Table, Space, Tag, Button, Avatar } from 'antd'
 import { PageTitle } from './base/PageTitle'
-import { getAllUsersListAsync } from '../../@redux/actions_async'
+import { deleteUserAsync, getAllUsersListAsync } from '../../@redux/actions_async'
 import { connect } from 'react-redux'
 
 const columns = [
@@ -27,7 +27,7 @@ const columns = [
     key: 'avatar',
     dataIndex: 'avatar',
     render: avatar => {
-      return <Avatar src={avatar} />
+      return <Avatar src={avatar}/>
     },
   },
   {
@@ -48,7 +48,7 @@ const columns = [
   },
 ]
 
-const dataFactory = users => {
+const dataFactory = (users, handle, data) => {
   return users.map((item, index) => {
     let { userId, username, nickname, avatar, introduction, gender } = item
     return {
@@ -60,7 +60,7 @@ const dataFactory = users => {
       gender,
       userId,
       action: () => {
-        alert('delete ' + userId)
+        handle({ ...data, userId })
       }
     }
   })
@@ -73,7 +73,8 @@ class AdminUsersPage extends Component {
   }
 
   render () {
-    const data = dataFactory(this.props.users)
+    const { admin, password } = this.props
+    const data = dataFactory(this.props.users, this.props.deleteUserAsync, { admin, password })
 
     return (
       <div className={styles.container}>
@@ -91,7 +92,7 @@ AdminUsersPage = connect(
     password,
     users
   }),
-  { getAllUsersListAsync }
+  { getAllUsersListAsync, deleteUserAsync }
 )(AdminUsersPage)
 
 export { AdminUsersPage }
