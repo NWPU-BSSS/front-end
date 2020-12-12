@@ -70,7 +70,11 @@ export default class AdminPage extends Component {
 
   componentWillMount () {
     let adminState = get_admin_state()
-    admin_login(adminState)
+    if (adminState) {
+      admin_login(adminState)
+    } else {
+      this.setState({ logoutFlag: true })
+    }
   }
 
   render () {
