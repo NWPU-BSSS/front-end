@@ -41,7 +41,13 @@ import {
   SET_BLOGGER_BLOGS,
   SET_BLOGGER_FAV_BLOGS,
   SET_SEARCH_BLOG_LIST,
-  SET_FAV_BLOGS, SET_MY_BLOGS, SET_RECENT_BLOG_LIST, SET_FOLLOWED_BLOG_LIST, SET_BLOGGER_SUBSCRIBE, SET_BLOGGER_FANS
+  SET_FAV_BLOGS,
+  SET_MY_BLOGS,
+  SET_RECENT_BLOG_LIST,
+  SET_FOLLOWED_BLOG_LIST,
+  SET_BLOGGER_SUBSCRIBE,
+  SET_BLOGGER_FANS,
+  ADMIN_SET_BLOG_LIST, ADMIN_DELETE_BLOG, ADMIN_SET_USER_LIST, ADMIN_LOGOUT, ADMIN_LOGIN, ADMIN_DELETE_USER
 } from './action-types'
 import {
   delete_user_state,
@@ -184,6 +190,20 @@ export function $BLoggerPageState (state = initBloggerPage, { data, type }) {
 
 export function $AdminPageState (state = initAdminPage, { type, data }) {
   switch (type) {
+    case ADMIN_LOGIN:
+      return {...state, ...data}
+    case ADMIN_LOGOUT:
+      return { ...state, admin: '', password: '' }
+    case ADMIN_SET_USER_LIST:
+      return { ...state, users: data}
+    case ADMIN_SET_BLOG_LIST:
+      return {...state, blogs: data}
+    case ADMIN_DELETE_BLOG:
+      let newBlogs = state.blogs.splice(data, 1)
+      return {...state, blogs: newBlogs}
+    case ADMIN_DELETE_USER:
+      let newUsers = state.users.splice(data, 1)
+      return {...state, users: newUsers}
     default:
       return state
   }

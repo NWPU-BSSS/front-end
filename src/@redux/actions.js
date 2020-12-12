@@ -28,7 +28,13 @@ import {
   SET_SEARCH_BLOG_LIST,
   SET_FAV_BLOGS,
   SET_MY_FANS,
-  SET_MY_SUBSCRIBES, SET_MY_BLOGS, SET_RECENT_BLOG_LIST, SET_FOLLOWED_BLOG_LIST, SET_BLOGGER_FANS, SET_BLOGGER_SUBSCRIBE
+  SET_MY_SUBSCRIBES,
+  SET_MY_BLOGS,
+  SET_RECENT_BLOG_LIST,
+  SET_FOLLOWED_BLOG_LIST,
+  SET_BLOGGER_FANS,
+  SET_BLOGGER_SUBSCRIBE,
+  ADMIN_LOGIN
 } from './action-types'
 
 export const actionFactory = (type, data = undefined) => ({
@@ -98,3 +104,8 @@ export const set_blogger_subscribe = data => actionFactory(SET_BLOGGER_SUBSCRIBE
  */
 export const setRegisterSuccess = () => actionFactory(REGISTER_SUCCESS)
 export const set_search_blog_list = data => actionFactory(SET_SEARCH_BLOG_LIST, data)
+
+/*
+  Admin Action
+ */
+export const admin_login = ({ admin, password }) => actionFactory(ADMIN_LOGIN, { admin, password })

@@ -44,7 +44,8 @@ const columns = [
     title: 'Preview',
     dataIndex: 'preview',
     key: 'Preview',
-  },{
+  },
+  {
     title: 'Action',
     key: 'action',
     render: (text, record) => (

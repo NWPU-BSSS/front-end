@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Image, Menu } from 'antd'
 import { ContactsOutlined, FormOutlined, HomeOutlined, LogoutOutlined, NotificationOutlined } from '@ant-design/icons'
-import { Link, Route } from 'react-router-dom'
+import { Link, Redirect, Route } from 'react-router-dom'
 import styles from './AdminPage.module.css'
 import logo from '../assets/img/bsss.png'
 import { Switch as SwitchRouter } from 'react-router-dom'
@@ -9,9 +9,12 @@ import ReleaseAnnouncement from '../components/admin/ReleaseAnnouncement'
 import AdminHome from '../components/admin/AdminHome'
 import { AdminBlogPage } from '../components/admin/AdminBlogPage'
 import { AdminUsersPage } from '../components/admin/AdminUsersPage'
+import { connect } from 'react-redux'
+import { ADMIN_PASSWORD, ADMIN_USERNAME } from '../global'
 
 class AdminMenu extends Component {
   render () {
+
     return (
       <div className={styles.menu}>
         <Image src={logo}/>
@@ -46,6 +49,10 @@ class AdminMenu extends Component {
 export default class AdminPage extends Component {
 
   render () {
+    if (this.props.admin !== ADMIN_USERNAME || this.props.password !== ADMIN_PASSWORD) {
+      return <Redirect to="/admin/login"/>
+    }
+
     return (
       <div className={styles.container}>
         <AdminMenu/>
@@ -67,3 +74,10 @@ export default class AdminPage extends Component {
     )
   }
 }
+
+AdminPage = connect(
+  ({ $AdminPageState: { admin, password } }) => ({
+    admin,
+    password
+  })
+)(AdminPage)

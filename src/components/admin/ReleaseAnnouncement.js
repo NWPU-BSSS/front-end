@@ -2,6 +2,10 @@ import React, { Component } from 'react'
 import styles from './ReleaseAnnouncement.module.css'
 import { Button, DatePicker, Input, Space } from 'antd'
 import { PageTitle } from './base/PageTitle'
+import { connect } from 'react-redux'
+import AdminPage from '../../pages/AdminPage'
+import { releaseAnnouncement } from '../../@api'
+import { asyncResponseHandler, success } from '../../@redux/@common'
 
 export default class ReleaseAnnouncement extends Component {
 
@@ -27,7 +31,11 @@ export default class ReleaseAnnouncement extends Component {
     this.setState({ startTime, endTime })
   }
 
-  handleRelease = () => {
+  handleRelease = async () => {
+    let { admin, password } = this.props
+    debugger
+    await asyncResponseHandler(await releaseAnnouncement({ admin, password, ...this.state }))
+    success('Success')
   }
 
   render () {
@@ -47,3 +55,10 @@ export default class ReleaseAnnouncement extends Component {
     )
   }
 }
+
+ReleaseAnnouncement = connect(
+  ({ $AdminPageState: { admin, password } }) => ({
+    admin,
+    password
+  })
+)(ReleaseAnnouncement)

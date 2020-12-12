@@ -68,3 +68,30 @@ export function urlParamParser (search) {
   return map
 }
 
+/**
+ * 设置 admin storage
+ * @param admin
+ * @param password
+ */
+export function set_admin_state ({admin,password}) {
+    localStorage.setItem('admin', JSON.stringify({ admin, password}))
+}
+
+/**
+ * 移除 admin storage
+ */
+export function remove_admin_state () {
+    localStorage.removeItem('admin')
+}
+
+/**
+ * 获取admin storage
+ * @returns {any}
+ */
+export function get_admin_state () {
+  let item = localStorage.getItem('admin')
+  return JSON.parse(item)
+}
+
+export const ADMIN_USERNAME = 'AlecHe'
+export const ADMIN_PASSWORD = 'alec'

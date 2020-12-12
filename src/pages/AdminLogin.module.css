@@ -1,0 +1,23 @@
+.container {
+    padding-top: 200px;
+}
+
+.inputWrapper {
+    width: 400px;
+    margin: 0 auto;
+}
+
+.input{
+    margin-top: 20px;
+}
+
+.header{
+    font-size: 24px;
+    font-weight: bolder;
+    text-align: center;
+}
+
+.wrapper {
+    width: 400px;
+    margin: 0 auto;
+}

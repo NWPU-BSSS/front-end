@@ -64,8 +64,6 @@ export const SET_BLOGGER_FAV_BLOGS = 'set_blogger_fav_blogs'
 export const SET_BLOGGER_FANS = 'set_blogger_fans'
 export const SET_BLOGGER_SUBSCRIBE = 'set_blogger_subscribe'
 
-export const SET_ADMIN_STATE = 'set_admin_state'
-
 /*
   全局 状态
   Global Action
@@ -80,4 +78,8 @@ export const SET_SEARCH_BLOG_LIST = 'set_search_blog_list'
   Admin Action
  */
 export const ADMIN_SET_BLOG_LIST = 'admin_set_blog_list'
-export const ADMIN_DELETE_BLOG = 'admin_delete_blog'   //abandon
+export const ADMIN_DELETE_BLOG = 'admin_delete_blog'
+export const ADMIN_LOGIN = 'admin_login'
+export const ADMIN_LOGOUT = 'admin_logout'
+export const ADMIN_SET_USER_LIST = 'admin_set_user_list'
+export const ADMIN_DELETE_USER = 'admin_delete_user'
