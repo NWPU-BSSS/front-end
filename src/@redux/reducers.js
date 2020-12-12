@@ -201,7 +201,8 @@ export function $BLoggerPageState (state = initBloggerPage, { data, type }) {
 export function $AdminPageState (state = initAdminPage, { type, data }) {
   switch (type) {
     case ADMIN_LOGIN:
-      return { ...state, ...data }
+      debugger
+      return { ...state, admin: data.admin, password: data.password }
     case ADMIN_LOGOUT:
       return {}
     case ADMIN_SET_USER_LIST:
