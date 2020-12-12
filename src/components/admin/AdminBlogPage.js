@@ -1,22 +1,95 @@
 import React, { Component } from 'react'
-import { AdminBlogSearch } from './admin-blog-components/AdminBlogSearch'
-import { BlogTable } from './admin-blog-components/AdminBlogTable'
+import { connect } from 'react-redux'
+import { Button, Space, Table, Tag } from 'antd'
+import { PageTitle } from './base/PageTitle'
+import { getAllBlogListAsync } from '../../@redux/actions_async'
+import styles from './AdminBlogPage.module.css'
+
+const columns = [
+  {
+    title: 'Id',
+    dataIndex: 'blogId',
+    key: 'blogId'
+  },
+  {
+    title: 'User Id',
+    dataIndex: 'userId',
+    key: 'userId'
+  },
+  {
+    title: 'Title',
+    dataIndex: 'title',
+    key: 'title',
+    render: text => <a>{text}</a>,
+  },
+  {
+    title: 'Preview',
+    dataIndex: 'preview',
+    key: 'preview',
+  },
+  {
+    title: 'Tags',
+    key: 'tags',
+    dataIndex: 'tags',
+    render: tags => <Space>{tags.map(tag => <Tag color="red" key={tag}>{tag}</Tag>)}</Space>,
+  },
+  {
+    title: 'Action',
+    key: 'action',
+    dataIndex: 'action',
+    render: ({ blogId, handleClick }) => <Button danger onClick={() => handleClick(blogId)}>Delete</Button>,
+  },
+]
+
+const dataFactory = blogs => {
+  return blogs.map((item, index) => {
+    let { blogId, userId, title, tagA, tagB, tagC, preview } = item
+    let tags = [tagA, tagB, tagC]
+    return {
+      key: index,
+      title,
+      blogId,
+      userId,
+      preview,
+      tags,
+      action: {
+        blogId,
+        handleClick: blogId => {
+          alert('delete ' + blogId)
+        }
+      }
+    }
+  })
+}
 
 class AdminBlogPage extends Component {
 
-  componentWillMount () {
-    console.log(this.props)
+  async componentWillMount () {
+    this.props.getAllBlogListAsync()
   }
 
   render () {
+    const data = dataFactory(this.props.blogs)
+
     return (
-      <div>
-        <AdminBlogSearch/>
-        <BlogTable/>
+      <div className={styles.container}>
+        <PageTitle>Manage Blogs</PageTitle>
+        {/*<AdminBlogSearch/>*/}
+        {/*<BlogTable/>*/}
+        <Table columns={columns} dataSource={data} pagination={false}/>
       </div>
     )
   }
 
 }
+
+AdminBlogPage = connect(
+  ({ $AdminPageState: { admin, password, blogs } }) => ({
+    admin,
+    password,
+    blogs
+  }),
+  { getAllBlogListAsync }
+)(AdminBlogPage)
 
 export { AdminBlogPage }

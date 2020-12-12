@@ -26,7 +26,7 @@ import {
   set_my_subscribes,
   set_my_blogs,
   set_recent_blogList,
-  set_followed_blog_list, set_blogger_fans, set_blogger_subscribe
+  set_followed_blog_list, set_blogger_fans, set_blogger_subscribe, admin_set_user_list, admin_set_blog_list
 } from './actions'
 import { SET_MY_FANS, SET_SEARCH_BLOG_LIST } from './action-types'
 
@@ -355,11 +355,25 @@ export const getBloggerSubscribesAsync = bloggerId =>
     dispatch(set_blogger_subscribe(data))
   }
 
-  export const uploadUserAvatarAsync = file =>
-    async dispatch => {
-      const response = await req.uploadUserAvatar(file)
-      await asyncResponseHandler(response)
-      success('Success')
-      let data = await asyncResponseHandler(await req.getUserWholeInfo())
-      dispatch(set_user_info(data))
-    }
+export const uploadUserAvatarAsync = file =>
+  async dispatch => {
+    const response = await req.uploadUserAvatar(file)
+    await asyncResponseHandler(response)
+    success('Success')
+    let data = await asyncResponseHandler(await req.getUserWholeInfo())
+    dispatch(set_user_info(data))
+  }
+
+export const getAllUsersListAsync = () =>
+  async dispatch => {
+    const response = await req.getAllUserList()
+    let data = await asyncResponseHandler(response)
+    dispatch(admin_set_user_list(data))
+  }
+
+export const getAllBlogListAsync = () =>
+  async dispatch => {
+    const response = await req.getAllBlogList()
+    let data = await asyncResponseHandler(response)
+    dispatch(admin_set_blog_list(data))
+  }

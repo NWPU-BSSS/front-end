@@ -1,4 +1,4 @@
-import {getInit, postInit, query, request} from './@config'
+import { getInit, postInit, query, request } from './@config'
 
 //
 /**
@@ -29,20 +29,20 @@ import {getInit, postInit, query, request} from './@config'
  * @param {string}startTime
  * @returns {Promise<*>}
  */
-export const releaseAnnouncement = async ({admin, password, content, title, endTime, startTime}) =>
-    request('/api/admin/announcement', postInit({admin, password, content, title, endTime, startTime}))
+export const releaseAnnouncement = async ({ admin, password, content, title, endTime, startTime }) =>
+  request('/api/admin/announcement', postInit({ admin, password, content, title, endTime, startTime }))
 
 /**
  * 获取所有博客列表
  * @returns {Promise<JSON>}
  */
-export const getBlogList = async () =>
-    request('/api/admin/blogs', getInit())
+export const getAllBlogList = () =>
+  request('/api/admin/blogs')
 
 /**
  * 获取用户列表
  * @returns {Promise<JSON>}
  */
-export const getUserList = async () =>
-    request('/api/admin/users')
+export const getAllUserList = async () =>
+  request('/api/admin/users')
 

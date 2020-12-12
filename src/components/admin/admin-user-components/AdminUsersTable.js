@@ -5,6 +5,8 @@ import { Space, Table } from 'antd'
 // import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { getAllUsersListAsync } from '../../../@redux/actions_async'
 
 const columns = [
   {
@@ -216,21 +218,13 @@ export class AdminUsersTable extends Component {
   }
 }
 
-// redux中还没有，先注掉了
-// AdminUsersTable = connect(
-//   state => {
-//     dataSources: state.$AdminUsersTable.adminUserList;
-//     for (let i = 0; i < dataSources.length; i++) {
-//       if (dataSources.gender === 0) {
-//         dataSources.gender = 'male'
-//       } else if (dataSources.gender === 1) {
-//         dataSources.gender = 'female'
-//       } else {
-//         dataSources.gender = 'unknown'
-//       }
-//       dataSources.key = dataSources.userId;
-//       dataSources.operation = dataSources.userId
-//     }
-//   },
-//   { getAdminUsersListAsync }
-// )(AdminUsersTable)
+AdminUsersTable = connect(
+  ({ $AdminPageState: users }) => {
+    for (let i = 0; i < users.length; i++) {
+      dataSources.gender = ['male', 'female', 'unknown'][dataSources.gender]
+      dataSources.key = dataSources.userId
+      dataSources.operation = dataSources.userId
+    }
+  },
+  { getAllUsersListAsync }
+)(AdminUsersTable)

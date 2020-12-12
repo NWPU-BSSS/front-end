@@ -54,5 +54,7 @@ export const initBloggerPage = {
 
 export const initAdminPage = {
   username: '',
-  password: ''
+  password: '',
+  users: [],
+  blogs: []
 }
