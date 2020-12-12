@@ -31,14 +31,12 @@ export default class AdminLogin extends Component {
       error('admin username or password wrong!')
       return
     }
-    this.props.admin_login({ admin, password })
     set_admin_state({ admin, password })
     this.setState({ flag: true })
   }
 
   render () {
     if (this.state.flag) {
-      this.setState({ flag: false })
       return <Redirect to="/admin/insights"/>
     }
 

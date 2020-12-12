@@ -4,6 +4,7 @@ import { Table, Space, Tag, Button, Avatar } from 'antd'
 import { PageTitle } from './base/PageTitle'
 import { deleteUserAsync, getAllUsersListAsync } from '../../@redux/actions_async'
 import { connect } from 'react-redux'
+import { get_admin_state } from '../../global'
 
 const columns = [
   {
@@ -73,7 +74,7 @@ class AdminUsersPage extends Component {
   }
 
   render () {
-    const { admin, password } = this.props
+    const { admin, password } = get_admin_state()
 
     let data = dataFactory(this.props.users, this.props.deleteUserAsync, { admin, password })
 

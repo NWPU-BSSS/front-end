@@ -81,7 +81,9 @@ export function set_admin_state ({ admin, password }) {
  * 移除 admin storage
  */
 export function remove_admin_state () {
-  localStorage.removeItem('admin')
+  if (localStorage.getItem('admin')) {
+    localStorage.removeItem('admin')
+  }
 }
 
 /**
