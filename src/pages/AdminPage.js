@@ -10,9 +10,23 @@ import AdminHome from '../components/admin/AdminHome'
 import { AdminBlogPage } from '../components/admin/AdminBlogPage'
 import { AdminUsersPage } from '../components/admin/AdminUsersPage'
 import { connect } from 'react-redux'
-import { ADMIN_PASSWORD, ADMIN_USERNAME } from '../global'
+import { ADMIN_PASSWORD, ADMIN_USERNAME, get_admin_state, remove_admin_state, set_admin_state } from '../global'
+import { admin_login } from '../@redux/actions'
+import { ADMIN_LOGOUT } from '../@redux/action-types'
 
 class AdminMenu extends Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      logoutFlag: false
+    }
+  }
+
+  handleLogout = () => {
+    remove_admin_state()
+    this.setState({ logoutFlag: true })
+  }
+
   render () {
 
     return (
@@ -38,7 +52,7 @@ class AdminMenu extends Component {
             <Link to="/admin/announcement">Announcement</Link>
           </Menu.Item>
           <Menu.Item key="5" icon={<LogoutOutlined/>}>
-            <Link to="/admin/logout">Logout</Link>
+            <Link onClick={this.handleLogout}>Logout</Link>
           </Menu.Item>
         </Menu>
       </div>
@@ -47,9 +61,24 @@ class AdminMenu extends Component {
 }
 
 export default class AdminPage extends Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      logoutFlag: false
+    }
+  }
+
+  componentWillMount () {
+    let adminState = get_admin_state()
+    admin_login(adminState)
+  }
 
   render () {
-    if (this.props.admin !== ADMIN_USERNAME || this.props.password !== ADMIN_PASSWORD) {
+    if (this.props.admin === ADMIN_USERNAME && this.props.password === ADMIN_PASSWORD) {
+      this.setState({ logoutFlag: false })
+    }
+
+    if (this.state.logoutFlag) {
       return <Redirect to="/admin/login"/>
     }
 

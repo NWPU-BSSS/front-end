@@ -203,7 +203,7 @@ export function $AdminPageState (state = initAdminPage, { type, data }) {
     case ADMIN_LOGIN:
       return { ...state, ...data }
     case ADMIN_LOGOUT:
-      return { ...state, admin: '', password: '' }
+      return {}
     case ADMIN_SET_USER_LIST:
       return { ...state, users: data }
     case ADMIN_SET_BLOG_LIST:
