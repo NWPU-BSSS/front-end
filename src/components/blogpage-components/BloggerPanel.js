@@ -65,7 +65,7 @@ export class BloggerPanel extends Component {
           <div className={styles.container}>
             <div className={styles.top}>
               <div className={styles.topLeft}>
-                <Avatar size={48} src={this.props.avatar}/>
+                <Avatar size={64} src={this.props.avatar}>{this.props.nickname}</Avatar>
                 <Tag color="magenta">Lv{this.props.level}</Tag>
               </div>
               <div className={styles.topRight}>

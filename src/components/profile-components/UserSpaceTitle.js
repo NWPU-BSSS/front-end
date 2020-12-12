@@ -23,7 +23,7 @@ export class UserSpaceTitle extends Component {
           <div className={styles.avatar}>
             <div className={styles.avatarContainer} onClick={this.props.changeAvatar}>
               <Avatar style={{marginBottom: 0}} size={64} src={this.props.avatar}>
-                {this.props.username}
+                {this.props.nickname}
               </Avatar>
               <span className={styles.text}>Change</span>
               <span className={styles.mask}/>

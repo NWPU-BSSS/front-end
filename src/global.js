@@ -73,15 +73,15 @@ export function urlParamParser (search) {
  * @param admin
  * @param password
  */
-export function set_admin_state ({admin,password}) {
-    localStorage.setItem('admin', JSON.stringify({ admin, password}))
+export function set_admin_state ({ admin, password }) {
+  localStorage.setItem('admin', JSON.stringify({ admin, password }))
 }
 
 /**
  * 移除 admin storage
  */
 export function remove_admin_state () {
-    localStorage.removeItem('admin')
+  localStorage.removeItem('admin')
 }
 
 /**
@@ -95,3 +95,4 @@ export function get_admin_state () {
 
 export const ADMIN_USERNAME = 'AlecHe'
 export const ADMIN_PASSWORD = 'alec'
+export const DEFAULT_AJAX_INTERVAL = 500

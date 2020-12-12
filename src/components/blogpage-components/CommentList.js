@@ -55,7 +55,7 @@ export class CommentList extends Component {
             let { nickname, userId, avatar, time, content} = item
             return (
               <li>
-                <CommentItem author={nickname} authorId={userId} avatar={avatar} content={content} datetime={time}/>
+                <CommentItem author={nickname} authorId={userId} avatar={<Avatar src={avatar} alt="avatar">{nickname}</Avatar>} content={content} datetime={time}/>
               </li>
             )
           }}
