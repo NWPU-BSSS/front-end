@@ -207,11 +207,11 @@ export function $AdminPageState (state = initAdminPage, { type, data }) {
     case ADMIN_SET_BLOG_LIST:
       return { ...state, blogs: data }
     case ADMIN_DELETE_BLOG:
-      state.blogs.splice(data, 1)
-      return { ...state }
+      let newBlogs = JSON.parse(JSON.stringify([...state.blogs])).filter((_, index) => index !== data)
+      return { ...state, blogs: newBlogs }
     case ADMIN_DELETE_USER:
-      state.users.splice(data, 1)
-      return { ...state }
+      let newUsers = JSON.parse(JSON.stringify([...state.users])).filter((_, index) => index !== data)
+      return { ...state, users: newUsers }
     default:
       return state
   }

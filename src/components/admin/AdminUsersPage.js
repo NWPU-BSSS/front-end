@@ -73,8 +73,10 @@ class AdminUsersPage extends Component {
   }
 
   render () {
+    debugger
     const { admin, password } = this.props
-    const data = dataFactory(this.props.users, this.props.deleteUserAsync, { admin, password })
+
+    let data = dataFactory(this.props.users, this.props.deleteUserAsync, { admin, password })
 
     return (
       <div className={styles.container}>

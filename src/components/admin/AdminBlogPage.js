@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Button, Space, Table, Tag } from 'antd'
+import { Button, Popconfirm, Space, Table, Tag } from 'antd'
 import { PageTitle } from './base/PageTitle'
 import { deleteBlogAsync, getAllBlogListAsync } from '../../@redux/actions_async'
 import styles from './AdminBlogPage.module.css'
@@ -37,7 +37,11 @@ const columns = [
     title: 'Action',
     key: 'action',
     dataIndex: 'action',
-    render: ({ blogId, handleClick }) => <Button danger onClick={() => handleClick(blogId)}>Delete</Button>,
+    render: ({ blogId, handleClick }) => (
+      <Popconfirm title="Sure to delete?" onConfirm={() => handleClick(blogId)}>
+        <Button danger>Delete</Button>
+      </Popconfirm>
+    ),
   },
 ]
 
@@ -70,7 +74,8 @@ class AdminBlogPage extends Component {
 
   render () {
     const { admin, password } = this.props
-    const data = dataFactory(this.props.blogs, this.props.deleteBlogAsync, { admin, password })
+    let data = dataFactory(this.props.blogs, this.props.deleteBlogAsync, { admin, password })
+    debugger
 
     return (
       <div className={styles.container}>
