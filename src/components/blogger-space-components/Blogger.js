@@ -59,7 +59,7 @@ Blogger = connect(
   state => {
     const { subscribeStatus } = state.$BLoggerPageState
     return {
-      subscribeStatus: subscribeStatus
+      subscribeStatus
     }
   },
   { subscribeBloggerPageBloggerAsync }

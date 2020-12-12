@@ -263,22 +263,22 @@ export const getBloggerFavBlogsAsync = userId =>
 export const getBlogLikeStatusAsync = blogId =>
   async dispatch => {
     const response = await req.getStatusOfLikeBlog(blogId)
-    let data = await asyncResponseHandler(response)
-    dispatch(set_like_status(data.status))
+    let { status } = await asyncResponseHandler(response)
+    dispatch(set_like_status(status))
   }
 
 export const getBlogFavStatusAsync = blogId =>
   async dispatch => {
     const response = await req.getStatusOfFavoriteBlog(blogId)
-    let data = await asyncResponseHandler(response)
-    dispatch(set_fav_status(data.status))
+    let { status } = await asyncResponseHandler(response)
+    dispatch(set_fav_status(status))
   }
 
 export const getBloggerPageSubscribeStatusAsync = bloggerId =>
   async dispatch => {
     const response = await req.getSubscribeStatusOfBlogger(bloggerId)
-    let data = await asyncResponseHandler(response)
-    dispatch(set_blogger_subscribe_status(data))
+    let { status } = await asyncResponseHandler(response)
+    dispatch(set_blogger_subscribe_status(status))
   }
 
 export const setBlogLikeStatusAsync = ({ blogId, like }) =>
