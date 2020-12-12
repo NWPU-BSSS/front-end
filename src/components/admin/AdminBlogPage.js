@@ -75,7 +75,6 @@ class AdminBlogPage extends Component {
   render () {
     const { admin, password } = this.props
     let data = dataFactory(this.props.blogs, this.props.deleteBlogAsync, { admin, password })
-    debugger
 
     return (
       <div className={styles.container}>
