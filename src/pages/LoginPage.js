@@ -37,8 +37,8 @@ export function RememberLogin (props) {
       justifyContent: 'space-between',
       alignItems: 'center',
     }}>
-      <Checkbox checked={props.checked} onClick={props.handleCheck}>自动登录</Checkbox>
-      <a href="#">忘记密码</a>
+      <Checkbox checked={props.checked} onClick={props.handleCheck}>Auto Sign In</Checkbox>
+      <a href="#">Forget Password?</a>
     </div>
   )
 }
@@ -60,7 +60,7 @@ class LoginOrRegister extends Component {
     return <div style={{
       ...formItem, ...btnBox
     }}>
-      <Button type="primary" style={{ width: '100%' }} onClick={this.props.onLogin}>登陆</Button>
+      <Button type="primary" style={{ width: '100%' }} onClick={this.props.onLogin}>Sign In</Button>
       <div style={{
         display: 'flex',
         flexDirection: 'row',
@@ -84,8 +84,8 @@ class LoginOrRegister extends Component {
           {/*</div>*/}
         </div>
         <Link to="/register" type="default" style={{
-          textAlign: 'center', width: '10%'
-        }}>注册</Link>
+          textAlign: 'center', width: '20%'
+        }}>Sign Up</Link>
       </div>
     </div>
   }
